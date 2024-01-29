@@ -1,0 +1,64 @@
+.MobileView
+{
+  background-color: rgb(245, 245, 245);
+  display: none;
+}
+.DesktopView
+{
+  background-color: rgb(245, 245, 245);
+  display: block;
+}
+.image{
+  object-fit: cover;
+  width: 100% !important;
+  position: relative !important;
+}
+.sectionTitle
+{
+  color: #5a1024;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: #5a102454;
+  padding: 2% 0%;
+  margin-bottom: 5%;
+}
+.container
+{
+    padding: 0 5%;
+}
+
+
+
+
+
+/* Mobile Version: 0px - 420px */
+@media (max-width: 420px)
+{
+  h1
+  {
+    font-size: 32px;
+  }
+  h2
+  {
+    font-size: 20px;
+  }
+  .crumbs h3
+  {
+    font-size: 35px;
+  }
+  .iconFilter p
+  {
+    font-size: 10px;
+  }
+  p{
+    font-size: 13px;
+  }
+  .MobileView
+  {
+    display: block;
+  }
+  .DesktopView
+  {
+    display: none;
+  }
+}
