@@ -94,10 +94,16 @@ WSGI_APPLICATION = 'juegos_caribe.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Juegos_Caribe',
+        'USER': 'root',
+        'PASSWORD': '//america25',
+        'HOST': 'localhost',  # O la dirección de tu servidor MySQL
+        'PORT': '3306',  # El puerto de tu servidor MySQL
     }
 }
+   
+
 
 
 # Password validation
