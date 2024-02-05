@@ -1,0 +1,9 @@
+[
+    {
+        "email": "admin",
+        "name": "admin",
+        "lastname": "admin",
+        "faculty": "adminFAC",
+        "password": "admin"
+    }
+]
