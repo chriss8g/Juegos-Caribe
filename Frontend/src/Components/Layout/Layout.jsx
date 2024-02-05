@@ -1,5 +1,4 @@
 'use client'
-import { useEffect, useState } from "react"
 import "./layout.css"
 import "../../app/globals.css"
 import Image from 'next/image'
@@ -7,10 +6,15 @@ import BreadCrumbs from "../BreadCrumbs/BreadCrumbs"
 import Footer from "../Footer/Footer"
 import { IconMenu2, IconSearch, IconUser } from "@tabler/icons-react"
 import useAuthentication from "../../hooks/useAuthentication"
+import { useEffect, useState } from "react"
 
 export default function Layout({children})
 {
     const { loggedInUser, isLoggedIn } = useAuthentication()
+    const [showInitials, setShowInitials] = useState(isLoggedIn)
+    useEffect(()=>{
+        setShowInitials(isLoggedIn)
+    }, [isLoggedIn])
     // const [lenguage, setLenguage] = useState("es")
     return(
         <div className="Header">
@@ -30,10 +34,10 @@ export default function Layout({children})
                             href="/LogIn"
                         >
                             {
-                                !isLoggedIn ?
+                                !showInitials ?
                                     <IconUser />
                                     :
-                                    loggedInUser.name[0]?.toUpperCase()+loggedInUser.lastname[0]?.toUpperCase()
+                                    `${loggedInUser.name[0]?.toUpperCase()+loggedInUser.lastname[0]?.toUpperCase()}`
                             }
                         </a>
                         {/* <h2 

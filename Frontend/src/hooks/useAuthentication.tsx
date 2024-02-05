@@ -1,11 +1,21 @@
-import { LogInCredentials, userCredentials } from "@/types/user"
+import { LogInCredentials, User } from "@/types/user"
 import data from "../../users.json"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 
-var users: userCredentials[] = data as userCredentials[]
+var users: User[] = data as User[]
 
 export default function useAuthentication()
 {
+    const router = useRouter()
+    const [currentUser, setCurrentUser] = useState(
+        {
+            email: "",
+            name: "",
+            lastname: "",
+            faculty: "",
+        }
+    ) 
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [loggedInUser, setLoggedInUser] = useState(
         {
@@ -16,20 +26,21 @@ export default function useAuthentication()
         }
     )
 
-    function createUser(newUser:userCredentials): string {
+    useEffect(()=>{
+        if(isLoggedIn)
+        {
+            setLoggedInUser(currentUser)
+            // router.push("/")
+        }
+    },[isLoggedIn])
+
+    function createUser(newUser: User): string {
         for (const user of users)
         {
             if(user.email === newUser.email) return "Hay una cuenta vinculada al correo introducido"
         }
-            setIsLoggedIn(true)
-            setLoggedInUser(
-                {
-                    email: newUser.email,
-                    name: newUser.name,
-                    lastname: newUser.lastname,
-                    faculty: newUser.faculty
-                }
-            )
+        setCurrentUser(newUser)
+        setIsLoggedIn(true)
 
         // POST NEW USER
 
@@ -43,17 +54,10 @@ export default function useAuthentication()
             if(user.email === User.email)
             {
                 // HASH User PASSWORD
+                setCurrentUser(user)
                 if(user.password === User.password)
                 {
                     setIsLoggedIn(true)
-                    setLoggedInUser(
-                        {
-                            email: user.email,
-                            name: user.name,
-                            lastname: user.lastname,
-                            faculty: user.faculty
-                        }
-                    )
                     return ""
                 }
                 else return "Contraseña incorrecta"
@@ -63,6 +67,26 @@ export default function useAuthentication()
         return ""
     }
 
+    function LogOut()
+    {
+        setCurrentUser({
+            email: "",
+            name: "",
+            lastname: "",
+            faculty: ""
+        })
+        setLoggedInUser(
+            {
+                email: "",
+                name: "",
+                lastname: "",
+                faculty: ""
+            }
+        )
+        setIsLoggedIn(false)
+        router.push("/")
+    }
 
-    return { createUser , loggedInUser, LogInUser, isLoggedIn }
+
+    return { createUser , loggedInUser, LogInUser, isLoggedIn, LogOut }
 }
