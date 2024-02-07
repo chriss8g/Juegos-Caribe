@@ -1,15 +1,14 @@
 'use client'
 import useAuthentication from "../../hooks/useAuthentication";
 import Layout from "../../Components/Layout/Layout";
-import { LogInCredentials, User } from "@/types/user"
-import { useRouter } from "next/navigation";
+import { LogInCredentials, User } from "../../types/user"
 import React, { useState } from "react";
+import { IconEye, IconEyeClosed } from "@tabler/icons-react";
 
 export default function LogIn()
 {
     const[LogIn, setLogIn] = useState(true)
-    // const router = useRouter()
-    const { createUser, LogInUser, loggedInUser, isLoggedIn, LogOut } = useAuthentication()
+    const { createUser,loggedInUser, LogInUser, LogOut } = useAuthentication()
 
 
     function handleOnSubmit(e: React.MouseEvent) {
@@ -25,9 +24,7 @@ export default function LogIn()
             if(response !== "") alert(response)
             else
             {
-                // router.push("/")
             }
-            console.log(isLoggedIn)
         }
         else
         {
@@ -37,6 +34,7 @@ export default function LogIn()
                 lastname: (document.getElementById('lastname') as HTMLInputElement)?.value,
                 password: (document.getElementById('password') as HTMLInputElement)?.value,
                 faculty: (document.getElementById('faculty') as HTMLInputElement)?.value,
+                isLoggedIn: false
             }
             response = createUser(userCredentials)
         }
@@ -44,23 +42,37 @@ export default function LogIn()
         
     }
 
+    const[seePassw, setSeePassw] = useState(false)
+
     return(
         <div className="LogIn">
             <Layout>
-                {!isLoggedIn ?
+                {!loggedInUser.isLoggedIn ?
                     <>
                         <form
                         className="p-5 gap-4 flex flex-col w-4/5 m-auto"
                         >
-                            <input className="p-3 rounded-md bg-gray-200 my-1" type="email" placeholder="correo" id="email" required/>
+                            <input className="p-3 w-64 rounded-md bg-gray-200 my-1" type="email" placeholder="correo" id="email" required/>
                             {!LogIn && 
                                 <>
-                                    <input className="p-3 rounded-md bg-gray-200 my-1" type="text" placeholder="nombre" id="name" required/>
-                                    <input className="p-3 rounded-md bg-gray-200 my-1" type="text" placeholder="apellidos" id="lastname"/>
-                                    <input className="p-3 rounded-md bg-gray-200 my-1" type="text" placeholder="facultad" id="faculty" required/>
+                                    <input className="p-3 w-64 rounded-md bg-gray-200 my-1" type="text" placeholder="nombre" id="name" required/>
+                                    <input className="p-3 w-64 rounded-md bg-gray-200 my-1" type="text" placeholder="apellidos" id="lastname"/>
+                                    <input className="p-3 w-64 rounded-md bg-gray-200 my-1" type="text" placeholder="facultad" id="faculty" required/>
                                 </>
                             }
-                            <input className="p-3 rounded-md bg-gray-200 my-1" type="password" placeholder="contraseña" id="password" required/>
+                            <div className="flex">
+                                <input className="p-3 w-64 rounded-md bg-gray-200 my-1" type={seePassw ? 'text' : 'password'} placeholder="contraseña" id="password" required />
+                                <div className="mt-4 -ml-10 w-0" onClick={()=>setSeePassw(!seePassw)}>
+                                    {
+                                        !seePassw 
+                                        ? 
+                                        <IconEye/>
+                                        :
+                                        <IconEyeClosed />
+                                    
+                                    }
+                                </div>
+                            </div>
                             <button 
                                 onClick={(e)=>handleOnSubmit(e)}
                                 className="bg-[#5a1024] text-white w-4/5 m-auto py-1 rounded-md"

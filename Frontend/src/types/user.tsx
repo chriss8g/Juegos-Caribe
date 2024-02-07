@@ -3,7 +3,8 @@ export interface User{
     name: string,
     lastname: string,
     faculty: string,
-    password: string
+    password: string,
+    isLoggedIn: boolean
 }
 export interface LogInCredentials{
     email: string,

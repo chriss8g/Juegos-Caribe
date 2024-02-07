@@ -6,15 +6,13 @@ import BreadCrumbs from "../BreadCrumbs/BreadCrumbs"
 import Footer from "../Footer/Footer"
 import { IconMenu2, IconSearch, IconUser } from "@tabler/icons-react"
 import useAuthentication from "../../hooks/useAuthentication"
-import { useEffect, useState } from "react"
+import Link from "next/link"
 
 export default function Layout({children})
 {
-    const { loggedInUser, isLoggedIn } = useAuthentication()
-    const [showInitials, setShowInitials] = useState(isLoggedIn)
-    useEffect(()=>{
-        setShowInitials(isLoggedIn)
-    }, [isLoggedIn])
+    const { loggedInUser } = useAuthentication()
+
+
     // const [lenguage, setLenguage] = useState("es")
     return(
         <div className="Header">
@@ -29,17 +27,17 @@ export default function Layout({children})
                         <div className="IconSearch cursor-pointer">
                             <IconSearch />
                         </div>
-                        <a 
+                        <Link 
                             className="LoginIcon cursor-pointer"
                             href="/LogIn"
                         >
                             {
-                                !showInitials ?
+                                !loggedInUser.isLoggedIn ?
                                     <IconUser />
                                     :
                                     `${loggedInUser.name[0]?.toUpperCase()+loggedInUser.lastname[0]?.toUpperCase()}`
                             }
-                        </a>
+                        </Link>
                         {/* <h2 
                             className="cursor-pointer"
                             onClick={

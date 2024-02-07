@@ -4,6 +4,7 @@
         "name": "admin",
         "lastname": "admin",
         "faculty": "adminFAC",
-        "password": "admin"
+        "password": "admin",
+        "isLoggedIn": false
     }
 ]
