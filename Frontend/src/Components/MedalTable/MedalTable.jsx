@@ -22,7 +22,7 @@ export default function MedalTable()
     return(
         <div className="MedalTable">
             <div className="MobileView container">
-                <div className="tableTitle">
+                <div className="tableTitle flex">
                     <h3>Medallero</h3>
                     <div className="filters">
                         <p>Filtros</p>
