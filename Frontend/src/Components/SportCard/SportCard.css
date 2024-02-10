@@ -15,13 +15,20 @@
 .sportImage
 {
     width: 60%;
-    padding: 20%;
+    padding: 5%;
 }
+
+.circle-container{
+    display: grid;
+
+    justify-content: center;
+
+}
+
 .circle
 {
-    margin-left: 10%;
     height: 12vh;
     width: 12vh;
-    background-color: rgba(92, 0, 0, 0.384);
+    background-color: #5a1024;
     border-radius: 70px;
 }

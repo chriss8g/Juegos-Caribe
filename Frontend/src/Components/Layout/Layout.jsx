@@ -1,20 +1,16 @@
 'use client'
+import {useState} from "react"
 import "./layout.css"
 import "../../app/globals.css"
 import Image from 'next/image'
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs"
 import Footer from "../Footer/Footer"
-import { IconMenu2, IconSearch, IconUser } from "@tabler/icons-react"
-import useAuthentication from "../../hooks/useAuthentication"
-import Link from "next/link"
+import logo from '../../../public/logo.svg';
+import NavBar from "../NavBar/NavBar";
 
-export default function Layout({children})
-{
-    const { loggedInUser } = useAuthentication()
-
-
-    // const [lenguage, setLenguage] = useState("es")
-    return(
+export default function Layout({children}) {
+    const [lenguage, setLenguage] = useState("es")
+    return (
         <div className="Header">
             <div className="MobileView">
                 <div className="MobileHeader">
@@ -23,42 +19,30 @@ export default function Layout({children})
                             <Image alt="" src="/logo.svg" fill className="image"/>
                         </div>
                     </div>
-                    <div className="rightHeader gap-2 mr-2">
-                        <div className="IconSearch cursor-pointer">
-                            <IconSearch />
+                    <div className="rightHeader">
+                        <div className="searchIcon">
+                            <Image alt="" src="/search.svg" fill className="image"/>
                         </div>
-                        <Link 
-                            className="LoginIcon cursor-pointer"
-                            href="/LogIn"
-                        >
-                            {
-                                !loggedInUser.isLoggedIn ?
-                                    <IconUser />
-                                    :
-                                    `${loggedInUser.name[0]?.toUpperCase()+loggedInUser.lastname[0]?.toUpperCase()}`
-                            }
-                        </Link>
-                        {/* <h2 
-                            className="cursor-pointer"
-                            onClick={
-                                ()=>{ lenguage === "es" ? setLenguage("en"): setLenguage("es")}
-                            }>
+                        <h2 onClick={() => {
+                            lenguage === "es" ? setLenguage("en") : setLenguage("es")
+                        }}>
                             {lenguage.toUpperCase()}
-                        </h2> */}
+                        </h2>
                         <div className="burgerMenu cursor-pointer">
                             <IconMenu2 />
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="DesktopView">
 
             </div>
-            <div className="MobileView">
-                <BreadCrumbs />
+            <div className="DesktopView">
+                <NavBar/>
+            </div>
+            <div className="MobileView DesktopView">
+                <BreadCrumbs/>
             </div>
             {children}
-            <Footer />
+            <Footer/>
         </div>
     )
 }

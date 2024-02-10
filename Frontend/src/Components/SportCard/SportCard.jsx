@@ -14,8 +14,8 @@ export default function SportCard({sportName})
                     if(sport.name === sportName)
                     {
                         return(
-                            <div key={index}>
-                                <div className="circle">
+                            <div key={index} className="circle-container">
+                                <div className="circle flex justify-center align-center">
                                     <div className="sportImage">
                                         <Image src={sport.icon} alt="" fill className="image"/>
                                     </div>

@@ -1,7 +1,7 @@
 
 .MedalTable
 {
-    background-image: url("../../../public//Group\ 3676.svg");
+    background-image: url("../../../public/Group 3676.svg");
     background-repeat: no-repeat;
     background-position: fixed;
 
@@ -107,11 +107,12 @@ td p
     background-color: rgba(255, 255, 255, 0.753);
     backdrop-filter: blur(4px);
     margin-top: -0.5%;
-    width: 62.5%;
+    width: 100%;
 }
-.showMore
-{
+.showMore {
     width: 10%;
+    display: flex;
+    align-items: center;
 }
 .moreImg
 {
