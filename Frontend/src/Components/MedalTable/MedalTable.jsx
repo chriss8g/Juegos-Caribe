@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import "./medalTable.css"
 import Image from "next/image"
+import {IconPencil} from "@tabler/icons-react";
 
 export default function MedalTable()
 {
@@ -31,6 +32,7 @@ export default function MedalTable()
                         </div>
                     </div>
                 </div>
+                <IconPencil/>
                 <table className="medalsTable">
                     <thead>
                         <tr>

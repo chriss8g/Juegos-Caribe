@@ -30,8 +30,13 @@
 {
     padding: 0 5%;
 }
+.hide {
+  display: none;
+}
 
-
+.align-center {
+  align-items: center;
+}
 
 
 
