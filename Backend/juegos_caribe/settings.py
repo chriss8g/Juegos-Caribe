@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     # Local
     'season.apps.SeasonConfig',
+    'comisioner.apps.ComisionerConfig',
 ]
 
 REST_FRAMEWORK = {
