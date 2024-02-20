@@ -1,6 +1,5 @@
 from django.db import models
 from .comisioner import Comisioner
-
 class Season(models.Model):
     title = models.CharField(max_length=200)
     year = models.IntegerField()
