@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Season
+from .models.season import Season
 
 class SeasonModelTest(TestCase):
 
