@@ -1,0 +1,119 @@
+
+.MedalTable
+{
+    background-image: url("../../../public//Group\ 3676.svg");
+    background-repeat: no-repeat;
+    background-position: fixed;
+
+}
+.tableTitle
+{
+    width: 84.2%;
+    padding: 5% 8%;
+    background-color: #5a1024;
+    color: white;
+    margin-top: 17%;
+}
+.filters
+{
+    width: 23%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+.tableTitle
+{
+    box-shadow: 0px -3px 15px 2px gray;
+    display: flex;
+    justify-content: space-between;
+    border-top-right-radius: 17px;
+    border-top-left-radius: 17px;
+    margin-bottom: 15%;
+}
+.moreImg
+{
+    width: 25%;
+}
+.filters p
+{
+    color: white;
+}
+.medalsTable
+{
+    border: solid;
+    background-color: rgba(255, 255, 255, 0.226);
+    border-width: 1px;
+    border-color: rgb(185, 185, 185);
+    background-color: rgba(255, 255, 255, 0.753);
+    backdrop-filter: blur(4px);
+    padding: 5% 2% 0 2%;
+    margin-top: -15%;
+    width: 100%;
+}
+th:first-of-type{
+    padding-right: 18%;
+}
+.medalIcon
+{
+    width: 45%;
+    margin-left: 27%;
+}
+.logoName
+{
+    width: 30%;
+    padding: 0 5%;
+}
+.row
+{
+    padding: 5% 0;
+    display: flex;
+    align-items: center;
+    padding-left: 9%;
+}
+.medalInfo
+{
+    padding-left: 3.5%;
+}
+.medalInfo:last-of-type
+{
+    padding-left: 6%;
+}
+td
+{
+    border-bottom: solid;
+    border-width: 1px;
+}
+td p
+{
+    color: black !important;
+}
+.moreBar p:last-of-type
+{
+    padding-right: 5%;
+}
+.moreBar
+{
+    padding-left: 37%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    margin-bottom: 15%;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border: solid;
+    border-top: none;
+    border-width: 0.4px;
+    border-color: rgb(192, 192, 192);
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.753);
+    backdrop-filter: blur(4px);
+    margin-top: -0.5%;
+    width: 62.5%;
+}
+.showMore
+{
+    width: 10%;
+}
+.moreImg
+{
+    width: 80%;
+}

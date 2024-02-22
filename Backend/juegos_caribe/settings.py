@@ -43,8 +43,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     # Local
-    'season.apps.SeasonConfig',
-    'comisioner.apps.ComisionerConfig',
+    'cruds.apps.CrudsConfig',
 ]
 
 REST_FRAMEWORK = {
