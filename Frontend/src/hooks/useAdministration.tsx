@@ -33,8 +33,7 @@ export default function useAdministration()
     
     function getData()
     {
-
-        fetch(`${process.env.SERVER_URL + currentEntity.endpoint+'/'}`, {
+        fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
