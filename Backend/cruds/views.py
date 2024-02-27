@@ -1,8 +1,8 @@
 from rest_framework import generics
 from .models.comisioner import Comisioner
-from .serializers import ComisionerSerializer
 from .models.season import Season
-from .serializers import SeasonSerializer
+from .models.documents import Documents
+from .serializers import SeasonSerializer, ComisionerSerializer, DocumentsSerializer
 
 class ListSeason(generics.ListCreateAPIView):
     queryset = Season.objects.all()
@@ -19,3 +19,11 @@ class ListComisioner(generics.ListCreateAPIView):
 class DetailComisioner(generics.RetrieveUpdateDestroyAPIView):
     queryset = Comisioner.objects.all()
     serializer_class = ComisionerSerializer
+
+class ListDocuments(generics.ListCreateAPIView):
+    queryset = Comisioner.objects.all()
+    serializer_class = ComisionerSerializer
+
+class DetailDocuments(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Documents.objects.all()
+    serializer_class = DocumentsSerializer
