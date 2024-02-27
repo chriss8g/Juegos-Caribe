@@ -7,7 +7,6 @@ urlpatterns = [
     path('season/', ListSeason.as_view()),
     path('comisioner/<int:pk>/', DetailComisioner.as_view()),
     path('comisioner/', ListComisioner.as_view()),
-    #agragar path para documents
     path('documents/<int:pk>/', DetailDocuments.as_view()),
     path('documents/', ListDocuments.as_view()),
 
