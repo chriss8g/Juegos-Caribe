@@ -85,7 +85,7 @@ export default function Administration()
                             </table>
                             <div className="w-96 m-auto">
                                 <button className="w-80 border-2 border-slate-600 ml-7 mt-7 py-1 bg-slate-600 text-white rounded-md"
-                                onClick={(e)=>handleCreate(e)}
+                                    onClick={(e)=>handleCreate(e)}
                                 >
                                     Agregar
                                 </button>

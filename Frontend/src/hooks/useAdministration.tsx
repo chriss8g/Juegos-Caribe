@@ -135,21 +135,21 @@ export default function useAdministration()
     }
     
     return { 
+        addData, 
+        currentEntityType,
+        currentEntity, 
         Data, 
+        deleteData,
+        editMode,
+        entities, 
+        getDataById,
+        getEntityPropertiesNames, 
+        getEntityType, 
+        isLoading, 
         selectedDataId,
         setSelectedDataId,
-        editMode,
         setEditMode,
-        isLoading, 
-        entities, 
         setCurrentEntity, 
-        getEntityPropertiesNames, 
-        currentEntity, 
-        getEntityType, 
-        currentEntityType,
-        deleteData,
-        addData, 
-        getDataById,
         updateData
     } 
 }
