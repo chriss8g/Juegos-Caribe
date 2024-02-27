@@ -41,7 +41,7 @@ function DeleteModal({data})
                 </table>
                 <div className="flex mt-10 justify-between lg:w-1/3 md:justify-end lg:justify-end">
                     <button className="border-solid border-2 p-3 sm:w-1/5 lg:w-1/2 border-gray-800 rounded-lg mx-2" onClick={()=>{document.getElementById('DeleteModal').style.display="none"}}>Cancelar</button>
-                    <button className="border-solid border-2 p-3 sm:w-1/5 lg:w-1/2 border-gray-800 rounded-lg mx-2 bg-red-500 text-white" onClick={()=>handleDelete(data.id)}>Aceptar</button>
+                    <button className="border-solid border-2 p-3 sm:w-1/5 lg:w-1/2 border-gray-800 rounded-lg mx-2 bg-red-500 text-white" onClick={()=>{handleDelete(data.id); location.reload()}}>Aceptar</button>
                 </div>
             </div>
 

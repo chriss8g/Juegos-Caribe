@@ -72,16 +72,33 @@ export default function AdministrationForm({editMode, selected, setEditMode})
 
     function handleOnSubmit(e)
     {
+        var formElements = document.forms['AdminModal'].elements
+        var temp: typeof formElements = []
+        for(const element of document.forms['AdminModal'].elements)
+        {
+            temp.push(element.value)
+        }
+        
         if(editMode)
         {
-            // updateData({})
+            updateData({
+                id: dataValues[0],
+                title: temp[0],
+                year: temp[1],
+                edition: temp[2]
+            })
         }
         else
         {
-            console.log(document.forms['AdminModal'].form)
+            addData({
+                id: null,
+                title: temp[0],
+                year: temp[1],
+                edition: temp[2]
+            })
         }
         document.getElementById('adminForm').style.display="none"
-        router.refresh()
+        location.reload()
     }
 
     return(
@@ -106,7 +123,7 @@ export default function AdministrationForm({editMode, selected, setEditMode})
                 </form>
                 <div className="flex mt-10 justify-between lg:w-1/3 md:justify-end lg:justify-end">
                     <button className="border-solid border-2 p-3 lg:w-1/2 border-gray-800 rounded-lg mx-2" onClick={()=>handleCancel()}>Cancelar</button>
-                    <button className="border-solid border-2 p-3 lg:w-1/2 border-gray-800 rounded-lg mx-2 bg-green-500 text-white" disabled={!needsUpdate && editMode} onClick={(e)=>handleOnSubmit(e)}>{editMode===true ? "Guardar" : "Crear"}</button>
+                    <button className="border-solid border-2 p-3 lg:w-1/2 border-gray-800 rounded-lg mx-2 bg-green-500 text-white disabled:bg-gray-500" disabled={!needsUpdate && editMode} onClick={(e)=>handleOnSubmit(e)}>{editMode===true ? "Guardar" : "Crear"}</button>
                 </div>
             </div>
         </div>

@@ -54,20 +54,49 @@ export default function useAdministration()
         return Data.filter((x)=>x.id === dataId)[0]        
     }
 
-    function addData(newDataBody: typeof currentEntityType)
+    function addData(newData: typeof currentEntityType)
     {
-        console.log(newDataBody)
+        try{
+            var body = {
+                title: newData.title,
+                year: newData.year,
+                edition: newData.edition
+            }
+            fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(body)
+            })
+        }
+        catch (error) {
+            console.log(error)
+        }
     }
 
-    function updateData(newDataBody: typeof currentEntityType)
+    function updateData(newData: typeof currentEntityType)
     {
-        console.log("Nuevo cuerpo: "+newDataBody)
+            var body = {
+                id: newData.id,
+                title: newData.title,
+                year: newData.year,
+                edition: newData.edition
+            }
+            fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/`+ newData.id+ '/', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(body)
+            })
+      
     }
 
     function deleteData(id: number)
     {    
         try {
-            fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/` + id, {
+            fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/` + id + '/', {
                 method: 'DELETE',
             })
         } 
