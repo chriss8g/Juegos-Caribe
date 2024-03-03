@@ -1,15 +1,16 @@
 'use client'
-import { useState } from "react"
+import {useState} from "react"
 import "./layout.css"
 import "../../app/globals.css"
 import Image from 'next/image'
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs"
 import Footer from "../Footer/Footer"
+import logo from '../../../public/logo.svg';
+import NavBar from "../NavBar/NavBar";
 
-export default function Layout({children})
-{
+export default function Layout({children}) {
     const [lenguage, setLenguage] = useState("es")
-    return(
+    return (
         <div className="Header">
             <div className="MobileView">
                 <div className="MobileHeader">
@@ -21,8 +22,10 @@ export default function Layout({children})
                     <div className="rightHeader">
                         <div className="searchIcon">
                             <Image alt="" src="/search.svg" fill className="image"/>
-                        </div>
-                        <h2 onClick={()=>{ lenguage === "es" ? setLenguage("en"): setLenguage("es")}}>
+                        </div>x
+                        <h2 onClick={() => {
+                            lenguage === "es" ? setLenguage("en") : setLenguage("es")
+                        }}>
                             {lenguage.toUpperCase()}
                         </h2>
                         <div className="burgerMenu">
@@ -30,15 +33,16 @@ export default function Layout({children})
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="DesktopView">
 
             </div>
-            <div className="MobileView">
-                <BreadCrumbs />
+            <div className="DesktopView">
+                <NavBar/>
+            </div>
+            <div className="MobileView DesktopView">
+                <BreadCrumbs/>
             </div>
             {children}
-            <Footer />
+            <Footer/>
         </div>
     )
 }
