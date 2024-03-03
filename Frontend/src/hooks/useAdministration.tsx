@@ -6,12 +6,7 @@ import useTranslation from "./useTranslation"
 export default function useAdministration()
 {
     
-    const[Data, setData]= useState<typeof currentEntityType[]>([{
-        id: 0,
-        title: "",
-        year: 0,
-        edition: ""
-    }])
+    const[Data, setData]= useState<typeof currentEntityType[]>([])
 
     const [selectedDataId, setSelectedDataId] = useState(0)
 
@@ -54,20 +49,38 @@ export default function useAdministration()
         return Data.filter((x)=>x.id === dataId)[0]        
     }
 
+    const [resData, setResData] = useState<typeof currentEntityType>()
+    
+    function getDataByIdFromEndpoint(dataId: number, endpoint: string)
+    {
+        console.log(dataId, endpoint)
+        fetch(`${process.env.SERVER_URL + endpoint}/`+dataId+'/', {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+        .then(
+            (response)=>response.json()
+        )
+        .then(
+            (data)=>{
+                setResData(data)
+            }
+        )     
+        return resData   
+    }
+
     function addData(newData: typeof currentEntityType)
     {
         try{
-            var body = {
-                title: newData.title,
-                year: newData.year,
-                edition: newData.edition
-            }
+            
             fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(body)
+                body: JSON.stringify(newData)
             })
         }
         catch (error) {
@@ -77,18 +90,12 @@ export default function useAdministration()
 
     function updateData(newData: typeof currentEntityType)
     {
-            var body = {
-                id: newData.id,
-                title: newData.title,
-                year: newData.year,
-                edition: newData.edition
-            }
             fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/`+ newData.id+ '/', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(body)
+                body: JSON.stringify(newData)
             })
       
     }
@@ -109,12 +116,15 @@ export default function useAdministration()
     function getEntityType(id:number)
     {
         var season: Season;
-
+        var comisioner: Comisioner;
+        var tournament: Tournament;
         switch (id) {
             case 0:
                 return season;
             case 1:
-                break;
+                return comisioner;
+            case 2:
+                return tournament;
             default:
                 break;
         }
@@ -127,9 +137,13 @@ export default function useAdministration()
         let props = []
         for(const prop in object)
         {
-            props.push(
-                toSpanish(prop)[0].toUpperCase()+toSpanish(prop).slice(1)
-            )
+            try {
+                props.push(
+                    toSpanish(prop)[0].toUpperCase()+toSpanish(prop).slice(1)
+                )
+            } catch (error) {
+                console.log(prop)
+            }
         }
         return props
     }
@@ -143,13 +157,16 @@ export default function useAdministration()
         editMode,
         entities, 
         getDataById,
+        getData,
+        getDataByIdFromEndpoint,
         getEntityPropertiesNames, 
         getEntityType, 
         isLoading, 
         selectedDataId,
-        setSelectedDataId,
-        setEditMode,
         setCurrentEntity, 
+        setData,
+        setEditMode,
+        setSelectedDataId,
         updateData
     } 
 }

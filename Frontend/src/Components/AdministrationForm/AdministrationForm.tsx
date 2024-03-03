@@ -5,15 +5,14 @@ import useAdministration from "../../hooks/useAdministration"
 export default function AdministrationForm({editMode, selected, setEditMode})
 {
     const { getEntityPropertiesNames, Data, addData, updateData, currentEntityType } = useAdministration()
-    const [propertiesNames, setPropertiesNames] = useState<string[]>([])
     const [selectedData, setSelectedData] = useState(Data.filter(x=> x.id === +selected)[0])
+    const propertiesNames = (getEntityPropertiesNames(Data[0]))
     const [dataValues, setDataValues] = useState([])
     const [needsUpdate, setNeedsUpdate] = useState(false)
     const router = useRouter()
 
     useEffect(()=>{
         setSelectedData(Data.filter(x=>x.id === +selected)[0])
-        setPropertiesNames(getEntityPropertiesNames(selectedData))
     }, [selected])
     
     useEffect(()=>{
@@ -23,6 +22,7 @@ export default function AdministrationForm({editMode, selected, setEditMode})
 
     useEffect(()=>{
         dataValues.map((val, id)=>{
+            console.log(dataValues)
             if(propertiesNames[id] !== "Id")
             {
                 if(editMode)
@@ -81,24 +81,25 @@ export default function AdministrationForm({editMode, selected, setEditMode})
         
         if(editMode)
         {
-            updateData({
-                id: dataValues[0],
-                title: temp[0],
-                year: temp[1],
-                edition: temp[2]
-            })
+            updateData({...temp})
         }
         else
         {
-            addData({
-                id: null,
-                title: temp[0],
-                year: temp[1],
-                edition: temp[2]
-            })
+            addData({...temp})
         }
         document.getElementById('adminForm').style.display="none"
         location.reload()
+    }
+
+    function getInputType(value: any){
+        if(Array.isArray(value))
+        {
+            return "select"
+        }
+        else
+        {
+            return typeof value
+        }
     }
 
     return(
@@ -114,7 +115,22 @@ export default function AdministrationForm({editMode, selected, setEditMode})
                                 return(
                                     <div className="my-2 flex-col">
                                         <label htmlFor="">{propertiesNames[id]}: </label>
-                                        <input key={id} name={`${id}`} className="appearance-none border-solid border-2 rounded-md p-2 max-w-full" id={`${id}`} type={typeof val} placeholder={propertiesNames[id]} onChange={(e)=>onChange(e)}/>
+                                        {
+                                            getInputType(val) == "select" 
+
+                                            ?
+                                                <select name={`${id}`} id={`${id}`}>
+                                                    {
+                                                        val.map((value: number)=>(
+                                                            <option value={value}>
+                                                                {value}
+                                                            </option>
+                                                        ))
+                                                    }
+                                                </select>
+                                            :
+                                                <input key={id} name={`${id}`} className="appearance-none border-solid border-2 rounded-md p-2 max-w-full" id={`${id}`} type={getInputType(val)} placeholder={propertiesNames[id]} onChange={(e)=>onChange(e)}/>
+                                        }
                                     </div>
                                 )
                             }

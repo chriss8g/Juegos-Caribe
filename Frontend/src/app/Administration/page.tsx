@@ -2,26 +2,36 @@
 import Layout from "../../Components/Layout/Layout"
 import React, { useEffect } from "react"
 import useAdministration from "../../hooks/useAdministration"
-import { IconPencil, IconTrash } from "@tabler/icons-react"
 import AdministrationForm from "../../Components/AdministrationForm/AdministrationForm"
 import DeleteModal from "../../Components/DeleteModal/DeleteModal"
+import useTranslation from "../../hooks/useTranslation"
+import { IconPencil, IconTrash } from "@tabler/icons-react"
 
 export default function Administration()
 {
     const { 
-        
+        currentEntity,
         Data, 
         selectedDataId, 
         setSelectedDataId, 
         isLoading, 
-        addData, 
         getEntityPropertiesNames, 
-        deleteData, 
         getDataById,
+        getData,
+        getDataByIdFromEndpoint,
+        entities,
         editMode, 
-        setEditMode 
+        setEditMode ,
+        setCurrentEntity,
 
     } = useAdministration()
+
+    const { toSpanish } = useTranslation()
+
+
+    useEffect(()=>{
+        getData()
+    },[currentEntity])
 
     function handleEdit(e){
         setEditMode(true)
@@ -47,6 +57,18 @@ export default function Administration()
             <Layout>
                 <div className="SectionMenu">
 
+                    <br />
+                    Entidades:
+                    <select name="Entities" id="Entities" onChange={(e)=>{setCurrentEntity(entities[+e.target.value])}}>
+                        {entities.map((ent, key)=>(
+                            <option id={`${key}`} value={ent.id}>
+                                {toSpanish(ent.name)}
+                            </option>
+                        ))}
+                    </select>
+                    <br />
+                    <br />
+
                 </div>
                 <div id="adminForm" className="hidden">
                     <AdministrationForm editMode={editMode} setEditMode={setEditMode} selected={selectedDataId}/>
@@ -57,7 +79,7 @@ export default function Administration()
                 {
                     !isLoading ?
                         <div className="CRUDSection">
-                            <table className="w-8/12 m-auto border-solid border-2 border-black">
+                            <table className=" border-solid border-2 border-black">
                                 <thead className="border-solid border-2 border-black">
                                     <tr>
                                         {
@@ -72,9 +94,19 @@ export default function Administration()
                                     {
                                         Data.map((row, id)=>(
                                             <tr className="border-solid border-2 border-black" key={id}>
-                                                {Object.values(row).map((prop, id)=>(
-                                                    <td className="p-2 text-center border-solid border-2 border-black td" key={id}>{prop}</td>
-                                                ))}
+                                                {Object.values(row).map((prop, id)=>{
+                                                    if(typeof prop === 'object')
+                                                    {
+                                                        // return <td className="p-2 text-center border-solid border-2 border-black td" key={id}>
+                                                        // </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        return <td className="p-2 text-center border-solid border-2 border-black td" key={id}>
+                                                            {prop}
+                                                        </td>
+                                                    }
+                                                })}
                                                 <button className="p-2 border-solid border-2 border-gray-400 w-full bg-orange-300" onClick={(e)=>handleEdit(e)}><IconPencil className="m-auto"/></button>
                                                 <button className="p-2 border-solid border-2 border-gray-400 w-full bg-red-400" onClick={()=>handleOnDelete(row.id)}><IconTrash className="m-auto"/></button>
                                             </tr>

@@ -9,6 +9,12 @@
         "id": 1,
         "name": "Comisioner",
         "endpoint": "/comisioner",
-        "parentId": 0
+        "parentId": 1
+    },
+    {
+        "id": 2,
+        "name": "Tournament",
+        "endpoint": "/tournament",
+        "parentId": 2
     }
 ]
