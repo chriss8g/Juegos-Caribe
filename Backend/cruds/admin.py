@@ -7,6 +7,7 @@ from .models.team import Team
 from .models.game import Game
 from .models.sport import Sport
 from .models.athlete import Athlete
+from .models.documents import Documents
 
 admin.site.register(Comisioner)
 admin.site.register(Faculty)
@@ -16,3 +17,4 @@ admin.site.register(Team)
 admin.site.register(Game)
 admin.site.register(Sport)
 admin.site.register(Athlete)
+admin.site.register(Documents)
