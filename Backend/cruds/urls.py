@@ -1,12 +1,12 @@
 from django.urls import path
-from .views import ComisionerList, ComisionerDetail
-from .views import SeasonList, SeasonDetail
-from .views import TournamentList, TournamentDetail
-from .views import FacultyList, FacultyDetail
-from .views import TeamList, TeamDetail
-from .views import GameList, GameDetail
-from .views import SportList, SportDetail
-from .views import AthleteList, AthleteDetail
+from .views.comisioner import ComisionerList, ComisionerDetail
+from .views.season import SeasonList, SeasonDetail
+from .views.tournament import TournamentList, TournamentDetail
+from .views.faculty import FacultyList, FacultyDetail
+from .views.team import TeamList, TeamDetail
+from .views.game import GameList, GameDetail
+from .views.sport import SportList, SportDetail
+from .views.athlete import AthleteList, AthleteDetail
 
 urlpatterns = [
     path('comisioner/<int:pk>/', ComisionerDetail.as_view()),

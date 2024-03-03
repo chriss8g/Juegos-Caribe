@@ -39,26 +39,41 @@ class SeasonSerializer(serializers.ModelSerializer):
         return str(obj)
 
 class FacultySerializer(serializers.ModelSerializer):
+    str = serializers.SerializerMethodField()
+    def get_str(self, obj):
+        return str(obj)
     class Meta:
-        model = Faculty
+        model = Comisioner
         fields = '__all__'
 
 class TeamSerializer(serializers.ModelSerializer):
+    str = serializers.SerializerMethodField()
+    def get_str(self, obj):
+        return str(obj)
     class Meta:
-        model = Team
+        model = Comisioner
         fields = '__all__'
 
 class GameSerializer(serializers.ModelSerializer):
+    str = serializers.SerializerMethodField()
+    def get_str(self, obj):
+        return str(obj)
     class Meta:
-        model = Game
+        model = Comisioner
         fields = '__all__'
 
 class SportSerializer(serializers.ModelSerializer):
+    str = serializers.SerializerMethodField()
+    def get_str(self, obj):
+        return str(obj)
     class Meta:
-        model = Sport
+        model = Comisioner
         fields = '__all__'
 
 class AthleteSerializer(serializers.ModelSerializer):
+    str = serializers.SerializerMethodField()
+    def get_str(self, obj):
+        return str(obj)
     class Meta:
-        model = Athlete
+        model = Comisioner
         fields = '__all__'
