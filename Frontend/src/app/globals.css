@@ -17,11 +17,11 @@
   width: 100% !important;
   position: relative !important;
 }
-.sectionTitle
-{
+.sectionTitle {
   color: #5a1024;
   border-bottom: solid;
-  border-width: 1px;
+  border-width: 0px;
+  border-bottom-width: 1px;
   border-color: #5a102454;
   padding: 2% 0%;
   margin-bottom: 5%;
@@ -38,7 +38,17 @@
   align-items: center;
 }
 
+.width-10{
+  width: 10%;
+}
 
+.width-90{
+  width: 90%;
+}
+
+.height-10{
+  height: 10%;
+}
 
 /* Mobile Version: 0px - 420px */
 @media (max-width: 420px)
