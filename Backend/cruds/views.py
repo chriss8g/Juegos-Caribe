@@ -1,5 +1,15 @@
 from rest_framework import generics
-from .models import Season, Comisioner, Tournament, Faculty, Team, Game, Sport, Athlete
+from rest_framework.response import Response
+from .models.season import Season
+from .models.comisioner import Comisioner
+from .models.tournament import Tournament
+from .models.faculty import Faculty
+from .models.team import Team
+from .models.game import Game
+from .models.sport import Sport
+from .models.athlete import Athlete
+
+
 from .serializers import SeasonSerializer, ComisionerSerializer, TournamentSerializer, FacultySerializer, TeamSerializer, GameSerializer, SportSerializer, AthleteSerializer
 
 class SeasonList(generics.ListCreateAPIView):

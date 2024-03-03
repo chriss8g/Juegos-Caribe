@@ -8,42 +8,57 @@ from .models.game import Game
 from .models.sport import Sport
 from .models.athlete import Athlete
 
-class SeasonSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Season
-        fields = ('id', 'title', 'year', 'edition', 'comisioners')
 
 class ComisionerSerializer(serializers.ModelSerializer):
+    str = serializers.SerializerMethodField()
+    def get_str(self, obj):
+        return str(obj)
     class Meta:
         model = Comisioner
-        fields = ('id', 'name', 'position', 'biography', 'picture')
+        fields = '__all__'
 
 class TournamentSerializer(serializers.ModelSerializer):
+    str = serializers.SerializerMethodField()
+    def get_str(self, obj):
+        return str(obj)
+    
     class Meta:
         model = Tournament
-        fields = ('id', 'name', 'season')
+        fields = '__all__'
+
+class SeasonSerializer(serializers.ModelSerializer):
+    comisioners = ComisionerSerializer(many=True, read_only=True)
+    tournaments = TournamentSerializer(many=True, read_only=True)
+    str = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Season
+        fields = '__all__'
+
+    def get_str(self, obj):
+        return str(obj)
 
 class FacultySerializer(serializers.ModelSerializer):
     class Meta:
         model = Faculty
-        fields = ('id', 'name', 'dean', 'location')
+        fields = '__all__'
 
 class TeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Team
-        fields = ('id', 'name', 'faculty', 'sport')
+        fields = '__all__'
 
 class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
-        fields = ('id', 'date', 'time', 'team1', 'team2', 'tournament')
+        fields = '__all__'
 
 class SportSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sport
-        fields = ('id', 'name', 'description')
+        fields = '__all__'
 
 class AthleteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Athlete
-        fields = ('id', 'name', 'age', 'team', 'sport')
+        fields = '__all__'
