@@ -1,15 +1,18 @@
-
 from .faculty import FacultySerializer
-from ..models.athlete import Athlete
+from ..models.tournamentOnSeason import TournamentOnSeason
 from rest_framework import serializers
 
-class AthleteSerializer(serializers.ModelSerializer):
 
-    faculty = FacultySerializer(read_only=True)
+class TournamentOnSeasonSerializer(serializers.ModelSerializer):
     
+    faculties = FacultySerializer(many=True, read_only=True)
+
+
     str = serializers.SerializerMethodField()
+
     def get_str(self, obj):
         return str(obj)
+
     class Meta:
-        model = Athlete
+        model = TournamentOnSeason
         fields = '__all__'
