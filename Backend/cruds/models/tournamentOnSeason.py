@@ -12,4 +12,4 @@ class TournamentOnSeason(models.Model):
 
 
     def __str__(self):
-        return f"{self.tournament} - {self.season} - Points: {self.points}"
+        return f"{self.tournament} - {self.season}"
