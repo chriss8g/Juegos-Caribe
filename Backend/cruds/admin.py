@@ -8,6 +8,8 @@ from .models.game import Game
 from .models.sport import Sport
 from .models.athlete import Athlete
 from .models.documents import Documents
+from .models.news import News
+from .models.comments import Comments
 
 admin.site.register(Comisioner)
 admin.site.register(Faculty)
@@ -18,3 +20,5 @@ admin.site.register(Game)
 admin.site.register(Sport)
 admin.site.register(Athlete)
 admin.site.register(Documents)
+admin.site.register(News)
+admin.site.register(Comments)
