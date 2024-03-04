@@ -9,8 +9,8 @@ class Season(models.Model):
     year = models.IntegerField()
     edition = models.CharField(max_length=10)
     comisioners = models.ManyToManyField(Comisioner)
-    tournaments = models.ManyToManyField(Tournament)
-    faculties = models.ManyToManyField(Faculty)
+    tournaments = models.ManyToManyField(Tournament, through='TournamentOnSeason')
+    faculties = models.ManyToManyField(Faculty, through='FacultyOnSeason')
 
     def __str__(self):
         return self.title

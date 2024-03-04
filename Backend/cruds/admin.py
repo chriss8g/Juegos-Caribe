@@ -1,4 +1,6 @@
 from django.contrib import admin
+
+from .models.teamOnGame import TeamOnGame
 from .models.comisioner import Comisioner
 from .models.faculty import Faculty
 from .models.season import Season
@@ -8,6 +10,9 @@ from .models.game import Game
 from .models.sport import Sport
 from .models.athlete import Athlete
 from .models.documents import Documents
+from .models.facultyOnSeason import FacultyOnSeason
+from .models.tournamentOnSeason import TournamentOnSeason
+from .models.facultyOnTournamentOnSeason import FacultyOnTournamentOnSeason
 
 admin.site.register(Comisioner)
 admin.site.register(Faculty)
@@ -18,3 +23,7 @@ admin.site.register(Game)
 admin.site.register(Sport)
 admin.site.register(Athlete)
 admin.site.register(Documents)
+admin.site.register(TeamOnGame)
+admin.site.register(TournamentOnSeason)
+admin.site.register(FacultyOnSeason)
+admin.site.register(FacultyOnTournamentOnSeason)
