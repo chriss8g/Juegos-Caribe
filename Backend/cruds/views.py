@@ -2,6 +2,8 @@ from rest_framework import generics
 from rest_framework.response import Response
 from .models.season import Season
 from .models.comisioner import Comisioner
+from .models.documents import Documents
+from .serializers import SeasonSerializer, ComisionerSerializer, DocumentsSerializer
 from .models.tournament import Tournament
 from .models.faculty import Faculty
 from .models.team import Team
@@ -30,6 +32,18 @@ class ComisionerDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ComisionerSerializer
 
 class TournamentList(generics.ListCreateAPIView):
+    queryset = Tournament.objects.all()
+    serializer_class = TournamentSerializer
+    
+class ListDocuments(generics.ListCreateAPIView):
+    queryset = Comisioner.objects.all()
+    serializer_class = ComisionerSerializer
+
+class DetailDocuments(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Documents.objects.all()
+    serializer_class = DocumentsSerializer
+# Tournament
+class ListTournament(generics.ListCreateAPIView):
     queryset = Tournament.objects.all()
     serializer_class = TournamentSerializer
 

@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models.comisioner import Comisioner
 from .models.faculty import Faculty
 from .models.season import Season
+from .models.documents import Documents
 from .models.tournament import Tournament
 from .models.team import Team
 from .models.game import Game
@@ -23,6 +24,13 @@ class ComisionerSerializer(serializers.ModelSerializer):
         model = Comisioner
         fields = '__all__'
 
+        fields = ('id', 'name', 'position', 'biography', 'picture')
+
+class DocumentsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Documents
+        fields = '__all__'
+    
 class TournamentSerializer(serializers.ModelSerializer):
     str = serializers.SerializerMethodField()
     def get_str(self, obj):
