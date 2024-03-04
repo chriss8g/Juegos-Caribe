@@ -8,9 +8,10 @@ from .models.team import Team
 from .models.game import Game
 from .models.sport import Sport
 from .models.athlete import Athlete
+from .models.documents import Documents
 
 
-from .serializers import SeasonSerializer, ComisionerSerializer, TournamentSerializer, FacultySerializer, TeamSerializer, GameSerializer, SportSerializer, AthleteSerializer
+from .serializers import SeasonSerializer, ComisionerSerializer, TournamentSerializer, FacultySerializer, TeamSerializer, GameSerializer, SportSerializer, AthleteSerializer, DocumentsSerializer
 
 class SeasonList(generics.ListCreateAPIView):
     queryset = Season.objects.all()
@@ -71,7 +72,17 @@ class SportDetail(generics.RetrieveUpdateDestroyAPIView):
 class AthleteList(generics.ListCreateAPIView):
     queryset = Athlete.objects.all()
     serializer_class = AthleteSerializer
+    
 
 class AthleteDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Athlete.objects.all()
     serializer_class = AthleteSerializer
+    
+
+class DocumentsList(generics.ListCreateAPIView):
+    queryset = Season.objects.all()
+    serializer_class = DocumentsSerializer
+
+class DocumentsDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Documents.objects.all()
+    serializer_class = DocumentsSerializer

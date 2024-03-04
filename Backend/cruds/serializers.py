@@ -9,6 +9,12 @@ from .models.sport import Sport
 from .models.athlete import Athlete
 
 
+from .models.documents import Documents
+    
+class SeasonSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Season
+        fields = ('id', 'title', 'year', 'edition',)
 class ComisionerSerializer(serializers.ModelSerializer):
     str = serializers.SerializerMethodField()
     def get_str(self, obj):
@@ -62,3 +68,10 @@ class AthleteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Athlete
         fields = '__all__'
+        fields = ('id', 'name', 'position', 'biography', 'picture')
+
+class DocumentsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Documents
+        fields = '__all__'
+    
