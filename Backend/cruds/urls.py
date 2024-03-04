@@ -32,4 +32,10 @@ urlpatterns = [
 
     path('athlete/<int:pk>/', AthleteDetail.as_view()),
     path('athlete/', AthleteList.as_view()),
+    
+    path('documents/<int:pk>/', DocumentsDetail.as_view()),
+    path('documents/', DocumentsList.as_view()),
 ]
+
+
+
