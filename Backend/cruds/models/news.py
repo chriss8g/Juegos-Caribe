@@ -8,5 +8,5 @@ class News (models.Model):
     picture = models.ImageField(upload_to='news_pictures/') #esto me lo dijo phind
     user = models.ForeignKey(get_user_model(), on_delete=models.PROTECT ) # Relación uno a muchos con User
 
-    def str (self):
+    def __str__(self):
         return self.title
