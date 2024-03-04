@@ -13,6 +13,8 @@ from .models.documents import Documents
 from .models.facultyOnSeason import FacultyOnSeason
 from .models.tournamentOnSeason import TournamentOnSeason
 from .models.facultyOnTournamentOnSeason import FacultyOnTournamentOnSeason
+from .models.news import News
+from .models.comments import Comments
 
 admin.site.register(Comisioner)
 admin.site.register(Faculty)
@@ -27,3 +29,5 @@ admin.site.register(TeamOnGame)
 admin.site.register(TournamentOnSeason)
 admin.site.register(FacultyOnSeason)
 admin.site.register(FacultyOnTournamentOnSeason)
+admin.site.register(News)
+admin.site.register(Comments)

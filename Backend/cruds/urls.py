@@ -14,6 +14,8 @@ from .views.facultyOnSeason import FacultyOnSeasonList, FacultyOnSeasonDetail
 from .views.tournamentOnSeason import TournamentOnSeasonList, TournamentOnSeasonDetail
 from .views.facultyOnTournamentOnSeason import FacultyOnTournamentOnSeasonList, FacultyOnTournamentOnSeasonDetail
 
+from .views.news import NewsList, NewsDetail
+from .views.comments import CommentsList, CommentsDetail
 
 urlpatterns = [
     path('comisioner/<int:pk>/', ComisionerDetail.as_view()),
@@ -54,4 +56,10 @@ urlpatterns = [
 
     path('facultyOnTournamentOnSeason/<int:pk>/', FacultyOnTournamentOnSeasonDetail.as_view()),
     path('facultyOnTournamentOnSeason/', FacultyOnTournamentOnSeasonList.as_view()),
+    
+    path('news/<int:pk>/', DetailNews.as_view()),
+    path('news/', ListNews.as_view()),
+    
+    path('comments/<int:pk>/', DetailComment.as_view()),
+    path('comments/', ListComment.as_view()),
 ]
