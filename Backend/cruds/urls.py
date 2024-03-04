@@ -1,4 +1,6 @@
 from django.urls import path
+
+from .views.documents import DocumentsDetail, DocumentsList
 from .views.comisioner import ComisionerList, ComisionerDetail
 from .views.season import SeasonList, SeasonDetail
 from .views.tournament import TournamentList, TournamentDetail
