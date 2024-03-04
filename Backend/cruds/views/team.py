@@ -1,6 +1,6 @@
+from ..serializers.team import TeamSerializer
 from rest_framework import generics
 from ..models.team import Team
-from ..serializers import TeamSerializer
 
 class TeamList(generics.ListCreateAPIView):
     queryset = Team.objects.all()
