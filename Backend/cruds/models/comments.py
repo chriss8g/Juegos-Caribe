@@ -8,5 +8,5 @@ class Comments (models.Model):
     news = models.ForeignKey(News, on_delete=models.PROTECT)
     user = models.ForeignKey(get_user_model(), on_delete=models.PROTECT)
 
-    def str (self):
+    def __str__(self):
         return self.body
