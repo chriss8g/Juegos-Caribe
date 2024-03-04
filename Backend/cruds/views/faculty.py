@@ -1,7 +1,7 @@
+from ..serializers.faculty import FacultySerializer
 from rest_framework import generics
 
 from ..models.faculty import Faculty
-from ..serializers import FacultySerializer
 
 class FacultyList(generics.ListCreateAPIView):
     queryset = Faculty.objects.all()

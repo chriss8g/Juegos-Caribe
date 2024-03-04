@@ -1,7 +1,7 @@
+from ..serializers.comisioner import ComisionerSerializer
 from rest_framework import generics
 from ..models.comisioner import Comisioner
 
-from ..serializers import ComisionerSerializer
 
 class ComisionerList(generics.ListCreateAPIView):
     queryset = Comisioner.objects.all()

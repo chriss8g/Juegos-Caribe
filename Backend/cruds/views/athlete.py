@@ -1,7 +1,6 @@
+from ..serializers.athlete import AthleteSerializer
 from ..models.athlete import Athlete
 from rest_framework import generics
-
-from ..serializers import AthleteSerializer
 
 
 class AthleteList(generics.ListCreateAPIView):
