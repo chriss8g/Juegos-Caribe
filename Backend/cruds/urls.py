@@ -11,6 +11,7 @@ from .views.sport import SportList, SportDetail
 from .views.athlete import AthleteList, AthleteDetail
 from .views.news import NewsList, NewsDetail
 from .views.comments import CommentsList, CommentsDetail
+from .views.user import UserList, UserDetail
 
 urlpatterns = [
     path('comisioner/<int:pk>/', ComisionerDetail.as_view()),
@@ -40,11 +41,14 @@ urlpatterns = [
     path('documents/<int:pk>/', DocumentsDetail.as_view()),
     path('documents/', DocumentsList.as_view()),
     
-    path('news/<int:pk>/', DetailNews.as_view()),
-    path('news/', ListNews.as_view()),
+    path('news/<int:pk>/', NewsDetail.as_view()),
+    path('news/', NewsList.as_view()),
     
-    path('comments/<int:pk>/', DetailComment.as_view()),
-    path('comments/', ListComment.as_view()),
+    path('comments/<int:pk>/', CommentsDetail.as_view()),
+    path('comments/', CommentsList.as_view()),
+    
+    path('user/<int:pk>/', UserDetail.as_view()),
+    path('user/', UserList.as_view()),
 ]
 
 
