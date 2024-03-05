@@ -145,7 +145,6 @@ td p
     .medalIcon
     {
         width: 25%;
-        margin-left: 40%;
     }
     th:first-of-type{
         font-size: 1.55rem;
@@ -158,11 +157,7 @@ td p
         margin-bottom: -1px;
         border-bottom: solid lightgray 2px;
     }
-
     .row {
         padding: 0 7%;
     }
-
-
-
 }

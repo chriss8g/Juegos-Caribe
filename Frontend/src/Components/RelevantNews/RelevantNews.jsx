@@ -1,4 +1,6 @@
 import NewsPreview from "../NewsPreview/NewsPreview"
+import NewsCard from "../NewsMainCard/NewsMainCard"
+import NewsMainCard from "../NewsMainCard/NewsMainCard";
 
 export default function RelevantNews()
 {
@@ -22,14 +24,23 @@ export default function RelevantNews()
         }]
     
     return(
-        <div className="RelevantNews container MobileView">
-            <h2 className="sectionTitle">Noticias Relevantes</h2>
+        <div className="RelevantNews container">
+            <h2 className="sectionTitle  lg:text-3xl lg:font-bold">Noticias Relevantes</h2>
+
+            {/* Versión Móvil */}
             {
                 News.map((news)=>
                 (
-                    <NewsPreview key={news.id} news={news}/>
+                    <NewsMainCard key={news.id} news={news} show={true}/>
                 ))
             }
-        </div>
-    )
+             {/* Versión Desktop */}
+            {
+                <div className="NewsPreview DesktopView lg:flex lg:justify-between">
+                    <NewsMainCard news={News[0]} show={false}/>
+                </div>
+}
+
+</div>
+)
 }
