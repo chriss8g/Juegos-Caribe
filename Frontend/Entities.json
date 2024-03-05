@@ -16,5 +16,78 @@
         "name": "Tournament",
         "endpoint": "/tournament",
         "parentId": 2
+    },
+    {
+        "id": 3,
+        "name": "Athlete",
+        "endpoint": "/athlete",
+        "parentId": 3
+    },
+    {
+        "id": 4,
+        "name": "Comments",
+        "endpoint": "/comments",
+        "parentId": 4
+    },
+    {
+        "id": 5,
+        "name": "Documents",
+        "endpoint": "/documents",
+        "parentId": 5
+    },
+    {
+        "id": 6,
+        "name": "Faculty",
+        "endpoint": "/faculty",
+        "parentId": 6
+    },
+    {
+        "id": 7,
+        "name": "FacultyOnSeason",
+        "endpoint": "/facultyOnSeason",
+        "parentId": 7
+    },
+    {
+        "id": 8,
+        "name": "FacultyOnTournamentOnSeason",
+        "endpoint": "/facultyOnTournamentOnSeason",
+        "parentId": 8
+    },
+    {
+        "id": 9,
+        "name": "Game",
+        "endpoint": "/game",
+        "parentId": 9
+    },
+    {
+        "id": 10,
+        "name": "News",
+        "endpoint": "/news",
+        "parentId": 10
+    },
+    {
+        "id": 11,
+        "name": "Sport",
+        "endpoint": "/sport",
+        "parentId": 11
+    },
+    {
+        "id": 12,
+        "name": "Team",
+        "endpoint": "/team",
+        "parentId": 12
+    },
+    {
+        "id": 13,
+        "name": "TeamOnGame",
+        "endpoint": "/teamOnGame",
+        "parentId": 13
+    },
+    {
+        "id": 14,
+        "name": "TournamentOnSeason",
+        "endpoint": "/tournamentOnSeason",
+        "parentId": 14
     }
+
 ]

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import useAdministration from "../../hooks/useAdministration"
+import useTranslation from "../../hooks/useTranslation"
 
 export default function AdministrationForm({editMode, selected, setEditMode})
 {
@@ -9,6 +10,7 @@ export default function AdministrationForm({editMode, selected, setEditMode})
     const propertiesNames = (getEntityPropertiesNames(Data[0]))
     const [dataValues, setDataValues] = useState([])
     const [needsUpdate, setNeedsUpdate] = useState(false)
+    const {toEnglish}= useTranslation()
     const router = useRouter()
 
     useEffect(()=>{
@@ -22,8 +24,8 @@ export default function AdministrationForm({editMode, selected, setEditMode})
 
     useEffect(()=>{
         dataValues.map((val, id)=>{
-            console.log(dataValues)
-            if(propertiesNames[id] !== "Id")
+
+            if(propertiesNames[id] !== "Id" && propertiesNames[id] !== "Str")
             {
                 if(editMode)
                     (document.getElementById(`${id}`) as HTMLInputElement).value = val
@@ -73,22 +75,23 @@ export default function AdministrationForm({editMode, selected, setEditMode})
     function handleOnSubmit(e)
     {
         var formElements = document.forms['AdminModal'].elements
-        var temp: typeof formElements = []
+        var temp ={}
         for(const element of document.forms['AdminModal'].elements)
         {
-            temp.push(element.value)
+            console.log(toEnglish(element.name))
         }
         
         if(editMode)
         {
-            updateData({...temp})
+            console.log(temp)
+            // updateData({...temp})
         }
         else
         {
-            addData({...temp})
+            // addData({...temp})
         }
         document.getElementById('adminForm').style.display="none"
-        location.reload()
+        // location.reload()
     }
 
     function getInputType(value: any){
@@ -108,9 +111,11 @@ export default function AdministrationForm({editMode, selected, setEditMode})
             </div>
             <div className="fixed start-[12.5%] top-1/4 w-9/12 p-5 bg-white z-20 rounded-md">
                 <form action="" id="AdminModal" className="m-auto my-4">
+                    <label htmlFor="Id">Id:</label>
+                    <input type="text" name="Id" value={dataValues.filter((val,id)=>propertiesNames[id]=="Id")}/>
                     {dataValues &&
                         dataValues.map((val, id)=>{
-                            if(propertiesNames[id] !== "Id")
+                            if(propertiesNames[id] !== "Id" && propertiesNames[id] !== "Str")
                             {
                                 return(
                                     <div className="my-2 flex-col">
@@ -119,17 +124,17 @@ export default function AdministrationForm({editMode, selected, setEditMode})
                                             getInputType(val) == "select" 
 
                                             ?
-                                                <select name={`${id}`} id={`${id}`}>
+                                                <select name={`${propertiesNames[id]}`} id={`${id}`}>
                                                     {
-                                                        val.map((value: number)=>(
+                                                        val.map((value)=>(
                                                             <option value={value}>
-                                                                {value}
+                                                                { value.str}
                                                             </option>
                                                         ))
                                                     }
                                                 </select>
                                             :
-                                                <input key={id} name={`${id}`} className="appearance-none border-solid border-2 rounded-md p-2 max-w-full" id={`${id}`} type={getInputType(val)} placeholder={propertiesNames[id]} onChange={(e)=>onChange(e)}/>
+                                                <input key={id} name={`${propertiesNames[id]}`} className="appearance-none border-solid border-2 rounded-md p-2 max-w-full" id={`${id}`} type={getInputType(val)} placeholder={propertiesNames[id]} onChange={(e)=>onChange(e)}/>
                                         }
                                     </div>
                                 )

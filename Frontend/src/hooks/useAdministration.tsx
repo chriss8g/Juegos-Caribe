@@ -73,15 +73,15 @@ export default function useAdministration()
 
     function addData(newData: typeof currentEntityType)
     {
+        console.log(newData)
         try{
-            
-            fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(newData)
-            })
+            // fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/`, {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(newData)
+            // })
         }
         catch (error) {
             console.log(error)
@@ -118,6 +118,7 @@ export default function useAdministration()
         var season: Season;
         var comisioner: Comisioner;
         var tournament: Tournament;
+        var game: Game;
         switch (id) {
             case 0:
                 return season;
@@ -125,6 +126,8 @@ export default function useAdministration()
                 return comisioner;
             case 2:
                 return tournament;
+            case 11:
+                return game;
             default:
                 break;
         }
