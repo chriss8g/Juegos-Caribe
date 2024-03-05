@@ -1,16 +1,11 @@
-.SportCard
-{
+.SportCard {
     cursor: pointer;
-    width: 35%;
-    padding: 5%;
     text-align: center;
-    margin: 5% 2.5%;
     margin-bottom: 1%;
-    box-shadow: 0px 1px 6px 2px rgb(223, 223, 223);
-}
-.SportCard p
-{
-    margin-top: 10%;
+    box-shadow: 0 1px 6px 2px rgb(223, 223, 223);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
 }
 .sportImage
 {
@@ -18,11 +13,12 @@
     padding: 5%;
 }
 
-.circle-container{
+.circle-container {
     display: grid;
-
     justify-content: center;
-
+    align-items: center;
+    align-content: center;
+    justify-items: center;
 }
 
 .circle

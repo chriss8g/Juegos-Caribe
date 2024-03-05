@@ -1,8 +1,10 @@
+@import url('https://fonts.cdnfonts.com/css/segoe-ui-4');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.MobileView
+
+  .MobileView
 {
   background-color: rgb(245, 245, 245);
   display: none;
@@ -20,11 +22,12 @@
 .sectionTitle {
   color: #5a1024;
   border-bottom: solid;
-  border-width: 0px;
-  border-bottom-width: 1px;
-  border-color: #5a102454;
-  padding: 2% 0%;
+  border-width: 0;
+  border-bottom-width: 2px;
+  border-color: rgba(58, 56, 56, 0.2);
+  padding: 1% 0;
   margin-bottom: 5%;
+  font-family: 'Segoe UI', sans-serif;
 }
 .container
 {

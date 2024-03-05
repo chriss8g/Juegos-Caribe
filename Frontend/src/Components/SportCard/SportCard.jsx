@@ -7,7 +7,7 @@ export default function SportCard({sportName})
 {
     
     return(
-        <div className="SportCard MobileView">
+        <div className="SportCard w-[45%] my-[5%] mx-[2.5%] p-[5%] lg:p-[2%] lg:my-0 lg:w-1/5">
             {
                 sports_icons.map((sport, index)=>
                 {
@@ -20,7 +20,7 @@ export default function SportCard({sportName})
                                         <Image src={sport.icon} alt="" fill className="image"/>
                                     </div>
                                 </div>
-                                    <p>{sport.name.toUpperCase()}</p>
+                                    <p className="lg:mt-3 text-xl font-semibold text-rose-950">{sport.name}</p>
                             </div>
                         )
                     }

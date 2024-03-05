@@ -2,7 +2,6 @@
 {
     cursor: pointer;
     border-radius: 13px;
-    margin-top: 10%;
     margin-bottom: 10%;
     box-shadow: 0px 0px 10px 10px rgb(235, 235, 235);
 }
@@ -24,7 +23,7 @@
     padding: 3%;
     border-top-right-radius: 1.5rem;
     position: relative;
-    margin-top: -12.5%;
+    margin-top: -11.5%;
 }
 .sportLabel p{
     color: white;
