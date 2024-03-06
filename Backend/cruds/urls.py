@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views.documents import DocumentsDetail, DocumentsList
+from .views.document import DocumentDetail, DocumentList
 from .views.comisioner import ComisionerList, ComisionerDetail
 from .views.season import SeasonList, SeasonDetail
 from .views.tournament import TournamentList, TournamentDetail
@@ -15,7 +15,7 @@ from .views.tournamentOnSeason import TournamentOnSeasonList, TournamentOnSeason
 from .views.facultyOnTournamentOnSeason import FacultyOnTournamentOnSeasonList, FacultyOnTournamentOnSeasonDetail
 
 from .views.news import NewsList, NewsDetail
-from .views.comments import CommentsList, CommentsDetail
+from .views.comment import CommentList, CommentDetail
 from .views.user import UserList, UserDetail
 
 urlpatterns = [
@@ -46,8 +46,8 @@ urlpatterns = [
     path('athlete/<int:pk>/', AthleteDetail.as_view()),
     path('athlete/', AthleteList.as_view()),
 
-    path('documents/<int:pk>/', DocumentsDetail.as_view()),
-    path('documents/', DocumentsList.as_view()),
+    path('document/<int:pk>/', DocumentDetail.as_view()),
+    path('document/', DocumentList.as_view()),
 
     path('tournamentOnSeason/<int:pk>/', TournamentOnSeasonDetail.as_view()),
     path('tournamentOnSeason/', TournamentOnSeasonList.as_view()),
@@ -61,8 +61,8 @@ urlpatterns = [
     path('news/<int:pk>/', NewsDetail.as_view()),
     path('news/', NewsList.as_view()),
     
-    path('comments/<int:pk>/', CommentsDetail.as_view()),
-    path('comments/', CommentsList.as_view()),
+    path('comment/<int:pk>/', CommentDetail.as_view()),
+    path('comment/', CommentList.as_view()),
     
     path('user/<int:pk>/', UserDetail.as_view()),
     path('user/', UserList.as_view()),

@@ -9,4 +9,4 @@ class FacultyOnSeason(models.Model):
     points = models.IntegerField() 
 
     def __str__(self):
-        return f"{self.faculty} - {self.season} - Points: {self.points}"
+        return f"{self.faculty} - {self.season}"

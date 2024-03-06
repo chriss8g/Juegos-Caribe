@@ -19,7 +19,7 @@ class Team(models.Model):
         ('Mixto', 'Mixto')
     ]
 
-    medail = models.CharField(max_length=200, choices=MEDAIL_CHOICES)
+    medal = models.CharField(max_length=200, choices=MEDAIL_CHOICES)
     sex = models.CharField(max_length=200, choices=SEX_CHOICES)
     sport = models.ForeignKey(Sport, on_delete=models.CASCADE, related_name='games')
     athletes = models.ManyToManyField(Athlete)

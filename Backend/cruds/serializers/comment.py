@@ -1,10 +1,10 @@
-from ..models.documents import Documents
+from ..models.comment import Comment
 from rest_framework import serializers
 
-class DocumentsSerializer(serializers.ModelSerializer):
+class CommentSerializer(serializers.ModelSerializer):
     str = serializers.SerializerMethodField()
     def get_str(self, obj):
         return str(obj)
     class Meta:
-        model = Documents
+        model = Comment
         fields = '__all__'
