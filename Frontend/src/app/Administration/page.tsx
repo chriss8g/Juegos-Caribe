@@ -50,9 +50,16 @@ export default function Administration()
         modal.style.display="block"
     }
     function getInputType(value: any){
-        if(Array.isArray(value))
+        if(typeof value === "object")
         {
-            return "select"
+            if(Array.isArray(value))
+            {
+                return "select"
+            }
+            else
+            {
+                return "object"
+            }
         }
         else
         {
@@ -107,7 +114,7 @@ export default function Administration()
                                         Data.map((row, id)=>(
                                             <tr className="border-solid border-2 border-black" key={id}>
                                                 {Object.values(row).map((prop, id)=>{
-                                                    if(getInputType(prop) == "select" 
+                                                    if(getInputType(prop) === "select" 
                                                     )
                                                     {
                                                         return(
@@ -125,13 +132,22 @@ export default function Administration()
                                                     }
                                                     else if(getEntityPropertiesNames(Data[0])[id] !== "Str")
                                                     {
-                                                        return <td className="p-2 text-center border-solid border-2 border-black td" key={id}>
+                                                        if(getInputType(prop) == "object")
+                                                        {
+                                                            return (
+                                                                <td className="p-2 text-center border-solid border-2 border-black td" key={id}>
+                                                                    {prop.str}
+                                                                </td>
+                                                            )
+                                                        }
+                                                        return( 
+                                                        <td className="p-2 text-center border-solid border-2 border-black td" key={id}>
                                                             {prop}
-                                                        </td>
+                                                        </td>)
                                                     }
                                                 })}
                                                 {/* <IconPencil className="m-auto"/> */}
-                                                <button className="p-2 border-solid border-2 border-gray-400 w-full bg-orange-300" onClick={(e)=>handleEdit(e)}>Edit</button>
+                                                <button className="p-2 border-solid border-2 border-gray-400 w-full bg-orange-300" onClick={(e)=>handleEdit(e)}></button>
                                                 <button className="p-2 border-solid border-2 border-gray-400 w-full bg-red-400" onClick={()=>handleOnDelete(row.id)}>Delete</button>
                                             </tr>
                                         ))

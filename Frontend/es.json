@@ -34,5 +34,17 @@
     "sex": "sexo",
     "place": "sede",
     "detailResult":"Resultado Detallado",
-    "teams": "equipos"
+    "teams": "equipos",
+    "faculty": "facultad",
+    "ocupation": "ocupación",
+    "date": "fecha",
+    "body": "cuerpo",
+    "news": "noticias",
+    "user": "usuario",
+    "file": "archivo",
+    "head": "cabeza",
+    "logo": "logo",
+    "points": "puntos",
+    "athletes": "atletas",
+    "medal": "medalla"
 }
