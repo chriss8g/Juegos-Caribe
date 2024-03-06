@@ -7,9 +7,9 @@ from rest_framework import serializers
 
 class SeasonSerializer(serializers.ModelSerializer):
 
-    comisioners = ComisionerSerializer(many=True, read_only=True)
-    tournaments = TournamentSerializer(many=True, read_only=True)
-    faculties = FacultySerializer(many=True, read_only=True)
+    # comisioners = ComisionerSerializer(many=True, read_only=True)
+    # tournaments = TournamentSerializer(many=True, read_only=True)
+    # faculties = FacultySerializer(many=True, read_only=True)
 
     str = serializers.SerializerMethodField()
 

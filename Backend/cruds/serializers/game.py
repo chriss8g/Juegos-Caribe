@@ -6,9 +6,9 @@ from rest_framework import serializers
 
 class GameSerializer(serializers.ModelSerializer):
 
-    teams = TeamSerializer(many=True, read_only=True)
-    sport = SportSerializer(read_only=True)
-    tournamentOnSeason = TournamentOnSeasonSerializer(read_only=True)
+    # teams = TeamSerializer(many=True, read_only=True)
+    # sport = SportSerializer(read_only=True)
+    # tournamentOnSeason = TournamentOnSeasonSerializer(read_only=True)
     
 
     str = serializers.SerializerMethodField()

@@ -9,4 +9,4 @@ class TeamOnGame(models.Model):
     result = models.IntegerField() 
 
     def __str__(self):
-        return f"{self.team} - {self.game} - Resultado: {self.result}"
+        return f"{self.team} - {self.game}"

@@ -5,7 +5,7 @@ from rest_framework import serializers
 
 class TournamentOnSeasonSerializer(serializers.ModelSerializer):
     
-    faculties = FacultySerializer(many=True, read_only=True)
+    # faculties = FacultySerializer(many=True, read_only=True)
 
 
     str = serializers.SerializerMethodField()

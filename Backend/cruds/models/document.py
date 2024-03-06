@@ -1,6 +1,6 @@
 from django.db import models
 
-class Documents(models.Model):
+class Document(models.Model):
     head = models.CharField(max_length=100)
     body = models.TextField()
     file = models.FileField()
