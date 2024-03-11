@@ -112,13 +112,13 @@ export default function AdministrationForm({editMode, selected, setEditMode})
             <div className="fixed start-[12.5%] top-1/4 w-9/12 p-5 bg-white z-20 rounded-md">
                 <form action="" id="AdminModal" className="m-auto my-4">
                     <label htmlFor="Id">Id:</label>
-                    <input type="text" name="Id" value={dataValues.filter((val,id)=>propertiesNames[id]=="Id")}/>
+                    <input type="text" name="Id" readOnly value={dataValues.filter((val,id)=>propertiesNames[id]=="Id")}/>
                     {dataValues &&
                         dataValues.map((val, id)=>{
                             if(propertiesNames[id] !== "Id" && propertiesNames[id] !== "Str")
                             {
                                 return(
-                                    <div className="my-2 flex-col">
+                                    <div className="my-2 flex-col" key={id}>
                                         <label htmlFor="">{propertiesNames[id]}: </label>
                                         {
                                             getInputType(val) == "select" 
@@ -126,9 +126,9 @@ export default function AdministrationForm({editMode, selected, setEditMode})
                                             ?
                                                 <select name={`${propertiesNames[id]}`} id={`${id}`}>
                                                     {
-                                                        val.map((value)=>(
-                                                            <option value={value}>
-                                                                { value.str}
+                                                        val.map((value, key)=>(
+                                                            <option value={value} onChange={()=>{}} key={key}>
+                                                                { value.str }
                                                             </option>
                                                         ))
                                                     }

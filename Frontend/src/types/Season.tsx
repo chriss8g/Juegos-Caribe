@@ -5,5 +5,6 @@ interface Season{
     year: number,
     edition: string,
     comisioners: Comisioner[],
-    tournaments: Tournament[]
+    tournaments: Tournament[],
+    faculties: Faculty[]
 }

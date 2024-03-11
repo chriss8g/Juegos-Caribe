@@ -1,9 +1,10 @@
 interface Athlete
 {
     id: number,
+    str: string,
     name: string,
     ocupation: string,
     biography: string,
-    picture: File,
-    faculty: Faculty
+    picture: string,
+    faculties: Faculty
 }

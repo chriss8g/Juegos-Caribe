@@ -1,6 +1,7 @@
 interface Game
 {
-    id: number
+    id: number,
+    str: string,
     phase: string,
     sex: "Masculino" | "Fememino" | "Mixto",
     place: string,

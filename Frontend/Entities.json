@@ -1,93 +1,83 @@
 [
     {
         "id": 0,
-        "name": "Season",
-        "endpoint": "/season",
-        "parentId": 0
+        "name": "season",
+        "endpoint": "/season"
     },
     {
         "id": 1,
-        "name": "Comisioner",
-        "endpoint": "/comisioner",
-        "parentId": 1
+        "name": "comisioners",
+        "endpoint": "/comisioner"
     },
     {
         "id": 2,
-        "name": "Tournament",
-        "endpoint": "/tournament",
-        "parentId": 2
+        "name": "tournaments",
+        "endpoint": "/tournament"
     },
     {
         "id": 3,
-        "name": "Athlete",
-        "endpoint": "/athlete",
-        "parentId": 3
+        "name": "athletes",
+        "endpoint": "/athlete"
     },
     {
         "id": 4,
-        "name": "Comments",
-        "endpoint": "/comments",
-        "parentId": 4
+        "name": "comments",
+        "endpoint": "/comments"
     },
     {
         "id": 5,
-        "name": "Documents",
-        "endpoint": "/documents",
-        "parentId": 5
+        "name": "documents",
+        "endpoint": "/documents"
     },
     {
         "id": 6,
-        "name": "Faculty",
-        "endpoint": "/faculty",
-        "parentId": 6
+        "name": "faculties",
+        "endpoint": "/faculty"
     },
     {
         "id": 7,
-        "name": "FacultyOnSeason",
-        "endpoint": "/facultyOnSeason",
-        "parentId": 7
+        "name": "facultyOnSeason",
+        "endpoint": "/facultyOnSeason"
     },
     {
         "id": 8,
-        "name": "FacultyOnTournamentOnSeason",
-        "endpoint": "/facultyOnTournamentOnSeason",
-        "parentId": 8
+        "name": "facultyOnTournamentOnSeason",
+        "endpoint": "/facultyOnTournamentOnSeason"
     },
     {
         "id": 9,
-        "name": "Game",
-        "endpoint": "/game",
-        "parentId": 9
+        "name": "games",
+        "endpoint": "/game"
     },
     {
         "id": 10,
-        "name": "News",
-        "endpoint": "/news",
-        "parentId": 10
+        "name": "news",
+        "endpoint": "/news"
     },
     {
         "id": 11,
-        "name": "Sport",
-        "endpoint": "/sport",
-        "parentId": 11
+        "name": "sports",
+        "endpoint": "/sport"
     },
     {
         "id": 12,
-        "name": "Team",
-        "endpoint": "/team",
-        "parentId": 12
+        "name": "teams",
+        "endpoint": "/team"
     },
     {
         "id": 13,
-        "name": "TeamOnGame",
-        "endpoint": "/teamOnGame",
-        "parentId": 13
+        "name": "teamOnGame",
+        "endpoint": "/teamOnGame"
     },
     {
         "id": 14,
-        "name": "TournamentOnSeason",
-        "endpoint": "/tournamentOnSeason",
-        "parentId": 14
+        "name": "tournamentOnSeason",
+        "endpoint": "/tournamentOnSeason"
+    },
+    {
+        "id": 15,
+        "name": "users",
+        "endpoint": "/user"
     }
 
 ]

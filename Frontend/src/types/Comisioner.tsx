@@ -1,7 +1,7 @@
 interface Comisioner
 {
     id: number,
-    str: string
+    str: string,
     name: string,
     position: string,
     biography: string,

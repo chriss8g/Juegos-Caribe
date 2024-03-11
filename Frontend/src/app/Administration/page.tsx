@@ -5,11 +5,15 @@ import useAdministration from "../../hooks/useAdministration"
 import AdministrationForm from "../../Components/AdministrationForm/AdministrationForm"
 import DeleteModal from "../../Components/DeleteModal/DeleteModal"
 import useTranslation from "../../hooks/useTranslation"
+import useEntityInformation from "../../hooks/useEntityInformation"
+import { IconPencil, IconTrash } from "@tabler/icons-react"
+import TableData from "../../Components/TableData"
 
 export default function Administration()
 {
     const { 
         currentEntity,
+        currentEntityType,
         Data, 
         selectedDataId, 
         setSelectedDataId, 
@@ -23,6 +27,11 @@ export default function Administration()
         setCurrentEntity,
 
     } = useAdministration()
+
+    const {
+        getPropertyEndpoint,
+        ShowProp
+    } = useEntityInformation()
 
     const { toSpanish } = useTranslation()
 
@@ -49,16 +58,12 @@ export default function Administration()
         var modal = document.getElementById('DeleteModal')
         modal.style.display="block"
     }
-    function getInputType(value: any){
+    function getDataType(value: any){
         if(typeof value === "object")
         {
             if(Array.isArray(value))
             {
                 return "select"
-            }
-            else
-            {
-                return "object"
             }
         }
         else
@@ -76,7 +81,7 @@ export default function Administration()
                     Entidades:
                     <select name="Entities" id="Entities" onChange={(e)=>{setCurrentEntity(entities[+e.target.value])}}>
                         {entities.map((ent, key)=>(
-                            <option id={`${key}`} value={ent.id}>
+                            <option id={`${key}`} value={ent.id} key={key}>
                                 {toSpanish(ent.name)}
                             </option>
                         ))}
@@ -99,10 +104,9 @@ export default function Administration()
                                     <tr>
                                         {
                                             getEntityPropertiesNames(Data[0]).map((prop, id)=>{
-                                                if(prop !== "Str")
-                                                {
+                                                
+                                                if(ShowProp(prop))
                                                     return <th className="border-solid border-2 border-black p-2" key={id}>{prop}</th>
-                                                }
                                                 
                                             })
                                         }
@@ -114,41 +118,42 @@ export default function Administration()
                                         Data.map((row, id)=>(
                                             <tr className="border-solid border-2 border-black" key={id}>
                                                 {Object.values(row).map((prop, id)=>{
-                                                    if(getInputType(prop) === "select" 
-                                                    )
+                                                    if(getDataType(prop) === "select")
                                                     {
                                                         return(
                                                             <td className="p-2 text-center border-solid border-2 border-black td" key={id}>
                                                                 {
-                                                                    prop.map((value)=>(
-                                                                        <>
-                                                                            {value.str}
-                                                                            <br/>
-                                                                        </>
-                                                                    ))
+                                                                    prop.map((value, key)=>{
+                                                                        return <TableData value={value} id={id} key={key}/>
+                                                                    })
                                                                 }
                                                             </td>
                                                         )
                                                     }
-                                                    else if(getEntityPropertiesNames(Data[0])[id] !== "Str")
+                                                    else if(ShowProp(getEntityPropertiesNames(Data[0])[id]))
                                                     {
-                                                        if(getInputType(prop) == "object")
+                                                        if(getPropertyEndpoint(currentEntityType, id))
                                                         {
-                                                            return (
+                                                            return(
                                                                 <td className="p-2 text-center border-solid border-2 border-black td" key={id}>
-                                                                    {prop.str}
+                                                                    {getPropertyEndpoint(currentEntityType, id)+"/"+prop}
                                                                 </td>
                                                             )
                                                         }
-                                                        return( 
-                                                        <td className="p-2 text-center border-solid border-2 border-black td" key={id}>
-                                                            {prop}
-                                                        </td>)
+                                                        else
+                                                        {
+                                                            return(
+                                                                <td className="p-2 text-center border-solid border-2 border-black td" key={id}>
+                                                                    {typeof prop == "boolean" ? prop === true ? "Sí" : "No" : prop}
+                                                                </td>
+                                                            )
+                                                        }
                                                     }
                                                 })}
-                                                {/* <IconPencil className="m-auto"/> */}
-                                                <button className="p-2 border-solid border-2 border-gray-400 w-full bg-orange-300" onClick={(e)=>handleEdit(e)}></button>
-                                                <button className="p-2 border-solid border-2 border-gray-400 w-full bg-red-400" onClick={()=>handleOnDelete(row.id)}>Delete</button>
+                                                <td>
+                                                    <button className="p-2 border-solid border-2 border-gray-400 w-full bg-orange-300" onClick={(e)=>handleEdit(e)}><IconPencil className="m-auto"/></button>
+                                                    <button className="p-2 border-solid border-2 border-gray-400 w-full bg-red-400" onClick={()=>handleOnDelete(row.id)}><IconTrash className="m-auto"/></button>
+                                                </td>
                                             </tr>
                                         ))
                                     }

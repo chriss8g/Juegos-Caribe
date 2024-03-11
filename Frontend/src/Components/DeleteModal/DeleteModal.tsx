@@ -1,9 +1,11 @@
 import useAdministration from "../../hooks/useAdministration"
 import { useRouter } from "next/navigation"
+import useEntityInformation from "../../hooks/useEntityInformation"
 
 function DeleteModal({data})
 {
-    const { getEntityType, getEntityPropertiesNames, deleteData } = useAdministration()
+    const { getEntityType } = useEntityInformation()
+    const { getEntityPropertiesNames, deleteData } = useAdministration()
     const router = useRouter()
 
     function handleDelete(id: number)
@@ -28,6 +30,7 @@ function DeleteModal({data})
                             }   
                         </tr>
                     </thead>
+
                     <tbody>
                         {
                             data && 

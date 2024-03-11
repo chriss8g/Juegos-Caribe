@@ -1,8 +1,10 @@
 interface New
 {
     id: number,
+    str: string,
     title: string,
     body: string,
-    picture: File,
-    user: User
+    date: string
+    picture: string,
+    users: User
 }

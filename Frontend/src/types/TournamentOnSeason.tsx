@@ -1,6 +1,8 @@
 interface TournamentOnSeason
 {
     id: number,
+    str: string,
     season: Season,
-    tournament: Tournament
+    tournaments: Tournament,
+    faculties: Faculty[]
 }

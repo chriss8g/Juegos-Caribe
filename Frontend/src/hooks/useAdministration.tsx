@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
 import entities from "../../Entities.json"
 import useTranslation from "./useTranslation"
+import useEntityInformation from "./useEntityInformation"
 
 
 export default function useAdministration()
 {
+    const { getEntityType } = useEntityInformation()
     
     const[Data, setData]= useState<typeof currentEntityType[]>([])
 
@@ -49,11 +51,10 @@ export default function useAdministration()
         return Data.filter((x)=>x.id === dataId)[0]        
     }
 
-    const [resData, setResData] = useState<typeof currentEntityType>()
+    const [DataByIdFromEndpoint, setDataByIdFromEndpoint] = useState<typeof currentEntityType>()
     
     function getDataByIdFromEndpoint(dataId: number, endpoint: string)
     {
-        console.log(dataId, endpoint)
         fetch(`${process.env.SERVER_URL + endpoint}/`+dataId+'/', {
             method: "GET",
             headers: {
@@ -65,10 +66,10 @@ export default function useAdministration()
         )
         .then(
             (data)=>{
-                setResData(data)
+                setDataByIdFromEndpoint(data)
             }
-        )     
-        return resData   
+        )  
+        return DataByIdFromEndpoint   
     }
 
     function addData(newData: typeof currentEntityType)
@@ -90,13 +91,13 @@ export default function useAdministration()
 
     function updateData(newData: typeof currentEntityType)
     {
-            fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/`+ newData.id+ '/', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(newData)
-            })
+        fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/`+ newData.id+ '/', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newData)
+        })
       
     }
 
@@ -113,25 +114,7 @@ export default function useAdministration()
     }
 
 
-    function getEntityType(id:number)
-    {
-        var season: Season;
-        var comisioner: Comisioner;
-        var tournament: Tournament;
-        var game: Game;
-        switch (id) {
-            case 0:
-                return season;
-            case 1:
-                return comisioner;
-            case 2:
-                return tournament;
-            case 11:
-                return game;
-            default:
-                break;
-        }
-    }
+    
 
 
     const { toSpanish } = useTranslation()
@@ -142,7 +125,7 @@ export default function useAdministration()
         {
             try {
                 props.push(
-                    toSpanish(prop)[0].toUpperCase()+toSpanish(prop).slice(1)
+                    toSpanish(prop).charAt(0).toUpperCase()+toSpanish(prop).slice(1)
                 )
             } catch (error) {
                 console.log(prop)
@@ -162,8 +145,7 @@ export default function useAdministration()
         getDataById,
         getData,
         getDataByIdFromEndpoint,
-        getEntityPropertiesNames, 
-        getEntityType, 
+        getEntityPropertiesNames,
         isLoading, 
         selectedDataId,
         setCurrentEntity, 
