@@ -7,7 +7,7 @@ import DeleteModal from "../../Components/DeleteModal/DeleteModal"
 import useTranslation from "../../hooks/useTranslation"
 import useEntityInformation from "../../hooks/useEntityInformation"
 import { IconPencil, IconTrash } from "@tabler/icons-react"
-import TableData from "../../Components/TableData"
+import SpecialTableData from "../../Components/SpecialTableData"
 
 export default function Administration()
 {
@@ -124,7 +124,7 @@ export default function Administration()
                                                             <td className="p-2 text-center border-solid border-2 border-black td" key={id}>
                                                                 {
                                                                     prop.map((value, key)=>{
-                                                                        return <TableData value={value} id={id} key={key}/>
+                                                                        return <SpecialTableData propId={value} id={id} key={key}/>
                                                                     })
                                                                 }
                                                             </td>

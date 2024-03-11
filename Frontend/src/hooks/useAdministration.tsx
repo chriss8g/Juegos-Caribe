@@ -69,7 +69,6 @@ export default function useAdministration()
                 setDataByIdFromEndpoint(data)
             }
         )  
-        return DataByIdFromEndpoint   
     }
 
     function addData(newData: typeof currentEntityType)
@@ -139,6 +138,7 @@ export default function useAdministration()
         currentEntityType,
         currentEntity, 
         Data, 
+        DataByIdFromEndpoint,
         deleteData,
         editMode,
         entities, 
