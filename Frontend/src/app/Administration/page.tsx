@@ -136,7 +136,7 @@ export default function Administration()
                                                         {
                                                             return(
                                                                 <td className="p-2 text-center border-solid border-2 border-black td" key={id}>
-                                                                    {getPropertyEndpoint(currentEntityType, id)+"/"+prop}
+                                                                    <SpecialTableData propId={prop} id={id}/>
                                                                 </td>
                                                             )
                                                         }

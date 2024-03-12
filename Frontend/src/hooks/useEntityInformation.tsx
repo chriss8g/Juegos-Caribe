@@ -101,7 +101,7 @@ export default function useEntityInformation()
         for(const prop in entity)
         {
             if(!ShowProp(prop)) i--;
-
+            
             if(i == propertyIndex)
             {
                 try
