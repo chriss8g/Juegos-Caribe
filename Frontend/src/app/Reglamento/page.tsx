@@ -1,17 +1,19 @@
+'use client'
 import Layout from "../../Components/Layout/Layout";
 import Image from 'next/image'
 import "../globals.css"
 import "./regulation.css"
+import LessMoreBar from "../../Components/Less-More-Bar/LessMoreBar";
 
 export default function Regulation()
 {
+    const text = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad doloremque vero obcaecati, iure illo blanditiis ut aliquam recusandae assumenda itaque ea saepe minima maxime perferendis sit aperiam quidem a et?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod optio facere accusantium voluptatum commodi, nobis nulla eaque illum nisi sed non. At minus voluptas in ad consequatur dolorem sapiente cum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati iste earum molestias saepe veritatis eveniet perspiciatis quaerat magni explicabo, id tempore facilis minima commodi necessitatibus nihil nulla, debitis consequatur suscipit."
 
     return(
         
         <div className="Regulation">
                 <Layout>
                 <div>
-                    
                 <h2 className="mb-5 flex justify-center font-bold">Reglamento 2023-2026</h2>
              
 
@@ -40,8 +42,18 @@ export default function Regulation()
                 </button>
 
                 <div>
-                    <h4>Deportes que participan:</h4>
+                    <h4 className="vino flex justify-center mt-10">Deportes que participan:</h4>
+
+                    <h4 className="vino flex justify-center mt-6 border-b-2 border-[#5a1024]">Colectivos</h4>
                 </div>
+
+                <LessMoreBar title={"Beisbol"} text={text}/>
+                <LessMoreBar title={"FutSal"} text={text}/>
+                <LessMoreBar title={"Bascket 3x3"} text={text}/>
+                <LessMoreBar title={"Futbol11"} text={text}/>
+                <LessMoreBar title={"Volibol"} text={text}/>
+
+                <div className="mb-20"></div>
 
             </Layout>
         </div>
