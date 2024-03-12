@@ -2,6 +2,7 @@
 import "../globals.css"
 import Layout from "../../Components/Layout/Layout"
 import TextWithTitle from "../../Components/TextWithTitle/TextWithTitle"
+import TextWithTitle2 from "../../Components/TextWithTitle2/TextWithTitle2"
 
 export default function Contactenos()
 {
@@ -11,14 +12,7 @@ export default function Contactenos()
     return(
         <Layout>
             <TextWithTitle title={"Política de privacidad"} text={text}/>
-
-            <div className="mx-6">
-            <div className="text-center text-gray-600 pb-3" >
-                <h3 className="font-bold text-[#5a1024ac] mt-6">Reglas a conocer</h3>
-            </div>
-            <p className={`text-gray-400 mt-5`}>{text}</p>
-            <p className={`text-gray-400 mt-5`}>{text}</p>
-        </div>
+            <TextWithTitle2 title={"Reglas a conocer"} text={text}/>
         </Layout>
     )
 }
