@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import useAdministration from "../hooks/useAdministration"
 import useEntityInformation from "../hooks/useEntityInformation"
 
-export default function SpecialTableData({propId, id})
+export default function SpecialTableData({entityType, propIndex, dataId})
 {
     const {
         getPropertyEndpoint,
@@ -10,12 +10,11 @@ export default function SpecialTableData({propId, id})
 
     const {
         getDataByIdFromEndpoint,
-        currentEntityType,
         DataByIdFromEndpoint
     } = useAdministration()
     
     useEffect(()=>{
-        getDataByIdFromEndpoint(propId, getPropertyEndpoint(currentEntityType, id))
+        getDataByIdFromEndpoint(propIndex, getPropertyEndpoint(entityType, dataId))
     },[])
 
     return(

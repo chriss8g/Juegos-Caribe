@@ -124,7 +124,7 @@ export default function Administration()
                                                             <td className="p-2 text-center border-solid border-2 border-black td" key={id}>
                                                                 {
                                                                     prop.map((value, key)=>{
-                                                                        return <SpecialTableData propId={value} id={id} key={key}/>
+                                                                        return <SpecialTableData entityType={currentEntityType} propIndex={value} dataId={id} key={key}/>
                                                                     })
                                                                 }
                                                             </td>
@@ -134,9 +134,10 @@ export default function Administration()
                                                     {
                                                         if(getPropertyEndpoint(currentEntityType, id))
                                                         {
+                                                            console.log(currentEntityType, prop, id)
                                                             return(
                                                                 <td className="p-2 text-center border-solid border-2 border-black td" key={id}>
-                                                                    <SpecialTableData propId={prop} id={id}/>
+                                                                    <SpecialTableData entityType={currentEntityType} propIndex={prop} dataId={id}/>
                                                                 </td>
                                                             )
                                                         }
@@ -144,7 +145,7 @@ export default function Administration()
                                                         {
                                                             return(
                                                                 <td className="p-2 text-center border-solid border-2 border-black td" key={id}>
-                                                                    {typeof prop == "boolean" ? prop === true ? "Sí" : "No" : prop}
+                                                                    {typeof prop == "boolean" ? (prop === true ? "Sí" : "No") : prop}
                                                                 </td>
                                                             )
                                                         }
