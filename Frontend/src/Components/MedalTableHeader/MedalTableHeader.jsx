@@ -3,8 +3,8 @@ import "../MedalTable/medalTable.css";
 export default function MedalTableHeader()
 {
     return (
-        <div className="tableTitle flex">
-            <h3 className="lg:p-1 lg:ml-5 lg:font-medium lg:text-3xl">Medallero</h3>
+        <div className="tableTitle align-center flex">
+            <p className="lg:p-1 lg:ml-5 lg:font-medium lg:text-3xl font-black text-xl text-white">Medallero</p>
             <div className="filters cursor-pointer">
                 <p>Filtros</p>
                 <div className="moreImg">

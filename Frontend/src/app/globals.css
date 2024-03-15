@@ -11,7 +11,6 @@
 }
 .DesktopView
 {
-  background-color: rgb(245, 245, 245);
   display: block;
 }
 .image{
@@ -27,11 +26,10 @@
   border-color: rgba(58, 56, 56, 0.2);
   padding: 1% 0;
   margin-bottom: 5%;
-  font-family: 'Segoe UI', sans-serif;
 }
 .container
 {
-    padding: 0 5%;
+    padding: 0 7%;
 }
 .hide {
   display: none;
@@ -51,6 +49,10 @@
 
 .height-10{
   height: 10%;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
 }
 
 /* Mobile Version: 0px - 420px */
@@ -82,5 +84,8 @@
   .DesktopView
   {
     display: none;
+  }
+  .container {
+    padding: 0 5%;
   }
 }

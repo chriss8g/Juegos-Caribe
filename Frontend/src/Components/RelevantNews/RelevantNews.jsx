@@ -1,5 +1,5 @@
-import NewsPreview from "../NewsPreview/NewsPreview"
-import NewsCard from "../NewsMainCard/NewsMainCard"
+import "../../app/globals.css"
+import NewsCard from "../NewsCard/NewsCard"
 import NewsMainCard from "../NewsMainCard/NewsMainCard";
 
 export default function RelevantNews()
@@ -8,7 +8,7 @@ export default function RelevantNews()
             "id": "1",
             "title": "Hoy se presenció el partido más reñido de la historia de los Caribe",
             "sport": "Badminton",
-            "images": ["/newsTest.png"],
+            "images": ["/main-news.png", "/main-news.png"],
             "date": "13 DICIEMBRE, 2023",
             "author": "Frank Perez",
             "news": "Durante el día martes el Instituto de Diseño y la Facultad de Contabilidad y Finanzas blablablablablablablablabla"
@@ -17,15 +17,34 @@ export default function RelevantNews()
             "id": "2",
             "title": "El atletismo femenino nos brindó una gran competencia.",
             "sport": "Atletismo",
-            "images": ["/newsTest.png"],
+            "images": ["/main-news.png", "/sec-news-1.png"],
             "date": "28 DICIEMBRE, 2023",
             "author": "Frank Perez",
-            "news": "Durante el día martes el Instituto de Diseño y la Facultad de Contabilidad y Finanzas blablablablablablablablabla"
-        }]
+            "news": "Los Vikingos y los lobos este jueves se destacaron en blablablablablablablablabla"
+        },
+        {
+            "id": "3",
+            "title": "Pedro Rubio obtiene la victoria en la competencia",
+            "sport": "Maratón",
+            "images": ["/main-news.png", "/sec-news-2.png"],
+            "date": "28 DICIEMBRE, 2023",
+            "author": "Frank Perez",
+            "news": "El estudiante de derecho rompe el record de tiempo actual lorem ipsum dolor sit amet..."
+        },
+        {
+            "id": "4",
+            "title": "Mapaches y Lobos se enfrentan en el beisbol",
+            "sport": "Beisbol",
+            "images": ["/main-news.png", "/sec-news-3.png"],
+            "date": "28 DICIEMBRE, 2023",
+            "author": "Frank Perez",
+            "news": "El estudiante de derecho rompe el record de tiempo actual lorem ipsum dolor sit amet..."
+        }
+        ]
     
     return(
         <div className="RelevantNews container">
-            <h2 className="sectionTitle  lg:text-3xl lg:font-bold">Noticias Relevantes</h2>
+            <h2 className="sectionTitle  text-3xl font-bold">Noticias relevantes</h2>
 
             {/* Versión Móvil */}
             {
@@ -35,12 +54,27 @@ export default function RelevantNews()
                 ))
             }
              {/* Versión Desktop */}
-            {
-                <div className="NewsPreview DesktopView lg:flex lg:justify-between">
-                    <NewsMainCard news={News[0]} show={false}/>
-                </div>
-}
 
-</div>
-)
+            <div className="DesktopView lg:flex lg:justify-between">
+                <NewsMainCard news={News[0]} show={false}/>
+
+                <div className="flex items-end flex-col justify-between">
+                    {
+                        News.slice(1).map((news, index, array) =>
+                            (
+                                <NewsCard
+                                    key={news.id}
+                                    news={news}
+                                    show={false}
+                                    last={index === array.length - 1 ? "mb-0"  :"mb-[4%]"}
+                                />
+                            ))
+                    }
+                </div>
+
+            </div>
+
+
+        </div>
+    )
 }

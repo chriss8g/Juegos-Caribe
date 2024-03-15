@@ -5,7 +5,7 @@ export default function DailySports()
 {
     return(
         <div className="DailySports container">
-            <h2 className="sectionTitle lg:text-3xl lg:font-bold">Deportes del día</h2>
+            <h2 className="sectionTitle text-3xl font-bold">Deportes del día</h2>
             <div className="SportsList">
                 <SportCard sportName={"Atletismo"}/>
                 <SportCard sportName={"Taekwondo"}/>
