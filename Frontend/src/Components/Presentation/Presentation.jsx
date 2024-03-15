@@ -1,4 +1,5 @@
 import "./presentation.css"
+import "../../app/globals.css"
 import Image from 'next/image'
 export default function Main()
 {
@@ -12,9 +13,9 @@ export default function Main()
                         </div>
                     </div>
                     <div className="Introduction">
-                        <p>COMIENZAN LOS</p>
-                        <h1>JUEGOS CARIBE</h1>
-                        <p>Del 3 de Octubre al 7 de Noviembre de 2023 estaremos disfrutando de este gran evento.</p>
+                        <p className="font-medium text-xl">COMIENZAN LOS</p>
+                        <p className="font-bold text-3xl">JUEGOS CARIBE</p>
+                        <p className="text-sm font-medium pt-[3%]">Del 3 de Octubre al 7 de Noviembre de 2023 estaremos disfrutando de este gran evento.</p>
                     </div>
                 </div>
                 <div className="playerImage">
@@ -33,7 +34,7 @@ export default function Main()
 
             <div className="DesktopView">
 
-                <div className="main-pres-container bg-gray-200 flex justify-between py-3">
+                <div className="main-pres-container bg-gray-200 flex justify-between pb-[4.5rem] py-3">
                     <div className="width-10 height-10 mt-6">
                         <Image alt="" src="/smallBall.svg" fill className="image"/>
                     </div>
