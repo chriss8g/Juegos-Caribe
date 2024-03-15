@@ -1,9 +1,11 @@
 import "./Footer.css"
 import Image from "next/image"
+import { useRouter, usePathname } from "next/navigation"
 
 export default function Footer()
 {
     const year = new Date().getFullYear()
+    const router = useRouter()
     return(
         <div className="Footer MobileView container">
             <div>
@@ -43,8 +45,8 @@ export default function Footer()
                     <div className="group">
                         <a href="/Juegos_Caribe">Juegos Caribe</a><br /><br />
                         <div className="groupInfo">
-                            <p  className="groupHead" >Reglamento</p>
-                            <p>Comisión</p>
+                            <p onClick={()=>{router.push("/Reglamento")}}>Reglamento</p>
+                            <p href="/" >Comisión</p>
                         </div>
                     </div>
                 </div>

@@ -27,9 +27,9 @@ export default function Layout({children}) {
                             lenguage === "es" ? setLenguage("en") : setLenguage("es")
                         }}>
                             {lenguage.toUpperCase()}
-                        </h2>
-                        <div className="burgerMenu">
-                            <Image alt="" src="/burgerMenu.svg" fill className="image"/>
+                        </h2> */}
+                        <div className="burgerMenu cursor-pointer">
+                            <IconMenu2 />
                         </div>
                     </div>
                 </div>

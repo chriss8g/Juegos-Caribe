@@ -43,7 +43,6 @@ export default function Schedule()
             document.genderForm.gender.value = e.target.value
             setFilteredGender(e.target.value)
         }
-        console.log(filteredGender)
     }
     
     const handleIconSelect=(e)=>{
@@ -136,7 +135,6 @@ export default function Schedule()
             }
             if (filteredGender.length !== 0 && !filteredGender.includes(play.gender))
             {
-                console.log(play+"and"+filteredGender)
                 erase.push(play)
             }
         })

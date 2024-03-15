@@ -1,0 +1,30 @@
+
+.Regulation p {
+    padding: 8px;
+    color:gray;
+}
+
+.Regulation span{
+    font-weight: bold;
+}
+
+
+.Regulation button{
+    background-color: #5a1024;
+    border: none;
+    width: 60%;
+}
+.Regulation button p{
+    font-weight: bold;
+    color: white;
+    margin-left: 0px;
+}
+.Regulation button .download{
+    margin: 12px 2px 0px 10px;
+    width:3%;
+}
+
+.Regulation .vino{
+    color: #5a1024;
+    font-weight: bold;
+}
