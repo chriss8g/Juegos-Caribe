@@ -1,0 +1,54 @@
+.FacultiesPlaying
+{
+    margin-top: 15%;
+    padding-bottom: 13%;
+}
+
+
+.FacultyPreview h2
+{
+    text-align: center;
+    font-weight: 400;
+}
+.facultyLogo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.pagination
+{
+    justify-content: space-between;
+    width: 40%;
+    margin-top: 10%;
+    margin-left: 30%;
+}
+.arrow
+{
+    cursor: pointer;
+    margin-top: 5%;
+    width: 10%;
+}
+.pageNumb
+{
+    color: black;
+    background-color: rgb(255, 255, 255);
+    padding: 6% 10%;
+    border-radius: 19rem;
+}
+.selected
+{
+    background-color: #5a1024;
+    color: white;
+}
+
+@media (min-width: 1024px)
+{
+    .carousel-item {
+        /*flex: 0 0 15%;*/
+        /*width: 20%;*/
+        /*padding: 20px;*/
+        /*box-sizing: border-box;*/
+        /*text-align: center;*/
+    }
+
+}

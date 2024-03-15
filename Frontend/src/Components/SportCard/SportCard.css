@@ -1,0 +1,30 @@
+.SportCard {
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 1%;
+    box-shadow: 0 1px 6px 2px rgb(223, 223, 223);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+}
+.sportImage
+{
+    width: 60%;
+    padding: 5%;
+}
+
+.circle-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+}
+
+.circle
+{
+    height: 12vh;
+    width: 12vh;
+    background-color: #5a1024;
+    border-radius: 70px;
+}

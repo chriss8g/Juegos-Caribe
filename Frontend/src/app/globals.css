@@ -1,0 +1,91 @@
+@import url('https://fonts.cdnfonts.com/css/segoe-ui-4');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+  .MobileView
+{
+  background-color: rgb(245, 245, 245);
+  display: none;
+}
+.DesktopView
+{
+  display: block;
+}
+.image{
+  object-fit: cover;
+  width: 100% !important;
+  position: relative !important;
+}
+.sectionTitle {
+  color: #5a1024;
+  border-bottom: solid;
+  border-width: 0;
+  border-bottom-width: 2px;
+  border-color: rgba(58, 56, 56, 0.2);
+  padding: 1% 0;
+  margin-bottom: 5%;
+}
+.container
+{
+    padding: 0 7%;
+}
+.hide {
+  display: none;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.width-10{
+  width: 10%;
+}
+
+.width-90{
+  width: 90%;
+}
+
+.height-10{
+  height: 10%;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Mobile Version: 0px - 420px */
+@media (max-width: 420px)
+{
+  h1
+  {
+    font-size: 32px;
+  }
+  h2
+  {
+    font-size: 20px;
+  }
+  .crumbs h3
+  {
+    font-size: 35px;
+  }
+  .iconFilter p
+  {
+    font-size: 10px;
+  }
+  p{
+    font-size: 13px;
+  }
+  .MobileView
+  {
+    display: block;
+  }
+  .DesktopView
+  {
+    display: none;
+  }
+  .container {
+    padding: 0 5%;
+  }
+}
