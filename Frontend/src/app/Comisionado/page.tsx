@@ -1,15 +1,7 @@
 import Layout from "../../Components/Layout/Layout";
-import Image from 'next/image'
-
+/*import Image from 'next/image'
+*/
 export default function Comisioner()
 {
-
-    return(
-        
-        <div className="Comisioner">
-            <Layout>
-                 <div></div>   
-            </Layout>
-        </div>
-    )
+    return <Layout children= {<div></div>} />    
 }

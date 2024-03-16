@@ -11,54 +11,54 @@ export default function Regulation()
 
     return(
         <Layout>
-        <div className="Regulation mx-3">
+            <div className="Regulation mx-3">
+                    
+                    <div>
+                    <h2 className="mb-5 flex justify-center font-bold text-gray-400 my-8">Reglamento 2023-2026</h2>
                 
-                <div>
-                <h2 className="mb-5 flex justify-center font-bold text-gray-400 my-8">Reglamento 2023-2026</h2>
-             
 
-                <p><span>Título I.</span> Principios Generales:</p>
+                    <p><span>Título I.</span> Principios Generales:</p>
 
-                <p><span>Artículo 1:</span> El movimiento deportivo universitario es para el disfrute de la Comunidad Universitaria</p>
+                    <p><span>Artículo 1:</span> El movimiento deportivo universitario es para el disfrute de la Comunidad Universitaria</p>
 
-                <p><span>Artículo 2:</span> El movimiento deportivo universitario se sustenta sobre la base de los principios de la FEU</p>
+                    <p><span>Artículo 2:</span> El movimiento deportivo universitario se sustenta sobre la base de los principios de la FEU</p>
 
-                <p><span>Artículo 3:</span> La práctica deportiva en la Universidad deberá ser un movimiento estudiantil promovido, organizado y gestionado por la FEU y por la institución</p>
+                    <p><span>Artículo 3:</span> La práctica deportiva en la Universidad deberá ser un movimiento estudiantil promovido, organizado y gestionado por la FEU y por la institución</p>
 
-                <p><span>Artículo 4:</span> La práctica deportiva en la Universidad deberá ser un movimiento estudiantil promovido, organizado y gestionado por la FEU y por la institución</p>
+                    <p><span>Artículo 4:</span> La práctica deportiva en la Universidad deberá ser un movimiento estudiantil promovido, organizado y gestionado por la FEU y por la institución</p>
 
-                <p><span>Artículo 5:</span> La práctica     deportiva en la Universidad deberá ser un movimiento estudiantil promovido, organizado y gestionado por la FEU y por la institución</p>
+                    <p><span>Artículo 5:</span> La práctica     deportiva en la Universidad deberá ser un movimiento estudiantil promovido, organizado y gestionado por la FEU y por la institución</p>
 
-                <p><span>Artículo 6:</span> La práctica deportiva en la Universidad deberá ser un movimiento estudiantil promovido, organizado y gestionado por la FEU y por la institución</p> 
-                </div>
-                
-                <button className="mx-auto w-3/4 border-2 border-slate-600 mt-7 py-1 bg-slate-600 text-white rounded-md flex justify-center">
-                    <div className="download">
-                        <Image alt="" src="/download.svg" fill className="image"/>
+                    <p><span>Artículo 6:</span> La práctica deportiva en la Universidad deberá ser un movimiento estudiantil promovido, organizado y gestionado por la FEU y por la institución</p> 
                     </div>
-                    <p>
-                        Descargar reglamento PDF
-                    </p>
-                </button>
-                
-                <div className="mx-2 mb-20">
-                <div>
-                    <h4 className="vino flex justify-center mt-10">Deportes que participan:</h4>
+                    
+                    <button className="mx-auto w-3/4 border-2 border-slate-600 mt-7 py-1 bg-slate-600 text-white rounded-md flex justify-center">
+                        <div className="download">
+                            <Image alt="" src="/download.svg" fill className="image"/>
+                        </div>
+                        <p>
+                            Descargar reglamento PDF
+                        </p>
+                    </button>
+                    
+                    <div className="mx-2 mb-20">
+                    <div>
+                        <h4 className="vino flex justify-center mt-10">Deportes que participan:</h4>
 
-                    <h4 className="vino flex justify-center mt-6 border-b-2 border-[#5a1024]">Colectivos</h4>
-                </div>
+                        <h4 className="vino flex justify-center mt-6 border-b-2 border-[#5a1024]">Colectivos</h4>
+                    </div>
+
+                    
+                    <LessMoreBar title={"Beisbol"} text={text}/>
+                    <LessMoreBar title={"FutSal"} text={text}/>
+                    <LessMoreBar title={"Bascket 3x3"} text={text}/>
+                    <LessMoreBar title={"Futbol11"} text={text}/>
+                    <LessMoreBar title={"Volibol"} text={text}/>
+                    </div>
+                    
 
                 
-                <LessMoreBar title={"Beisbol"} text={text}/>
-                <LessMoreBar title={"FutSal"} text={text}/>
-                <LessMoreBar title={"Bascket 3x3"} text={text}/>
-                <LessMoreBar title={"Futbol11"} text={text}/>
-                <LessMoreBar title={"Volibol"} text={text}/>
-                </div>
-                
-
-            
-        </div>
+            </div>
         </Layout>
     )
 }

@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 
-  .MobileView
+.MobileView
 {
   background-color: rgb(245, 245, 245);
   display: none;

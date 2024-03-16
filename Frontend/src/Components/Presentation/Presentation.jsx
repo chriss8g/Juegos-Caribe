@@ -28,8 +28,7 @@ export default function Main()
                 </div>
             </div>
 
-            <div className="TabletView">
-                
+            <div className="TabletView">                
             </div>
 
             <div className="DesktopView">
