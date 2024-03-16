@@ -66,3 +66,7 @@
     display: none;
   }
 }
+
+.text {
+  color: #4A5568; /* Este es el valor hexadecimal para gray-600  */
+ }
