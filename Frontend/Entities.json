@@ -22,12 +22,12 @@
     {
         "id": 4,
         "name": "comments",
-        "endpoint": "/comments"
+        "endpoint": "/comment"
     },
     {
         "id": 5,
         "name": "documents",
-        "endpoint": "/documents"
+        "endpoint": "/document"
     },
     {
         "id": 6,

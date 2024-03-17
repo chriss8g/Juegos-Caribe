@@ -16,7 +16,6 @@ export default function useAdministration()
     
     const currentEntityType= getEntityType(currentEntity.id)
 
-
     const [editMode, setEditMode] = useState(false)
 
     

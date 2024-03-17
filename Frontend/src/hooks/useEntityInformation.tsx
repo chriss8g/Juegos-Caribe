@@ -19,7 +19,14 @@ export default function useEntityInformation()
         biography: "string",
         picture: "string"
     };
-    var comment: Comment;
+    var comment: Comments = {
+        id: -1,
+        str: "string",
+        body: "string",
+        date: "string",
+        news: New,
+        users: user
+    };
     var document: Documents = {
         id: -1,
         str: "string",
