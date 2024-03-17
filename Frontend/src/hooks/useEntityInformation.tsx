@@ -20,8 +20,18 @@ export default function useEntityInformation()
         picture: "string"
     };
     var comment: Comment;
-    var document: Documents;
-    var faculty: Faculty;
+    var document: Documents = {
+        id: -1,
+        str: "string",
+        body: "string",
+        file: "string"
+    };
+    var faculty: Faculty = {
+        id: -1,
+        str: "string",
+        name: "string",
+        logo: "string"
+    };
     var facultyOnSeason: facultyOnSeason = {
         id: -1,
         str: "string",
@@ -36,7 +46,17 @@ export default function useEntityInformation()
         tournamentOnSeason: tournamentOnSeason,
         faculties: faculty
     }
-    var game: Game;
+    var game: Game = {
+        id: -1,
+        str: "string",
+        phase: "string",
+        sex: "Mixto",
+        place: "string",
+        detailResult: "string",
+        sports: sport,
+        tournamentOnSeason: tournamentOnSeason,
+        teams: [team]
+    };
     var New: New = {
         id: -1,
         str: "string",
@@ -46,10 +66,32 @@ export default function useEntityInformation()
         picture: "string",
         users: user
     };
-    var sport: Sport;
-    var team: Team;
-    var teamOnGame: TeamOnGame;
-    var tournament: Tournament;
+    var sport: Sport = {
+        id: -1,
+        str:"string",
+        name: "string"
+    };
+    var team: Team = {
+        id: -1,
+        str: "string",
+        medal: "Oro",
+        sex: "Mixto",
+        sports: sport,
+        faculties: faculty,
+        athletes: [athlete]
+    };
+    var teamOnGame: TeamOnGame = {
+        id: -1,
+        str: "string",
+        result: -1,
+        teams: team,
+        games: game,
+    };
+    var tournament: Tournament = {
+        id: -1, 
+        str: "string",
+        name: "string"
+    };
     var tournamentOnSeason: TournamentOnSeason = {
         id: -1,
         str: "string",
@@ -126,16 +168,14 @@ export default function useEntityInformation()
     }
 
     
-    // function getEntityId(instance: any):number
-    // {
-    //     entities.forEach(ent => {
-    //         if(ent.name === typeof instance)
-    //         {
-    //             return ent.id;
-    //         }
-    //     });
-    //     throw new Error("No id found for entity")
-    // }
+    function getEntityIdOnList(entityName: any):number
+    {
+        for (let i = 0; i < entities.length; i++)
+            if(entities[i].name === entityName)
+                return i;
+
+        throw new Error("Entity not found")
+    }
 
     function getEntityType(id:number)
     {
@@ -178,6 +218,7 @@ export default function useEntityInformation()
         getEntityType,
         getEndpoint,
         getPropertyEndpoint,
-        ShowProp
+        ShowProp,
+        getEntityIdOnList
     }
 } 

@@ -1,6 +1,6 @@
 'use client'
 import Layout from "../../Components/Layout/Layout"
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import useAdministration from "../../hooks/useAdministration"
 import AdministrationForm from "../../Components/AdministrationForm/AdministrationForm"
 import DeleteModal from "../../Components/DeleteModal/DeleteModal"
@@ -11,13 +11,13 @@ import SpecialTableData from "../../Components/SpecialTableData"
 
 export default function Administration()
 {
+
     const { 
         currentEntity,
         currentEntityType,
         Data, 
         selectedDataId, 
         setSelectedDataId, 
-        isLoading, 
         getEntityPropertiesNames, 
         getDataById,
         getData,
@@ -28,17 +28,25 @@ export default function Administration()
 
     } = useAdministration()
 
+
+
     const {
         getPropertyEndpoint,
         ShowProp
     } = useEntityInformation()
 
     const { toSpanish } = useTranslation()
-
-
+    
+    
     useEffect(()=>{
         getData()
     },[currentEntity])
+
+    const [Loading, setLoading] = useState(false)
+
+    useEffect(()=>{
+        setLoading(false)
+    },[Data])
 
     function handleEdit(e){
         setEditMode(true)
@@ -52,12 +60,14 @@ export default function Administration()
         form.style.display="block"
     }
 
-    function handleOnDelete(id: number)
+    const [deleteRow, setDeleteRow] = useState()
+    function handleOnDelete(row)
     {
-        setSelectedDataId(id)
+        setDeleteRow(row)
         var modal = document.getElementById('DeleteModal')
         modal.style.display="block"
     }
+
     function getDataType(value: any){
         if(typeof value === "object")
         {
@@ -72,41 +82,47 @@ export default function Administration()
         }
     }
 
+
     return (
+       
         <div className="Administration">
             <Layout>
-                <div className="SectionMenu">
+                    <div className="">
 
-                    <br />
-                    Entidades:
-                    <select name="Entities" id="Entities" onChange={(e)=>{setCurrentEntity(entities[+e.target.value])}}>
-                        {entities.map((ent, key)=>(
-                            <option id={`${key}`} value={ent.id} key={key}>
-                                {toSpanish(ent.name)}
-                            </option>
-                        ))}
-                    </select>
-                    <br />
-                    <br />
+                        <div className="SectionMenu">
 
-                </div>
-                <div id="adminForm" className="hidden">
-                    <AdministrationForm editMode={editMode} setEditMode={setEditMode} selected={selectedDataId}/>
-                </div>
-                <div id="DeleteModal" className="hidden">
-                    <DeleteModal data={getDataById(selectedDataId)}/>
-                </div>
+                            <br />
+                            Entidades:
+                            <select name="Entities" id="Entities" onChange={(e)=>{setCurrentEntity(entities[+e.target.value]); setLoading(true)}}>
+                                {entities.map((ent, key)=>(
+                                    <option id={`${key}`} value={ent.id} key={key}>
+                                        {toSpanish(ent.name)}
+                                    </option>
+                                ))}
+                            </select>
+                            <br />
+                            <br />
+
+                        </div>
                 {
-                    !isLoading ?
+                    !Loading ?
+                    <div className="">
+                        <div id="adminForm" className="hidden">
+                            <AdministrationForm editMode={editMode} setEditMode={setEditMode} selected={selectedDataId}/>
+                        </div>
+                        <div id="DeleteModal" className="hidden">
+                            <DeleteModal data={deleteRow} entityId={currentEntity.id} endpoint={currentEntity.endpoint}/>
+                        </div>
                         <div className="CRUDSection w-3/4 mx-auto">
                             <table className=" border-solid border-2 border-black">
                                 <thead className="border-solid border-2 border-black">
                                     <tr>
                                         {
                                             getEntityPropertiesNames(Data[0]).map((prop, id)=>{
-                                                
                                                 if(ShowProp(prop))
+                                                {
                                                     return <th className="border-solid border-2 border-black p-2" key={id}>{prop}</th>
+                                                }
                                                 
                                             })
                                         }
@@ -115,7 +131,9 @@ export default function Administration()
                                 </thead>
                                 <tbody>
                                     {
-                                        Data.map((row, id)=>(
+                                        
+                                        Data.map((row, id)=>{
+                                            return(
                                             <tr className="border-solid border-2 border-black" key={id}>
                                                 {Object.values(row).map((prop, id)=>{
                                                     if(getDataType(prop) === "select")
@@ -134,7 +152,6 @@ export default function Administration()
                                                     {
                                                         if(getPropertyEndpoint(currentEntityType, id))
                                                         {
-                                                            console.log(currentEntityType, prop, id)
                                                             return(
                                                                 <td className="p-2 text-center border-solid border-2 border-black td" key={id}>
                                                                     <SpecialTableData entityType={currentEntityType} propIndex={prop} dataId={id}/>
@@ -153,10 +170,11 @@ export default function Administration()
                                                 })}
                                                 <td>
                                                     <button className="p-2 border-solid border-2 border-gray-400 w-full bg-orange-300" onClick={(e)=>handleEdit(e)}><IconPencil className="m-auto"/></button>
-                                                    <button className="p-2 border-solid border-2 border-gray-400 w-full bg-red-400" onClick={()=>handleOnDelete(row.id)}><IconTrash className="m-auto"/></button>
+                                                    <button className="p-2 border-solid border-2 border-gray-400 w-full bg-red-400" onClick={()=>handleOnDelete(row)}><IconTrash className="m-auto"/></button>
                                                 </td>
                                             </tr>
-                                        ))
+                                            )
+                                        })
                                     }
                                 </tbody>
 
@@ -169,10 +187,13 @@ export default function Administration()
                                 </button>
                             </div>
                         </div>
+                    </div>
                     :
-                    <h3>Loading data...</h3>
-                }
+                    <h3>Loading...</h3>
+                }              
+                    </div>
             </Layout>
         </div>
     )
 }
+

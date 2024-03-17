@@ -3,7 +3,8 @@ interface Team
     id: number,
     str: string,
     medal: "Oro"|"Plata"|"Bronce",
-    sport: Sport,
-    athletes: Athlete[],
-    faculty: Faculty
+    sex: "Masculino" | "Femenino" | "Mixto",
+    sports: Sport,
+    faculties: Faculty,
+    athletes: Athlete[]
 }

@@ -63,5 +63,8 @@
     "is_active": "activo",
     "date_joined": "fecha de inscripción",
     "groups": "grupos",
-    "user_permissions": "permisos"
+    "user_permissions": "permisos",
+    "result": "resultado",
+    "team": "equipo",
+    "game": "partido"
 }

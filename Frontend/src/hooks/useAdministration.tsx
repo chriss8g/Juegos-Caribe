@@ -14,23 +14,15 @@ export default function useAdministration()
 
     const [currentEntity, setCurrentEntity] = useState<Entity>(entities[0])
     
-    const currentEntityType = getEntityType(currentEntity.id)
+    const currentEntityType= getEntityType(currentEntity.id)
 
-    const [isLoading, setIsLoading] = useState(true)
 
     const [editMode, setEditMode] = useState(false)
 
-
-
-    useEffect(()=>{
-        getData()
-        setIsLoading(false)
-    },[])
-    
     
     function getData()
     {
-        fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/`, {
+        fetch(`${process.env.API_URL + currentEntity.endpoint}/`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -55,7 +47,7 @@ export default function useAdministration()
     
     function getDataByIdFromEndpoint(dataId: number, endpoint: string)
     {
-        fetch(`${process.env.SERVER_URL + endpoint}/`+dataId+'/', {
+        fetch(`${process.env.API_URL + endpoint}/`+dataId+'/', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -75,7 +67,7 @@ export default function useAdministration()
     {
         console.log(newData)
         try{
-            // fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/`, {
+            // fetch(`${process.env.API_URL + currentEntity.endpoint}/`, {
             //     method: 'POST',
             //     headers: {
             //         'Content-Type': 'application/json',
@@ -90,7 +82,7 @@ export default function useAdministration()
 
     function updateData(newData: typeof currentEntityType)
     {
-        fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/`+ newData.id+ '/', {
+        fetch(`${process.env.API_URL + currentEntity.endpoint}/`+ newData.id+ '/', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -100,10 +92,10 @@ export default function useAdministration()
       
     }
 
-    function deleteData(id: number)
+    function deleteData(endpoint:string, id: number)
     {    
         try {
-            fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/` + id + '/', {
+            fetch(`${process.env.API_URL + endpoint}/` + id + '/', {
                 method: 'DELETE',
             })
         } 
@@ -146,7 +138,6 @@ export default function useAdministration()
         getData,
         getDataByIdFromEndpoint,
         getEntityPropertiesNames,
-        isLoading, 
         selectedDataId,
         setCurrentEntity, 
         setData,

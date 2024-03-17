@@ -5,5 +5,8 @@ interface Game
     phase: string,
     sex: "Masculino" | "Fememino" | "Mixto",
     place: string,
-    detailResult: string
+    detailResult: string,
+    sports: Sport,
+    tournamentOnSeason: TournamentOnSeason,
+    teams: [Team]
 }

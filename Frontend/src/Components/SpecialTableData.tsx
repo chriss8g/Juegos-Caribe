@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import useAdministration from "../hooks/useAdministration"
 import useEntityInformation from "../hooks/useEntityInformation"
 
 export default function SpecialTableData({entityType, propIndex, dataId})
 {
     const {
-        getPropertyEndpoint,
+        getPropertyEndpoint
     } = useEntityInformation()
 
     const {

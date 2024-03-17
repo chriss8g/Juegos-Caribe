@@ -2,7 +2,7 @@ interface TeamOnGame
 {
     id: number,
     str: string,
-    team: Team,
-    game: Game,
-    result: number
+    result: number,
+    teams: Team,
+    games: Game,
 }
