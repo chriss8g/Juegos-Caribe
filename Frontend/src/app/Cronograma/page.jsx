@@ -1,13 +1,13 @@
 'use client'
-import useSiteContext from "@/hooks/useSiteContext";
+import useSiteContext from "../../hooks/useSiteContext";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css/navigation';
 import 'swiper/css';
 import "./schedule.css"
-import Layout from "@/Components/Layout/Layout";
+import Layout from "../../Components/Layout/Layout";
 import Image from "next/image"
-import PlayCard from "@/Components/PlayCard/PlayCard";
+import PlayCard from "../../Components/PlayCard/PlayCard";
 import { useEffect, useState } from "react";
 import { generateBuildId } from "../../../next.config";
 

@@ -4,7 +4,7 @@ import "../../app/globals.css"
 import Image from 'next/image'
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs"
 import Footer from "../Footer/Footer"
-import { IconMenu2, IconSearch, IconUser } from "@tabler/icons-react"
+import { IconMenu2, IconSearch, IconUser } from "@tabler/icons-react";
 import useAuthentication from "../../hooks/useAuthentication"
 import Link from "next/link"
 
@@ -24,9 +24,12 @@ export default function Layout({children})
                         </div>
                     </div>
                     <div className="rightHeader gap-2 mr-2">
+                        
                         <div className="IconSearch cursor-pointer">
                             <IconSearch />
                         </div>
+                        
+                        
                         <Link 
                             className="LoginIcon cursor-pointer"
                             href="/LogIn"
