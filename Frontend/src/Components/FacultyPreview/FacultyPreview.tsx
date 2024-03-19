@@ -7,10 +7,9 @@ export default function FacultyPreview({name, image})
         name !== undefined && image !== undefined &&
             <div className="FacultyPreview MobileView container">
                 <div className="facultyLogo">
-                    <Image src={image} alt="" fill className="image"/>
+                    <Image src={image} width={100} height={100} alt="" className="image"/>
                 </div>
                 <h2>{name}</h2>
             </div>
-        
     )
 }
