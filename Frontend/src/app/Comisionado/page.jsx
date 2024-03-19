@@ -2,7 +2,6 @@
 import Layout from "../../Components/Layout/Layout";
 import TextWithTitle2 from "../../Components/TextWithTitle2/TextWithTitle2";
 import "../globals.css"
-import "./comisioner.css"
 
 import "../../Components/FacultyPreview/FacultyPreview.css"
 import Image from "next/image"
@@ -15,27 +14,27 @@ export default function Comisioner()
 {
     const comisioner = [
         {
-            "name": "FLEX1",
+            "name": "Ernesto Guilart Ruiz",
             "image": "/lenguas_extranjeras.svg",
-            "cargo": "fhcgjbnmhjhmgmnbmn",
+            "cargo": "Dir. de la DIrecci[on de Cultura Fisica y Deporte (INDER)",
             "comision": "organizativa"
         },
         {
-            "name": "FLEX1",
+            "name": "Ernesto Guilart Ruiz",
             "image": "/lenguas_extranjeras.svg",
-            "cargo": "fhcgjbnmhjhmgmnbmn",
+            "cargo": "Dir. de la DIrecci[on de Cultura Fisica y Deporte (INDER)",
             "comision": "disciplinariaP"
         },
         {
-            "name": "FLEX1",
+            "name": "Ernesto Guilart Ruiz",
             "image": "/lenguas_extranjeras.svg",
-            "cargo": "fhcgjbnmhjhmgmnbmn",
+            "cargo": "Dir. de la DIrecci[on de Cultura Fisica y Deporte (INDER)",
             "comision": "disciplinariaS"
         },
         {
-            "name": "FLEX1",
+            "name": "Ernesto Guilart Ruiz",
             "image": "/lenguas_extranjeras.svg",
-            "cargo": "fhcgjbnmhjhmgmnbmn",
+            "cargo": "Dir. de la DIrecci[on de Cultura Fisica y Deporte (INDER)",
             "comision": "organizativa"
         },
         ]

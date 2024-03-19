@@ -1,31 +1,16 @@
-.CardITB
+.CardITB-inner-container
 {
     flex: auto;
     margin: auto;
     margin-top: 15%;
-    margin-bottom: 35%;
+    margin-bottom: 70%;
     padding: 8% 5%;
     border-radius: 15px;
-    width: 70%;
+    width: 100%;
     box-shadow: 0px 0px 15px 1px rgb(197, 197, 197);
 }
-.CardITB h2
-{
-    color: black;
-    text-align: center;
-    font-weight: 400;
-}
-.CardITB p
-{
-    color: black;
-    text-align: center;
-    font-weight: 400;
-}
-.Logo
-{
-    padding-left: 5%;
-    width: 90%;
-}
+
+
 .pagination
 {
     display: flex;
