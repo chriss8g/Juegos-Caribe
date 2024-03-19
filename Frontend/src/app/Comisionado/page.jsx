@@ -6,196 +6,123 @@ import "./comisioner.css"
 
 import "../../Components/FacultyPreview/FacultyPreview.css"
 import Image from "next/image"
-import FacultyPreview from "../../Components/FacultyPreview/FacultyPreview"
+import CardITB from "../../Components/CardITB/CardITB"
+import CardITBV from "../../Components/CardITBV/CardITBV"
 import { useEffect, useState } from "react"
+import Pagination from '../../Components/Pagination/Pagination'
 
 export default function Comisioner()
 {
-    const Faculties = [
+    const comisioner = [
         {
             "name": "FLEX1",
             "image": "/lenguas_extranjeras.svg",
-            "best-players": [],
-            "sports":{
-                "individual": [],
-                "collective": []
-            },
-            "position": 10,
-            "golden-medals": 1,
-            "silver-medals": 0,
-            "bronze-medals": 4,
-            "best-historical-result": "",
-            "prev-editions": [
-                {
-                    "edition": "L(50)",
-                    "place": "5to",
-                    "medals": 15
-                }
-            ] 
+            "cargo": "fhcgjbnmhjhmgmnbmn",
+            "comision": "organizativa"
         },
         {
-            "name": "FARAL2",
-            "image": "/farmacia_alimentos.svg",
-            "best-players": [],
-            "sports":{
-                "individual": [],
-                "collective": []
-            },
-            "position": 10,
-            "golden-medals": 1,
-            "silver-medals": 0,
-            "bronze-medals": 4,
-            "best-historical-result": "",
-            "prev-editions": [
-                {
-                    "edition": "L(50)",
-                    "place": "5to",
-                    "medals": 15
-                }
-            ] 
-        }]
+            "name": "FLEX1",
+            "image": "/lenguas_extranjeras.svg",
+            "cargo": "fhcgjbnmhjhmgmnbmn",
+            "comision": "disciplinariaP"
+        },
+        {
+            "name": "FLEX1",
+            "image": "/lenguas_extranjeras.svg",
+            "cargo": "fhcgjbnmhjhmgmnbmn",
+            "comision": "disciplinariaS"
+        },
+        {
+            "name": "FLEX1",
+            "image": "/lenguas_extranjeras.svg",
+            "cargo": "fhcgjbnmhjhmgmnbmn",
+            "comision": "organizativa"
+        },
+        ]
 
 
-    const [left, setLeft] = useState(0)
-    const [right, setRight] = useState(1)
-    const [Selected, setSelected] = useState(0)
-    const [leftCard, setLeftCard] = useState({
-        "name": Faculties[left] && Faculties[left].name,
-        "image": Faculties[left] && Faculties[left].image
-    })
-    const [rightCard, setRightCard] = useState({
-        "name": Faculties[right] && Faculties[right].name,
-        "image": Faculties[right] && Faculties[right].image
-    })
+        // Paso 1: Dividir la lista comisioner
+    const [organizativa, setOrganizativa] = useState([]);
+    const [disciplinariaP, setDisciplinariaP] = useState([]);
+    const [disciplinariaS, setDisciplinariaS] = useState([]);
+    const[loading, setLoading] = useState(1);
 
-    const [firstTime, setFirstTime] = useState(true)
+    useEffect(() => {
+        // Paso 2: Renombrar los campos y dividir la lista
+        const organizativaList = comisioner.filter(item => item.comision === 'organizativa').map(item => ({
+            name: item.name,
+            body: item.cargo,
+            image: item.image
+        }));
+
+        const disciplinariaPList = comisioner.filter(item => item.comision === 'disciplinariaP').map(item => ({
+            name: item.name,
+            body: item.cargo,
+            image: item.image
+        }));
+
+        const disciplinariaSList = comisioner.filter(item => item.comision === 'disciplinariaS').map(item => ({
+            name: item.name,
+            body: item.cargo,
+            image: item.image
+        }));
+        // Paso 3: Actualizar el estado
+        setOrganizativa(organizativaList);
+        setDisciplinariaP(disciplinariaPList);
+        setDisciplinariaS(disciplinariaSList);
+    }, []);
+
     useEffect(()=>{
-        if(firstTime === true)
-        {
-            document.getElementById(left).classList.add("selected")
-            setSelected(left)
-            setFirstTime(false)
-        }
-    },[left, right])
-
-    const handleRight=()=>{
-        var selected = document.getElementsByClassName("selected")
-        if (+selected[0].innerHTML === right+1)
-        {
-            document.getElementById(left).classList.add("selected")
-            setSelected(right+3)
-            document.getElementById(right).classList.remove("selected")
-            Faculties[right+3] ? setLeftCard({"name": Faculties[right+3].name,"image": Faculties[right+3].image}): setLeftCard({})
-            Faculties[right+4] ? setRightCard({"name": Faculties[right+4].name,"image": Faculties[right+4].image}): setRightCard({})
-            setLeft(right+2)
-            setRight(right+3)
-        }
-        else
-        {
-            document.getElementById(left).classList.remove("selected")
-            setSelected(right+2)
-            document.getElementById(right).classList.add("selected")
-            Faculties[right+1] ? setLeftCard({"name": Faculties[right+1].name,"image": Faculties[right+1].image}): setLeftCard({})
-            Faculties[right+2] ? setRightCard({"name": Faculties[right+2].name,"image": Faculties[right+2].image}): setRightCard({})
-        }
-    }
-    const handleLeft=()=>{
-        var selected = document.getElementsByClassName("selected")
-        if (+selected[0].innerHTML === left+1)
-        {
-            setLeft(right-3)
-            setRight(right-2)
-            document.getElementById(left).classList.remove("selected")
-            document.getElementById(right).classList.add("selected")
-            setSelected(right+1)
-            Faculties[left] && setLeftCard({"name": Faculties[left].name,"image": Faculties[left].image})
-            Faculties[right] && setRightCard({"name": Faculties[right].name,"image": Faculties[right].image})
-        }
-        else
-        {
-            document.getElementById(left).classList.add("selected")
-            setSelected(left)
-            document.getElementById(right).classList.remove("selected")
-            Faculties[left] && setLeftCard({"name": Faculties[left].name,"image": Faculties[left].image})
-            Faculties[left+1] && setRightCard({"name": Faculties[left+1].name,"image": Faculties[left+1].image})
-        }
-    }
-
+        console.log(loading)
+        setLoading(loading-1);
+        console.log(disciplinariaS)
+        console.log(disciplinariaS[0])
+    },[disciplinariaS])
 
     return(
         
         <div className="Comisioner">
+           {loading<0 && 
             <Layout>
                  <h2 className="flex justify-center font-bold font-sans text-gray-700 mt-6">Comisión</h2>   
                 <div className="font-text-6">
-                <TextWithTitle2 title={"Comisión Organizativa"} text={""}/>
+                    <TextWithTitle2 title={"Comisión Organizativa"} text={""}/>
 
-                <div className="FacultiesPage m-5">
-                <FacultyPreview name={leftCard.name} image={leftCard.image}/>
-                <FacultyPreview name={rightCard.name} image={rightCard.image}/>
-            </div>
-            <div className="pagination">
-                {
-                    Selected > 0 ?
-                        <div className="arrow">
-                            <div className="leftArrow"  onClick={handleLeft}>
-                                <Image src="/left.svg" alt="" fill className="image"/>
-                            </div>
-                        </div>
-                        :
-                        <div className=""></div>
-                }
-                <p className="pageNumb" id={left}>
-                    {left+1}
-                </p>
-                <p className="pageNumb" id={right}>
-                    {Selected<=Faculties.length && right+1}
-                </p>
-                {
-                    Selected <= Faculties.length-2?
-                        <div className="arrow">
-                            <div className="rightArrow" onClick={handleRight}>
-                                <Image aria-disabled="true" src="/right.svg" alt="" fill className="image"/>
-                            </div>
-                        </div>
-                    :
-                    <div className=""></div>
-                }
-            </div>
+                    <Pagination itemComponent={CardITB} data={organizativa}/>
 
                 </div>
 
 
                 <TextWithTitle2 title={"Comisión Disciplinaria"} text={""}/>
-                <div className="text-center text-gray-400 underline mx-6">
+                <div className="text-center text-gray-400 mx-6">
                     <div>
-                        <p className="mb-6">Miembros permanentes</p>
+                        <p className="mb-6 underline">Miembros permanentes</p>
                         <div className="mt-6">
-                            <div className="flex justify-center">
-                            <FacultyPreview name={leftCard.name} image={leftCard.image}/>
-                            </div>
-                            <div className="flex justify-center">
-                            <FacultyPreview name={leftCard.name} image={leftCard.image}/>
-                            </div>
+                            {disciplinariaP.map((item, index)=>(
+                                <div className="flex justify-center" key={index}>
+                                    <CardITBV name={item.name} image={item.image} body={item.body}/>
+                                </div>    
+                            ))}
+                            
                         </div>
                         
                     </div>
                 </div>
-                    <div className="text-center text-gray-400 underline mx-6 my-10">
+                    <div className="text-center text-gray-400 mx-6 my-10">
                         <div className="">
-                        <p>Miembros suplentes</p>
+                        <p className="underline">Miembros suplentes</p>
                         <div className="mt-6">
-                            <div className="flex justify-center">
-                            <FacultyPreview name={leftCard.name} image={leftCard.image}/>
-                            </div>
-                            <div className="flex justify-center">
-                            <FacultyPreview name={leftCard.name} image={leftCard.image}/>
-                            </div>
+                            {disciplinariaS.map((item, index)=>(
+                                <div className="flex justify-center" key={index}>
+                                    <CardITBV name={item.name} image={item.image} body={item.body}/>
+                                </div>    
+                            ))}
                         </div>
                         </div>
                     
                 </div>
             </Layout>
+            }
         </div>
     )
 }
