@@ -1,12 +1,10 @@
 'use client'
 import Layout from '../../Components/Layout/Layout';
-import Link from 'next/link'
 import "../../app/globals.css"
 import "./FAQ.css";
 
 export default function FAQ()
 {    
-    //text-red-950
     return(
         <div className="FAQ">
             <Layout>
