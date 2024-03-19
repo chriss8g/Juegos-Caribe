@@ -108,7 +108,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
             if(element.type === "number")
                 temp[toEnglish(element.name)] = +element.value
             else if(element.type === "select-one")
-                temp[toEnglish(element.name)] = +element.value
+                temp[toEnglish(element.name)] = [+element.value]
             else if(element.type === "select-multiple")
                 temp[toEnglish(element.name)] = [...temp[toEnglish(element.name)],element.value]
             else
