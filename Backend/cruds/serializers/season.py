@@ -1,5 +1,5 @@
 from ..models.season import Season
-from .comisioner import ComisionerSerializer
+from .commissioner import CommissionerSerializer
 from .faculty import FacultySerializer
 from .tournament import TournamentSerializer
 from rest_framework import serializers
@@ -7,7 +7,7 @@ from rest_framework import serializers
 
 class SeasonSerializer(serializers.ModelSerializer):
 
-    # comisioners = ComisionerSerializer(many=True, read_only=True)
+    # commissioners = CommissionerSerializer(many=True, read_only=True)
     # tournaments = TournamentSerializer(many=True, read_only=True)
     # faculties = FacultySerializer(many=True, read_only=True)
 

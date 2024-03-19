@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models.teamOnGame import TeamOnGame
-from .models.comisioner import Comisioner
+from .models.commissioner import Commissioner
 from .models.faculty import Faculty
 from .models.season import Season
 from .models.tournament import Tournament
@@ -16,7 +16,7 @@ from .models.facultyOnTournamentOnSeason import FacultyOnTournamentOnSeason
 from .models.news import News
 from .models.comment import Comment
 
-admin.site.register(Comisioner)
+admin.site.register(Commissioner)
 admin.site.register(Faculty)
 admin.site.register(Season)
 admin.site.register(Tournament)
