@@ -1,4 +1,14 @@
 import entities from "../../Entities.json"
+import { Athlete, PostAthlete } from "../types/Athlete";
+import { PostComisioner, Comisioner } from "../types/Comisioner";
+import { Comments, PostComment } from "../types/Comment";
+import { Medal } from "../types/Enums"
+import { PostFacultyOnSeason, FacultyOnSeason } from "../types/FacultyOnSeason";
+import { PostSeason, Season } from "../types/Season";
+import { PostSport, Sport } from "../types/Sport";
+import { PostTeam, Team } from "../types/Team";
+import { PostTeamOnGame, TeamOnGame } from "../types/TeamOnGame";
+import { PostTournament, Tournament } from "../types/Tournament";
 
 export default function useEntityInformation()
 {
@@ -9,16 +19,29 @@ export default function useEntityInformation()
         ocupation: "string",
         biography: "string",
         picture: "string",
-        faculties: faculty
+        faculty: faculty
     };
+    var postAthlete: PostAthlete = {
+        name: "",
+        ocupation: "",
+        biography: "",
+        picture: "",
+        faculty: faculty
+    }
     var comisioner: Comisioner = {
         id: -1,
         str: "string",
         name: "string",
         position: "string",
         biography: "string",
-        picture: "string"
+        picture: null
     };
+    var PostComisioner: PostComisioner = {
+        name: "",
+        position: "",
+        biography: "",
+        picture: null    
+    }
     var comment: Comments = {
         id: -1,
         str: "string",
@@ -27,6 +50,11 @@ export default function useEntityInformation()
         news: New,
         users: user
     };
+    var postComment: PostComment = {
+        body: "",
+        news: New,
+        user: user
+    }
     var document: Documents = {
         id: -1,
         str: "string",
@@ -39,13 +67,18 @@ export default function useEntityInformation()
         name: "string",
         logo: "string"
     };
-    var facultyOnSeason: facultyOnSeason = {
+    var facultyOnSeason: FacultyOnSeason = {
         id: -1,
         str: "string",
         points: -1,
         season: season,
-        faculties: faculty
+        faculty: faculty
     };
+    var PostFacultyOnSeason: PostFacultyOnSeason = {
+        points: 0,
+        season: season,
+        faculty: faculty
+    }
     var facultyOnSeasonOnTournament: FacultyOnSeasonOnTournament ={
         id: -1,
         str: "string",
@@ -78,15 +111,27 @@ export default function useEntityInformation()
         str:"string",
         name: "string"
     };
+    var postSport: PostSport = {
+        name: ""
+    }
     var team: Team = {
         id: -1,
         str: "string",
-        medal: "Oro",
+        medal: Medal.Oro,
         sex: "Mixto",
         sports: sport,
-        faculties: faculty,
+        faculty: faculty,
         athletes: [athlete]
     };
+    
+    var PostTeam: PostTeam = {
+        medal: Medal.Oro,
+        sex: "Mixto",
+        sports: sport,
+        faculty: faculty,
+        athletes: [athlete]
+    };
+
     var teamOnGame: TeamOnGame = {
         id: -1,
         str: "string",
@@ -94,10 +139,18 @@ export default function useEntityInformation()
         teams: team,
         games: game,
     };
+    var PostTeamOnGame: PostTeamOnGame = {
+        result: 0,
+        teams: team,
+        games: game
+    }
     var tournament: Tournament = {
         id: -1, 
         str: "string",
         name: "string"
+    };
+    var postTournament: PostTournament = {
+        name: ""
     };
     var tournamentOnSeason: TournamentOnSeason = {
         id: -1,
@@ -132,6 +185,39 @@ export default function useEntityInformation()
         tournaments: [],
         faculties: []
     };
+    var PostSeason: PostSeason = {
+        title: "",
+        year: 0,
+        edition: "",
+        comisioners: []
+    }
+
+
+    const getEntityPostType = (id: number) =>
+    {
+        switch (id) {
+            case 0: 
+                return PostSeason;
+            case 1:
+                return PostComisioner;
+            case 2:
+                return postTournament;
+            case 3:
+                return postAthlete;
+            case 4: 
+                return postComment;
+            case 7:
+                return PostFacultyOnSeason;
+            case 11:
+                return postSport;
+            case 12:
+                return PostTeam;
+            case 13:
+                return PostTeamOnGame;
+        }
+    }
+
+    
 
     const nonShowProp = ["Str", "Contraseña"]
     const ShowProp = (prop)=>{
@@ -163,11 +249,39 @@ export default function useEntityInformation()
         }
     }
 
+    function pluralOf(entityName: string)
+    {
+        switch (entityName) {
+            case "season":
+                return "seasons";
+            case "comisioners": 
+                return "comisioners"; 
+            case "tournament":
+                return "tournaments";
+            case "athlete":
+                return "athletes";
+            case "comment":
+                return "comments";
+            case "document":
+                return "documents";
+            case "faculty":
+                return "faculties";
+            case "game":
+                return "games";
+            case "sport":
+                return "sports";
+            case "team":
+                return "teams";
+            case "user":
+                return "users";
+        }
+    }
+
     function getEndpoint(entityInstanceType: string): string
     {
         for(const i in entities){
             const ent = entities[i]
-            if(ent.name === entityInstanceType)
+            if(ent.name === entityInstanceType || ent.name === pluralOf(entityInstanceType))
             {
                 return ent.endpoint
             }
@@ -226,6 +340,7 @@ export default function useEntityInformation()
         getEndpoint,
         getPropertyEndpoint,
         ShowProp,
-        getEntityIdOnList
+        getEntityIdOnList,
+        getEntityPostType
     }
 } 

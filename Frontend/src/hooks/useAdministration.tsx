@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { use, useEffect, useState } from "react"
 import entities from "../../Entities.json"
 import useTranslation from "./useTranslation"
 import useEntityInformation from "./useEntityInformation"
@@ -19,9 +19,9 @@ export default function useAdministration()
     const [editMode, setEditMode] = useState(false)
 
     
-    function getData()
+    function getData(endpoint)
     {
-        fetch(`${process.env.API_URL + currentEntity.endpoint}/`, {
+        fetch(`${process.env.API_URL + endpoint}/`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -35,7 +35,9 @@ export default function useAdministration()
                 setData(data)
             }
         )
+        return Data
     }
+        
 
     function getDataById(dataId: number)
     {
@@ -54,25 +56,25 @@ export default function useAdministration()
         })
         .then(
             (response)=>response.json()
-        )
-        .then(
+            )
+            .then(
             (data)=>{
                 setDataByIdFromEndpoint(data)
             }
         )  
     }
 
-    function addData(newData: typeof currentEntityType)
+    function addData(newData:any, endpoint:string)
     {
-        console.log(newData)
+        console.log(JSON.stringify(newData))
         try{
-            // fetch(`${process.env.API_URL + currentEntity.endpoint}/`, {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(newData)
-            // })
+            fetch(`${process.env.API_URL + endpoint}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newData)
+            })
         }
         catch (error) {
             console.log(error)

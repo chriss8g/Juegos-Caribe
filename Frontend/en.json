@@ -7,10 +7,12 @@
     "Temporada": "season",
     "Nombre": "name",
     "Comisionados": "comisioners",
-    "Comisionado": "Comisioner",
+    "Comisionado": "comisioner",
     "Torneos": "tournaments",
     "Torneo": "Tournament",
     "Posición": "position",
     "Biografía": "biography",
-    "Foto": "picture"
+    "Foto": "picture",
+    "Facultad": "faculty",
+    "Puntos": "points"
 }

@@ -66,5 +66,6 @@
     "user_permissions": "permisos",
     "result": "resultado",
     "team": "equipo",
-    "game": "partido"
+    "game": "partido",
+    "new": "noticia"
 }

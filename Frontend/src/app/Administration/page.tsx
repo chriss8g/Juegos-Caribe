@@ -32,14 +32,19 @@ export default function Administration()
 
     const {
         getPropertyEndpoint,
-        ShowProp
+        ShowProp,
+        getEntityPostType
     } = useEntityInformation()
 
     const { toSpanish } = useTranslation()
+
+    const[currentEntityPostType, setCurrentEntityPostType] = useState(getEntityPostType(currentEntity.id))
     
+    const [formRow, setFormRow] = useState({})
     
     useEffect(()=>{
-        getData()
+        getData(currentEntity.endpoint)
+        setCurrentEntityPostType(getEntityPostType(currentEntity.id))
     },[currentEntity])
 
     const [Loading, setLoading] = useState(false)
@@ -48,14 +53,17 @@ export default function Administration()
         setLoading(false)
     },[Data])
 
-    function handleEdit(e){
+
+
+    function handleEdit(row){
         setEditMode(true)
-        setSelectedDataId(e.target.closest('tr').children[0].innerHTML as number)
+        setFormRow(row)
         document.getElementById('adminForm').style.display="block"
     }
 
     function handleCreate(e)
     {
+        setFormRow(currentEntityPostType)
         var form = document.getElementById('adminForm')
         form.style.display="block"
     }
@@ -68,19 +76,6 @@ export default function Administration()
         modal.style.display="block"
     }
 
-    function getDataType(value: any){
-        if(typeof value === "object")
-        {
-            if(Array.isArray(value))
-            {
-                return "select"
-            }
-        }
-        else
-        {
-            return typeof value
-        }
-    }
 
 
     return (
@@ -108,7 +103,7 @@ export default function Administration()
                     !Loading ?
                     <div className="">
                         <div id="adminForm" className="hidden">
-                            <AdministrationForm editMode={editMode} setEditMode={setEditMode} selected={selectedDataId}/>
+                            <AdministrationForm editMode={editMode} setEditMode={setEditMode} formRow={formRow} entity={currentEntity}/>
                         </div>
                         <div id="DeleteModal" className="hidden">
                             <DeleteModal data={deleteRow} entityId={currentEntity.id} endpoint={currentEntity.endpoint}/>
@@ -136,7 +131,7 @@ export default function Administration()
                                             return(
                                             <tr className="border-solid border-2 border-black" key={id}>
                                                 {Object.values(row).map((prop, id)=>{
-                                                    if(getDataType(prop) === "select")
+                                                    if(Array.isArray(prop))
                                                     {
                                                         return(
                                                             <td className="p-2 text-center border-solid border-2 border-black td" key={id}>
@@ -169,7 +164,7 @@ export default function Administration()
                                                     }
                                                 })}
                                                 <td>
-                                                    <button className="p-2 border-solid border-2 border-gray-400 w-full bg-orange-300" onClick={(e)=>handleEdit(e)}><IconPencil className="m-auto"/></button>
+                                                    <button className="p-2 border-solid border-2 border-gray-400 w-full bg-orange-300" onClick={()=>handleEdit(row)}><IconPencil className="m-auto"/></button>
                                                     <button className="p-2 border-solid border-2 border-gray-400 w-full bg-red-400" onClick={()=>handleOnDelete(row)}><IconTrash className="m-auto"/></button>
                                                 </td>
                                             </tr>

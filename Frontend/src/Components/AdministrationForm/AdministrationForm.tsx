@@ -1,31 +1,52 @@
-import React, { useEffect, useState } from "react"
+import React, { cloneElement, useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import useAdministration from "../../hooks/useAdministration"
 import useTranslation from "../../hooks/useTranslation"
+import useEntityInformation from "../../hooks/useEntityInformation"
+import SpecialTableData from "../SpecialTableData"
+import { Medal } from "../../types/Enums"
 
-export default function AdministrationForm({editMode, selected, setEditMode})
+export default function AdministrationForm({editMode, formRow, setEditMode, entity})
 {
-    const { getEntityPropertiesNames, Data, addData, updateData, currentEntityType } = useAdministration()
-    const [selectedData, setSelectedData] = useState(Data.filter(x=> x.id === +selected)[0])
-    const propertiesNames = (getEntityPropertiesNames(Data[0]))
+    const {
+        getEntityPropertiesNames, 
+        getData,
+        addData,
+        Data
+    } = useAdministration()
+
+    const { 
+        ShowProp,
+        getPropertyEndpoint
+    } = useEntityInformation()
+
+    const [selectedData, setSelectedData] = useState(formRow)
+    const propertiesNames = (getEntityPropertiesNames(formRow))
     const [dataValues, setDataValues] = useState([])
+    const [loadingModal, setLoadingModal] = useState(false)
     const [needsUpdate, setNeedsUpdate] = useState(false)
     const {toEnglish}= useTranslation()
     const router = useRouter()
 
+
     useEffect(()=>{
-        setSelectedData(Data.filter(x=>x.id === +selected)[0])
-    }, [selected])
+        setSelectedData(formRow)
+        setLoadingModal(true)
+    }, [formRow])
     
     useEffect(()=>{
-        selectedData && 
+        if(selectedData)
             setDataValues(Object.values(selectedData))
     }, [selectedData])
 
     useEffect(()=>{
+        setLoadingModal(false)
+    },[dataValues])
+
+    useEffect(()=>{
         dataValues.map((val, id)=>{
 
-            if(propertiesNames[id] !== "Id" && propertiesNames[id] !== "Str")
+            if(propertiesNames[id] !== "Id" && ShowProp(propertiesNames[id]))
             {
                 if(editMode)
                     (document.getElementById(`${id}`) as HTMLInputElement).value = val
@@ -34,51 +55,64 @@ export default function AdministrationForm({editMode, selected, setEditMode})
             }
         })
     },[dataValues, editMode])
-    
-    function onChange(e)
+
+    const [newData, setNewData] = useState([])
+
+    useEffect(()=>{
+        setNewData(selectedData)
+    }, [selectedData])
+    function handleChange(e)
     {
-        var aux = dataValues
-        for(const i in Object.values(selectedData))
-        {
+        setNewData(Object.values(newData).map((val, i)=>{
+        
+            if(Object.values(newData)[i] !== newData[i])
+            {
+                setNeedsUpdate(true)
+            }
+
             if(+i === +e.target.id)
             {
-                if(typeof Object.values(selectedData)[i] === 'number')
-                {
-                    
-                    aux[i] = +e.target.value
-                }
+                if(typeof Object.values(newData)[i] === 'number')
+                    return +e.target.value
                 else
-                {
-                    
-                    aux[i] = e.target.value
-                }
+                    return e.target.value
             }
             else
             {
-                aux[i] = Object.values(selectedData)[i]
+                return Object.values(newData)[i]
             }
-            
-            if(Object.values(selectedData)[i] !== aux[i])
-            {
-                setNeedsUpdate(true)
-                setDataValues(aux)
-            }
-        }
+
+        }))
+    }
+
+    function closeModal()
+    {
+        setSelectedData(null)
+        document.getElementById('adminForm').style.display="none"
+        location.reload()
     }
 
     function handleCancel()
     {
         setEditMode(false)
-        document.getElementById('adminForm').style.display="none"
+        closeModal()
     }
 
     function handleOnSubmit(e)
     {
-        var formElements = document.forms['AdminModal'].elements
         var temp ={}
-        for(const element of document.forms['AdminModal'].elements)
+        var formElements = document.forms['AdminModal'].elements
+        for(const element of formElements)
         {
-            console.log(toEnglish(element.name))
+            console.log(element.name)
+            if(element.type === "number")
+                temp[toEnglish(element.name)] = +element.value
+            else if(element.type === "select-one")
+                temp[toEnglish(element.name)] = +element.value
+            else if(element.type === "select-multiple")
+                temp[toEnglish(element.name)] = [...temp[toEnglish(element.name)],element.value]
+            else
+                temp[toEnglish(element.name)] = element.value
         }
         
         if(editMode)
@@ -88,22 +122,48 @@ export default function AdministrationForm({editMode, selected, setEditMode})
         }
         else
         {
-            // addData({...temp})
+            addData(temp, entity?.endpoint)
         }
-        document.getElementById('adminForm').style.display="none"
-        // location.reload()
+        // closeModal()
+
     }
 
-    function getInputType(value: any){
-        if(Array.isArray(value))
-        {
-            return "select"
-        }
-        else
-        {
-            return typeof value
-        }
+
+    const getPrevValue = (propId, val)=>{
+        // const response = getDataByIdFromEndpoint(val, getPropertyEndpoint(entityType, propId))
+        // return response
+        throw new Error("Implement getPrevValue function");
+        
     }
+    const [selectData, setSelectData] = useState([])
+    const [fetching, setFetching] = useState(false)
+    let index = 0
+    useEffect(()=>{
+        for(const prop in formRow)
+        {
+            if(ShowProp(prop))
+            {
+                if(getPropertyEndpoint(formRow, index))
+                {
+                    getData(getPropertyEndpoint(formRow, index))
+                    setFetching(true)
+                }
+            }
+            index++;
+        }
+    }, [formRow])
+    
+    useEffect(()=>{
+        if(fetching)
+        {
+            selectData[index] = Data
+            setSelectData(selectData)
+            setFetching(false)
+        }
+    },[Data])
+
+    // Indicates current index asking for data from selectData array
+    const [selectIndex, setSelectIndex] = useState(0)
 
     return(
         <div className="">
@@ -111,34 +171,63 @@ export default function AdministrationForm({editMode, selected, setEditMode})
             </div>
             <div className="fixed start-[12.5%] top-1/4 w-9/12 p-5 bg-white z-20 rounded-md">
                 <form action="" id="AdminModal" className="m-auto my-4">
-                    <label htmlFor="Id">Id:</label>
-                    <input type="text" name="Id" readOnly value={dataValues.filter((val,id)=>propertiesNames[id]=="Id")}/>
-                    {dataValues &&
-                        dataValues.map((val, id)=>{
-                            if(propertiesNames[id] !== "Id" && propertiesNames[id] !== "Str")
-                            {
-                                return(
-                                    <div className="my-2 flex-col" key={id}>
-                                        <label htmlFor="">{propertiesNames[id]}: </label>
-                                        {
-                                            getInputType(val) == "select" 
+                    {
+                        editMode &&
+                        <div className="">
+                            <label htmlFor="Id">Id:</label>
+                            <input type="text" name="Id" readOnly value={dataValues.filter((val,id)=>propertiesNames[id]=="Id")}/>
+                        </div>
+                    }
 
-                                            ?
-                                                <select name={`${propertiesNames[id]}`} id={`${id}`}>
-                                                    {
-                                                        val.map((value, key)=>(
-                                                            <option value={value} onChange={()=>{}} key={key}>
-                                                                { value.str }
+                    {!loadingModal &&
+                        dataValues.map((val, id) =>{
+                            if(propertiesNames[id] !== "Id" && ShowProp(propertiesNames[id]))
+                            {
+                                if(ShowProp(getEntityPropertiesNames(selectedData)[id]))
+                                {
+                                    // If the property is a foreign key, then it will be a select input
+                                    if(getPropertyEndpoint(formRow, id))
+                                    {
+                                        return(
+                                        <div className="" key={id}>
+                                            <label>{propertiesNames[id]}: </label>
+                                            <select id={`${id}`} name={`${propertiesNames[id]}`}>
+                                                {
+                                                    (selectData[selectIndex])?.map((val, id)=>{
+                                                        ()=>setSelectIndex(selectIndex+1)
+                                                        return(
+                                                            <option value={`${val.id}`} key={id}>
+                                                                {val.str}
                                                             </option>
-                                                        ))
-                                                    }
-                                                </select>
-                                            :
-                                                <input key={id} name={`${propertiesNames[id]}`} className="appearance-none border-solid border-2 rounded-md p-2 max-w-full" id={`${id}`} type={getInputType(val)} placeholder={propertiesNames[id]} onChange={(e)=>onChange(e)}/>
-                                        }
-                                    </div>
-                                )
+                                                        )
+                                                    })
+                                                }
+                                            </select>
+                                        </div>
+                                        )
+                                    }
+                                    // If the property is a file, then it will be a file input
+                                    else if(propertiesNames[id] === "Foto"){
+                                        return(
+                                            <div className="">
+                                                <label>{propertiesNames[id]}: </label>
+                                                <input type="file" key={id} id={`${id}`} name={`${propertiesNames[id]}`}/>
+                                            </div>
+                                        )
+                                        
+                                    }
+                                    else 
+                                    {
+                                        return(
+                                            <div className="" key={id}>
+                                                <label>{propertiesNames[id]}: </label>
+                                                <input id={`${id}`} name={`${propertiesNames[id]}`} type={`${typeof val}`} className="p-2 text-center border-solid border-2 border-black td" onChange={(e)=>handleChange(e)} defaultValue={typeof val == "boolean" ? (val === true ? "Sí" : "No") : val}/>
+                                            </div>
+                                        )
+                                    }
+                                }
                             }
+                            
                         })
                     }
                 </form>

@@ -1,4 +1,4 @@
-interface Athlete
+export interface Athlete
 {
     id: number,
     str: string,
@@ -6,5 +6,14 @@ interface Athlete
     ocupation: string,
     biography: string,
     picture: string,
-    faculties: Faculty
+    faculty: Faculty
+}
+
+export interface PostAthlete
+{
+    name: string,
+    ocupation: string,
+    biography: string,
+    picture: string,
+    faculty: Faculty
 }
