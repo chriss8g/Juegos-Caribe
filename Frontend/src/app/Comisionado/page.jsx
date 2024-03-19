@@ -45,7 +45,6 @@ export default function Comisioner()
     const [organizativa, setOrganizativa] = useState([]);
     const [disciplinariaP, setDisciplinariaP] = useState([]);
     const [disciplinariaS, setDisciplinariaS] = useState([]);
-    const[loading, setLoading] = useState(1);
 
     useEffect(() => {
         // Paso 2: Renombrar los campos y dividir la lista
@@ -72,17 +71,9 @@ export default function Comisioner()
         setDisciplinariaS(disciplinariaSList);
     }, []);
 
-    useEffect(()=>{
-        console.log(loading)
-        setLoading(loading-1);
-        console.log(disciplinariaS)
-        console.log(disciplinariaS[0])
-    },[disciplinariaS])
-
     return(
         
         <div className="Comisioner">
-           {loading<0 && 
             <Layout>
                  <h2 className="flex justify-center font-bold font-sans text-gray-700 mt-6">Comisión</h2>   
                 <div className="font-text-6">
@@ -122,7 +113,6 @@ export default function Comisioner()
                     
                 </div>
             </Layout>
-            }
         </div>
     )
 }
