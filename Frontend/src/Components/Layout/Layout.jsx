@@ -1,13 +1,10 @@
 'use client'
 import {useState} from "react"
-import {useState} from "react"
 import "./layout.css"
 import "../../app/globals.css"
 import Image from 'next/image'
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs"
 import Footer from "../Footer/Footer"
-import logo from '../../../public/logo.svg';
-import NavBar from "../NavBar/NavBar";
 import logo from '../../../public/logo.svg';
 import NavBar from "../NavBar/NavBar";
 
