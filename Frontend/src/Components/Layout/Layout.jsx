@@ -22,12 +22,12 @@ export default function Layout({children}) {
                     <div className="rightHeader">
                         <div className="searchIcon">
                             <Image alt="" src="/search.svg" fill className="image"/>
-                        </div>x
+                        </div>
                         <h2 onClick={() => {
                             lenguage === "es" ? setLenguage("en") : setLenguage("es")
                         }}>
                             {lenguage.toUpperCase()}
-                        </h2> */}
+                        </h2>
                         <div className="burgerMenu cursor-pointer">
                             <IconMenu2 />
                         </div>
