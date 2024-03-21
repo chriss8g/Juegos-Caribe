@@ -1,5 +1,5 @@
 
-export default function TextWithTitle2({title, text})
+export default function SubtitleText({title, text})
 {
     return(
         

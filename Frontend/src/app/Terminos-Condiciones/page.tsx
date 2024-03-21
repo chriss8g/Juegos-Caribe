@@ -1,7 +1,7 @@
 'use client'
 import Layout from "../../Components/Layout/Layout"
-import TextWithTitle from "../../Components/TextWithTitle/TextWithTitle"
-import TextWithTitle2 from "../../Components/TextWithTitle2/TextWithTitle2"
+import TitleText from "../../Components/TitleText/TitleText"
+import SubtitleText from "../../Components/SubtitleText/SubtitleText"
 
 export default function TermsAndConditions()
 {
@@ -9,9 +9,11 @@ export default function TermsAndConditions()
 
     return(
         <Layout>
-            <TextWithTitle title={"Términos y Condiciones"} text={txt} />
-            <TextWithTitle2 title={"Términos de participación"} text={txt}/>
-            <TextWithTitle2 title={"Por la presente usted está de acuerdo con lo siguiente:"} text={txt}/>
+            <div className="mb-20">
+                <TitleText title={"Términos y Condiciones"} text={txt} />
+                <SubtitleText title={"Términos de participación"} text={txt}/>
+                <SubtitleText title={"Por la presente usted está de acuerdo con lo siguiente:"} text={txt}/>
+            </div>
         </Layout>
     )
 }
