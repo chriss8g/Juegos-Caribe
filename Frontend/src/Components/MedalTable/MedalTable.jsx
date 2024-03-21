@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import "./medalTable.css"
 import Image from "next/image"
+import {IconMenu2} from "@tabler/icons-react";
 
 export default function MedalTable()
 {
@@ -37,11 +38,12 @@ export default function MedalTable()
                             <th>Facultades</th>
                             <th>
                                 <div className="medalIcon">
+                                    <IconMenu2/>
                                     <Image alt="" src="/goldenMedal.svg" fill className="image"/>
                                 </div>
                             </th>
                             <th>
-                                <div className="medalIcon">
+                                <div className="medalIcon just">
                                     <Image alt="" src="/silverMedal.svg" fill className="image"/>
                                 </div>
                             </th>

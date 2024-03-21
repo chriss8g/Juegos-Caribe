@@ -1,0 +1,19 @@
+.main-news-container {
+    background: linear-gradient(to bottom, transparent, rgb(51 51 51 / 89%)),
+    url('../../../public/main-news.png');
+    background-size: cover;
+    background-position: center;
+}
+.news-main-image {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    width: 100%;
+}
+
+
+.main-news-bottom-info{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 4% 19% 2% 4%;
+}
