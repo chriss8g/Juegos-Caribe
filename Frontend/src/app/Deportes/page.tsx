@@ -5,7 +5,7 @@ export default function Sports()
 {
     return(
         <Layout>
-            <TournamentStatus teams={[]}/>
+            Aqui los deportes
         </Layout>
     )
 }

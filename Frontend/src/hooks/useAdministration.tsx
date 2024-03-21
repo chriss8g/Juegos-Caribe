@@ -19,25 +19,18 @@ export default function useAdministration()
     const [editMode, setEditMode] = useState(false)
 
     
-    function getData(endpoint)
+    async function getData(endpoint)
     {
-        fetch(`${process.env.API_URL + endpoint}/`, {
+        let response = await fetch(`${process.env.API_URL + endpoint}/`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
             }
         })
-        .then(
-            (response)=>response.json()
-        )
-        .then(
-            (data)=>{
-                setData(data)
-            }
-        )
-        return Data
+        let data = await response.json()
+        setData(data)
+        return data
     }
-        
 
     function getDataById(dataId: number)
     {
@@ -46,22 +39,17 @@ export default function useAdministration()
 
     const [DataByIdFromEndpoint, setDataByIdFromEndpoint] = useState<typeof currentEntityType>()
     
-    function getDataByIdFromEndpoint(dataId: number, endpoint: string)
+    async function getDataByIdFromEndpoint(dataId: number, endpoint: string)
     {
-        fetch(`${process.env.API_URL + endpoint}/`+dataId+'/', {
+        const response = await fetch(`${process.env.API_URL + endpoint}/`+dataId+'/', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
             }
         })
-        .then(
-            (response)=>response.json()
-            )
-            .then(
-            (data)=>{
-                setDataByIdFromEndpoint(data)
-            }
-        )  
+        const data = await response.json()
+        setDataByIdFromEndpoint(data)  
+        return data
     }
 
     function addData(newData:any, endpoint:string)
@@ -105,6 +93,22 @@ export default function useAdministration()
         }       
     }
 
+    async function Join(entity1Info, entity2Info, entity1Prop, entity2Prop)
+    {
+        let resultData = []
+        for(var i in entity2Info)
+        {
+            for(var j in entity1Info)
+            {
+                if(entity2Info[i][entity2Prop] == entity1Info[j][entity1Prop])
+                {
+                    resultData.push({ ...entity2Info[i], ...entity1Info[j]})
+                }
+            }
+        }
+        console.log(entity1Info)
+        return resultData
+    }
 
     
 
@@ -139,6 +143,7 @@ export default function useAdministration()
         getData,
         getDataByIdFromEndpoint,
         getEntityPropertiesNames,
+        Join,
         selectedDataId,
         setCurrentEntity, 
         setData,
