@@ -33,7 +33,9 @@
 
 
 
-
+.text {
+  color: #4A5568; /* Este es el valor hexadecimal para gray-600  */
+ }
 
 /* Mobile Version: 0px - 420px */
 @media (max-width: 420px)
@@ -67,6 +69,3 @@
   }
 }
 
-.text {
-  color: #4A5568; /* Este es el valor hexadecimal para gray-600  */
- }
