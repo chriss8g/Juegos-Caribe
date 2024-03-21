@@ -2,7 +2,7 @@
 import Layout from "../../Components/Layout/Layout"
 import React, { useEffect } from "react"
 import useAdministration from "../../hooks/useAdministration"
-import { IconPencil, IconTrash } from "@tabler/icons-react"
+// import { IconPencil, IconTrash } from "@tabler/icons-react"
 import AdministrationForm from "../../Components/AdministrationForm/AdministrationForm"
 import DeleteModal from "../../Components/DeleteModal/DeleteModal"
 
@@ -75,8 +75,8 @@ export default function Administration()
                                                 {Object.values(row).map((prop, id)=>(
                                                     <td className="p-2 text-center border-solid border-2 border-black td" key={id}>{prop}</td>
                                                 ))}
-                                                <button className="p-2 border-solid border-2 border-gray-400 w-full bg-orange-300" onClick={(e)=>handleEdit(e)}><IconPencil className="m-auto"/></button>
-                                                <button className="p-2 border-solid border-2 border-gray-400 w-full bg-red-400" onClick={()=>handleOnDelete(row.id)}><IconTrash className="m-auto"/></button>
+                                                <button className="p-2 border-solid border-2 border-gray-400 w-full bg-orange-300" onClick={(e)=>handleEdit(e)}>EDIT</button>{/* <IconPencil className="m-auto"/></button> */}
+                                                <button className="p-2 border-solid border-2 border-gray-400 w-full bg-red-400" onClick={()=>handleOnDelete(row.id)}>DELETE</button>{/*<IconTrash className="m-auto"/></button>*/}
                                             </tr>
                                         ))
                                     }

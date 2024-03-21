@@ -8,7 +8,7 @@ export default function BreadCrumbs()
     var Color = "gray";
     useEffect(()=>
     {
-        const splittedRoute = location.href.split("/")
+        const splittedRoute = location?.href.split("/")
         for (let i = 0; i < splittedRoute.length; i++) {
             const crumb = splittedRoute[i] === "Contactenos" ? "Contáctenos" : splittedRoute[i]
             if(i >= 3 && !route.includes(crumb))
@@ -38,29 +38,28 @@ export default function BreadCrumbs()
         }
         router.push(stringRoute)
     }
-    const noCrumbsPages = [
-        "/"
-    ]
+    const noCrumbsPages = ["/"]
+
     return(
-        <div className="BreadCrumbs MobileView">
-            {
-                !noCrumbsPages.includes(pathname) &&
-                route.map((crumb, index)=>{
-                    if (index===route.length-1) {
-                        Color = "#5a1024"
-                    }
-                    return(
-                        <div className="crumbs" key={index} onClick={()=>changeRoute(crumb)}>
-                            {
-                                index > 0
-                                &&
-                                <h3 style={{color:Color}}> &#8250;</h3>
-                            }
-                            <p style={{color:Color}}>{crumb}</p>
-                        </div>
-                    )
-                })
-            }
+        <div className="BreadCrumbs MobileView lg:mt-1 lg:p-2" style={pathname === "/" ? {display: 'none'} : {}}>
+        {
+            !noCrumbsPages.includes(pathname) &&
+            route.map((crumb, index)=>{
+                if (index===route.length-1) {
+                    Color = "#5a1024"
+                }
+                return(
+                    <div className="crumbs" key={index} onClick={()=>changeRoute(crumb)}>
+                        {
+                            index > 0
+                            &&
+                            <h3 style={{color:Color}}> &#8250;</h3>
+                        }
+                        <p style={{color:Color}}>{crumb}</p>
+                    </div>
+                )
+            })
+        }
         </div>
     )
 }
