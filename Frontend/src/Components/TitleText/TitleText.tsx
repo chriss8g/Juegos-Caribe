@@ -1,5 +1,5 @@
 
-export default function TextWithTitle({title, text})
+export default function TitleText({title, text})
 {
     return(
         <div className="mx-6">
