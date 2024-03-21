@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 import "./playcard.css"
 import Image from "next/image"
-import useSiteContext from "@/hooks/useSiteContext"
+import useSiteContext from "../../hooks/useSiteContext"
 export default function PlayCard({play})
 {
     
