@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import "../app/globals.css"
 import Layout from '../Components/Layout/Layout'
 import Presentation from '../Components/Presentation/Presentation'
 import MedalTable from '../Components/MedalTable/MedalTable'

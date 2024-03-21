@@ -1,15 +1,16 @@
+@import url('https://fonts.cdnfonts.com/css/segoe-ui-4');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.MobileView
+
+  .MobileView
 {
   background-color: rgb(245, 245, 245);
   display: none;
 }
 .DesktopView
 {
-  background-color: rgb(245, 245, 245);
   display: block;
 }
 .image{
@@ -17,23 +18,42 @@
   width: 100% !important;
   position: relative !important;
 }
-.sectionTitle
-{
+.sectionTitle {
   color: #5a1024;
   border-bottom: solid;
-  border-width: 1px;
-  border-color: #5a102454;
-  padding: 2% 0%;
+  border-width: 0;
+  border-bottom-width: 2px;
+  border-color: rgba(58, 56, 56, 0.2);
+  padding: 1% 0;
   margin-bottom: 5%;
 }
 .container
 {
-    padding: 0 5%;
+    padding: 0 7%;
+}
+.hide {
+  display: none;
 }
 
+.align-center {
+  align-items: center;
+}
 
+.width-10{
+  width: 10%;
+}
 
+.width-90{
+  width: 90%;
+}
 
+.height-10{
+  height: 10%;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+}
 
 /* Mobile Version: 0px - 420px */
 @media (max-width: 420px)
@@ -64,5 +84,8 @@
   .DesktopView
   {
     display: none;
+  }
+  .container {
+    padding: 0 5%;
   }
 }
