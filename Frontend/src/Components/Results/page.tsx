@@ -1,4 +1,4 @@
-export default function Results(data)
+export default function Results({data})
 {
     // const CAthlete =[
     //     {
