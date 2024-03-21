@@ -38,3 +38,18 @@ p, h1
 {
     margin-bottom: 5%;
 }
+
+
+@media (min-width: 1024px)
+{
+    .recortedPlayer {
+        width: 26%;
+        top: 17%;
+        left: 68%;
+    }
+    .gameIsOn
+    {
+        padding: 5% 0;
+    }
+
+}

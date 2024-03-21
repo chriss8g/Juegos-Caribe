@@ -42,7 +42,6 @@ export default function Schedule()
             document.genderForm.gender.value = e.target.value
             setFilteredGender(e.target.value)
         }
-        console.log(filteredGender)
     }
     
     const handleIconSelect=(e)=>{
@@ -135,7 +134,6 @@ export default function Schedule()
             }
             if (filteredGender.length !== 0 && !filteredGender.includes(play.gender))
             {
-                console.log(play+"and"+filteredGender)
                 erase.push(play)
             }
         })
@@ -150,7 +148,7 @@ export default function Schedule()
     },[filtering, filteredSession, filteredFaculties, filteredSports, filteredGender])
     
     return(
-        <div className="Schedule MobileView">
+        <div className="Schedule">
             <Layout>
                 <div className="cornerCircle">
                     <Image src="/smallBall.svg" fill className="image" alt=""/>
@@ -166,10 +164,10 @@ export default function Schedule()
                                 </div>
                             </div>
                         </div>
-                        <div className="filterButt" style={filterButtonStyle} onClick={()=>setFiltering(!filtering)}>
+                        <div className="filterButt" style={filterButtonStyle}>
                             <p>Filtro</p>
                             <div className="arr">
-                                <div className="arrowImg">
+                                <div className="arrowImg cursor-pointer" onClick={()=>setFiltering(!filtering)}>
                                     <Image src={filtering ? "/less.svg" :"/more.svg"} alt="" fill className="image"/>
                                 </div>
                             </div>

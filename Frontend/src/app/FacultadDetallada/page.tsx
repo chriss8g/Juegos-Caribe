@@ -4,7 +4,6 @@ import AthleteCard from "../../Components/AthleteCard/page";
 import { useState } from "react";
 import Results from "../../Components/Results/page";
 import "./fac-detallada.css"
-import NewsPreview from "../../Components/NewsPreview/NewsPreview";
 
 export default function FacultadDetallada(facultad)
 {

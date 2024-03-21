@@ -264,13 +264,23 @@ export default function FacultiesPlaying()
     }
 
     return(
-        <div className="FacultiesPlaying MobileView container">
-            <h2 className="sectionTitle">Facultades Participantes</h2>
-            <div className="FacultiesPage">
+        <div className="FacultiesPlaying container ">
+            <h2 className="sectionTitle text-2xl lg:text-3xl font-bold">Facultades Participantes</h2>
+            <div className="flex justify-between mt-[5%] MobileView">
                 <FacultyPreview name={leftCard.name} image={leftCard.image}/>
                 <FacultyPreview name={rightCard.name} image={rightCard.image}/>
+                <FacultyPreview name={rightCard.name} image={rightCard.image}/>
+                <FacultyPreview name={rightCard.name} image={rightCard.image}/>
+                <FacultyPreview name={rightCard.name} image={rightCard.image}/>
+                <FacultyPreview name={rightCard.name} image={rightCard.image}/>
+                <FacultyPreview name={rightCard.name} image={rightCard.image}/>
+                <FacultyPreview name={rightCard.name} image={rightCard.image}/>
+                <FacultyPreview name={rightCard.name} image={rightCard.image}/>
+                <FacultyPreview name={rightCard.name} image={rightCard.image}/>
+                <FacultyPreview name={rightCard.name} image={rightCard.image}/>
+
             </div>
-            <div className="pagination">
+            <div className="pagination flex MobileView">
                 {
                     Selected > 0 ?
                         <div className="arrow">
@@ -298,6 +308,10 @@ export default function FacultiesPlaying()
                     <div className=""></div>
                 }
             </div>
+
+        {/*    Implementación para Desktop de Carrusel*/}
+
+
         </div>
     )
 }
