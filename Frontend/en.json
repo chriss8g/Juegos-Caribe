@@ -1,0 +1,18 @@
+{
+    "Id": "id",
+    "Título": "title",
+    "Str": "str",
+    "Año": "year",
+    "Edición": "edition",
+    "Temporada": "season",
+    "Nombre": "name",
+    "Comisionados": "comisioners",
+    "Comisionado": "comisioner",
+    "Torneos": "tournaments",
+    "Torneo": "Tournament",
+    "Posición": "position",
+    "Biografía": "biography",
+    "Foto": "picture",
+    "Facultad": "faculty",
+    "Puntos": "points"
+}
