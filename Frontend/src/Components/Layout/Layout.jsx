@@ -31,12 +31,12 @@ export default function Layout({children})
                             className="LoginIcon cursor-pointer"
                             href="/LogIn"
                         >
-                            {`
+                            {
                                 !loggedInUser.isLoggedIn ?
                                     <IconUser />
                                     :
-                                    ${loggedInUser.name[0]?.toUpperCase()+loggedInUser.lastname[0]?.toUpperCase()}
-                            `}
+                                    `${loggedInUser.name[0]?.toUpperCase()+loggedInUser.lastname[0]?.toUpperCase()}`
+                            }
                         </Link>
                         {/* <h2 
                             className="cursor-pointer"
@@ -52,7 +52,6 @@ export default function Layout({children})
                 </div>
             </div>
             <div className="DesktopView">
-
             </div>
             <div className="MobileView">
                 <BreadCrumbs />
