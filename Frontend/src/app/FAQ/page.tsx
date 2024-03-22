@@ -9,11 +9,12 @@ export default function FAQ()
         <div className="FAQ">
             <Layout>
                 <div className="FAQ-main-container MobileView" >
-                    <p className='text-3xl text-gray-600 font-bold mb-5 mt-[5%] faq-text' >Preguntas frecuentes</p>
+                    
+                    <p className='text-3xl text-gray-600 font-bold mb-5 mt-[5%] faq-header' >Preguntas frecuentes</p>
 
                     <p className='text-header mb-5 mt-6'>¿Qué son los Juegos Caribe?</p>
 
-                    <p className='text-raw mb-5'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt ullam soluta explicabo, illo mollitia corporis, assumenda non tenetur perspiciatis alias dolor velit nihil consectetur vero veniam dignissimos? Corrupti, neque magnam?</p>
+                    <p className='text-raw mb-10'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt ullam soluta explicabo, illo mollitia corporis, assumenda non tenetur perspiciatis alias dolor velit nihil consectetur vero veniam dignissimos? Corrupti, neque magnam?</p>
 
                     <p className='text-header mb-5'>¿Cómo surgieron los Juegos Caribe?</p>
 
@@ -21,11 +22,11 @@ export default function FAQ()
 
                     <p className='text-raw mb-5'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt ullam soluta explicabo, illo mollitia corporis, assumenda non tenetur perspiciatis alias dolor velit nihil consectetur vero veniam dignissimos? Corrupti, neque magnam?</p>
 
-                    <p className='text-raw mb-5'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt ullam soluta explicabo, illo mollitia corporis, assumenda non tenetur perspiciatis alias dolor velit nihil consectetur vero veniam dignissimos? Corrupti, neque magnam?</p>
+                    <p className='text-raw mb-10'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt ullam soluta explicabo, illo mollitia corporis, assumenda non tenetur perspiciatis alias dolor velit nihil consectetur vero veniam dignissimos? Corrupti, neque magnam?</p>
 
                     <p className='text-header mb-5'>¿Cuál es el lema de los Juegos Caribe?</p>
                     
-                    <p className='text-raw mb-5'>¿Quién vive?... ¡Caribe!... ¿Quién Va?...Universidad!</p>
+                    <p className='text-raw mb-20'>¿Quién vive?... ¡Caribe!... ¿Quién Va?...Universidad!</p>
                     
                 </div>
             </Layout>
