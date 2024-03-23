@@ -1,8 +1,8 @@
 'use client'
 import "../globals.css"
 import Layout from "../../Components/Layout/Layout"
-import TextWithTitle from "../../Components/TextWithTitle/TextWithTitle"
-import TextWithTitle2 from "../../Components/TextWithTitle2/TextWithTitle2"
+import TitleText from "../../Components/TitleText/TitleText"
+import SubtitleText from "../../Components/SubtitleText/SubtitleText"
 
 export default function Contactenos()
 {
@@ -11,8 +11,11 @@ export default function Contactenos()
 
     return(
         <Layout>
-            <TextWithTitle title={"Política de privacidad"} text={text}/>
-            <TextWithTitle2 title={"Reglas a conocer"} text={text}/>
+            <div className="mb-20">
+                <TitleText title={"Política de privacidad"} text={text}/>
+                <SubtitleText title={"Reglas a conocer"} text={text}/>
+            </div>
+            
         </Layout>
     )
 }
