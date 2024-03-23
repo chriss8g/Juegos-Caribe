@@ -43,6 +43,9 @@
   color: #4A5568
 }
 
+.text {
+  color: #4A5568; /* Este es el valor hexadecimal para gray-600  */
+ }
 .width-90{
   width: 90%;
 }
@@ -85,7 +88,9 @@ body {
   {
     display: none;
   }
+}
+
   .container {
     padding: 0 5%;
   }
-}
+
