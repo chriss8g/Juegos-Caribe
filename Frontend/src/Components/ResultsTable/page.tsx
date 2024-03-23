@@ -5,7 +5,7 @@ const ResultsTable = () => {
     const data = Array(5).fill(["L(50)", "5to", "15"]);
 
     return (
-        <table className="results-table border-separate border-spacing-x-7">
+        <table className="results-table border-separate border-spacing-x-5">
             <thead>
             <tr>
                 <th>Edición</th>

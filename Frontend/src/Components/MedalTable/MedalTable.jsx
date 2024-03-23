@@ -16,43 +16,43 @@ export default function MedalTable()
                 <MedalTableHeader/>
                 <table className="medalsTable">
                     <thead>
-                        <tr>
-                            <th>Facultades</th>
-                            <th>
-                                <div className="medalIcon">
-                                    <Image alt="" src="/goldenMedal.svg" fill className="image"/>
-                                </div>
-                            </th>
-                            <th>
-                                <div className="medalIcon">
-                                    <Image alt="" src="/silverMedal.svg" fill className="image"/>
-                                </div>
-                            </th>
-                            <th>
-                                <div className="medalIcon">
-                                    <Image alt="" src="/bronzeMedal.svg" fill className="image"/>
-                                </div>
-                            </th>
-                            <th>
-                                <div className="medalIcon">
-                                    <Image alt="" src="/allMedals.svg" fill className="image"/>
-                                </div>
-                            </th>
-                        </tr>
+                    <tr>
+                        <th>Facultades</th>
+                        <th>
+                            <div className="medalIcon">
+                                <Image alt="" src="/goldenMedal.svg" fill className="image"/>
+                            </div>
+                        </th>
+                        <th>
+                            <div className="medalIcon">
+                                <Image alt="" src="/silverMedal.svg" fill className="image"/>
+                            </div>
+                        </th>
+                        <th>
+                            <div className="medalIcon">
+                                <Image alt="" src="/bronzeMedal.svg" fill className="image"/>
+                            </div>
+                        </th>
+                        <th>
+                            <div className="medalIcon">
+                                <Image alt="" src="/allMedals.svg" fill className="image"/>
+                            </div>
+                        </th>
+                    </tr>
                     </thead>
                     <tbody>
-                        {!more ?
+                    {!more ?
                         <>
                             <tr className="trow">
                                 <td>
                                     <div className="row">
                                         <p>1</p>
                                         <div className="logoName">
-                                        <Image alt="" src="/lenguas_extranjeras.svg" fill className="image"/>
+                                            <Image alt="" src="/lenguas_extranjeras.svg" fill className="image"/>
                                         </div>
                                         <p>FLEX</p>
                                     </div>
-                                    </td>
+                                </td>
                                 <td className="medalInfo">1</td>
                                 <td className="medalInfo">-</td>
                                 <td className="medalInfo">4</td>
@@ -64,129 +64,6 @@ export default function MedalTable()
                                         <p>2</p>
                                         <div className="logoName">
                                             <Image alt="" src="/farmacia_alimentos.svg" fill className="image"/>
-                                            </div>
-                                        <p>FARAL</p>
-                                        </div>
-                                </td>
-                                <td className="medalInfo">1</td>
-                                <td className="medalInfo">-</td>
-                                <td className="medalInfo">4</td>
-                                <td className="medalInfo">5</td>
-                            </tr>
-                            </>
-                            :
-                            <>
-                            <tr className="trow">
-                                <td>
-                                <div className="row">
-                                        <p>1</p>
-                                        <div className="logoName">
-                                            <Image alt="" src="/lenguas_extranjeras.svg" fill className="image"/>
-                                            </div>
-                                        <p>FLEX</p>
-                                    </div>
-                                    </td>
-                                <td className="medalInfo">1</td>
-                                <td className="medalInfo">-</td>
-                                <td className="medalInfo">4</td>
-                                <td className="medalInfo">5</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="row">
-                                        <p>2</p>
-                                        <div className="logoName">
-                                            <Image alt="" src="/farmacia_alimentos.svg" fill className="image"/>
-                                        </div>
-                                        <p>FARAL</p>
-                                        </div>
-                                    </td>
-                                    <td className="medalInfo">1</td>
-                                    <td className="medalInfo">-</td>
-                                    <td className="medalInfo">4</td>
-                                    <td className="medalInfo">5</td>
-                            </tr>
-                            <tr>
-                                        <td>
-                                        <div className="row">
-                                        <p>1</p>
-                                        <div className="logoName">
-                                            <Image alt="" src="/lenguas_extranjeras.svg" fill className="image"/>
-                                        </div>
-                                            <p>FLEX</p>
-                                    </div>
-                                </td>
-                                <td className="medalInfo">1</td>
-                                <td className="medalInfo">-</td>
-                                <td className="medalInfo">4</td>
-                                <td className="medalInfo">5</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="row">
-                                        <p>2</p>
-                                        <div className="logoName">
-                                            <Image alt="" src="/farmacia_alimentos.svg" fill className="image"/>
-                                        </div>
-                                        <p>FARAL</p>
-                                    </div>
-                                </td>
-                                    <td className="medalInfo">1</td>
-                                    <td className="medalInfo">-</td>
-                                    <td className="medalInfo">4</td>
-                                    <td className="medalInfo">5</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="row">
-                                    <p>1</p>
-                                    <div className="logoName">
-                                    <Image alt="" src="/lenguas_extranjeras.svg" fill className="image"/>
-                                        </div>
-                                        <p>FLEX</p>
-                                        </div>
-                                        </td>
-                                <td className="medalInfo">1</td>
-                                <td className="medalInfo">-</td>
-                                <td className="medalInfo">4</td>
-                                <td className="medalInfo">5</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="row">
-                                    <p>2</p>
-                                    <div className="logoName">
-                                    <Image alt="" src="/farmacia_alimentos.svg" fill className="image"/>
-                                    </div>
-                                    <p>FARAL</p>
-                                    </div>
-                                    </td>
-                                    <td className="medalInfo">1</td>
-                                    <td className="medalInfo">-</td>
-                                    <td className="medalInfo">4</td>
-                                    <td className="medalInfo">5</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="row">
-                                        <p>1</p>
-                                        <div className="logoName">
-                                            <Image alt="" src="/lenguas_extranjeras.svg" fill className="image"/>
-                                        </div>
-                                        <p>FLEX</p>
-                                    </div>
-                                </td>
-                                <td className="medalInfo">1</td>
-                                <td className="medalInfo">-</td>
-                                <td className="medalInfo">4</td>
-                                <td className="medalInfo">5</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="row">
-                                        <p>2</p>
-                                        <div className="logoName">
-                                        <Image alt="" src="/farmacia_alimentos.svg" fill className="image"/>
                                         </div>
                                         <p>FARAL</p>
                                     </div>
@@ -197,27 +74,150 @@ export default function MedalTable()
                                 <td className="medalInfo">5</td>
                             </tr>
                         </>
-                        }
+                        :
+                        <>
+                            <tr className="trow">
+                                <td>
+                                    <div className="row">
+                                        <p>1</p>
+                                        <div className="logoName">
+                                            <Image alt="" src="/lenguas_extranjeras.svg" fill className="image"/>
+                                        </div>
+                                        <p>FLEX</p>
+                                    </div>
+                                </td>
+                                <td className="medalInfo">1</td>
+                                <td className="medalInfo">-</td>
+                                <td className="medalInfo">4</td>
+                                <td className="medalInfo">5</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="row">
+                                        <p>2</p>
+                                        <div className="logoName">
+                                            <Image alt="" src="/farmacia_alimentos.svg" fill className="image"/>
+                                        </div>
+                                        <p>FARAL</p>
+                                    </div>
+                                </td>
+                                <td className="medalInfo">1</td>
+                                <td className="medalInfo">-</td>
+                                <td className="medalInfo">4</td>
+                                <td className="medalInfo">5</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="row">
+                                        <p>1</p>
+                                        <div className="logoName">
+                                            <Image alt="" src="/lenguas_extranjeras.svg" fill className="image"/>
+                                        </div>
+                                        <p>FLEX</p>
+                                    </div>
+                                </td>
+                                <td className="medalInfo">1</td>
+                                <td className="medalInfo">-</td>
+                                <td className="medalInfo">4</td>
+                                <td className="medalInfo">5</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="row">
+                                        <p>2</p>
+                                        <div className="logoName">
+                                            <Image alt="" src="/farmacia_alimentos.svg" fill className="image"/>
+                                        </div>
+                                        <p>FARAL</p>
+                                    </div>
+                                </td>
+                                <td className="medalInfo">1</td>
+                                <td className="medalInfo">-</td>
+                                <td className="medalInfo">4</td>
+                                <td className="medalInfo">5</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="row">
+                                        <p>1</p>
+                                        <div className="logoName">
+                                            <Image alt="" src="/lenguas_extranjeras.svg" fill className="image"/>
+                                        </div>
+                                        <p>FLEX</p>
+                                    </div>
+                                </td>
+                                <td className="medalInfo">1</td>
+                                <td className="medalInfo">-</td>
+                                <td className="medalInfo">4</td>
+                                <td className="medalInfo">5</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="row">
+                                        <p>2</p>
+                                        <div className="logoName">
+                                            <Image alt="" src="/farmacia_alimentos.svg" fill className="image"/>
+                                        </div>
+                                        <p>FARAL</p>
+                                    </div>
+                                </td>
+                                <td className="medalInfo">1</td>
+                                <td className="medalInfo">-</td>
+                                <td className="medalInfo">4</td>
+                                <td className="medalInfo">5</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="row">
+                                        <p>1</p>
+                                        <div className="logoName">
+                                            <Image alt="" src="/lenguas_extranjeras.svg" fill className="image"/>
+                                        </div>
+                                        <p>FLEX</p>
+                                    </div>
+                                </td>
+                                <td className="medalInfo">1</td>
+                                <td className="medalInfo">-</td>
+                                <td className="medalInfo">4</td>
+                                <td className="medalInfo">5</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="row">
+                                        <p>2</p>
+                                        <div className="logoName">
+                                            <Image alt="" src="/farmacia_alimentos.svg" fill className="image"/>
+                                        </div>
+                                        <p>FARAL</p>
+                                    </div>
+                                </td>
+                                <td className="medalInfo">1</td>
+                                <td className="medalInfo">-</td>
+                                <td className="medalInfo">4</td>
+                                <td className="medalInfo">5</td>
+                            </tr>
+                        </>
+                    }
                     </tbody>
 
                 </table>
-                    <div className="moreBar font-medium text-lg" onClick={()=>setMore(!more)}>
-                        <>
-                            <p>Ver &nbsp;</p>
-                            {
-                                !more
+                <div className="moreBar font-medium text-lg" onClick={()=>setMore(!more)}>
+                    <>
+                        <p>Ver &nbsp;</p>
+                        {
+                            !more
                                 ?
                                 <p>más</p>
                                 :
                                 <p>menos</p>
-                            }
-                            <div className="showMore cursor-pointer">
-                                <div className="moreImg" >
+                        }
+                        <div className="showMore cursor-pointer">
+                            <div className="moreImg" >
                                 <Image alt="" src={more ? "less-red.svg" : "more-red.svg"}  fill className="image"/>
-                                </div>
                             </div>
-                        </>
-                    </div>
+                        </div>
+                    </>
+                </div>
             </div>
 
             <div className="DesktopView">

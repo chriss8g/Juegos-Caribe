@@ -5,6 +5,8 @@ import { useState } from "react";
 import Results from "../../Components/Results/page";
 import "./fac-detallada.css"
 import LessMoreBar from "../../Components/Less-More-Bar/LessMoreBar";
+import MedalTable from "../../Components/MedalTable/MedalTable";
+import MedalsFac from "../../Components/MedalsFac/page";
 
 export default function FacultadDetallada(facultad)
 {
@@ -72,6 +74,8 @@ export default function FacultadDetallada(facultad)
 
 
                     <p className="text-black font-medium text-lg mt-7">Medallero</p>
+                    <MedalsFac/>
+
                     <p className="text-black font-medium text-lg mt-7">Resultados</p>
                     <Results data="" />
                 </div>
