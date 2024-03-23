@@ -1,0 +1,56 @@
+
+.medalsTable
+{
+    background-color: rgba(255, 255, 255, 0.753);
+    padding: 0 4%;
+    width: 90%;
+    border-radius: 14px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.medalsTable th:first-of-type, .medalsTable td:first-child {
+    padding: 0 25vw;
+}
+
+.medalIcon
+{
+    width: 80%;
+    margin-left: 30%;
+}
+
+.row
+{
+    display: flex;
+    align-items: center;
+    padding: 0 7% 0 9%;
+}
+table tr:first-child th {
+    border-bottom: solid lightgray 2px;
+}
+.medalsTable tr td:first-child {
+    padding-left: 10px;
+}
+
+.medalsTable th:first-child {
+    padding-left: 10px;
+}
+
+.medalInfo
+{
+    padding-left: 3.5%;
+}
+.medalInfo:last-of-type
+{
+    padding-left: 6%;
+}
+
+.medalsTable th, .medalsTable td {
+    color: rgb(3 7 18);
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    text-align: center;
+}
+.medalsTable th {
+    text-align: center;
+}
