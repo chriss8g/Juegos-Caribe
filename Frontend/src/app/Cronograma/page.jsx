@@ -9,7 +9,6 @@ import Layout from "../../Components/Layout/Layout";
 import Image from "next/image"
 import PlayCard from "../../Components/PlayCard/PlayCard";
 import { useEffect, useState } from "react";
-import { generateBuildId } from "../../../next.config";
 
 export default function Schedule()
 {

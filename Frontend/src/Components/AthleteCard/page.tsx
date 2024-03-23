@@ -1,35 +1,16 @@
-import Layout from "../../Components/Layout/Layout";
-
-
-export default function AthleteCard(athlete)
+export default function AthleteCard({athlete})
 {
-    //Aqui voy a poner cosas para ir probando. Luego seria cambiar estos por los que vienen de la facultad que se recibe
-    const CAthlete =[{
-        "id": 1,
-        "sport": "Fútbol",
-        "name": "Luka Modric",
-        "pos": "Medio Campo",
-        "image": "/athlete1",
-        "number": 16
-    },
-        {
-            "id": 2,
-            "sport": "Fútbol",
-            "number": 10,
-            "name": "Luka Modric",
-            "pos": "Medio Campo",
-            "image": "/athlete2"
-        }
-    ]
+
+
     return(
-        <div className="athelete-main-container">
-            <div className="athlete-img-cont w-1/4">
-                <img src={CAthlete[0].image} className="w-[100%]" alt={"jugador"}/>
+        <div className="athlete-card-main-container flex w-[90%] m-2 bg-white py-3 px-4 rounded-xl shadow-lg items-center">
+            <div className="w-[35%] mr-1">
+                <img src={athlete[0].imagen} alt="jugador" className=""/>
             </div>
-            <div className="athlete-desc-container">
-                <p className="font-medium">{CAthlete[0].number} {CAthlete[0].name}</p>
-                <p>{CAthlete[0].sport}</p>
-                <p>{CAthlete[0].pos}</p>
+            <div className="flex flex-col">
+                <p className="font-medium text-sm">{athlete[0].num} {athlete[0].name}</p>
+                <p className="">{athlete[0].sport}</p>
+                <p className="">{athlete[0].pos}</p>
             </div>
         </div>
     )
