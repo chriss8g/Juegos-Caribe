@@ -20,10 +20,10 @@ export default function DeporteDetallado()
                         <img src={Sport[0].imagen} alt="Sport" className="rounded-b-xl"/>
                     </div>
                     <div
-                        className="sport-logo h-[100%] absolute left-0 bottom-0 rounded-r-[20%] backdrop-blur-[1px] bg-[#00000078] flex flex-col items-center justify-center pr-10">
-                        <img src={Sport[0].logo} alt="logo del deporte" className=" w-1/3"/>
-                        <p className="text-white font-bold text-2xl mt-1">{Sport[0].name}</p>
-                        <p className="text-white font-medium text-lg mt-0.5">{Sport[0].phase}</p>
+                        className="sport-logo h-[100%] w-[28%] ml-0 absolute left-0 bottom-0 rounded-r-[50%] backdrop-blur-[1px] bg-[#00000078] flex flex-col items-center justify-center pr-10">
+                        <img src={Sport[0].logo} alt="logo del deporte" className=" w-1/2"/>
+                        <p className="text-white font-bold text-2xl mt-1 ml-5">{Sport[0].name}</p>
+                        <p className="text-white font-medium text-xs mt-0.5 ml-1">{Sport[0].phase}</p>
                     </div>
                 </div>
 
