@@ -1,8 +1,8 @@
 'use client'
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import "./medalTable.css"
+
 import Image from "next/image"
-import {IconPencil} from "@tabler/icons-react";
 import MedalTableHeader from "../MedalTableHeader/MedalTableHeader";
 import MedalTableDesktop from "../MedalTableDesktop/MedalTableDesktop";
 

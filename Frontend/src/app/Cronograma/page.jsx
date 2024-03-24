@@ -5,6 +5,7 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css/navigation';
 import 'swiper/css';
 import "./schedule.css"
+import "../../app/globals.css"
 import Layout from "../../Components/Layout/Layout";
 import Image from "next/image"
 import PlayCard from "../../Components/PlayCard/PlayCard";
@@ -14,7 +15,7 @@ export default function Schedule()
 {
     const {dailySchedule, Faculties, Sports} = useSiteContext()
 
-    const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Deciembre"];
+    const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
     const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
 
     const date = new Date()
@@ -154,10 +155,10 @@ export default function Schedule()
                     <Image src="/smallBall.svg" fill className="image" alt=""/>
                 </div>
                 <div className="container">
-                    <h2>Cronograma</h2>
+                    <p className="text-2xl font-bold text-center text-gray-700">Cronograma</p>
                     <div className="scheduleHead">
                         <div className="date">
-                            <p>{days[date.getDay()]}, {date.getDate()} de {months[date.getMonth()]} {date.getFullYear()}</p>
+                            <p className="text-gray-600 text-sm">{days[date.getDay()]}, {date.getDate()} de {months[date.getMonth()]} {date.getFullYear()}</p>
                             <div className="calendar">
                                 <div className="calendarImage" id="calendar">
                                     <Image src="/lightCalendar.svg" fill className="image" alt=""/>
@@ -166,7 +167,7 @@ export default function Schedule()
                         </div>
                         <div className="filterButt" style={filterButtonStyle}>
                             <p>Filtro</p>
-                            <div className="arr">
+                            <div className="w-1/4">
                                 <div className="arrowImg cursor-pointer" onClick={()=>setFiltering(!filtering)}>
                                     <Image src={filtering ? "/less.svg" :"/more.svg"} alt="" fill className="image"/>
                                 </div>
@@ -178,29 +179,29 @@ export default function Schedule()
                             <div className="FiltersSelection">
 
                                 <div className="filterHead">
-                                    <h4>Filtros del día</h4>
+                                    <p className="text-center text-gray-700 font-bold text-lg">Filtros del día</p>
                                 </div>
 
                                 <div className="filter">
-                                    <h4 className="filterTitle">Horario</h4>
+                                    <p className="filterTitle mb-0 pt-[5%] px-0 pb-[2%] text-lg text-gray-700 border-b-gray-400 border-b-2">Horario</p>
                                     <form name="sessionForm" className="row" value={filteredSession}>
                                         <div className="option">
                                             <input type="radio" name="session"  className="filterSession" value="morning" onClick={handleRadioSelect}/>
-                                            <p>Mañana</p>
+                                            <p className="text-[1rem]">Mañana</p>
                                         </div>
                                         <div className="option">
                                             <input type="radio" name="session" className="filterSession" value="afternoon" onClick={handleRadioSelect} />
-                                            <p>Tarde</p>
+                                            <p className="text-[1rem]">Tarde</p>
                                         </div>
                                         <div className="option">
                                             <input type="radio" name="session" className="filterSession" value={["morning", "afternoon"]} onClick={handleRadioSelect} />
-                                            <p>Todo el día</p>
+                                            <p className="text-[1rem]">Todo el día</p>
                                         </div>
                                     </form>
                                 </div>
 
                                 <div className="filter">
-                                    <h4 className="filterTitle">Facultades</h4>
+                                    <p className="mb-0 pt-[5%] px-0 pb-[2%] text-lg text-gray-700 border-b-gray-400 border-b-2">Facultades</p>
                                     <Swiper
                                     className="swiper"
                                     spaceBetween={15}
@@ -214,7 +215,7 @@ export default function Schedule()
                                                     <div className="iconImage">
                                                         <Image alt="" src={Faculties.filter((fac)=>fac.name === facult)[0].image} fill className="image faculty"/>
                                                     </div>
-                                                    <p>{facult}</p>
+                                                    <p className="font-sm text-gray-700">{facult}</p>
                                                 </div>
                                             </SwiperSlide>
                                         ))
@@ -223,7 +224,7 @@ export default function Schedule()
                                 </div>
 
                                 <div className="filter">
-                                    <h4 className="filterTitle">Deportes</h4>
+                                    <p className="mb-0 pt-[5%] px-0 pb-[2%] text-lg text-gray-700 border-b-gray-400 border-b-2">Deportes</p>
                                     <Swiper
                                     className="swiper"
                                     spaceBetween={15}
