@@ -39,7 +39,7 @@ export default function Layout({children})
                                     <IconUser />
                                     :
                                     `${loggedInUser.name[0]?.toUpperCase()+loggedInUser.lastname[0]?.toUpperCase()}`
-                            }
+                                }
                         </Link>
                         {/* <h2 
                             className="cursor-pointer"

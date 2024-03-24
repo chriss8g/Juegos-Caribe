@@ -1,4 +1,3 @@
-import Footer from "../../Components/Footer/Footer";
 import "../globals.css"
 import "./contact.css"
 import Layout from "../../Components/Layout/Layout";
