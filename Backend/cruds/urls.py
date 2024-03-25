@@ -13,6 +13,9 @@ from .views.athlete import AthleteList, AthleteDetail
 from .views.facultyOnSeason import FacultyOnSeasonList, FacultyOnSeasonDetail
 from .views.tournamentOnSeason import TournamentOnSeasonList, TournamentOnSeasonDetail
 from .views.facultyOnTournamentOnSeason import FacultyOnTournamentOnSeasonList, FacultyOnTournamentOnSeasonDetail
+from .views.sex import SexDetail, SexList
+from .views.medal import MedalDetail, MedalList
+from .views.commissionerCategory import CommissionerCategoryDetail, CommissionerCategoryList
 
 from .views.news import NewsList, NewsDetail
 from .views.comment import CommentList, CommentDetail
@@ -68,4 +71,13 @@ urlpatterns = [
 
     path('user/<int:pk>/', UserDetail.as_view()),
     path('user/', UserList.as_view()),
+
+    path('user/<int:pk>/', SexDetail.as_view()),
+    path('user/', SexList.as_view()),
+
+    path('user/<int:pk>/', MedalDetail.as_view()),
+    path('user/', MedalList.as_view()),
+
+    path('user/<int:pk>/', CommissionerCategoryDetail.as_view()),
+    path('user/', CommissionerCategoryList.as_view()),
 ]

@@ -15,6 +15,9 @@ from .models.tournamentOnSeason import TournamentOnSeason
 from .models.facultyOnTournamentOnSeason import FacultyOnTournamentOnSeason
 from .models.news import News
 from .models.comment import Comment
+from .models.sex import Sex
+from .models.medal import Medal
+from .models.commissionerCategory import CommissionerCategory
 
 admin.site.register(Commissioner)
 admin.site.register(Faculty)
@@ -31,3 +34,6 @@ admin.site.register(FacultyOnSeason)
 admin.site.register(FacultyOnTournamentOnSeason)
 admin.site.register(News)
 admin.site.register(Comment)
+admin.site.register(Sex)
+admin.site.register(Medal)
+admin.site.register(CommissionerCategory)
