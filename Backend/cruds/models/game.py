@@ -4,17 +4,13 @@ from .tournamentOnSeason import TournamentOnSeason
 
 from .team import Team
 from .sport import Sport
+from .sex import Sex
 
 class Game(models.Model):
 
-    CHOICES = [
-        ('Masculino', 'Masculino'), 
-        ('Femenino', 'Femenino'),
-        ('Mixto', 'Mixto')
-    ]
-
     phase = models.CharField(max_length=200)
-    sex = models.CharField(max_length=200, choices=CHOICES)
+    sex = models.ForeignKey(
+        Sex, on_delete=models.CASCADE, related_name='sexGame')
     place = models.CharField(max_length=200)
     detailResult = models.TextField()
     sport = models.ForeignKey(Sport, on_delete=models.CASCADE, related_name='gamesSport')
