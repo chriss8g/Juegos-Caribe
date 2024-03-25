@@ -2,6 +2,7 @@ import { use, useEffect, useState } from "react"
 import entities from "../../Entities.json"
 import useTranslation from "./useTranslation"
 import useEntityInformation from "./useEntityInformation"
+import axios from 'axios'
 
 
 export default function useAdministration()
@@ -18,24 +19,15 @@ export default function useAdministration()
 
     const [editMode, setEditMode] = useState(false)
 
+    const API = axios.create({
+        baseURL: process.env.API_URL
+    })
     
-    function getData(endpoint)
+    const getData = async (endpoint: string) =>
     {
-        fetch(`${process.env.API_URL + endpoint}/`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            }
-        })
-        .then(
-            (response)=>response.json()
-        )
-        .then(
-            (data)=>{
-                setData(data)
-            }
-        )
-        return Data
+        const res = await API.get(endpoint+'/')
+        setData(res.data)
+        return (await res.data)
     }
         
 
@@ -66,7 +58,6 @@ export default function useAdministration()
 
     function addData(newData:any, endpoint:string)
     {
-        console.log(JSON.stringify(newData))
         try{
             fetch(`${process.env.API_URL + endpoint}/`, {
                 method: 'POST',
@@ -83,13 +74,18 @@ export default function useAdministration()
 
     function updateData(newData: typeof currentEntityType)
     {
-        fetch(`${process.env.API_URL + currentEntity.endpoint}/`+ newData.id+ '/', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newData)
-        })
+        console.log(newData)
+        // try {
+        //     fetch(`${process.env.API_URL + currentEntity.endpoint}/`+ newData.id+ '/', {
+        //         method: 'PUT',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         },
+        //         body: JSON.stringify(newData)
+        //     })
+        // } catch (error) {
+        //     console.log(error)
+        // }
       
     }
 
