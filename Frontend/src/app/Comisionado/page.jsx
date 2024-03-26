@@ -1,14 +1,13 @@
 'use client'
 import Layout from "../../Components/Layout/Layout";
 import TextWithTitle2 from "../../Components/TextWithTitle2/TextWithTitle2";
-import "../globals.css"
 
 import "../../Components/FacultyPreview/FacultyPreview.css"
-import Image from "next/image"
 import CardITB from "../../Components/CardITB/CardITB"
 import CardITBV from "../../Components/CardITBV/CardITBV"
 import { useEffect, useState } from "react"
 import Pagination from '../../Components/Pagination/Pagination'
+import "../globals.css"
 
 export default function Comisioner()
 {
@@ -72,9 +71,9 @@ export default function Comisioner()
 
     return(
         
-        <div className="Comisioner">
+        <div className="Comisioner MobileView">
             <Layout>
-                 <h2 className="flex justify-center font-bold font-sans text-gray-700 mt-6">Comisión</h2>   
+                 <h2 className="flex justify-center font-bold text-2xl text-gray-800 mt-6">Comisión</h2>
                 <div className="font-text-6">
                     <TextWithTitle2 title={"Comisión Organizativa"} text={""}/>
 

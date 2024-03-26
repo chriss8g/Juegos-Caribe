@@ -1,9 +1,7 @@
 .CardITB-inner-container
 {
     flex: auto;
-    margin: auto;
-    margin-top: 15%;
-    margin-bottom: 70%;
+    margin: 5% auto 70%;
     padding: 8% 5%;
     border-radius: 15px;
     width: 100%;
