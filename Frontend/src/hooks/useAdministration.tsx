@@ -74,6 +74,7 @@ export default function useAdministration()
 
     function updateData(newData: typeof currentEntityType)
     {
+        console.log(newData)
         try {
             fetch(`${process.env.API_URL + currentEntity.endpoint}/`+ newData.id+ '/', {
                 method: 'PUT',
