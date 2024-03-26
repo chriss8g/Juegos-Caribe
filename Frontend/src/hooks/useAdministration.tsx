@@ -1,39 +1,46 @@
-import { useEffect, useState } from "react"
+import { use, useEffect, useState } from "react"
 import entities from "../../Entities.json"
 import useTranslation from "./useTranslation"
+import useEntityInformation from "./useEntityInformation"
+import axios from 'axios'
 
 
 export default function useAdministration()
 {
+    const { getEntityType } = useEntityInformation()
     
-    const[Data, setData]= useState<typeof currentEntityType[]>([{
-        id: 0,
-        title: "",
-        year: 0,
-        edition: ""
-    }])
+    const[Data, setData]= useState<typeof currentEntityType[]>([])
 
     const [selectedDataId, setSelectedDataId] = useState(0)
 
     const [currentEntity, setCurrentEntity] = useState<Entity>(entities[0])
     
-    const currentEntityType = getEntityType(currentEntity.id)
-
-    const [isLoading, setIsLoading] = useState(true)
+    const currentEntityType= getEntityType(currentEntity.id)
 
     const [editMode, setEditMode] = useState(false)
 
-
-
-    useEffect(()=>{
-        getData()
-        setIsLoading(false)
-    },[])
+    const API = axios.create({
+        baseURL: process.env.API_URL
+    })
     
-    
-    function getData()
+    const getData = async (endpoint: string) =>
     {
-        fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/`, {
+        const res = await API.get(endpoint+'/')
+        setData(res.data)
+        return (await res.data)
+    }
+        
+
+    function getDataById(dataId: number)
+    {
+        return Data.filter((x)=>x.id === dataId)[0]        
+    }
+
+    const [DataByIdFromEndpoint, setDataByIdFromEndpoint] = useState<typeof currentEntityType>()
+    
+    function getDataByIdFromEndpoint(dataId: number, endpoint: string)
+    {
+        fetch(`${process.env.API_URL + endpoint}/`+dataId+'/', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -41,33 +48,23 @@ export default function useAdministration()
         })
         .then(
             (response)=>response.json()
-        )
-        .then(
+            )
+            .then(
             (data)=>{
-                setData(data)
+                setDataByIdFromEndpoint(data)
             }
-        )
+        )  
     }
 
-    function getDataById(dataId: number)
-    {
-        return Data.filter((x)=>x.id === dataId)[0]        
-    }
-
-    function addData(newData: typeof currentEntityType)
+    function addData(newData:any, endpoint:string)
     {
         try{
-            var body = {
-                title: newData.title,
-                year: newData.year,
-                edition: newData.edition
-            }
-            fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/`, {
+            fetch(`${process.env.API_URL + endpoint}/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(body)
+                body: JSON.stringify(newData)
             })
         }
         catch (error) {
@@ -77,26 +74,24 @@ export default function useAdministration()
 
     function updateData(newData: typeof currentEntityType)
     {
-            var body = {
-                id: newData.id,
-                title: newData.title,
-                year: newData.year,
-                edition: newData.edition
-            }
-            fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/`+ newData.id+ '/', {
+        try {
+            fetch(`${process.env.API_URL + currentEntity.endpoint}/`+ newData.id+ '/', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(body)
+                body: JSON.stringify(newData)
             })
+        } catch (error) {
+            console.log(error)
+        }
       
     }
 
-    function deleteData(id: number)
+    function deleteData(endpoint:string, id: number)
     {    
         try {
-            fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/` + id + '/', {
+            fetch(`${process.env.API_URL + endpoint}/` + id + '/', {
                 method: 'DELETE',
             })
         } 
@@ -106,19 +101,7 @@ export default function useAdministration()
     }
 
 
-    function getEntityType(id:number)
-    {
-        var season: Season;
-
-        switch (id) {
-            case 0:
-                return season;
-            case 1:
-                break;
-            default:
-                break;
-        }
-    }
+    
 
 
     const { toSpanish } = useTranslation()
@@ -127,9 +110,13 @@ export default function useAdministration()
         let props = []
         for(const prop in object)
         {
-            props.push(
-                toSpanish(prop)[0].toUpperCase()+toSpanish(prop).slice(1)
-            )
+            try {
+                props.push(
+                    toSpanish(prop).charAt(0).toUpperCase()+toSpanish(prop).slice(1)
+                )
+            } catch (error) {
+                console.log(prop)
+            }
         }
         return props
     }
@@ -139,17 +126,19 @@ export default function useAdministration()
         currentEntityType,
         currentEntity, 
         Data, 
+        DataByIdFromEndpoint,
         deleteData,
         editMode,
         entities, 
         getDataById,
-        getEntityPropertiesNames, 
-        getEntityType, 
-        isLoading, 
+        getData,
+        getDataByIdFromEndpoint,
+        getEntityPropertiesNames,
         selectedDataId,
-        setSelectedDataId,
-        setEditMode,
         setCurrentEntity, 
+        setData,
+        setEditMode,
+        setSelectedDataId,
         updateData
     } 
 }
