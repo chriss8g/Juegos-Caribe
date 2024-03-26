@@ -5,7 +5,7 @@ class Commissioner(models.Model):
     name = models.CharField(max_length=200)
     position = models.CharField(max_length=200)
     biography = models.TextField()
-    picture = models.ImageField(upload_to='news_pictures/')
+    picture = models.ImageField(upload_to='')
     commissionerCategory = models.ForeignKey(
         CommissionerCategory, on_delete=models.CASCADE, related_name='commissionerCategory')
 
