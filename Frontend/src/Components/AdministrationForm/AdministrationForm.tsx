@@ -199,7 +199,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                     {
                                         selectIndex++
                                         return(
-                                                <div className="" key={id}>
+                                                <div className="my-5" key={id}>
                                                     <label>{propertiesNames[id]}: </label>
                                                     <select id={`${id}`} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}>
                                                         {
@@ -219,7 +219,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                     // If the property is a file, then it will be a file input
                                     else if(propertiesNames[id] === "Foto" || propertiesNames[id] === "Archivo"){
                                         return(
-                                            <div className="">
+                                            <div className="my-5">
                                                 <label>{propertiesNames[id]}: </label>
                                                 <input type="file" key={id} id={`${id}`} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}/>
                                             </div>
@@ -229,7 +229,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                     {
                                         //Property is ordinary text(number)
                                         return(
-                                            <div className="" key={id}>
+                                            <div className="my-5" key={id}>
                                                 <label>{propertiesNames[id]}: </label>
                                                 <input id={`${id}`} name={`${propertiesNames[id]}`} type={`${typeof val}`} className="p-2 text-center border-solid border-2 border-black td" onChange={(e)=>handleChange(e)} defaultValue={typeof val == "boolean" ? (val === true ? "Sí" : "No") : val}/>
                                             </div>
