@@ -13,30 +13,71 @@ export default function Comisioner()
 {
     const comisioner = [
         {
-            "name": "Ernesto Guilart Ruiz",
+            "name": "Elemento 1",
             "image": "/lenguas_extranjeras.svg",
-            "cargo": "Dir. de la DIrecci[on de Cultura Fisica y Deporte (INDER)",
+            "cargo": "Dir. de la DIrección de Cultura Fisica y Deporte (INDER)",
             "comision": "organizativa"
         },
         {
-            "name": "Ernesto Guilart Ruiz",
+            "name": "Elemento 2",
             "image": "/lenguas_extranjeras.svg",
-            "cargo": "Dir. de la DIrecci[on de Cultura Fisica y Deporte (INDER)",
-            "comision": "disciplinariaP"
-        },
-        {
-            "name": "Ernesto Guilart Ruiz",
-            "image": "/lenguas_extranjeras.svg",
-            "cargo": "Dir. de la DIrecci[on de Cultura Fisica y Deporte (INDER)",
-            "comision": "disciplinariaS"
-        },
-        {
-            "name": "Ernesto Guilart Ruiz",
-            "image": "/lenguas_extranjeras.svg",
-            "cargo": "Dir. de la DIrecci[on de Cultura Fisica y Deporte (INDER)",
+            "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
             "comision": "organizativa"
         },
-        ]
+        {
+            "name": "Elemento 3",
+            "image": "/lenguas_extranjeras.svg",
+            "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
+            "comision": "organizativa"
+        },
+        {
+            "name": "Elemento 4",
+            "image": "/lenguas_extranjeras.svg",
+            "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
+            "comision": "organizativa"
+        },
+        {
+            "name": "Elemento 5",
+            "image": "/lenguas_extranjeras.svg",
+            "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
+            "comision": "organizativa"
+        },
+        {
+            "name": "Elemento 6",
+            "image": "/lenguas_extranjeras.svg",
+            "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
+            "comision": "organizativa"
+        },
+        {
+            "name": "Elemento 7",
+            "image": "/lenguas_extranjeras.svg",
+            "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
+            "comision": "organizativa"
+        }
+        ,
+        {
+            "name": "Elemento 8",
+            "image": "/lenguas_extranjeras.svg",
+            "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
+            "comision": "organizativa"
+        },
+        {
+            "name": "Elemento 9",
+            "image": "/lenguas_extranjeras.svg",
+            "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
+            "comision": "organizativa"
+        }
+        ,
+        {
+            "name": "Elemento 10",
+            "image": "/lenguas_extranjeras.svg",
+            "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
+            "comision": "organizativa"
+        }
+
+
+
+    ]
 
 
         // Paso 1: Dividir la lista comisioner
@@ -75,7 +116,7 @@ export default function Comisioner()
             <Layout>
                  <h2 className="flex justify-center font-bold text-2xl text-gray-800 mt-6">Comisión</h2>
                 <div className="font-text-6">
-                    <TextWithTitle2 title={"Comisión Organizativa"} text={""}/>
+                    <p className="text-red-950 mt-6 text-center text-lg">Comisión Organizativa</p>
 
                     <Pagination itemComponent={CardITB} data={organizativa}/>
 

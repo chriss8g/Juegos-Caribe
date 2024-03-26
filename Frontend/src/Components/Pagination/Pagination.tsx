@@ -1,10 +1,9 @@
 'use client'
-import "../FacultyPreview/FacultyPreview.css"
 import Image from "next/image"
-import FacultyPreview from "../FacultyPreview/FacultyPreview"
-import { CSSProperties, useEffect, useState } from "react"
+import { CSSProperties } from "react"
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"
+import "./pagination.css"
 
 interface PaginationProps {
     itemComponent: React.ElementType; // Esto permite pasar cualquier componente React como prop
@@ -17,7 +16,7 @@ const Pagination: React.FC<PaginationProps> = ({ itemComponent: ItemComponent, d
     const arrowStyles : CSSProperties= {
         position: 'absolute',
         zIndex: 2,
-        top: 'calc(95%)',
+        bottom: 10,
         width: 20,
         height: 20,
         cursor: 'pointer',
@@ -29,14 +28,14 @@ const Pagination: React.FC<PaginationProps> = ({ itemComponent: ItemComponent, d
             <Carousel showArrows showStatus={false} centerMode centerSlidePercentage={50}
                 renderArrowPrev={(onClickHandler, hasPrev, label) =>
                     hasPrev && (
-                        <button type="button" onClick={onClickHandler} title={label} style={{ ...arrowStyles, left: 15 }}>
+                        <button type="button" onClick={onClickHandler} title={label} style={{ ...arrowStyles, left: 20 }}>
                             <Image aria-disabled="true" src="/left.svg" alt="" fill className="image"/>
                         </button>
                     )
                 }
                 renderArrowNext={(onClickHandler, hasNext, label) =>
                     hasNext && (
-                        <button type="button" onClick={onClickHandler} title={label} style={{ ...arrowStyles, right: 15 }}>
+                        <button type="button" onClick={onClickHandler} title={label} style={{ ...arrowStyles, right: 20 }}>
                             <Image aria-disabled="true" src="/right.svg" alt="" fill className="image"/>
                         </button>
                     )
