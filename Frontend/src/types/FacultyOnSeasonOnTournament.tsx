@@ -4,5 +4,12 @@ interface FacultyOnSeasonOnTournament
     str: string,
     points: number,
     tournamentOnSeason: TournamentOnSeason,
-    faculties: Faculty
+    faculty: Faculty
+}
+
+interface PostFacultyOnSeasonOnTournament
+{
+    points: number,
+    tournamentOnSeason: TournamentOnSeason,
+    faculty: Faculty
 }

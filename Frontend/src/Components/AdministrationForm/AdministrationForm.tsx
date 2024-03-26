@@ -1,10 +1,8 @@
-import React, { cloneElement, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import useAdministration from "../../hooks/useAdministration"
 import useTranslation from "../../hooks/useTranslation"
 import useEntityInformation from "../../hooks/useEntityInformation"
-import SpecialTableData from "../SpecialTableData"
-import { Medal } from "../../types/Enums"
 
 export default function AdministrationForm({editMode, formRow, setEditMode, entity})
 {
@@ -12,6 +10,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
         getEntityPropertiesNames, 
         getData,
         addData,
+        updateData,
         Data
     } = useAdministration()
 
@@ -26,6 +25,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
     const [loadingModal, setLoadingModal] = useState(false)
     const [needsUpdate, setNeedsUpdate] = useState(false)
     const {toEnglish}= useTranslation()
+    const[selectsInfo, setSelectsInfo] = useState([])
     const router = useRouter()
 
 
@@ -34,10 +34,22 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
         setLoadingModal(true)
     }, [formRow])
     
+
     useEffect(()=>{
         if(selectedData)
+        {
             setDataValues(Object.values(selectedData))
+            let info = []
+            Object.values(selectedData).map((val,i)=>{
+                if(getPropertyEndpoint(formRow, i))
+                {
+                    getData(getPropertyEndpoint(formRow, i)).then((data)=>info.push(data))
+                }
+            })
+            setSelectsInfo(info)
+        }
     }, [selectedData])
+
 
     useEffect(()=>{
         setLoadingModal(false)
@@ -56,34 +68,67 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
         })
     },[dataValues, editMode])
 
-    const [newData, setNewData] = useState([])
+    const[newData, setNewData] = useState([])
 
     useEffect(()=>{
         setNewData(selectedData)
     }, [selectedData])
+
+    function equalsArrays(arr1, arr2): boolean
+    {
+        for (let i = 0; i < arr1.length; i++) {
+            let found = false
+            for (let j = 0; j < arr2.length; j++) {
+                if(arr1[i] == arr2[i])
+                {
+                    found = true
+                    break;
+                }
+            }
+            if(!found)
+                return false
+        }
+        return true
+    }
+
     function handleChange(e)
     {
         setNewData(Object.values(newData).map((val, i)=>{
-        
-            if(Object.values(newData)[i] !== newData[i])
-            {
-                setNeedsUpdate(true)
-            }
-
             if(+i === +e.target.id)
             {
-                if(typeof Object.values(newData)[i] === 'number')
+                if(Array.isArray(Object.values(formRow)[i])){
+                    return Array.from(e.target.selectedOptions, (option:HTMLInputElement) => +option.value)
+                }
+                else if(typeof Object.values(newData)[i] === 'number')
                     return +e.target.value
+                else if(Object.keys(newData)[i] === "picture" || Object.keys(newData)[i] === "file")
+                {
+                    console.log(e.target.files[0])
+                    return null
+                }
                 else
                     return e.target.value
             }
             else
-            {
                 return Object.values(newData)[i]
-            }
-
         }))
     }
+
+    useEffect(()=>{
+        let updated = false
+        for (let i = 0; i < Object.values(formRow).length; i++) {
+            if(Array.isArray(Object.values(formRow)[i]))
+            {
+                if(!equalsArrays(Object.values(formRow)[i], Object.values(newData)[i]))
+                    updated = true
+            }
+            else if(Object.values(formRow)[i] !== Object.values(newData)[i])
+            {
+                updated = true
+            }
+        }
+        setNeedsUpdate(updated)
+    },[newData])
 
     function closeModal()
     {
@@ -100,11 +145,10 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
 
     function handleOnSubmit(e)
     {
-        var temp ={}
+        var temp = {}
         var formElements = document.forms['AdminModal'].elements
         for(const element of formElements)
         {
-            console.log(element.name)
             if(element.type === "number")
                 temp[toEnglish(element.name)] = +element.value
             else if(element.type === "select-one")
@@ -117,55 +161,20 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
         
         if(editMode)
         {
-            console.log(temp)
-            // updateData({...temp})
+            updateData(temp as typeof formRow)
         }
         else
         {
             addData(temp, entity?.endpoint)
         }
-        // closeModal()
+        closeModal()
 
     }
 
 
-    const getPrevValue = (propId, val)=>{
-        // const response = getDataByIdFromEndpoint(val, getPropertyEndpoint(entityType, propId))
-        // return response
-        throw new Error("Implement getPrevValue function");
-        
-    }
-    const [selectData, setSelectData] = useState([])
-    const [fetching, setFetching] = useState(false)
-    let index = 0
-    useEffect(()=>{
-        for(const prop in formRow)
-        {
-            if(ShowProp(prop))
-            {
-                if(getPropertyEndpoint(formRow, index))
-                {
-                    getData(getPropertyEndpoint(formRow, index))
-                    setFetching(true)
-                }
-            }
-            index++;
-        }
-    }, [formRow])
-    
-    useEffect(()=>{
-        if(fetching)
-        {
-            selectData[index] = Data
-            setSelectData(selectData)
-            setFetching(false)
-        }
-    },[Data])
-
-    // Indicates current index asking for data from selectData array
-    const [selectIndex, setSelectIndex] = useState(0)
-
+    let selectIndex = -1
     return(
+
         <div className="">
             <div className="bg-gray-300 bg-opacity-75 w-screen h-screen fixed top-0 z-10">
             </div>
@@ -185,39 +194,40 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                             {
                                 if(ShowProp(getEntityPropertiesNames(selectedData)[id]))
                                 {
-                                    // If the property is a foreign key, then it will be a select input
+                                    // If the property is a foreign key, then, it will be a select input
                                     if(getPropertyEndpoint(formRow, id))
                                     {
+                                        selectIndex++
                                         return(
-                                        <div className="" key={id}>
-                                            <label>{propertiesNames[id]}: </label>
-                                            <select id={`${id}`} name={`${propertiesNames[id]}`}>
-                                                {
-                                                    (selectData[selectIndex])?.map((val, id)=>{
-                                                        ()=>setSelectIndex(selectIndex+1)
-                                                        return(
-                                                            <option value={`${val.id}`} key={id}>
-                                                                {val.str}
-                                                            </option>
-                                                        )
-                                                    })
-                                                }
-                                            </select>
-                                        </div>
+                                                <div className="" key={id}>
+                                                    <label>{propertiesNames[id]}: </label>
+                                                    <select id={`${id}`} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}>
+                                                        {
+                                                            selectsInfo[selectIndex]?.map((val, id)=>{
+                                                                return(
+                                                                    <option value={`${val.id}`} key={id}>
+                                                                        {val.str}
+                                                                    </option>
+                                                                )
+                                                            },
+                                                            )
+                                                        }
+                                                    </select>
+                                                </div>
                                         )
                                     }
                                     // If the property is a file, then it will be a file input
-                                    else if(propertiesNames[id] === "Foto"){
+                                    else if(propertiesNames[id] === "Foto" || propertiesNames[id] === "Archivo"){
                                         return(
                                             <div className="">
                                                 <label>{propertiesNames[id]}: </label>
-                                                <input type="file" key={id} id={`${id}`} name={`${propertiesNames[id]}`}/>
+                                                <input type="file" key={id} id={`${id}`} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}/>
                                             </div>
                                         )
-                                        
                                     }
                                     else 
                                     {
+                                        //Property is ordinary text(number)
                                         return(
                                             <div className="" key={id}>
                                                 <label>{propertiesNames[id]}: </label>

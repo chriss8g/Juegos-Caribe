@@ -33,7 +33,8 @@ export default function Administration()
     const {
         getPropertyEndpoint,
         ShowProp,
-        getEntityPostType
+        getEntityPostType,
+        castTo
     } = useEntityInformation()
 
     const { toSpanish } = useTranslation()
@@ -57,7 +58,7 @@ export default function Administration()
 
     function handleEdit(row){
         setEditMode(true)
-        setFormRow(row)
+        setFormRow(castTo(currentEntityPostType, row))
         document.getElementById('adminForm').style.display="block"
     }
 
@@ -103,7 +104,7 @@ export default function Administration()
                     !Loading ?
                     <div className="">
                         <div id="adminForm" className="hidden">
-                            <AdministrationForm editMode={editMode} setEditMode={setEditMode} formRow={formRow} entity={currentEntity}/>
+                            <AdministrationForm editMode={editMode} setEditMode={setEditMode} formRow={formRow} entity={editMode ? currentEntityPostType : currentEntity}/>
                         </div>
                         <div id="DeleteModal" className="hidden">
                             <DeleteModal data={deleteRow} entityId={currentEntity.id} endpoint={currentEntity.endpoint}/>

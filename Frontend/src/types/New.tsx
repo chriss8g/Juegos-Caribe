@@ -8,3 +8,11 @@ interface New
     picture: string,
     users: User
 }
+
+interface PostNew
+{
+    title: string,
+    body: string,
+    picture: string,
+    users: User
+}

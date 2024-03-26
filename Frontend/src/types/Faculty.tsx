@@ -5,3 +5,9 @@ interface Faculty
     name: string,
     logo: string
 }
+
+interface PostFaculty
+{
+    name: string,
+    logo: string
+}
