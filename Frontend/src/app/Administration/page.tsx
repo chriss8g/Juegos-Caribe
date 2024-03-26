@@ -104,7 +104,7 @@ export default function Administration()
                     !Loading ?
                     <div className="">
                         <div id="adminForm" className="hidden">
-                            <AdministrationForm editMode={editMode} setEditMode={setEditMode} formRow={formRow} entity={editMode ? currentEntityPostType : currentEntity}/>
+                            <AdministrationForm editMode={editMode} setEditMode={setEditMode} formRow={formRow} entity={currentEntity}/>
                         </div>
                         <div id="DeleteModal" className="hidden">
                             <DeleteModal data={deleteRow} entityId={currentEntity.id} endpoint={currentEntity.endpoint}/>
