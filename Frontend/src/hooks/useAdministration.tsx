@@ -73,11 +73,10 @@ export default function useAdministration()
         }
     }
 
-    function updateData(newData: typeof currentEntityType)
+    function updateData(newData: typeof currentEntityType, endpoint:string)
     {
-        console.log(newData)
         try {
-            fetch(`${process.env.API_URL + currentEntity.endpoint}/`+ newData.id+ '/', {
+            fetch(`${process.env.API_URL + endpoint}/`+ newData.id+ '/', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'multipart/form-data',

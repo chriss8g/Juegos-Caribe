@@ -161,7 +161,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
         
         if(editMode)
         {
-            updateData(temp as typeof formRow)
+            updateData(temp as typeof formRow, entity.endpoint)
         }
         else
         {
