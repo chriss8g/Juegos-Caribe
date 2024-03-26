@@ -58,6 +58,7 @@ export default function useAdministration()
 
     function addData(newData:any, endpoint:string)
     {
+        console.log(newData)
         try{
             fetch(`${process.env.API_URL + endpoint}/`, {
                 method: 'POST',
@@ -78,7 +79,7 @@ export default function useAdministration()
             fetch(`${process.env.API_URL + currentEntity.endpoint}/`+ newData.id+ '/', {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'multipart/form-data',
                 },
                 body: JSON.stringify(newData)
             })

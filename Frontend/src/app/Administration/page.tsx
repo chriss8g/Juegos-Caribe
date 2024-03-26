@@ -81,14 +81,13 @@ export default function Administration()
 
     return (
        
-        <div className="Administration">
+        <div className="Administration mb-40 items-center">
             <Layout>
                     <div className="">
 
-                        <div className="SectionMenu">
+                        <div className="SectionMenu mx-auto w-1/3 my-10">
 
-                            <br />
-                            Entidades:
+                            Entidades: 
                             <select name="Entities" id="Entities" onChange={(e)=>{setCurrentEntity(entities[+e.target.value]); setLoading(true)}}>
                                 {entities.map((ent, key)=>(
                                     <option id={`${key}`} value={ent.id} key={key}>
@@ -96,8 +95,6 @@ export default function Administration()
                                     </option>
                                 ))}
                             </select>
-                            <br />
-                            <br />
 
                         </div>
                 {

@@ -73,11 +73,11 @@ export default function useEntityInformation()
         id: -1,
         str: "",
         name: "",
-        logo: ""
+        logo: null
     };
     var postFaculty: PostFaculty = {
         name: "",
-        logo: ""
+        logo: null
     };
     var facultyOnSeason: FacultyOnSeason = {
         id: -1,
