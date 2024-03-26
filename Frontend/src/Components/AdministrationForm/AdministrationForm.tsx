@@ -101,6 +101,11 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                 }
                 else if(typeof Object.values(newData)[i] === 'number')
                     return +e.target.value
+                else if(Object.keys(newData)[i] === "picture" || Object.keys(newData)[i] === "file")
+                {
+                    console.log(e.target.files[0])
+                    return null
+                }
                 else
                     return e.target.value
             }
@@ -108,16 +113,16 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                 return Object.values(newData)[i]
         }))
     }
+
     useEffect(()=>{
         let updated = false
         for (let i = 0; i < Object.values(formRow).length; i++) {
             if(Array.isArray(Object.values(formRow)[i]))
             {
-                console.log(Object.values(formRow)[i])
                 if(!equalsArrays(Object.values(formRow)[i], Object.values(newData)[i]))
                     updated = true
             }
-            if(Object.values(formRow)[i] !== Object.values(newData)[i])
+            else if(Object.values(formRow)[i] !== Object.values(newData)[i])
             {
                 updated = true
             }
@@ -162,7 +167,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
         {
             addData(temp, entity?.endpoint)
         }
-        // closeModal()
+        closeModal()
 
     }
 
@@ -216,7 +221,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                         return(
                                             <div className="">
                                                 <label>{propertiesNames[id]}: </label>
-                                                <input type="file" key={id} id={`${id}`} name={`${propertiesNames[id]}`}/>
+                                                <input type="file" key={id} id={`${id}`} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}/>
                                             </div>
                                         )
                                     }

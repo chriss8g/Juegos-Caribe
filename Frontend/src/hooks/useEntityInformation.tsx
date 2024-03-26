@@ -400,12 +400,34 @@ export default function useEntityInformation()
                 return user;
         }
     }
+
+    function castTo(entity, object):Object{
+        let castedObject = {}
+        
+        const objectValues = Object.values(object)
+        const objectKeys = Object.keys(object)
+        const entityKeys = Object.keys(entity)
+        
+        castedObject['id'] = objectValues[objectKeys.indexOf('id')]
+
+        for (let i = 0; i < entityKeys.length; i++) {
+            if(objectKeys.indexOf(entityKeys[i]) !== -1)
+            {
+                const index = objectKeys.indexOf(entityKeys[i])
+                castedObject[entityKeys[i]] = objectValues[index]
+            }
+        }
+        return castedObject
+    }
+
+
     return {
         getEntityType,
         getEndpoint,
         getPropertyEndpoint,
         ShowProp,
         getEntityIdOnList,
-        getEntityPostType
+        getEntityPostType,
+        castTo
     }
 } 

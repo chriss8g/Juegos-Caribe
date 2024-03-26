@@ -74,18 +74,17 @@ export default function useAdministration()
 
     function updateData(newData: typeof currentEntityType)
     {
-        console.log(newData)
-        // try {
-        //     fetch(`${process.env.API_URL + currentEntity.endpoint}/`+ newData.id+ '/', {
-        //         method: 'PUT',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify(newData)
-        //     })
-        // } catch (error) {
-        //     console.log(error)
-        // }
+        try {
+            fetch(`${process.env.API_URL + currentEntity.endpoint}/`+ newData.id+ '/', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newData)
+            })
+        } catch (error) {
+            console.log(error)
+        }
       
     }
 
