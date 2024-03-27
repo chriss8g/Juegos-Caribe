@@ -137,7 +137,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                 if(!equalsArrays(Object.values(formRow)[i], Object.values(newData)[i]))
                     updated = true
             }
-            else if(Object.values(formRow)[i] !== Object.values(newData)[i])
+            else if(newData && Object.values(formRow)[i] !== Object.values(newData)[i])
             {
                 updated = true
             }
@@ -227,7 +227,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                         )
                                     }
                                     // If the property is a file, then it will be a file input
-                                    else if(propertiesNames[id] === "Foto" || propertiesNames[id] === "Archivo"){
+                                    else if(propertiesNames[id] === "Foto" || propertiesNames[id] === "Archivo" || propertiesNames[id] === "Logo"){
                                         return(
                                             <div className="">
                                                 <label>{propertiesNames[id]}: </label>

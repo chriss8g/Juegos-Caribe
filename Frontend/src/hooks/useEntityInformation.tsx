@@ -73,11 +73,11 @@ export default function useEntityInformation()
         id: -1,
         str: "",
         name: "",
-        logo: ""
+        logo: null
     };
     var postFaculty: PostFaculty = {
         name: "",
-        logo: ""
+        logo: null
     };
     var facultyOnSeason: FacultyOnSeason = {
         id: -1,
@@ -151,7 +151,7 @@ export default function useEntityInformation()
         str: "",
         medal: Medal.Oro,
         sex: "Mixto",
-        sports: sport,
+        sport: sport,
         faculty: faculty,
         athletes: [athlete]
     };
@@ -159,7 +159,7 @@ export default function useEntityInformation()
     var PostTeam: PostTeam = {
         medal: Medal.Oro,
         sex: "Mixto",
-        sports: sport,
+        sport: sport,
         faculty: faculty,
         athletes: [athlete]
     };

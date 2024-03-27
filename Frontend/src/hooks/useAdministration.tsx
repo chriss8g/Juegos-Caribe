@@ -63,13 +63,12 @@ export default function useAdministration()
 
         Object.keys(newData).forEach(key => {
             const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
-            if(!fileInput)
-                formData.append(key, newData[key]);
-            else
+            if(fileInput)
             {
                 const file = fileInput.files[0];
                 formData.append('picture', file);
             }
+            formData.append(key, newData[key]);
         });
 
         fetch(`${process.env.API_URL + endpoint}/`,{

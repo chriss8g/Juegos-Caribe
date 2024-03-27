@@ -1,4 +1,6 @@
+import { Athlete } from "./Athlete"
 import { Medal } from "./Enums"
+import { Sport } from "./Sport"
 
 export interface Team
 {
@@ -6,7 +8,7 @@ export interface Team
     str: string,
     medal: Medal,
     sex: "Masculino" | "Femenino" | "Mixto",
-    sports: Sport,
+    sport: Sport,
     faculty: Faculty,
     athletes: Athlete[]
 }
@@ -15,7 +17,7 @@ export interface PostTeam
 {
     medal: Medal,
     sex: "Masculino" | "Femenino" | "Mixto",
-    sports: Sport,
+    sport: Sport,
     faculty: Faculty,
     athletes: Athlete[]
 }

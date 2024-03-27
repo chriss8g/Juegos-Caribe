@@ -17,5 +17,9 @@
     "Facultades": "faculties",
     "Puntos": "points",
     "Ocupación": "ocupation",
-    "Torneo en Temporada": "tournamentOnSeason"
+    "Torneo en Temporada": "tournamentOnSeason",
+    "Atletas": "athletes",
+    "Deporte": "sport",
+    "Sexo": "sex",
+    "Medalla": "medal"
 }
