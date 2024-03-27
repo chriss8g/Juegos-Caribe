@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css/navigation';
 import 'swiper/css';
+import 'swiper/css/effect-fade';
 import "./schedule.css"
 import "../../app/globals.css"
 import Layout from "../../Components/Layout/Layout";
@@ -212,7 +213,7 @@ export default function Schedule()
                                         faculties.map((facult, index)=>(
                                             <SwiperSlide key={index} >
                                                 <div className="iconFilter faculty" id={facult} onClick={handleIconSelect}>
-                                                    <div className="iconImage">
+                                                    <div className="iconImage p-[5%] faculties-box-shadow">
                                                         <Image alt="" src={Faculties.filter((fac)=>fac.name === facult)[0].image} fill className="image faculty"/>
                                                     </div>
                                                     <p className="font-sm text-gray-700">{facult}</p>
@@ -227,19 +228,19 @@ export default function Schedule()
                                     <p className="mb-0 pt-[5%] px-0 pb-[2%] text-lg text-gray-700 border-b-gray-400 border-b-2">Deportes</p>
                                     <Swiper
                                     className="swiper"
-                                    spaceBetween={15}
+                                    spaceBetween={10}
                                     slidesPerView={4}
-                                    navigation
+                                    pagination
                                     modules={[Navigation]}>
                                     {
                                         sports.map((sport, index)=>(
                                             <SwiperSlide key={index} >
                                                 <div className="iconFilter sport" id={sport} onClick={handleIconSelect}>
-                                                    <div className="iconImage SportIcon">
+                                                    <div className="iconImage SportIcon flex justify-center p-[8%]">
                                                         {
                                                             Sports.filter(x=>x.name === sport)[0] !== undefined &&
-                                                            <div className="icon">
-                                                                <Image alt="" src={Sports.filter(x=>x.name === sport)[0].image} fill className="image sport"/>
+                                                            <div className="w-auto">
+                                                                <Image alt="" src={Sports.filter(x=>x.name === sport)[0].image.replace('.svg', '-red.svg')} fill className="image sport"/>
                                                             </div>
                                                         }
                                                     </div>
@@ -250,32 +251,35 @@ export default function Schedule()
                                     }
                                     </Swiper>
                                 </div>
-                                
+
                                 <div className="filter">
-                                    <h4 className="filterTitle">Sexo</h4>
+                                    <p className="mb-0 pt-[5%] px-0 pb-[2%] text-lg text-gray-700 border-b-gray-400 border-b-2">Sexo</p>
                                     <form name="genderForm" className="row" value={filteredGender}>
                                         <div className="option">
-                                            <input type="radio" name="gender"  className="filterGender" value="female" onClick={handleRadioSelect}/>
+                                            <input type="radio" name="gender" className="filterGender" value="female"
+                                                   onClick={handleRadioSelect}/>
                                             <p>Femenino</p>
                                         </div>
                                         <div className="option">
-                                            <input type="radio" name="gender" className="filterGender" value="male" onClick={handleRadioSelect} />
+                                            <input type="radio" name="gender" className="filterGender" value="male"
+                                                   onClick={handleRadioSelect}/>
                                             <p>Masculino</p>
                                         </div>
                                         <div className="option">
-                                            <input type="radio" name="gender" className="filterGender" value={["female", "male"]} onClick={handleRadioSelect} />
+                                            <input type="radio" name="gender" className="filterGender"
+                                                   value={["female", "male"]} onClick={handleRadioSelect}/>
                                             <p>Ambos sexos</p>
                                         </div>
                                     </form>
                                 </div>
-                                
+
                                 <div className="filter">
-                                    <h4 className="filterTitle">Sede</h4>
+                                    <p className="mb-0 pt-[5%] px-0 pb-[2%] text-lg text-gray-700 border-b-gray-400 border-b-2">Sede</p>
                                 </div>
                             </div>
                     }
                     <div className="morning">
-                        <p className="session">Sesión de la mañana</p>
+                    <p className="my-[5%] text-red-950 text-lg">Sesión de la mañana</p>
                         {
                             filtered.map((play, index)=>{
                                 if(play.session === "morning")
