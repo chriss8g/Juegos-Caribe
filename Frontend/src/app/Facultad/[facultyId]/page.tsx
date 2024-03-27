@@ -1,15 +1,21 @@
 'use client'
-import Layout from "../../Components/Layout/Layout";
-import AthleteCard from "../../Components/AthleteCard/page";
-import { useState } from "react";
-import Results from "../../Components/Results/page";
-import "./fac-detallada.css"
-import LessMoreBar from "../../Components/Less-More-Bar/LessMoreBar";
-import MedalTable from "../../Components/MedalTable/MedalTable";
-import MedalsFac from "../../Components/MedalsFac/page";
+import Layout from "../../../Components/Layout/Layout";
+import AthleteCard from "../../../Components/AthleteCard/page";
+import { useEffect, useState } from "react";
+import Results from "../../../Components/Results/page";
+import "../fac-detallada.css"
+import LessMoreBar from "../../../Components/Less-More-Bar/LessMoreBar";
+import MedalTable from "../../../Components/MedalTable/MedalTable";
+import MedalsFac from "../../../Components/MedalsFac/page";
+import useAdministration from "../../../hooks/useAdministration";
+import axios from "axios";
+import { useParams } from "next/navigation";
 
-export default function FacultadDetallada(facultad)
+
+export default function FacultadDetallada()
 {
+    const{facultyId}= useParams();
+
     const CFacultad =[
         {
             "id": 1,
@@ -43,6 +49,23 @@ export default function FacultadDetallada(facultad)
             "pos": "Medio Campo",
             "num": 10
         }]
+
+    const{getData, getDataByIdFromEndpoint, DataByIdFromEndpoint, Data} = useAdministration()
+
+    useEffect(()=>{
+        getDataByIdFromEndpoint(+facultyId, "/faculty")
+        getData(`${process.env.API_URL}/faculty/${facultyId}/athletes`)
+    },[])
+
+    const[faculty, setFaculty] = useState({});
+    const[athletes, setAthletes] = useState({});
+    
+    useEffect(()=>{
+        setFaculty(DataByIdFromEndpoint);
+        setAthletes(Data);
+        console.log(Data)
+    },[DataByIdFromEndpoint]);
+
 
     const [category, setCategory] = useState("");
 
