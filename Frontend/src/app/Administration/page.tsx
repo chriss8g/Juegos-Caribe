@@ -20,6 +20,7 @@ export default function Administration()
         setSelectedDataId, 
         getEntityPropertiesNames, 
         getDataById,
+        deleteData,
         getData,
         entities,
         editMode, 
@@ -77,6 +78,38 @@ export default function Administration()
         modal.style.display="block"
     }
 
+    const[selectedToDelete, setSelectedToDelete] = useState([])
+    function handleSelect(e, all: boolean){
+        if(all)
+        {
+            let checkBoxesList = Array.from(document.getElementsByClassName("checkbox"), (option:HTMLInputElement) => option as HTMLInputElement)
+            if(e.target.checked)
+            {
+                let selectedIndexes = (e.target.id).split(',').map(x=>+x)
+                setSelectedToDelete(selectedIndexes)
+                checkBoxesList.map(check=>check.checked = true)
+                return
+            }
+            else
+            {
+                setSelectedToDelete([])
+                checkBoxesList.map(check=>check.checked = false)
+            } 
+        }
+        if(e.target.checked)
+            setSelectedToDelete([...selectedToDelete, +e.target.id])
+        else
+            setSelectedToDelete(selectedToDelete.filter(x=>x !== +e.target.id))
+    }
+
+    function DeleteSelection(){
+        selectedToDelete.map(selected=>{
+            var deleteId = Data.filter((x, i)=>+i === +selected)[0].id
+            if(confirm("Desea borrar el objeto de id: "+deleteId+"?"))
+                deleteData(currentEntity.endpoint, deleteId)
+                location.reload()
+        })
+    }
 
 
     return (
@@ -113,6 +146,7 @@ export default function Administration()
                             <table className=" border-solid border-2 border-black">
                                 <thead className="border-solid border-2 border-black">
                                     <tr>
+                                        <th><input type="checkbox" className="" name="select_all" id={`${Data.map((row, i)=>i)}`} onChange={(e)=>handleSelect(e, true)}/></th>
                                         {
                                             getEntityPropertiesNames(Data[0]).map((prop, id)=>{
                                                 if(ShowProp(prop))
@@ -126,11 +160,14 @@ export default function Administration()
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     {
-                                        
                                         Data.map((row, id)=>{
                                             return(
                                             <tr className="border-solid border-2 border-black" key={id}>
+                                                <td>
+                                                    <input type="checkbox" name="" id={`${id}`} className="p-2 checkbox" onChange={(e)=>handleSelect(e, false)}/>
+                                                </td>
                                                 {Object.values(row).map((prop, id)=>{
                                                     if(Array.isArray(prop))
                                                     {
@@ -181,6 +218,14 @@ export default function Administration()
                                 >
                                     Agregar
                                 </button>
+                                {
+                                    selectedToDelete.length > 0 &&
+                                    <button className="w-80 border-2 border-slate-600 ml-7 mt-7 py-1 bg-red-500 text-white rounded-md"
+                                        onClick={()=>DeleteSelection()}
+                                    >
+                                        Borrar seleccion
+                                    </button>
+                                }
                             </div>
                         </div>
                     </div>
