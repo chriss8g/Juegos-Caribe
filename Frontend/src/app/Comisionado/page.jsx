@@ -3,82 +3,79 @@ import Layout from "../../Components/Layout/Layout";
 import TextWithTitle2 from "../../Components/TextWithTitle2/TextWithTitle2";
 
 import "../../Components/FacultyPreview/FacultyPreview.css"
-import CardITB from "../../Components/CardITB/CardITB"
-import CardITBV from "../../Components/CardITBV/CardITBV"
+import comisionerCard from "../../Components/ComisionerCard/comisionerCard"
 import { useEffect, useState } from "react"
 import Pagination from '../../Components/Pagination/Pagination'
 import "../globals.css"
+import CardITB from "../../Components/CardITB/CardITB";
+import ComisionerCard from "../../Components/ComisionerCard/comisionerCard";
 
 export default function Comisioner()
 {
     const comisioner = [
         {
             "name": "Elemento 1",
-            "image": "/lenguas_extranjeras.svg",
+            "image": "/comisionado.png",
             "cargo": "Dir. de la DIrección de Cultura Fisica y Deporte (INDER)",
             "comision": "organizativa"
         },
         {
             "name": "Elemento 2",
-            "image": "/lenguas_extranjeras.svg",
+            "image": "/comisionado.png",
             "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
             "comision": "organizativa"
         },
         {
             "name": "Elemento 3",
-            "image": "/lenguas_extranjeras.svg",
+            "image": "/comisionado.png",
             "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
             "comision": "organizativa"
         },
         {
             "name": "Elemento 4",
-            "image": "/lenguas_extranjeras.svg",
+            "image": "/comisionado.png",
             "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
             "comision": "organizativa"
         },
         {
             "name": "Elemento 5",
-            "image": "/lenguas_extranjeras.svg",
+            "image": "/comisionado.png",
             "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
-            "comision": "organizativa"
+            "comision": "disciplinariaS"
         },
         {
             "name": "Elemento 6",
-            "image": "/lenguas_extranjeras.svg",
+            "image": "/comisionado.png",
             "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
-            "comision": "organizativa"
+            "comision": "disciplinariaS"
         },
         {
             "name": "Elemento 7",
-            "image": "/lenguas_extranjeras.svg",
+            "image": "/comisionado.png",
             "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
-            "comision": "organizativa"
+            "comision": "disciplinariaS"
         }
         ,
         {
             "name": "Elemento 8",
-            "image": "/lenguas_extranjeras.svg",
+            "image": "/comisionado.png",
             "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
-            "comision": "organizativa"
+            "comision": "disciplinariaP"
         },
         {
             "name": "Elemento 9",
-            "image": "/lenguas_extranjeras.svg",
+            "image": "/comisionado.png",
             "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
-            "comision": "organizativa"
+            "comision": "disciplinariaP"
         }
         ,
         {
             "name": "Elemento 10",
-            "image": "/lenguas_extranjeras.svg",
+            "image": "/comisionado.png",
             "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
-            "comision": "organizativa"
+            "comision": "disciplinariaP"
         }
-
-
-
     ]
-
 
         // Paso 1: Dividir la lista comisioner
     const [organizativa, setOrganizativa] = useState([]);
@@ -127,10 +124,10 @@ export default function Comisioner()
                 <div className="text-center text-[#616469] mx-6">
                     <div>
                         <p className="mb-6 underline">Miembros permanentes</p>
-                        <div className="mt-6">
+                        <div className="mt-6 flex justify-center flex-col">
                             {disciplinariaP.map((item, index)=>(
                                 <div className="flex justify-center" key={index}>
-                                    <CardITBV name={item.name} image={item.image} body={item.body}/>
+                                    <ComisionerCard name={item.name} image={item.image} cargo={item.body}/>
                                 </div>    
                             ))}
                             
@@ -144,7 +141,7 @@ export default function Comisioner()
                         <div className="mt-6">
                             {disciplinariaS.map((item, index)=>(
                                 <div className="flex justify-center" key={index}>
-                                    <CardITBV name={item.name} image={item.image} body={item.body}/>
+                                    <ComisionerCard name={item.name} image={item.image} cargo={item.body}/>
                                 </div>    
                             ))}
                         </div>
