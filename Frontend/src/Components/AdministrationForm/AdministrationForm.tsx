@@ -31,6 +31,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
 
     useEffect(()=>{
         setSelectedData(formRow)
+        setNewData(formRow)
         setLoadingModal(true)
     }, [formRow])
     
@@ -40,6 +41,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
         {
             setDataValues(Object.values(selectedData))
             let info = []
+            
             Object.values(selectedData).map((val,i)=>{
                 if(getPropertyEndpoint(formRow, i))
                 {
@@ -88,6 +90,18 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
             if(!found)
                 return false
         }
+        for (let i = 0; i < arr2.length; i++) {
+            let found = false
+            for (let j = 0; j < arr1.length; j++) {
+                if(arr2[i] == arr1[i])
+                {
+                    found = true
+                    break;
+                }
+            }
+            if(!found)
+                return false
+        }
         return true
     }
 
@@ -96,21 +110,19 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
         setNewData(Object.values(newData).map((val, i)=>{
             if(+i === +e.target.id)
             {
-                if(Array.isArray(Object.values(formRow)[i])){
+                if(Array.isArray(Object.values(formRow)[i]))
+                {
                     return Array.from(e.target.selectedOptions, (option:HTMLInputElement) => +option.value)
                 }
                 else if(typeof Object.values(newData)[i] === 'number')
                     return +e.target.value
                 else if(Object.keys(newData)[i] === "picture" || Object.keys(newData)[i] === "file")
-                {
-                    console.log(e.target.files[0])
-                    return null
-                }
+                    return e.target.files[0]
                 else
                     return e.target.value
             }
             else
-                return Object.values(newData)[i]
+                return Object.values(newData)[+i]
         }))
     }
 
@@ -147,27 +159,20 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
     {
         var temp = {}
         var formElements = document.forms['AdminModal'].elements
+        let i = 0
         for(const element of formElements)
         {
-            if(element.type === "number")
-                temp[toEnglish(element.name)] = +element.value
-            else if(element.type === "select-one")
-                temp[toEnglish(element.name)] = [+element.value]
-            else if(element.type === "select-multiple")
-                temp[toEnglish(element.name)] = [...temp[toEnglish(element.name)],element.value]
-            else
-                temp[toEnglish(element.name)] = element.value
+            temp[toEnglish(element.name)] = newData[i]
+            i++
         }
-        
         if(editMode)
-        {
             updateData(temp as typeof formRow, entity.endpoint)
-        }
         else
         {
             addData(temp, entity?.endpoint)
         }
-        closeModal()
+
+        // closeModal()
 
     }
 
@@ -201,7 +206,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                         return(
                                                 <div className="" key={id}>
                                                     <label>{propertiesNames[id]}: </label>
-                                                    <select id={`${id}`} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}>
+                                                    <select multiple={Array.isArray(Object.values(formRow)[id])} id={`${id}`} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}>
                                                         {
                                                             selectsInfo[selectIndex]?.map((val, id)=>{
                                                                 return(

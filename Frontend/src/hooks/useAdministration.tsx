@@ -58,33 +58,50 @@ export default function useAdministration()
 
     function addData(newData:any, endpoint:string)
     {
-        try{
-            fetch(`${process.env.API_URL + endpoint}/`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(newData)
-            })
-        }
-        catch (error) {
-            console.log(error)
-        }
+        console.log(newData)
+        const formData = new FormData();
+
+        Object.keys(newData).forEach(key => {
+            const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+            if(!fileInput)
+                formData.append(key, newData[key]);
+            else
+            {
+                const file = fileInput.files[0];
+                formData.append('picture', file);
+            }
+        });
+
+        fetch(`${process.env.API_URL + endpoint}/`,{
+            method: 'POST',
+            body: formData
+        });
     }
 
     function updateData(newData: typeof currentEntityType, endpoint:string)
     {
-        try {
-            fetch(`${process.env.API_URL + endpoint}/`+ newData.id+ '/', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(newData)
-            })
-        } catch (error) {
-            console.log(error)
-        }
+        console.log(newData)
+        const formData = new FormData();
+
+        Object.keys(newData).forEach(key => {
+            const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+            if(!fileInput)
+            {
+                console.log(newData[key])
+                formData.append(key, newData[key]);
+
+            }
+            else
+            {
+                const file = fileInput.files[0];
+                formData.append('picture', file);
+            }
+        });
+        console.log(formData)
+        fetch(`${process.env.API_URL + endpoint}/${newData.id}/`,{
+            method: 'PUT',
+            body: formData
+        });
       
     }
 
@@ -100,8 +117,6 @@ export default function useAdministration()
         }       
     }
 
-
-    
 
 
     const { toSpanish } = useTranslation()
