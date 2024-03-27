@@ -124,7 +124,7 @@ export default function Comisioner()
 
 
                 <TextWithTitle2 title={"Comisión Disciplinaria"} text={""}/>
-                <div className="text-center text-gray-400 mx-6">
+                <div className="text-center text-[#616469] mx-6">
                     <div>
                         <p className="mb-6 underline">Miembros permanentes</p>
                         <div className="mt-6">
@@ -138,7 +138,7 @@ export default function Comisioner()
                         
                     </div>
                 </div>
-                    <div className="text-center text-gray-400 mx-6 my-10">
+                    <div className="text-center text-[#616469] mx-6 my-10">
                         <div className="">
                         <p className="underline">Miembros suplentes</p>
                         <div className="mt-6">
