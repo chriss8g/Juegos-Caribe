@@ -33,7 +33,7 @@ urlpatterns = [
 
     path('faculty/<int:pk>/', FacultyDetail.as_view()),
     path('faculty/', FacultyList.as_view()),
-    path('faculty/<int:id_faculty>/estudiantes', Athletes_per_faculty, name='Athletes_per_faculty'),
+    path('faculty/<int:id_faculty>/athletes/', Athletes_per_faculty),
 
     path('team/<int:pk>/', TeamDetail.as_view()),
     path('team/', TeamList.as_view()),
