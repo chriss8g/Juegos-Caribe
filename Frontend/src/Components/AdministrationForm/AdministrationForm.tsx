@@ -40,15 +40,18 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
         if(selectedData)
         {
             setDataValues(Object.values(selectedData))
-            let info = []
-            
-            Object.values(selectedData).map((val,i)=>{
-                if(getPropertyEndpoint(formRow, i))
-                {
-                    getData(getPropertyEndpoint(formRow, i)).then((data)=>info.push(data))
-                }
-            })
-            setSelectsInfo(info)
+            let info = [];
+
+            Promise.all(Object.values(selectedData).map((val, i) => {
+            if (getPropertyEndpoint(formRow, i)) {
+                return getData(getPropertyEndpoint(formRow, i)).then((data) => {
+                info.push({"id": i, "data": data});
+                });
+            } 
+            })).then(()=>
+                setSelectsInfo([...info.sort((a,b)=>a.id-b.id).map(a=>a.data)])
+            )
+
         }
     }, [selectedData])
 
@@ -172,8 +175,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
             addData(temp, entity?.endpoint)
         }
 
-        // closeModal()
-
+        closeModal()
     }
 
 
@@ -206,7 +208,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                         return(
                                                 <div className="" key={id}>
                                                     <label>{propertiesNames[id]}: </label>
-                                                    <select multiple={Array.isArray(Object.values(formRow)[id])} id={`${id}`} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}>
+                                                    <select defaultValue={`${Object.values(formRow)[id]}`} multiple={Array.isArray(Object.values(formRow)[id])} id={`${id}`} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}>
                                                         {
                                                             selectsInfo[selectIndex]?.map((val, id)=>{
                                                                 return(
