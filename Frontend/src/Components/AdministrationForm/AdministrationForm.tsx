@@ -175,7 +175,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
             addData(temp, entity?.endpoint)
         }
 
-        closeModal()
+        // closeModal()
     }
 
 
@@ -208,16 +208,19 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                         return(
                                                 <div className="" key={id}>
                                                     <label>{propertiesNames[id]}: </label>
-                                                    <select defaultValue={`${Object.values(formRow)[id]}`} multiple={Array.isArray(Object.values(formRow)[id])} id={`${id}`} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}>
+                                                    <select defaultValue={"`${Object.values(formRow)[id]}`"} multiple={Array.isArray(Object.values(formRow)[id])} id={`${id}`} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}>
                                                         {
-                                                            selectsInfo[selectIndex]?.map((val, id)=>{
+                                                            !editMode &&
+                                                            <option value=""></option>
+                                                        }
+                                                        {
+                                                            selectsInfo[selectIndex]?.map((val, i)=>{
                                                                 return(
-                                                                    <option value={`${val.id}`} key={id}>
+                                                                    <option selected={Object.values(formRow)[id] === val.id} value={`${val.id}`} key={i}>
                                                                         {val.str}
                                                                     </option>
                                                                 )
-                                                            },
-                                                            )
+                                                            },)
                                                         }
                                                     </select>
                                                 </div>

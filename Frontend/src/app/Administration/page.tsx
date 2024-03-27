@@ -94,6 +94,7 @@ export default function Administration()
             {
                 setSelectedToDelete([])
                 checkBoxesList.map(check=>check.checked = false)
+                return
             } 
         }
         if(e.target.checked)
@@ -146,7 +147,7 @@ export default function Administration()
                             <table className=" border-solid border-2 border-black">
                                 <thead className="border-solid border-2 border-black">
                                     <tr>
-                                        <th><input type="checkbox" className="" name="select_all" id={`${Data.map((row, i)=>i)}`} onChange={(e)=>handleSelect(e, true)}/></th>
+                                        <th><input type="checkbox" className="w-5 h-5 m-2" name="select_all" id={`${Data.map((row, i)=>i)}`} onChange={(e)=>handleSelect(e, true)}/></th>
                                         {
                                             getEntityPropertiesNames(Data[0]).map((prop, id)=>{
                                                 if(ShowProp(prop))
@@ -166,7 +167,7 @@ export default function Administration()
                                             return(
                                             <tr className="border-solid border-2 border-black" key={id}>
                                                 <td>
-                                                    <input type="checkbox" name="" id={`${id}`} className="p-2 checkbox" onChange={(e)=>handleSelect(e, false)}/>
+                                                    <input type="checkbox" name="" id={`${id}`} className="p-2 checkbox m-2 w-5 h-5" onChange={(e)=>handleSelect(e, false)}/>
                                                 </td>
                                                 {Object.values(row).map((prop, id)=>{
                                                     if(Array.isArray(prop))
@@ -202,7 +203,10 @@ export default function Administration()
                                                     }
                                                 })}
                                                 <td>
-                                                    <button className="p-2 border-solid border-2 border-gray-400 w-full bg-orange-300" onClick={()=>handleEdit(row)}><IconPencil className="m-auto"/></button>
+                                                    {
+                                                        currentEntity.id !== 4 &&
+                                                            <button className="p-2 border-solid border-2 border-gray-400 w-full bg-orange-300" onClick={()=>handleEdit(row)}><IconPencil className="m-auto"/></button>
+                                                    }
                                                     <button className="p-2 border-solid border-2 border-gray-400 w-full bg-red-400" onClick={()=>handleOnDelete(row)}><IconTrash className="m-auto"/></button>
                                                 </td>
                                             </tr>
@@ -213,11 +217,14 @@ export default function Administration()
 
                             </table>
                             <div className="w-96 m-auto">
-                                <button className="w-80 border-2 border-slate-600 ml-7 mt-7 py-1 bg-slate-600 text-white rounded-md"
-                                    onClick={(e)=>handleCreate(e)}
-                                >
-                                    Agregar
-                                </button>
+                                {
+                                    currentEntity.id !== 4 &&
+                                    <button className="w-80 border-2 border-slate-600 ml-7 mt-7 py-1 bg-slate-600 text-white rounded-md"
+                                        onClick={(e)=>handleCreate(e)}
+                                    >
+                                        Agregar
+                                    </button>
+                                }
                                 {
                                     selectedToDelete.length > 0 &&
                                     <button className="w-80 border-2 border-slate-600 ml-7 mt-7 py-1 bg-red-500 text-white rounded-md"
