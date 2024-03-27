@@ -48,8 +48,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'rest_auth',
     'rest_auth.registration',
-    
-
 
     # Local
     'season.apps.SeasonConfig',
@@ -114,7 +112,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Juegos_Caribe',
         'USER': 'root',
-        'PASSWORD': '//america25', #Chris password://america25
+        'PASSWORD': 'root', #Chris password://america25
         'HOST': 'localhost',  # O la dirección de tu servidor MySQL
         'PORT': '3306',  # El puerto de tu servidor MySQL
     }
