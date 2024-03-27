@@ -13,6 +13,6 @@ interface PostNew
 {
     title: string,
     body: string,
-    picture: string,
+    picture: File,
     users: User
 }

@@ -2,8 +2,8 @@ import entities from "../../Entities.json"
 import { Athlete, PostAthlete } from "../types/Athlete";
 import { PostComisioner, Comisioner } from "../types/Comisioner";
 import { Comments, PostComment } from "../types/Comment";
-import { Medal } from "../types/Enums"
 import { PostFacultyOnSeason, FacultyOnSeason } from "../types/FacultyOnSeason";
+import { FacultyOnSeasonOnTournament, PostFacultyOnSeasonOnTournament } from "../types/FacultyOnSeasonOnTournament";
 import { PostGame, Game } from "../types/Game";
 import { PostSeason, Season } from "../types/Season";
 import { PostSport, Sport } from "../types/Sport";
@@ -27,7 +27,7 @@ export default function useEntityInformation()
         name: "",
         ocupation: "",
         biography: "",
-        picture: "",
+        picture: new File([], ""),
         faculty: faculty
     }
     var comisioner: Comisioner = {
@@ -36,13 +36,13 @@ export default function useEntityInformation()
         name: "",
         position: "",
         biography: "",
-        picture: null
+        picture: ""
     };
     var PostComisioner: PostComisioner = {
         name: "",
         position: "",
         biography: "",
-        picture: null    
+        picture: new File([], "")    
     }
     var comment: Comments = {
         id: -1,
@@ -67,17 +67,17 @@ export default function useEntityInformation()
     var postDocument: PostDocuments = {
         head: "",
         body: "",
-        file: null
+        file: new File([], "")
     };
     var faculty: Faculty = {
         id: -1,
         str: "",
         name: "",
-        logo: null
+        logo: ""
     };
     var postFaculty: PostFaculty = {
         name: "",
-        logo: null
+        logo: new File([], "")
     };
     var facultyOnSeason: FacultyOnSeason = {
         id: -1,
@@ -94,12 +94,12 @@ export default function useEntityInformation()
     var facultyOnSeasonOnTournament: FacultyOnSeasonOnTournament ={
         id: -1,
         str: "",
-        points: null,
+        points: 0,
         tournamentOnSeason: tournamentOnSeason,
         faculty: faculty
     }
     var postFacultyOnSeasonOnTournament: PostFacultyOnSeasonOnTournament ={
-        points: null,
+        points: 0,
         tournamentOnSeason: tournamentOnSeason,
         faculty: faculty
     }
@@ -135,7 +135,7 @@ export default function useEntityInformation()
     var postNew: PostNew = {
         title: "",
         body: "",
-        picture: "",
+        picture: new File([], ""),
         users: user
     };
     var sport: Sport = {
@@ -149,7 +149,7 @@ export default function useEntityInformation()
     var team: Team = {
         id: -1,
         str: "",
-        medal: Medal.Oro,
+        medal: "",
         sex: "Mixto",
         sport: sport,
         faculty: faculty,
@@ -157,7 +157,7 @@ export default function useEntityInformation()
     };
     
     var PostTeam: PostTeam = {
-        medal: Medal.Oro,
+        medal: "",
         sex: "Mixto",
         sport: sport,
         faculty: faculty,

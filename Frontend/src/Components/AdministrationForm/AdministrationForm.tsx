@@ -16,7 +16,8 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
 
     const { 
         ShowProp,
-        getPropertyEndpoint
+        getPropertyEndpoint,
+        getEntityPostType
     } = useEntityInformation()
 
     const [selectedData, setSelectedData] = useState(formRow)
@@ -26,7 +27,6 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
     const [needsUpdate, setNeedsUpdate] = useState(false)
     const {toEnglish}= useTranslation()
     const[selectsInfo, setSelectsInfo] = useState([])
-    const router = useRouter()
 
 
     useEffect(()=>{
@@ -208,7 +208,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                         return(
                                                 <div className="" key={id}>
                                                     <label>{propertiesNames[id]}: </label>
-                                                    <select defaultValue={"`${Object.values(formRow)[id]}`"} multiple={Array.isArray(Object.values(formRow)[id])} id={`${id}`} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}>
+                                                    <select multiple={Array.isArray(Object.values(formRow)[id])} id={`${id}`} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}>
                                                         {
                                                             !editMode &&
                                                             <option value=""></option>
@@ -227,11 +227,11 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                         )
                                     }
                                     // If the property is a file, then it will be a file input
-                                    else if(propertiesNames[id] === "Foto" || propertiesNames[id] === "Archivo" || propertiesNames[id] === "Logo"){
+                                    else if(Object.values(getEntityPostType(entity.id))[id] instanceof File){
                                         return(
-                                            <div className="">
+                                            <div className="" key={id}>
                                                 <label>{propertiesNames[id]}: </label>
-                                                <input type="file" key={id} id={`${id}`} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}/>
+                                                <input type="file"  key={id} id={`${id}`} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}/>
                                             </div>
                                         )
                                     }

@@ -5,7 +5,7 @@ export interface Comisioner
     name: string,
     position: string,
     biography: string,
-    picture: File
+    picture: string
 }
 
 export interface PostComisioner
