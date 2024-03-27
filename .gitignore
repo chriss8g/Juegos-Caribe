@@ -1,4 +1,4 @@
 node_modules
 .*
 Backend/cruds/migrations/*
-Backend/news_pictures/*
+Backend/new_files/*
