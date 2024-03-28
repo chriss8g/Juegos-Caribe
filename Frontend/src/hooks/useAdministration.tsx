@@ -1,39 +1,46 @@
-import { useEffect, useState } from "react"
+import { use, useEffect, useState } from "react"
 import entities from "../../Entities.json"
 import useTranslation from "./useTranslation"
+import useEntityInformation from "./useEntityInformation"
+import axios from 'axios'
 
 
 export default function useAdministration()
 {
+    const { getEntityType } = useEntityInformation()
     
-    const[Data, setData]= useState<typeof currentEntityType[]>([{
-        id: 0,
-        title: "",
-        year: 0,
-        edition: ""
-    }])
+    const[Data, setData]= useState<typeof currentEntityType[]>([])
 
     const [selectedDataId, setSelectedDataId] = useState(0)
 
     const [currentEntity, setCurrentEntity] = useState<Entity>(entities[0])
     
-    const currentEntityType = getEntityType(currentEntity.id)
-
-    const [isLoading, setIsLoading] = useState(true)
+    const currentEntityType= getEntityType(currentEntity.id)
 
     const [editMode, setEditMode] = useState(false)
 
-
-
-    useEffect(()=>{
-        getData()
-        setIsLoading(false)
-    },[])
+    const API = axios.create({
+        baseURL: process.env.API_URL
+    })
     
-    
-    function getData()
+    const getData = async (endpoint: string) =>
     {
-        fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/`, {
+        const res = await API.get(endpoint+'/')
+        setData(res.data)
+        return (await res.data)
+    }
+        
+
+    function getDataById(dataId: number)
+    {
+        return Data.filter((x)=>x.id === dataId)[0]        
+    }
+
+    const [DataByIdFromEndpoint, setDataByIdFromEndpoint] = useState<typeof currentEntityType>()
+    
+    function getDataByIdFromEndpoint(dataId: number, endpoint: string)
+    {
+        fetch(`${process.env.API_URL + endpoint}/`+dataId+'/', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -41,62 +48,79 @@ export default function useAdministration()
         })
         .then(
             (response)=>response.json()
-        )
-        .then(
+            )
+            .then(
             (data)=>{
-                setData(data)
+                setDataByIdFromEndpoint(data)
             }
-        )
+        )  
     }
 
-    function getDataById(dataId: number)
+    function addData(newData:any, endpoint:string)
     {
-        return Data.filter((x)=>x.id === dataId)[0]        
+        const formData = new FormData();
+
+        Object.keys(newData).forEach(key => {
+            const value = newData[key];
+            const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+           
+            if(fileInput && value instanceof File)
+            {
+                const file = fileInput.files[0];
+                formData.append(key, file);
+            } 
+            else if (Array.isArray(value)) {
+                // If the value is an array, append each number with the key
+                value.forEach((item) => {
+                    formData.append(key, item);
+                });
+            }
+            else
+                // For regular values, append them directly
+                formData.append(key, value);
+
+            
+        });
+        fetch(`${process.env.API_URL + endpoint}/`,{
+            method: 'POST',
+            body: formData
+        });
     }
 
-    function addData(newData: typeof currentEntityType)
+    function updateData(newData: typeof currentEntityType, endpoint:string)
     {
-        try{
-            var body = {
-                title: newData.title,
-                year: newData.year,
-                edition: newData.edition
-            }
-            fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(body)
-            })
-        }
-        catch (error) {
-            console.log(error)
-        }
-    }
+        const formData = new FormData();
 
-    function updateData(newData: typeof currentEntityType)
-    {
-            var body = {
-                id: newData.id,
-                title: newData.title,
-                year: newData.year,
-                edition: newData.edition
+        Object.keys(newData).forEach(key => {
+            const value = newData[key];
+            const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+           
+            if(fileInput && value instanceof File)
+            {
+                const file = fileInput.files[0];
+                formData.append(key, file);
+            } 
+            else if (Array.isArray(value)) {
+                // If the value is an array, append each number with the key
+                value.forEach((item) => {
+                    formData.append(key, item);
+                });
             }
-            fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/`+ newData.id+ '/', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(body)
-            })
+            else
+                // For regular values, append them directly
+                formData.append(key, value);
+        });
+        fetch(`${process.env.API_URL + endpoint}/`,{
+            method: 'PUT',
+            body: formData
+        });
       
     }
 
-    function deleteData(id: number)
+    function deleteData(endpoint:string, id: number)
     {    
         try {
-            fetch(`${process.env.SERVER_URL + currentEntity.endpoint}/` + id + '/', {
+            fetch(`${process.env.API_URL + endpoint}/` + id + '/', {
                 method: 'DELETE',
             })
         } 
@@ -106,20 +130,6 @@ export default function useAdministration()
     }
 
 
-    function getEntityType(id:number)
-    {
-        var season: Season;
-
-        switch (id) {
-            case 0:
-                return season;
-            case 1:
-                break;
-            default:
-                break;
-        }
-    }
-
 
     const { toSpanish } = useTranslation()
 
@@ -127,9 +137,13 @@ export default function useAdministration()
         let props = []
         for(const prop in object)
         {
-            props.push(
-                toSpanish(prop)[0].toUpperCase()+toSpanish(prop).slice(1)
-            )
+            try {
+                props.push(
+                    toSpanish(prop).charAt(0).toUpperCase()+toSpanish(prop).slice(1)
+                )
+            } catch (error) {
+                console.log(prop)
+            }
         }
         return props
     }
@@ -139,17 +153,19 @@ export default function useAdministration()
         currentEntityType,
         currentEntity, 
         Data, 
+        DataByIdFromEndpoint,
         deleteData,
         editMode,
         entities, 
         getDataById,
-        getEntityPropertiesNames, 
-        getEntityType, 
-        isLoading, 
+        getData,
+        getDataByIdFromEndpoint,
+        getEntityPropertiesNames,
         selectedDataId,
-        setSelectedDataId,
-        setEditMode,
         setCurrentEntity, 
+        setData,
+        setEditMode,
+        setSelectedDataId,
         updateData
     } 
 }

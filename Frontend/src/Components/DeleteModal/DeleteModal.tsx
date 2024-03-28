@@ -1,16 +1,49 @@
 import useAdministration from "../../hooks/useAdministration"
 import { useRouter } from "next/navigation"
+import useEntityInformation from "../../hooks/useEntityInformation"
+import SpecialTableData from "../SpecialTableData"
+import { useEffect } from "react"
 
-function DeleteModal({data})
+function DeleteModal({data, entityId, endpoint})
 {
-    const { getEntityType, getEntityPropertiesNames, deleteData } = useAdministration()
+    const { 
+        getPropertyEndpoint,
+        ShowProp,
+        getEntityType
+    } = useEntityInformation()
+
+    const { 
+        getEntityPropertiesNames, 
+        deleteData, 
+        currentEntity,
+        Data
+    } = useAdministration()
+
+    const dataEntityType = getEntityType(entityId)
+
+
     const router = useRouter()
+
+    function getDataType(value: any){
+        if(typeof value === "object")
+        {
+            if(Array.isArray(value))
+            {
+                return "select"
+            }
+        }
+        else
+        {
+            return typeof value
+        }
+    }
 
     function handleDelete(id: number)
     {
-        deleteData(id)
+        deleteData(endpoint, id)
         router.push("/Administration")
     }
+
     return(
         <div className="">
 
@@ -28,13 +61,44 @@ function DeleteModal({data})
                             }   
                         </tr>
                     </thead>
+
                     <tbody>
                         {
                             data && 
-                            <tr className="border-solid border-2 border-black" key={data.id}>
-                                {Object.values(data as typeof getEntityType).map((prop, id)=>(
-                                    <td className="p-2 text-center border-solid border-2 border-black td" key={id}>{prop}</td>
-                                ))}
+                            <tr className="border-solid border-2 border-black">
+                                {Object.values(data as typeof dataEntityType).map((prop, id)=>{
+                                    if(getDataType(prop) === "select")
+                                    {
+                                        return(
+                                            <td className="p-2 text-center border-solid border-2 border-black td" key={id}>
+                                                {
+                                                    prop.map((value, key)=>{
+                                                        return <SpecialTableData entityType={dataEntityType} propIndex={value} dataId={id} key={key}/>
+                                                    })
+                                                }
+                                            </td>
+                                        )
+                                    }
+                                    else if(ShowProp(getEntityPropertiesNames(Data[0])[id]))
+                                    {
+                                        if(getPropertyEndpoint(dataEntityType, id))
+                                        {
+                                            return(
+                                                <td className="p-2 text-center border-solid border-2 border-black td" key={id}>
+                                                    <SpecialTableData entityType={dataEntityType} propIndex={prop} dataId={id}/>
+                                                </td>
+                                            )
+                                        }
+                                        else
+                                        {
+                                            return(
+                                                <td className="p-2 text-center border-solid border-2 border-black td" key={id}>
+                                                    {typeof prop == "boolean" ? (prop === true ? "Sí" : "No") : prop}
+                                                </td>
+                                            )
+                                        }
+                                    }
+                                })}
                             </tr>
                         }
                     </tbody>
@@ -49,3 +113,7 @@ function DeleteModal({data})
     )
 }
 export default DeleteModal
+
+function useState<T>(): [any, any] {
+    throw new Error("Function not implemented.")
+}

@@ -41,7 +41,7 @@ export default function BreadCrumbs()
     const noCrumbsPages = ["/"]
 
     return(
-        <div className="BreadCrumbs MobileView lg:mt-1 lg:p-2" style={pathname === "/" ? {display: 'none'} : {}}>
+        <div className="BreadCrumbs lg:mt-1 lg:p-2" style={pathname === "/" ? {display: 'none'} : {}}>
         {
             !noCrumbsPages.includes(pathname) &&
             route.map((crumb, index)=>{
