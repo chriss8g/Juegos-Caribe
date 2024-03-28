@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../app/FacultadDetallada/fac-detallada.css";
+import "../../app/Facultad/fac-detallada.css";
 
 const ResultsTable = () => {
     const data = Array(5).fill(["L(50)", "5to", "15"]);
