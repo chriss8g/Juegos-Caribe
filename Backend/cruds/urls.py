@@ -86,4 +86,6 @@ urlpatterns = [
 
     path('place/<int:pk>/', PlaceDetail.as_view()),
     path('place/', PlaceList.as_view()),
+    path('commissionerCategory/<int:pk>/', CommissionerCategoryDetail.as_view()),
+    path('commissionerCategory/', CommissionerCategoryList.as_view()),
 ]
