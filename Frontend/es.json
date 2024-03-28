@@ -68,5 +68,7 @@
     "team": "equipo",
     "game": "partido",
     "new": "noticia",
-    "commissionerCategory": "categoría de comisionado"
+    "commissionerCategory": "categoría de comisionado",
+    "type": "tipo",
+    "data": "data"
 }
