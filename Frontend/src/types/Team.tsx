@@ -1,21 +1,22 @@
-import { Medal } from "./Enums"
+import { Athlete } from "./Athlete"
+import { Sport } from "./Sport"
 
 export interface Team
 {
     id: number,
     str: string,
-    medal: Medal,
+    medal: "",
     sex: "Masculino" | "Femenino" | "Mixto",
-    sports: Sport,
+    sport: Sport,
     faculty: Faculty,
     athletes: Athlete[]
 }
 
 export interface PostTeam
 {
-    medal: Medal,
+    medal: "",
     sex: "Masculino" | "Femenino" | "Mixto",
-    sports: Sport,
+    sport: Sport,
     faculty: Faculty,
     athletes: Athlete[]
 }

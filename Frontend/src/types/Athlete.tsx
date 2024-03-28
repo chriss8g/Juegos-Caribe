@@ -14,6 +14,6 @@ export interface PostAthlete
     name: string,
     ocupation: string,
     biography: string,
-    picture: string,
+    picture: File,
     faculty: Faculty
 }

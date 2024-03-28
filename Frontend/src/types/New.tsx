@@ -6,13 +6,13 @@ interface New
     body: string,
     date: string
     picture: string,
-    users: User
+    user: User
 }
 
 interface PostNew
 {
     title: string,
     body: string,
-    picture: string,
-    users: User
+    picture: File,
+    user: User
 }
