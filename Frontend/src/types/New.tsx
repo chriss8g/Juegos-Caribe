@@ -6,7 +6,7 @@ interface New
     body: string,
     date: string
     picture: string,
-    users: User
+    user: User
 }
 
 interface PostNew
@@ -14,5 +14,5 @@ interface PostNew
     title: string,
     body: string,
     picture: File,
-    users: User
+    user: User
 }

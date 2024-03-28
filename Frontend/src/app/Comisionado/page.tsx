@@ -1,14 +1,15 @@
 import Layout from "../../Components/Layout/Layout";
 import Image from 'next/image'
 
-export default function Comisioner()
+export default function Commissioner()
 {
 
     return(
         
-        <div className="Comisioner">
+        <div className="Commissioner">
             <Layout>
-                 <div></div>   
+                <div>
+                </div>   
             </Layout>
         </div>
     )

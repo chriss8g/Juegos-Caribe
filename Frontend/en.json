@@ -6,10 +6,10 @@
     "Edición": "edition",
     "Temporada": "season",
     "Nombre": "name",
-    "Comisionados": "comisioners",
-    "Comisionado": "comisioner",
+    "Comisionados": "commissioners",
+    "Comisionado": "commissioner",
     "Torneos": "tournaments",
-    "Torneo": "Tournament",
+    "Torneo": "tournament",
     "Posición": "position",
     "Biografía": "biography",
     "Foto": "picture",
@@ -21,5 +21,10 @@
     "Atletas": "athletes",
     "Deporte": "sport",
     "Sexo": "sex",
-    "Medalla": "medal"
+    "Medalla": "medal",
+    "Categoría de comisionado": "commissionerCategory",
+    "Usuario": "user",
+    "Cuerpo": "body",
+    "Logo": "logo"
+
 }

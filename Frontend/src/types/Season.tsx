@@ -1,4 +1,4 @@
-import { Comisioner } from "./Comisioner"
+import { Commissioner } from "./Commissioner"
 import { Tournament } from "./Tournament"
 
 export interface Season{
@@ -7,7 +7,7 @@ export interface Season{
     title: string,
     year: number,
     edition: string,
-    comisioners: Comisioner[],
+    commissioners: Commissioner[],
     tournaments: Tournament[],
     faculties: Faculty[]
 }
@@ -17,5 +17,5 @@ export interface PostSeason
     title: string,
     year: number,
     edition: string,
-    comisioners: number[],
+    commissioners: number[],
 }

@@ -58,19 +58,29 @@ export default function useAdministration()
 
     function addData(newData:any, endpoint:string)
     {
-        console.log(newData)
         const formData = new FormData();
 
         Object.keys(newData).forEach(key => {
+            const value = newData[key];
             const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
-            if(fileInput)
+           
+            if(fileInput && value instanceof File)
             {
                 const file = fileInput.files[0];
-                formData.append('picture', file);
+                formData.append(key, file);
+            } 
+            else if (Array.isArray(value)) {
+                // If the value is an array, append each number with the key
+                value.forEach((item) => {
+                    formData.append(key, item);
+                });
             }
-            formData.append(key, newData[key]);
-        });
+            else
+                // For regular values, append them directly
+                formData.append(key, value);
 
+            
+        });
         fetch(`${process.env.API_URL + endpoint}/`,{
             method: 'POST',
             body: formData
@@ -79,19 +89,30 @@ export default function useAdministration()
 
     function updateData(newData: typeof currentEntityType, endpoint:string)
     {
-        console.log(newData)
         const formData = new FormData();
 
         Object.keys(newData).forEach(key => {
+            const value = newData[key];
             const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
-            if(fileInput)
+           
+            if(fileInput && value instanceof File)
             {
                 const file = fileInput.files[0];
-                formData.append('picture', file);
+                formData.append(key, file);
+            } 
+            else if (Array.isArray(value)) {
+                // If the value is an array, append each number with the key
+                value.forEach((item) => {
+                    formData.append(key, item);
+                });
             }
-            formData.append(key, newData[key]);
+            else
+                // For regular values, append them directly
+                formData.append(key, value);
+
+            
         });
-        fetch(`${process.env.API_URL + endpoint}/${newData.id}/`,{
+        fetch(`${process.env.API_URL + endpoint}/`,{
             method: 'PUT',
             body: formData
         });

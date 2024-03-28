@@ -1,6 +1,6 @@
 import entities from "../../Entities.json"
 import { Athlete, PostAthlete } from "../types/Athlete";
-import { PostComisioner, Comisioner } from "../types/Comisioner";
+import { PostCommissioner, Commissioner } from "../types/Commissioner";
 import { Comments, PostComment } from "../types/Comment";
 import { PostFacultyOnSeason, FacultyOnSeason } from "../types/FacultyOnSeason";
 import { FacultyOnSeasonOnTournament, PostFacultyOnSeasonOnTournament } from "../types/FacultyOnSeasonOnTournament";
@@ -30,19 +30,26 @@ export default function useEntityInformation()
         picture: new File([], ""),
         faculty: faculty
     }
-    var comisioner: Comisioner = {
+    var commissionerCategory: CommissionerCategory = {
+        id: -1,
+        str: "",
+        data: ""
+    }
+    var commissioner: Commissioner = {
         id: -1,
         str: "",
         name: "",
         position: "",
         biography: "",
-        picture: ""
+        picture: "",
+        commissionerCategory: commissionerCategory
     };
-    var PostComisioner: PostComisioner = {
+    var PostCommissioner: PostCommissioner = {
         name: "",
         position: "",
         biography: "",
-        picture: new File([], "")    
+        picture: new File([], "") ,
+        commissionerCategory: commissionerCategory
     }
     var comment: Comments = {
         id: -1,
@@ -73,7 +80,7 @@ export default function useEntityInformation()
         id: -1,
         str: "",
         name: "",
-        logo: ""
+        logo: new File([], "")
     };
     var postFaculty: PostFaculty = {
         name: "",
@@ -130,13 +137,13 @@ export default function useEntityInformation()
         body: "",
         date: "",
         picture: "",
-        users: user
+        user: user
     };
     var postNew: PostNew = {
         title: "",
         body: "",
         picture: new File([], ""),
-        users: user
+        user: user
     };
     var sport: Sport = {
         id: -1,
@@ -188,12 +195,12 @@ export default function useEntityInformation()
         id: -1,
         str: "",
         season: season,
-        tournaments: tournament,
+        tournament: tournament,
         faculties: [faculty]
     };
     var postTournamentOnSeason: PostTournamentOnSeason = {
         season: season,
-        tournaments: tournament,
+        tournament: tournament,
         faculties: [faculty]
     };
     var user: User = {
@@ -232,7 +239,7 @@ export default function useEntityInformation()
         title: "",
         year: 0,
         edition: "",
-        comisioners: [],
+        commissioners: [],
         tournaments: [],
         faculties: []
     };
@@ -240,7 +247,7 @@ export default function useEntityInformation()
         title: "",
         year: 0,
         edition: "",
-        comisioners: []
+        commissioners: []
     }
 
 
@@ -250,7 +257,7 @@ export default function useEntityInformation()
             case 0: 
                 return PostSeason;
             case 1:
-                return PostComisioner;
+                return PostCommissioner;
             case 2:
                 return postTournament;
             case 3:
@@ -319,8 +326,8 @@ export default function useEntityInformation()
         switch (entityName) {
             case "season":
                 return "seasons";
-            case "comisioners": 
-                return "comisioners"; 
+            case "commissioners": 
+                return "commissioners"; 
             case "tournament":
                 return "tournaments";
             case "athlete":
@@ -369,7 +376,7 @@ export default function useEntityInformation()
             case 0:
                 return season;
             case 1:
-                return comisioner;
+                return commissioner;
             case 2:
                 return tournament;
             case 3:
@@ -407,14 +414,20 @@ export default function useEntityInformation()
         const objectValues = Object.values(object)
         const objectKeys = Object.keys(object)
         const entityKeys = Object.keys(entity)
+        const entityValues = Object.values(entity)
         
         castedObject['id'] = objectValues[objectKeys.indexOf('id')]
 
         for (let i = 0; i < entityKeys.length; i++) {
             if(objectKeys.indexOf(entityKeys[i]) !== -1)
             {
-                const index = objectKeys.indexOf(entityKeys[i])
-                castedObject[entityKeys[i]] = objectValues[index]
+                if(entityValues[i] instanceof File)
+                    castedObject[entityKeys[i]] = new File([], "")
+                else
+                {
+                    const index = objectKeys.indexOf(entityKeys[i])
+                    castedObject[entityKeys[i]] = objectValues[index]
+                }
             }
         }
         return castedObject

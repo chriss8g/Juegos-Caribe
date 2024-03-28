@@ -7,8 +7,8 @@
     "season": "temporada",
     "Season": "Temporada",
     "name": "nombre",
-    "comisioners": "comisionados",
-    "Comisioner": "Comisionado",
+    "commissioners": "comisionados",
+    "Commissioner": "Comisionado",
     "tournaments": "torneos",
     "Tournament": "Torneo",
     "position": "posición",
@@ -67,5 +67,6 @@
     "result": "resultado",
     "team": "equipo",
     "game": "partido",
-    "new": "noticia"
+    "new": "noticia",
+    "commissionerCategory": "categoría de comisionado"
 }

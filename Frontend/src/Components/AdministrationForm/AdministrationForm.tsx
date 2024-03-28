@@ -119,8 +119,8 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                 }
                 else if(typeof Object.values(newData)[i] === 'number')
                     return +e.target.value
-                else if(Object.keys(newData)[i] === "picture" || Object.keys(newData)[i] === "file")
-                    return e.target.files[0]
+                else if(e.target.type == "file")
+                    return new File([], "")
                 else
                     return e.target.value
             }
@@ -175,7 +175,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
             addData(temp, entity?.endpoint)
         }
 
-        // closeModal()
+        closeModal()
     }
 
 
@@ -208,7 +208,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                         return(
                                                 <div className="" key={id}>
                                                     <label>{propertiesNames[id]}: </label>
-                                                    <select multiple={Array.isArray(Object.values(formRow)[id])} id={`${id}`} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}>
+                                                    <select multiple={Array.isArray(Object.values(formRow)[id])} id={`${id}`} defaultValue={Object.values(formRow)[id] as any} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}>
                                                         {
                                                             !editMode &&
                                                             <option value=""></option>
@@ -227,7 +227,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                         )
                                     }
                                     // If the property is a file, then it will be a file input
-                                    else if(Object.values(getEntityPostType(entity.id))[id] instanceof File){
+                                    else if(dataValues[id] instanceof File){
                                         return(
                                             <div className="" key={id}>
                                                 <label>{propertiesNames[id]}: </label>
