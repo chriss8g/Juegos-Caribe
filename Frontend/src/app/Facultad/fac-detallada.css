@@ -1,0 +1,20 @@
+.sport-category {
+    border-bottom: solid 2px;
+}
+
+.results-table th {
+    border-bottom: 2px solid #2c2b2b4f;
+    vertical-align: bottom;
+}
+
+.results-table {
+    border-collapse: collapse;
+}
+
+.results-table th, .results-table td {
+    padding: 0.5vw 1rem;
+    color: rgb(3 7 18);
+    font-weight: 300;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}

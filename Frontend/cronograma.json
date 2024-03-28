@@ -7,7 +7,7 @@
         "players": ["ISDi", "EKO"],
         "scores": [3,1],
         "status": "Finalizado",
-        "location": "Seder",
+        "location": "Tabloncillo del Seder",
         "stage": "Fase de Grupos",
         "details":{
             
@@ -22,7 +22,7 @@
         "players": ["ISDi", "EKO"],
         "scores": [3,1],
         "status": "Finalizado",
-        "location": "Seder",
+        "location": "Tabloncillo del Seder",
         "stage": "Fase de Grupos",
         "details":{
             
@@ -37,7 +37,7 @@
         "players": ["ISDi", "EKO"],
         "scores": [3,1],
         "status": "Finalizado",
-        "location": "Seder",
+        "location": "Tabloncillo del Seder",
         "stage": "Fase de Grupos",
         "details":{
             
@@ -52,11 +52,32 @@
         "players": ["Psico", "MATCOM"],
         "scores": [8,15],
         "status": "Finalizado",
-        "location": "Seder",
+        "location": "Tabloncillo del Seder",
         "stage": "4tos de final",
         "details":{
             
         }
-
+    },
+    {
+        "session": "morning",
+        "gender": "male",
+        "sport": "Baseball",
+        "teams": [
+            "EKO",
+            "MATCOM"
+        ],
+        "players": [
+            "EKO",
+            "MATCOM"
+        ],
+        "scores": [
+            1,
+            2
+        ],
+        "status": "Finalizado",
+        "location": "Terreno del Seder",
+        "stage": "Semifinal",
+        "details": {
+        }
     }
 ]
