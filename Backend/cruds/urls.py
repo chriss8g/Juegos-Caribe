@@ -75,14 +75,11 @@ urlpatterns = [
     path('user/<int:pk>/', UserDetail.as_view()),
     path('user/', UserList.as_view()),
 
-    path('user/<int:pk>/', SexDetail.as_view()),
-    path('user/', SexList.as_view()),
+    path('sex/<int:pk>/', SexDetail.as_view()),
+    path('sex/', SexList.as_view()),
 
-    path('user/<int:pk>/', MedalDetail.as_view()),
-    path('user/', MedalList.as_view()),
-
-    path('user/<int:pk>/', CommissionerCategoryDetail.as_view()),
-    path('user/', CommissionerCategoryList.as_view()),
+    path('medal/<int:pk>/', MedalDetail.as_view()),
+    path('medal/', MedalList.as_view()),
 
     path('place/<int:pk>/', PlaceDetail.as_view()),
     path('place/', PlaceList.as_view()),
