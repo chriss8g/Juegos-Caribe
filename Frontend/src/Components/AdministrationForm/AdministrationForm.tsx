@@ -16,7 +16,8 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
 
     const { 
         ShowProp,
-        getPropertyEndpoint
+        getPropertyEndpoint,
+        getEntityPostType
     } = useEntityInformation()
 
     const [selectedData, setSelectedData] = useState(formRow)
@@ -26,11 +27,11 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
     const [needsUpdate, setNeedsUpdate] = useState(false)
     const {toEnglish}= useTranslation()
     const[selectsInfo, setSelectsInfo] = useState([])
-    const router = useRouter()
 
 
     useEffect(()=>{
         setSelectedData(formRow)
+        setNewData(formRow)
         setLoadingModal(true)
     }, [formRow])
     
@@ -39,14 +40,18 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
         if(selectedData)
         {
             setDataValues(Object.values(selectedData))
-            let info = []
-            Object.values(selectedData).map((val,i)=>{
-                if(getPropertyEndpoint(formRow, i))
-                {
-                    getData(getPropertyEndpoint(formRow, i)).then((data)=>info.push(data))
-                }
-            })
-            setSelectsInfo(info)
+            let info = [];
+
+            Promise.all(Object.values(selectedData).map((val, i) => {
+            if (getPropertyEndpoint(formRow, i)) {
+                return getData(getPropertyEndpoint(formRow, i)).then((data) => {
+                info.push({"id": i, "data": data});
+                });
+            } 
+            })).then(()=>
+                setSelectsInfo([...info.sort((a,b)=>a.id-b.id).map(a=>a.data)])
+            )
+
         }
     }, [selectedData])
 
@@ -88,6 +93,18 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
             if(!found)
                 return false
         }
+        for (let i = 0; i < arr2.length; i++) {
+            let found = false
+            for (let j = 0; j < arr1.length; j++) {
+                if(arr2[i] == arr1[i])
+                {
+                    found = true
+                    break;
+                }
+            }
+            if(!found)
+                return false
+        }
         return true
     }
 
@@ -96,21 +113,19 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
         setNewData(Object.values(newData).map((val, i)=>{
             if(+i === +e.target.id)
             {
-                if(Array.isArray(Object.values(formRow)[i])){
+                if(Array.isArray(Object.values(formRow)[i]))
+                {
                     return Array.from(e.target.selectedOptions, (option:HTMLInputElement) => +option.value)
                 }
                 else if(typeof Object.values(newData)[i] === 'number')
                     return +e.target.value
-                else if(Object.keys(newData)[i] === "picture" || Object.keys(newData)[i] === "file")
-                {
-                    console.log(e.target.files[0])
-                    return null
-                }
+                else if(e.target.type == "file")
+                    return new File([], "")
                 else
                     return e.target.value
             }
             else
-                return Object.values(newData)[i]
+                return Object.values(newData)[+i]
         }))
     }
 
@@ -122,7 +137,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                 if(!equalsArrays(Object.values(formRow)[i], Object.values(newData)[i]))
                     updated = true
             }
-            else if(Object.values(formRow)[i] !== Object.values(newData)[i])
+            else if(newData && Object.values(formRow)[i] !== Object.values(newData)[i])
             {
                 updated = true
             }
@@ -147,28 +162,20 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
     {
         var temp = {}
         var formElements = document.forms['AdminModal'].elements
+        let i = 0
         for(const element of formElements)
         {
-            if(element.type === "number")
-                temp[toEnglish(element.name)] = +element.value
-            else if(element.type === "select-one")
-                temp[toEnglish(element.name)] = [+element.value]
-            else if(element.type === "select-multiple")
-                temp[toEnglish(element.name)] = [...temp[toEnglish(element.name)],element.value]
-            else
-                temp[toEnglish(element.name)] = element.value
+            temp[toEnglish(element.name)] = newData[i]
+            i++
         }
-        
         if(editMode)
-        {
-            updateData(temp as typeof formRow)
-        }
+            updateData(temp as typeof formRow, entity.endpoint)
         else
         {
             addData(temp, entity?.endpoint)
         }
-        closeModal()
 
+        closeModal()
     }
 
 
@@ -199,29 +206,32 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                     {
                                         selectIndex++
                                         return(
-                                                <div className="" key={id}>
+                                                <div className="my-5" key={id}>
                                                     <label>{propertiesNames[id]}: </label>
-                                                    <select id={`${id}`} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}>
+                                                    <select multiple={Array.isArray(Object.values(formRow)[id])} id={`${id}`} defaultValue={Object.values(formRow)[id] as any} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}>
                                                         {
-                                                            selectsInfo[selectIndex]?.map((val, id)=>{
+                                                            !editMode &&
+                                                            <option value=""></option>
+                                                        }
+                                                        {
+                                                            selectsInfo[selectIndex]?.map((val, i)=>{
                                                                 return(
-                                                                    <option value={`${val.id}`} key={id}>
+                                                                    <option selected={Object.values(formRow)[id] === val.id} value={`${val.id}`} key={i}>
                                                                         {val.str}
                                                                     </option>
                                                                 )
-                                                            },
-                                                            )
+                                                            },)
                                                         }
                                                     </select>
                                                 </div>
                                         )
                                     }
                                     // If the property is a file, then it will be a file input
-                                    else if(propertiesNames[id] === "Foto" || propertiesNames[id] === "Archivo"){
+                                    else if(dataValues[id] instanceof File){
                                         return(
-                                            <div className="">
+                                            <div className="" key={id}>
                                                 <label>{propertiesNames[id]}: </label>
-                                                <input type="file" key={id} id={`${id}`} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}/>
+                                                <input type="file"  key={id} id={`${id}`} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}/>
                                             </div>
                                         )
                                     }
@@ -229,7 +239,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                     {
                                         //Property is ordinary text(number)
                                         return(
-                                            <div className="" key={id}>
+                                            <div className="my-5" key={id}>
                                                 <label>{propertiesNames[id]}: </label>
                                                 <input id={`${id}`} name={`${propertiesNames[id]}`} type={`${typeof val}`} className="p-2 text-center border-solid border-2 border-black td" onChange={(e)=>handleChange(e)} defaultValue={typeof val == "boolean" ? (val === true ? "Sí" : "No") : val}/>
                                             </div>

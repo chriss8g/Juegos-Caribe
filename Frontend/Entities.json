@@ -6,8 +6,8 @@
     },
     {
         "id": 1,
-        "name": "comisioners",
-        "endpoint": "/comisioner"
+        "name": "commissioners",
+        "endpoint": "/commissioner"
     },
     {
         "id": 2,
@@ -78,6 +78,11 @@
         "id": 15,
         "name": "users",
         "endpoint": "/user"
+    },
+    {
+        "id": 16,
+        "name": "commissionerCategory",
+        "endpoint": "/commissionerCategory"
     }
 
 ]

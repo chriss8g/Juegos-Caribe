@@ -27,7 +27,21 @@
 {
     width: 70%;
 }
-/
+.rightHeader
+{
+    align-items: center;
+    width: 30%;
+    display: none;
+    justify-content: space-between;
+}
+@media (max-width: 420px)
+{
+    .rightHeader
+    {
+        display: flex;
+    }
+}
+
 .rightHeader h2
 {
     font-weight: 300;

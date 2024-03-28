@@ -58,33 +58,62 @@ export default function useAdministration()
 
     function addData(newData:any, endpoint:string)
     {
-        try{
-            fetch(`${process.env.API_URL + endpoint}/`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(newData)
-            })
-        }
-        catch (error) {
-            console.log(error)
-        }
+        const formData = new FormData();
+
+        Object.keys(newData).forEach(key => {
+            const value = newData[key];
+            const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+           
+            if(fileInput && value instanceof File)
+            {
+                const file = fileInput.files[0];
+                formData.append(key, file);
+            } 
+            else if (Array.isArray(value)) {
+                // If the value is an array, append each number with the key
+                value.forEach((item) => {
+                    formData.append(key, item);
+                });
+            }
+            else
+                // For regular values, append them directly
+                formData.append(key, value);
+
+            
+        });
+        fetch(`${process.env.API_URL + endpoint}/`,{
+            method: 'POST',
+            body: formData
+        });
     }
 
-    function updateData(newData: typeof currentEntityType)
+    function updateData(newData: typeof currentEntityType, endpoint:string)
     {
-        try {
-            fetch(`${process.env.API_URL + currentEntity.endpoint}/`+ newData.id+ '/', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(newData)
-            })
-        } catch (error) {
-            console.log(error)
-        }
+        const formData = new FormData();
+
+        Object.keys(newData).forEach(key => {
+            const value = newData[key];
+            const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+           
+            if(fileInput && value instanceof File)
+            {
+                const file = fileInput.files[0];
+                formData.append(key, file);
+            } 
+            else if (Array.isArray(value)) {
+                // If the value is an array, append each number with the key
+                value.forEach((item) => {
+                    formData.append(key, item);
+                });
+            }
+            else
+                // For regular values, append them directly
+                formData.append(key, value);
+        });
+        fetch(`${process.env.API_URL + endpoint}/`,{
+            method: 'PUT',
+            body: formData
+        });
       
     }
 
@@ -100,8 +129,6 @@ export default function useAdministration()
         }       
     }
 
-
-    
 
 
     const { toSpanish } = useTranslation()

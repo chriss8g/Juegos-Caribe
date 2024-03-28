@@ -1,4 +1,6 @@
-interface FacultyOnSeasonOnTournament
+import { TournamentOnSeason } from "./TournamentOnSeason"
+
+export interface FacultyOnSeasonOnTournament
 {
     id: number,
     str: string,
@@ -7,7 +9,7 @@ interface FacultyOnSeasonOnTournament
     faculty: Faculty
 }
 
-interface PostFacultyOnSeasonOnTournament
+export interface PostFacultyOnSeasonOnTournament
 {
     points: number,
     tournamentOnSeason: TournamentOnSeason,

@@ -18,14 +18,14 @@ export default function Layout({children})
     return(
         <QueryClientProvider client={queryClient}>
             <div className="Header">
-                <div className="MobileView">
+                <div className="">
                     <div className="MobileHeader">
-                        <div className="leftHeader">
+                        <div className="leftHeader -my-5">
                             <div className="mobileLogo">
                                 <Image alt="" src="/logo.svg" fill className="image"/>
                             </div>
                         </div>
-                        <div className="rightHeader gap-2 mr-2">
+                        <div className="rightHeader gap-2 mr-2 lg:hidden block">
                             <div className="IconSearch cursor-pointer">
                                 <IconSearch />
                             </div>
@@ -56,7 +56,7 @@ export default function Layout({children})
                 <div className="DesktopView">
 
                 </div>
-                <div className="MobileView">
+                <div className="">
                     <BreadCrumbs />
                 </div>
                 {children}
