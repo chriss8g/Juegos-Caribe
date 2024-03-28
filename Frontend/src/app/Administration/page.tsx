@@ -104,12 +104,12 @@ export default function Administration()
     }
 
     function DeleteSelection(){
-        selectedToDelete.map(selected=>{
-            var deleteId = Data.filter((x, i)=>+i === +selected)[0].id
-            if(confirm("Desea borrar el objeto de id: "+deleteId+"?"))
-                deleteData(currentEntity.endpoint, deleteId)
-                location.reload()
-        })
+        if(confirm("Desea borrar los objetos seleccionados?"))
+            selectedToDelete.map(selected=>{
+                var deleteId = Data.filter((x, i)=>+i === +selected)[0].id
+                    deleteData(currentEntity.endpoint, deleteId)
+                    location.reload()
+            })
     }
 
 

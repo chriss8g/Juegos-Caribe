@@ -109,8 +109,6 @@ export default function useAdministration()
             else
                 // For regular values, append them directly
                 formData.append(key, value);
-
-            
         });
         fetch(`${process.env.API_URL + endpoint}/`,{
             method: 'PUT',
