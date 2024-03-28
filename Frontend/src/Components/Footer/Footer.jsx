@@ -7,7 +7,7 @@ export default function Footer()
     const year = new Date().getFullYear()
     const router = useRouter()
     return(
-        <div className="Footer MobileView container">
+        <div className="Footer MobileView container mt-20">
             <div>
                 <div className="Logo">
                     <Image src="/logo.svg" alt="" fill className="image"/>

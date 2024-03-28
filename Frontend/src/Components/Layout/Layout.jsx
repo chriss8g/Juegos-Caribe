@@ -20,7 +20,7 @@ export default function Layout({children})
             <div className="Header">
                 <div className="">
                     <div className="MobileHeader">
-                        <div className="leftHeader -my-5">
+                        <div className="leftHeader">
                             <div className="mobileLogo">
                                 <Image alt="" src="/logo.svg" fill className="image"/>
                             </div>
