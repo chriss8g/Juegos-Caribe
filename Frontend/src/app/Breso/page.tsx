@@ -1,7 +1,6 @@
 'use client'
 import Layout from '../../Components/Layout/Layout';
 import "../../app/globals.css"
-import "./FAQ.css";
 import TitleText from '../../Components/TitleText/TitleText';
 import SubtitleText from '../../Components/SubtitleText/SubtitleText';
 export default function FAQ()
@@ -9,7 +8,7 @@ export default function FAQ()
     return(
         <div className="FAQ">
             <Layout>
-                <div className="FAQ-main-container MobileView container" >
+                <div className="FAQ-main-container MobileView container " >
                     
                     <TitleText title={"Preguntas frecuentes"} text={""}/>
 
