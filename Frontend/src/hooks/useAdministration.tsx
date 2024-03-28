@@ -1,8 +1,7 @@
-import { use, useEffect, useState } from "react"
+import { useState } from "react"
 import entities from "../../Entities.json"
 import useTranslation from "./useTranslation"
 import useEntityInformation from "./useEntityInformation"
-import axios from 'axios'
 
 
 export default function useAdministration()
@@ -19,15 +18,23 @@ export default function useAdministration()
 
     const [editMode, setEditMode] = useState(false)
 
-    const API = axios.create({
-        baseURL: process.env.API_URL
-    })
     
     const getData = async (endpoint: string) =>
     {
-        const res = await API.get(endpoint+'/')
-        setData(res.data)
-        return (await res.data)
+        fetch(`${process.env.API_URL + endpoint}/`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+        .then(
+            (response)=>response.json()
+            )
+            .then(
+            (data)=>{
+                setData(data)
+            }
+        ) 
     }
         
 
