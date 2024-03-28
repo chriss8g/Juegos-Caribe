@@ -118,8 +118,8 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                     return Array.from(e.target.selectedOptions, (option:HTMLInputElement) => +option.value)
                 }
                 else if(typeof Object.values(newData)[i] === 'number')
-                    return +e.target.value
-                else if(e.target.type == "file")
+                return +e.target.value
+            else if(e.target.type == "file")
                     return new File([], "")
                 else
                     return e.target.value
@@ -165,6 +165,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
         let i = 0
         for(const element of formElements)
         {
+            console.log(newData)
             temp[toEnglish(element.name)] = newData[i]
             i++
         }
@@ -204,6 +205,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                     // If the property is a foreign key, then, it will be a select input
                                     if(getPropertyEndpoint(formRow, id))
                                     {
+                                        console.log(getPropertyEndpoint(formRow, id))
                                         selectIndex++
                                         return(
                                                 <div className="my-5" key={id}>
