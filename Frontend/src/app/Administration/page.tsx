@@ -115,7 +115,7 @@ export default function Administration()
 
     return (
        
-        <div className="Administration">
+        <div className="Administration mb-40 items-center">
             <Layout>
                 <div className="">
                     <div className="SectionMenu">

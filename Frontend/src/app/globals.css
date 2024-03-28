@@ -44,7 +44,7 @@
 }
 
 .text {
-  color: #4A5568; /* Este es el valor hexadecimal para gray-600  */
+  color: #4A5568;
  }
 .width-90{
   width: 90%;
@@ -54,7 +54,7 @@
   height: 10%;
 }
 
-body {
+* {
   font-family: 'Segoe UI', sans-serif;
 }
 
@@ -73,10 +73,7 @@ body {
   {
     font-size: 35px;
   }
-  .iconFilter p
-  {
-    font-size: 10px;
-  }
+
   p{
     font-size: 13px;
   }
