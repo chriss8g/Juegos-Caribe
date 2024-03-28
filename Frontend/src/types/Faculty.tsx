@@ -3,7 +3,7 @@ interface Faculty
     id: number,
     str: string,
     name: string,
-    logo: File
+    logo: string
 }
 
 interface PostFaculty
