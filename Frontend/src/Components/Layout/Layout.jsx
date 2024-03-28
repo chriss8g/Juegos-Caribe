@@ -4,6 +4,7 @@ import "../../app/globals.css"
 import Image from 'next/image'
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs"
 import Footer from "../Footer/Footer"
+// import { IconMenu2, IconSearch, IconUser } from "@tabler/icons-react"
 import { IconMenu2, IconSearch, IconUser } from "@tabler/icons-react";
 import useAuthentication from "../../hooks/useAuthentication"
 import Link from "next/link"
@@ -12,11 +13,9 @@ import {QueryClient, QueryClientProvider} from 'react-query'
 export default function Layout({children})
 {
     const { loggedInUser } = useAuthentication()
-    const queryClient = new QueryClient()
 
     // const [lenguage, setLenguage] = useState("es")
     return(
-        <QueryClientProvider client={queryClient}>
             <div className="Header">
                 <div className="">
                     <div className="MobileHeader">
@@ -62,6 +61,5 @@ export default function Layout({children})
                 {children}
                 <Footer />
             </div>
-        </QueryClientProvider>
     )
 }

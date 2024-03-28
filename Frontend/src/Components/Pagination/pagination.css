@@ -1,0 +1,14 @@
+.carousel .control-dots {
+    margin: 0;
+    height: 2rem;
+}
+
+.carousel .control-dots .dot{
+    background: #fff;
+    border: solid 2px #5a1024;
+    opacity: .8;
+}
+
+.carousel .control-dots .dot.selected {
+    background: #5a1024;
+}
