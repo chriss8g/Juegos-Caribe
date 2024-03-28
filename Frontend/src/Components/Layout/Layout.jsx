@@ -8,7 +8,6 @@ import Footer from "../Footer/Footer"
 import { IconMenu2, IconSearch, IconUser } from "@tabler/icons-react";
 import useAuthentication from "../../hooks/useAuthentication"
 import Link from "next/link"
-import {QueryClient, QueryClientProvider} from 'react-query'
 
 export default function Layout({children})
 {

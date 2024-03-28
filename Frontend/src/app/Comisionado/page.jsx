@@ -1,6 +1,6 @@
 'use client'
 import Layout from "../../Components/Layout/Layout";
-import TextWithTitle2 from "../../Components/TextWithTitle2/TextWithTitle2";
+import SubtitleText from "../../Components/SubtitleText/SubtitleText";
 import "../../Components/FacultyPreview/FacultyPreview.css"
 import { useEffect, useState } from "react"
 import Pagination from '../../Components/Pagination/Pagination'
@@ -118,7 +118,7 @@ export default function Comisioner()
                 </div>
 
 
-                <TextWithTitle2 title={"Comisión Disciplinaria"} text={""}/>
+                <SubtitleText title={"Comisión Disciplinaria"} text={""}/>
                 <div className="text-center text-[#616469] mx-6">
                     <div>
                         <p className="mb-6 underline">Miembros permanentes</p>
