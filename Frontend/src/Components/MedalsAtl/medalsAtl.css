@@ -1,0 +1,9 @@
+.athlete-medal-table tr:first-child th{
+    border-bottom: solid 2px lightgray;
+    padding: 1% 8% 3% 8%;
+}
+
+.athlete-table-main-container {
+    border-top: solid white 2px;
+    border-right: solid white 2px;
+}
