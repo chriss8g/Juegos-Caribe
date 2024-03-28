@@ -20,10 +20,10 @@ export default function Layout({children})
             <div className="Header">
                 <div className="">
                     <div className="MobileHeader">
-                        <div className="leftHeader">
-                            <div className="mobileLogo">
+                        <div className="w-1/2">
+                            <a className="mobileLogo" href="/">
                                 <Image alt="" src="/logo.svg" fill className="image"/>
-                            </div>
+                            </a>
                         </div>
                         <div className="rightHeader gap-2 mr-2 lg:hidden block">
                             <div className="IconSearch cursor-pointer">
