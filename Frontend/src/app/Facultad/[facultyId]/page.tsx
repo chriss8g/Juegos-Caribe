@@ -36,6 +36,10 @@ export default function FacultadDetallada()
         setAthletes(Data);
     },[Data]);
 
+    useEffect(()=>{
+        console.log(faculty)
+    },[faculty]);
+
 
     const [category, setCategory] = useState("");
 
