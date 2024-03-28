@@ -1,9 +1,7 @@
 'use client'
 import Layout from "../../Components/Layout/Layout";
 import TextWithTitle2 from "../../Components/TextWithTitle2/TextWithTitle2";
-
 import "../../Components/FacultyPreview/FacultyPreview.css"
-import comisionerCard from "../../Components/ComisionerCard/comisionerCard"
 import { useEffect, useState } from "react"
 import Pagination from '../../Components/Pagination/Pagination'
 import "../globals.css"
@@ -16,63 +14,63 @@ export default function Comisioner()
         {
             "name": "Elemento 1",
             "image": "/comisionado.png",
-            "cargo": "Dir. de la DIrección de Cultura Fisica y Deporte (INDER)",
+            "posicion": "Dir. de la DIrección de Cultura Fisica y Deporte (INDER)",
             "comision": "organizativa"
         },
         {
             "name": "Elemento 2",
             "image": "/comisionado.png",
-            "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
+            "posicion": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
             "comision": "organizativa"
         },
         {
             "name": "Elemento 3",
             "image": "/comisionado.png",
-            "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
+            "posicion": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
             "comision": "organizativa"
         },
         {
             "name": "Elemento 4",
             "image": "/comisionado.png",
-            "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
+            "posicion": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
             "comision": "organizativa"
         },
         {
             "name": "Elemento 5",
             "image": "/comisionado.png",
-            "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
+            "posicion": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
             "comision": "disciplinariaS"
         },
         {
             "name": "Elemento 6",
             "image": "/comisionado.png",
-            "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
+            "posicion": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
             "comision": "disciplinariaS"
         },
         {
             "name": "Elemento 7",
             "image": "/comisionado.png",
-            "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
+            "posicion": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
             "comision": "disciplinariaS"
         }
         ,
         {
             "name": "Elemento 8",
             "image": "/comisionado.png",
-            "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
+            "posicion": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
             "comision": "disciplinariaP"
         },
         {
             "name": "Elemento 9",
             "image": "/comisionado.png",
-            "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
+            "posicion": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
             "comision": "disciplinariaP"
         }
         ,
         {
             "name": "Elemento 10",
             "image": "/comisionado.png",
-            "cargo": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
+            "posicion": "Dir. de la Dirección de Cultura Fisica y Deporte (INDER)",
             "comision": "disciplinariaP"
         }
     ]
@@ -86,19 +84,19 @@ export default function Comisioner()
         // Paso 2: Renombrar los campos y dividir la lista
         const organizativaList = comisioner.filter(item => item.comision === 'organizativa').map(item => ({
             name: item.name,
-            body: item.cargo,
+            body: item.posicion,
             image: item.image
         }));
 
         const disciplinariaPList = comisioner.filter(item => item.comision === 'disciplinariaP').map(item => ({
             name: item.name,
-            body: item.cargo,
+            body: item.posicion,
             image: item.image
         }));
 
         const disciplinariaSList = comisioner.filter(item => item.comision === 'disciplinariaS').map(item => ({
             name: item.name,
-            body: item.cargo,
+            body: item.posicion,
             image: item.image
         }));
         // Paso 3: Actualizar el estado
@@ -127,7 +125,7 @@ export default function Comisioner()
                         <div className="mt-6 flex justify-center flex-col">
                             {disciplinariaP.map((item, index)=>(
                                 <div className="flex justify-center" key={index}>
-                                    <ComisionerCard name={item.name} image={item.image} cargo={item.body}/>
+                                    <ComisionerCard name={item.name} image={item.image} posicion={item.body}/>
                                 </div>    
                             ))}
                             
@@ -141,7 +139,7 @@ export default function Comisioner()
                         <div className="mt-6">
                             {disciplinariaS.map((item, index)=>(
                                 <div className="flex justify-center" key={index}>
-                                    <ComisionerCard name={item.name} image={item.image} cargo={item.body}/>
+                                    <ComisionerCard name={item.name} image={item.image} posicion={item.body}/>
                                 </div>    
                             ))}
                         </div>
