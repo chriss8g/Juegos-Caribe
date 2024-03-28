@@ -6,6 +6,7 @@ from .views.season import SeasonList, SeasonDetail
 from .views.tournament import TournamentList, TournamentDetail
 from .views.faculty import FacultyList, FacultyDetail, Athletes_per_faculty
 from .views.team import TeamList, TeamDetail
+from .views.place import PlaceList, PlaceDetail
 from .views.teamOnGame import TeamOnGameList, TeamOnGameDetail
 from .views.game import GameList, GameDetail
 from .views.sport import SportList, SportDetail
@@ -81,4 +82,7 @@ urlpatterns = [
 
     path('user/<int:pk>/', CommissionerCategoryDetail.as_view()),
     path('user/', CommissionerCategoryList.as_view()),
+
+    path('place/<int:pk>/', PlaceDetail.as_view()),
+    path('place/', PlaceList.as_view()),
 ]

@@ -18,6 +18,7 @@ from .models.comment import Comment
 from .models.sex import Sex
 from .models.medal import Medal
 from .models.commissionerCategory import CommissionerCategory
+from .models.place import Place
 
 admin.site.register(Commissioner)
 admin.site.register(Faculty)
@@ -37,3 +38,4 @@ admin.site.register(Comment)
 admin.site.register(Sex)
 admin.site.register(Medal)
 admin.site.register(CommissionerCategory)
+admin.site.register(Place)
