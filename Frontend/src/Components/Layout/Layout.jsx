@@ -18,11 +18,6 @@ export default function Layout({children})
 
     function handleChangeMenuState()
     {
-        if(showingMenu)
-            document.getElementById("SideMenu")?.classList.add("slowTransition")
-        else{
-            document.getElementById("SideMenu")?.classList.remove("slowTransition")
-        }
         setShowingMenu(!showingMenu)
     }
 
@@ -67,9 +62,9 @@ export default function Layout({children})
                     <BreadCrumbs />
                 </div>
                 
-                <div className={`${showingMenu ? 'hidden' : 'block'}`}>
+                <div className={`${showingMenu ? 'block' : 'hidden'}`}>
                     <div className="sideMenu w-full h-full fixed top-0 left-0 z-10 bg-[#d7d7d7a5]" onClick={()=>handleChangeMenuState()}/>
-                    <div className="bg-white w-4/5 h-full fixed top-0 z-20  font-bold text-red-900 text-lg cursor-pointer" id="SideMenu">
+                    <div className="bg-white w-4/5 h-full fixed top-0 z-20  font-bold text-red-900 text-lg cursor-pointer slowTransition">
                         <div className="w-2/12 ml-auto pt-10" onClick={()=>handleChangeMenuState()}><IconX /></div>
                         <div className="flex flex-col gap-4 px-10 py-20">
                             <a href="/">Inicio</a>
