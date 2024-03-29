@@ -1,37 +1,29 @@
-.FacultiesPlaying
+.CardITBV
 {
-    margin-top: 15%;
-    padding-bottom: 13%;
-}
-.FacultiesPage
-{
-    display: flex;
-    justify-content: space-between;
-}
-.FacultyPreview
-{
-    flex: auto;
     margin: auto;
     margin-top: 15%;
     margin-bottom: 35%;
     padding: 8% 5%;
     border-radius: 15px;
-    width: 70%;
+    width: 40%;
     box-shadow: 0px 0px 15px 1px rgb(197, 197, 197);
 }
-.FacultyPreview h2
+.CardITBV h2
 {
     color: black;
     text-align: center;
     font-weight: 400;
 }
-.facultyLogo {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+.CardITBV p
+{
+    color: black;
+    text-align: center;
+    font-weight: 400;
 }
+
 .pagination
 {
+    display: flex;
     justify-content: space-between;
     width: 40%;
     margin-top: 10%;
@@ -54,16 +46,4 @@
 {
     /* background-color: #5a1024; */
     color: white;
-}
-
-@media (min-width: 1024px)
-{
-    .carousel-item {
-        /*flex: 0 0 15%;*/
-        /*width: 20%;*/
-        /*padding: 20px;*/
-        /*box-sizing: border-box;*/
-        /*text-align: center;*/
-    }
-
 }

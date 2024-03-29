@@ -4,7 +4,7 @@ import "../../app/globals.css"
 import Image from 'next/image'
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs"
 import Footer from "../Footer/Footer"
-import { IconMenu2, IconSearch, IconUser, IconX } from "@tabler/icons-react";
+import { IconMenu2, IconSearch, IconUser } from "@tabler/icons-react";
 import useAuthentication from "../../hooks/useAuthentication"
 import Link from "next/link"
 
