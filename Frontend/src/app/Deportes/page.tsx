@@ -1,6 +1,7 @@
 import Layout from "../../Components/Layout/Layout";
 import TournamentStatus from "../../Components/TournamentStatus/TournamentStatus";
-import SportCard from "../../Components/SportCard/SportCard"
+import SportCard from "../../Components/LittleSportCard/LittleSportCard"
+import LittleSportCard from "../../Components/LittleSportCard/LittleSportCard";
 export default function Sports()
 {
     return(
@@ -8,12 +9,12 @@ export default function Sports()
             {/* <TournamentStatus teams={[]}/> */}
             <h2 className="text-center sectionTitle font-bold">Deportes</h2>
             <div className="display flex flex-wrap wrap">
-                <SportCard sportName={"Atletismo"}/>
-                <SportCard sportName={"Taekwondo"}/>
-                <SportCard sportName={"Tenis"}/>
-                <SportCard sportName={"Atletismo2"}/>
-                <SportCard sportName={"Taekwondo2"}/>
-                <SportCard sportName={"Tenis2"}/>
+                <LittleSportCard sportName={"Atletismo"}/>
+                <LittleSportCard sportName={"Taekwondo"}/>
+                <LittleSportCard sportName={"Tenis"}/>
+                <LittleSportCard sportName={"Atletismo2"}/>
+                <LittleSportCard sportName={"Taekwondo2"}/>
+                <LittleSportCard sportName={"Tenis2"}/>
             </div>
         </Layout>
     )
