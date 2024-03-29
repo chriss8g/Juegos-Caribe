@@ -7,8 +7,7 @@ import { useEffect, useState } from "react"
 export default function DailySports()
 {
     const{getData, Data} = useAdministration()
-
-
+    
     useEffect(()=>{
         getData(`${process.env.API_URL}/dailySport`)
     },[])
@@ -17,7 +16,6 @@ export default function DailySports()
 
     useEffect(()=>{
         setSports(Data);
-        console.log(Data)
     },[Data]);
 
     return(
