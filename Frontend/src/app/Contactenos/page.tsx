@@ -1,6 +1,7 @@
 import "../globals.css"
 import "./contact.css"
 import Layout from "../../Components/Layout/Layout";
+import React from "react";
 
 export default function Contactenos()
 {
@@ -27,11 +28,11 @@ export default function Contactenos()
                             <p>Correo electrónico</p>
                             <input type="mail" name="email" id="usermail" />
                             <p>Comentario</p>
-                            <textarea type="text" name="comment" id="comment"/>
+                            <textarea name="comment" id="comment"/>
                         </form>
                         <div className="buttonsRow">
-                            <button>Cancelar</button>
-                            <button>Enviar</button>
+                            <button className="">Cancelar</button>
+                            <button className="">Enviar</button>
                         </div>
                     </div>
                 </div>
