@@ -1,4 +1,4 @@
-export default function ComisionerCard({name, image, cargo})
+export default function ComisionerCard({name, image, posicion})
 {
 
     return(
@@ -8,7 +8,7 @@ export default function ComisionerCard({name, image, cargo})
             </div>
             <div className="flex flex-col text-start">
                 <p className="text-sm font-bold text-black ml-2 mb-1">{name}</p>
-                <p className="text-black text-xs ml-2">{cargo}</p>
+                <p className="text-black text-xs ml-2">{posicion}</p>
             </div>
         </div>
     )
