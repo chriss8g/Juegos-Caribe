@@ -2,10 +2,6 @@ import { useEffect } from "react"
 
 export default function AthleteCard({athlete})
 {
-    useEffect(()=>{
-        console.log("atleta: ",athlete)
-    },[])
-
     return(
         <div className="athlete-card-main-container flex w-[90%] m-2 bg-white py-3 px-4 rounded-xl shadow-lg items-center">
             <div className="w-[35%] mr-1">
