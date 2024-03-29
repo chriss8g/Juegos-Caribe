@@ -18,12 +18,6 @@ class SportDetail(generics.RetrieveUpdateDestroyAPIView):
 def dailySport(request):
     today = date.today()
     games_today = Game.objects.filter(date=today)
-    # sports_today = set(game.sport for game in games_today)
-
-    # sport_objects = Sport.objects.filter(id__in=[sport.id for sport in sports_today])
-
-    # serialized_sports = serializers.serialize('json', sport_objects)
-
 
     sports_today = set(game.sport for game in games_today)
     sport_objects = Sport.objects.filter(id__in=[sport.id for sport in sports_today])

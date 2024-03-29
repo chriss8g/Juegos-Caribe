@@ -5,13 +5,14 @@ from .tournamentOnSeason import TournamentOnSeason
 from .team import Team
 from .sport import Sport
 from .sex import Sex
+from .place import Place
 
 class Game(models.Model):
 
     phase = models.CharField(max_length=200)
     sex = models.ForeignKey(
         Sex, on_delete=models.CASCADE, related_name='sexGame')
-    place = models.CharField(max_length=200)
+    place = models.ForeignKey(Place, on_delete=models.CASCADE, related_name='gamesPlace')
     detailResult = models.TextField()
     sport = models.ForeignKey(Sport, on_delete=models.CASCADE, related_name='gamesSport')
     teams = models.ManyToManyField(Team, through='TeamOnGame')
