@@ -4,13 +4,13 @@ from .views.document import DocumentDetail, DocumentList
 from .views.commissioner import CommissionerList, CommissionerDetail
 from .views.season import SeasonList, SeasonDetail
 from .views.tournament import TournamentList, TournamentDetail
-from .views.faculty import FacultyList, FacultyDetail, athletesPerFaculty, facultiesWithMedals
+from .views.faculty import FacultyList, FacultyDetail, facultiesWithMedals
 from .views.team import TeamList, TeamDetail
 from .views.place import PlaceList, PlaceDetail
 from .views.teamOnGame import TeamOnGameList, TeamOnGameDetail
 from .views.game import GameList, GameDetail
-from .views.sport import SportList, SportDetail
-from .views.athlete import AthleteList, AthleteDetail
+from .views.sport import SportList, SportDetail, dailySport
+from .views.athlete import AthleteList, AthleteDetail, athletesPerFaculty
 from .views.facultyOnSeason import FacultyOnSeasonList, FacultyOnSeasonDetail
 from .views.tournamentOnSeason import TournamentOnSeasonList, TournamentOnSeasonDetail
 from .views.facultyOnTournamentOnSeason import FacultyOnTournamentOnSeasonList, FacultyOnTournamentOnSeasonDetail
@@ -34,7 +34,6 @@ urlpatterns = [
 
     path('faculty/<int:pk>/', FacultyDetail.as_view()),
     path('faculty/', FacultyList.as_view()),
-    path('faculty/<int:id_faculty>/athletes/', athletesPerFaculty),
     path('faculty/medals/', facultiesWithMedals),
 
     path('team/<int:pk>/', TeamDetail.as_view()),
@@ -48,9 +47,11 @@ urlpatterns = [
 
     path('sport/<int:pk>/', SportDetail.as_view()),
     path('sport/', SportList.as_view()),
+    path('dailySport/', dailySport),
 
     path('athlete/<int:pk>/', AthleteDetail.as_view()),
     path('athlete/', AthleteList.as_view()),
+    path('faculty/<int:id_faculty>/athletes/', athletesPerFaculty),
 
     path('document/<int:pk>/', DocumentDetail.as_view()),
     path('document/', DocumentList.as_view()),
@@ -83,6 +84,7 @@ urlpatterns = [
 
     path('place/<int:pk>/', PlaceDetail.as_view()),
     path('place/', PlaceList.as_view()),
+
     path('commissionerCategory/<int:pk>/', CommissionerCategoryDetail.as_view()),
     path('commissionerCategory/', CommissionerCategoryList.as_view()),
 ]

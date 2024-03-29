@@ -3,7 +3,6 @@ from rest_framework import generics
 from django.http import JsonResponse
 
 from ..models.faculty import Faculty
-from ..models.athlete import Athlete
 from ..models.team import Team
 
 class FacultyList(generics.ListCreateAPIView):
@@ -14,15 +13,6 @@ class FacultyDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Faculty.objects.all()
     serializer_class = FacultySerializer
 
-def athletesPerFaculty(request, id_faculty):
-    athlete_data = Athlete.objects.filter(faculty = id_faculty)
-    athlete = list(athlete_data.values())
-    key = 0
-    for i in athlete_data:
-        athlete[key]["picture"] = request.build_absolute_uri(i.picture.url)
-        key = key +1
-    print(athlete)
-    return JsonResponse(athlete, safe=False)
 
 def facultiesWithMedals(request):
     faculties = Faculty.objects.all()

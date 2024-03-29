@@ -16,7 +16,7 @@ class Game(models.Model):
     sport = models.ForeignKey(Sport, on_delete=models.CASCADE, related_name='gamesSport')
     teams = models.ManyToManyField(Team, through='TeamOnGame')
     tournamentOnSeason = models.ForeignKey(TournamentOnSeason, on_delete=models.CASCADE, related_name='tournamentOnSeason')
-    
+    date = models.DateField()
 
     def __str__(self):
         return f'{self.sport} - {self.phase} - {self.sex}'
