@@ -11,7 +11,7 @@ export default function Contactenos()
 
     return(
         <Layout>
-            <div className="mb-20">
+            <div>
                 <TitleText title={"Política de privacidad"} text={text}/>
                 <SubtitleText title={"Reglas a conocer"} text={text}/>
             </div>

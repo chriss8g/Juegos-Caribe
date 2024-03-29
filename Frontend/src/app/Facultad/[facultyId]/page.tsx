@@ -36,7 +36,6 @@ export default function FacultadDetallada()
         setAthletes(Data);
     },[Data]);
 
-
     const [category, setCategory] = useState("");
 
     return (
