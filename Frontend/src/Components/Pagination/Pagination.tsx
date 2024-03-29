@@ -16,7 +16,7 @@ const Pagination: React.FC<PaginationProps> = ({ itemComponent: ItemComponent, d
     const arrowStyles : CSSProperties= {
         position: 'absolute',
         zIndex: 2,
-        bottom: 10,
+        bottom: '0.3rem',
         width: 20,
         height: 20,
         cursor: 'pointer',
