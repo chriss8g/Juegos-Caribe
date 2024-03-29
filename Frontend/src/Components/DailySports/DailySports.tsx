@@ -25,11 +25,11 @@ export default function DailySports()
         <div className="DailySports container">
             <h2 className="sectionTitle text-3xl font-bold">Deportes del día</h2>
             <div className="SportsList">
-                {
-                    sports.map((sport)=>(
-                        <SportCard sportName={sport.name} sportPicture={sport.logo}/>
-                    ))
-                }
+            {
+                sports.map((sport, id)=>(
+                    <SportCard sportName={sport.name} sportPicture={sport.logo}/>
+                ))
+            }
             </div>
         </div>
 
