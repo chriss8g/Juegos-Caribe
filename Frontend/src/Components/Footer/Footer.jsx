@@ -29,8 +29,8 @@ export default function Footer()
                     <div className="group">
                         <a href="/Deportes">Deportes</a><br /><br />
                         <div className="groupInfo">
-                            <p  className="groupHead" >Individuales</p>
-                            <p className="mt-2">Colectivos</p>
+                            <p onClick={()=>{router.push("/Deportes")}} className="groupHead" >Individuales</p>
+                            <p onClick={()=>{router.push("/Deportes")}} className="mt-2">Colectivos</p>
                         </div>
                     </div>
                 </div>
