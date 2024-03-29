@@ -7,6 +7,7 @@ import Footer from "../Footer/Footer"
 import { IconMenu2, IconSearch, IconUser, IconX } from "@tabler/icons-react";
 import useAuthentication from "../../hooks/useAuthentication"
 import Link from "next/link"
+import { useState } from "react"
 
 export default function Layout({children})
 {

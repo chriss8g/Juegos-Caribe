@@ -176,7 +176,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
             addData(temp, entity?.endpoint)
         }
 
-        closeModal()
+        // closeModal()
     }
 
 
@@ -232,7 +232,14 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                         return(
                                             <div className="" key={id}>
                                                 <label>{propertiesNames[id]}: </label>
-                                                <input type="file"  key={id} id={`${id}`} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}/>
+                                                <input type="file" 
+                                                    accept={propertiesNames[id] === "Picture" || propertiesNames[id] === "Logo" ? 
+                                                                `image/svg+xml, image/jpeg, image/jpg, image/png, image/gif` : 
+                                                                `application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document`}  
+                                                    key={id} id={`${id}`} 
+                                                    name={`${propertiesNames[id]}`} 
+                                                    onChange={(e)=>handleChange(e)}
+                                                />
                                             </div>
                                         )
                                     }
