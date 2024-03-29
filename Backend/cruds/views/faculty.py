@@ -15,9 +15,14 @@ class FacultyDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = FacultySerializer
 
 def athletesPerFaculty(request, id_faculty):
-    athlete = Athlete.objects.filter(faculty = id_faculty)
-    athlete_data = list(athlete.values())
-    return JsonResponse(athlete_data, safe=False)
+    athlete_data = Athlete.objects.filter(faculty = id_faculty)
+    athlete = list(athlete_data.values())
+    key = 0
+    for i in athlete_data:
+        athlete[key]["picture"] = request.build_absolute_uri(i.picture.url)
+        key = key +1
+    print(athlete)
+    return JsonResponse(athlete, safe=False)
 
 def facultiesWithMedals(request):
     faculties = Faculty.objects.all()
