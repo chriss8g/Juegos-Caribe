@@ -113,7 +113,7 @@ export default function Comisioner()
                 <div className="font-text-6">
                     <p className="text-red-950 mt-6 text-center text-lg mb-3">Comisión Organizativa</p>
 
-                    <Pagination itemComponent={CardITB} data={organizativa}/>
+                    <Pagination itemComponent={CardITB} data={organizativa} percentage={50}/>
 
                 </div>
 

@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#5a102469" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M15 6l-6 6l6 6" />
+<svg xmlns="http://www.w3.org/2000/svg" width="77.733" height="142.688" viewBox="0 0 77.733 142.688">
+  <path id="Path_18835" data-name="Path 18835" d="M136.3,77.733l6.389-6.389L71.344,0,0,71.344l6.389,6.389L71.344,12.778Z" transform="translate(0 142.688) rotate(-90)" fill="#5a102469"/>
 </svg>
+
+
