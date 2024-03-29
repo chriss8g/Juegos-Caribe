@@ -9,7 +9,7 @@ export default function TermsAndConditions()
 
     return(
         <Layout>
-            <div className="mb-20">
+            <div>
                 <TitleText title={"Términos y Condiciones"} text={txt} />
                 <SubtitleText title={"Términos de participación"} text={txt}/>
                 <SubtitleText title={"Por la presente usted está de acuerdo con lo siguiente:"} text={txt}/>
