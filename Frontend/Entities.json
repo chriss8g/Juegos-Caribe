@@ -83,6 +83,16 @@
         "id": 16,
         "name": "commissionerCategory",
         "endpoint": "/commissionerCategory"
+    },
+    {
+        "id": 17,
+        "name": "medal",
+        "endpoint": "/medal"
+    },
+    {
+        "id": 18,
+        "name": "sex",
+        "endpoint": "/sex"
     }
 
 ]

@@ -5,7 +5,7 @@ export interface Team
 {
     id: number,
     str: string,
-    medal: "",
+    medal: Medal,
     sex: "Masculino" | "Femenino" | "Mixto",
     sport: Sport,
     faculty: Faculty,
@@ -14,7 +14,7 @@ export interface Team
 
 export interface PostTeam
 {
-    medal: "",
+    medal: Medal,
     sex: "Masculino" | "Femenino" | "Mixto",
     sport: Sport,
     faculty: Faculty,

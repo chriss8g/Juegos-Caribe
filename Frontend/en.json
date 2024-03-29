@@ -25,6 +25,7 @@
     "Categoría de comisionado": "commissionerCategory",
     "Usuario": "user",
     "Cuerpo": "body",
-    "Logo": "logo"
-
+    "Logo": "logo",
+    "Tipo": "type",
+    "Data": "data"
 }

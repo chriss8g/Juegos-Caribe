@@ -14,6 +14,22 @@ import { PostTournamentOnSeason, TournamentOnSeason } from "../types/TournamentO
 
 export default function useEntityInformation()
 {
+    var medal: Medal = {
+        id: -1,
+        str:  "",
+        type: ""
+    }
+    var postMedal: PostMedal = {
+        type: ""
+    }
+    var sex: Sex = {
+        id: -1,
+        str:  "",
+        data: ""
+    }
+    var postSex: PostSex = {
+        data: ""
+    }
     var athlete: Athlete ={
         id: -1,
         str: "",
@@ -33,6 +49,9 @@ export default function useEntityInformation()
     var commissionerCategory: CommissionerCategory = {
         id: -1,
         str: "",
+        data: ""
+    }
+    var postcommissionerCategory: PostCommissionerCategory = {
         data: ""
     }
     var commissioner: Commissioner = {
@@ -156,7 +175,7 @@ export default function useEntityInformation()
     var team: Team = {
         id: -1,
         str: "",
-        medal: "",
+        medal: medal,
         sex: "Mixto",
         sport: sport,
         faculty: faculty,
@@ -164,7 +183,7 @@ export default function useEntityInformation()
     };
     
     var PostTeam: PostTeam = {
-        medal: "",
+        medal: medal,
         sex: "Mixto",
         sport: sport,
         faculty: faculty,
@@ -286,6 +305,12 @@ export default function useEntityInformation()
                 return postTournamentOnSeason;
             case 15:
                 return postUser;
+            case 16:
+                return postcommissionerCategory;
+            case 17:
+                return postMedal;
+            case 18:
+                return postSex;
         }
     }
 
@@ -405,6 +430,12 @@ export default function useEntityInformation()
                 return tournamentOnSeason;
             case 15:
                 return user;
+            case 16:
+                return commissionerCategory;
+            case 17:
+                return medal;
+            case 18:
+                return sex;
         }
     }
 

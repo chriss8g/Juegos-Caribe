@@ -31,11 +31,6 @@ export default function useAdministration()
     }
         
 
-    function getDataById(dataId: number)
-    {
-        return Data.filter((x)=>x.id === dataId)[0]        
-    }
-
     const [DataByIdFromEndpoint, setDataByIdFromEndpoint] = useState<typeof currentEntityType>()
     
     function getDataByIdFromEndpoint(dataId: number, endpoint: string)
@@ -110,7 +105,7 @@ export default function useAdministration()
                 // For regular values, append them directly
                 formData.append(key, value);
         });
-        fetch(`${process.env.API_URL + endpoint}/`,{
+        fetch(`${process.env.API_URL + endpoint}/${newData.id}/`,{
             method: 'PUT',
             body: formData
         });
@@ -128,7 +123,6 @@ export default function useAdministration()
             console.log(error)                
         }       
     }
-
 
 
     const { toSpanish } = useTranslation()
@@ -157,7 +151,6 @@ export default function useAdministration()
         deleteData,
         editMode,
         entities, 
-        getDataById,
         getData,
         getDataByIdFromEndpoint,
         getEntityPropertiesNames,
