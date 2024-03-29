@@ -1,10 +1,10 @@
 'use client'
-import Layout from "../../Components/Layout/Layout"
-import MedalsAtl from "../../Components/MedalsAtl/page";
-import AthleteData from "../../Components/AthleteData/page";
-import AthleteSport from "../../Components/AthleteSport/page"
-import AthletePresentation from "../../Components/AthletePresentation/page"
-import CornerCircle from "../../Components/RightUpCornerCircle/page"
+import Layout from "../../../Components/Layout/Layout"
+import MedalsAtl from "../../../Components/MedalsAtl/page";
+import AthleteData from "../../../Components/AthleteData/page";
+import AthleteSport from "../../../Components/AthleteSport/page"
+import AthletePresentation from "../../../Components/AthletePresentation/page"
+import CornerCircle from "../../../Components/RightUpCornerCircle/page"
 
 export default function DetailedAthlete()
 {
@@ -40,9 +40,11 @@ export default function DetailedAthlete()
     ]
         return(
             <Layout>
-                <CornerCircle/>
                 
-                <div className="MobileView container relative z-[-2]">
+
+                <div className="MobileView container relative overflow-hidden ">
+                    <CornerCircle/>
+
                     <AthletePresentation Atleta={Atleta}/>        
 
                     <AthleteData Data={Atleta[0]}/>
