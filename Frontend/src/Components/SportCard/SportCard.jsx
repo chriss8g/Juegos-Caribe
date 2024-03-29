@@ -3,7 +3,7 @@
 import "./SportCard.css"
 import sports_icons from "../../../public/sportsIcons.json"
 import Image from "next/image"
-export default function SportCard({sportName}, {sportPicture})
+export default function SportCard({sportName, sportPicture})
 {
     
     return(
