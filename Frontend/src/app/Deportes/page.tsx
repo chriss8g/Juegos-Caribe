@@ -7,8 +7,8 @@ export default function Sports()
     return(
         <Layout>
             {/* <TournamentStatus teams={[]}/> */}
-            <h2 className="text-center sectionTitle font-bold">Deportes</h2>
-            <div className="display flex flex-wrap wrap">
+            <h2 className="text-center text-rose-950 mt-5 mb-1 font-bold">Deportes</h2>
+            <div className="display flex flex-wrap wrap px-[2%]">
                 <LittleSportCard sportName={"Atletismo"}/>
                 <LittleSportCard sportName={"Taekwondo"}/>
                 <LittleSportCard sportName={"Tenis"}/>
