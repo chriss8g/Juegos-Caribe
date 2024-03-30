@@ -7,8 +7,24 @@ import Image from "next/image"
 import MedalTableHeader from "../MedalTableHeader/MedalTableHeader";
 import MedalTableDesktop from "../MedalTableDesktop/MedalTableDesktop";
 
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+
 export default function MedalTable()
 {
+
+    const exportToPDF = () => {
+        const input = document.getElementById('table-to-pdf');
+        
+        html2canvas(input).then((canvas) => {
+          const imgData = canvas.toDataURL('image/png');
+          const pdf = new jsPDF();
+          
+          pdf.addImage(imgData, 'PNG', 10, 10, 180, 0); // Ajusta los valores de ancho y alto según tus necesidades
+          pdf.save('table.pdf');
+        });
+      };
+
     const{getData, Data} = useAdministration()
 
     useEffect(()=>{
@@ -26,7 +42,7 @@ export default function MedalTable()
     return(
         facultywithMedals.length > 0 &&
         <div className="MedalTable">
-            <div className="MobileView container">
+            <div className="MobileView container" id="table-to-pdf">
                 <MedalTableHeader/>
                 <table className="medalsTable">
                     <thead>
@@ -333,6 +349,7 @@ export default function MedalTable()
                 </div>
                 <MedalTableDesktop/>
             </div>
+            <button onClick={exportToPDF} className='bg-[#5a1024] flex justify-center w-50 mx-auto text-white'>Export to PDF</button>
         </div>
         
         
