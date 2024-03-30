@@ -1,25 +1,8 @@
-.ContactUs h2
+.contactenos-text
 {
-    padding: 12%;
-    border-bottom: solid;
-    border-color: #5a1024;
-    border-width: 1px;
-    padding-bottom: 3%;
-    text-align: center;
+    border-bottom: solid 2px #5a1024;
     margin-bottom: 10%;
-}
-.ContactUs h3
-{
-    width: 98%;
-    margin-top: 10%;
-    padding-left: 1%;
-    color: #5a1024c7;
-    text-align: center;
-}
-.ContactUs p
-{
-    margin: 5% 0;
-    margin-bottom: 15%;
+    padding-bottom: 4%;
 }
 .Form
 {
@@ -27,9 +10,7 @@
     text-align: left;
     border-radius: 10px;
     background-color: rgb(230, 230, 230);
-    backdrop-filter: blur(15px);
-    padding: 5%;
-    padding-top: 2%;
+    padding: 2% 5% 5%;
     margin-bottom: 20%;
 }
 .Form h3
@@ -39,41 +20,26 @@
 .Form input, .Form textarea
 {
     width: 90%;
-    border-radius: 6px;
+    border-radius: 7px;
     padding: 5%;
     margin-top: 2%;
-    border: solid;
-    border-width: 1px;
-    border-color: rgb(85, 85, 85);
+    border: 1px solid rgb(170 157 157)  ;
 }
 .Form textarea
 {
-    height: 10vh;
+    height: 15vh;
     margin-bottom: 2%;
 }
 .Form p
 {
     margin-top: 7%;
-    margin-bottom: 0% !important;
+    margin-bottom: 0 !important;
 }
-.buttonsRow
-{
-    width: 60%;
-    display: flex;
-    justify-content: space-between;
-    padding-left: 40%;
-}
+
 .buttonsRow button
 {
     border-radius: 8px;
-    border-color: #b3b3b3;
-    border-width: 1px;
-    padding: 5%;
-    width: 48%;
-}
-.buttonsRow button:last-of-type
-{
-    font-weight: bold;
-    background-color: #5a1024;
-    color: white;
+    border: solid 1px #b3b3b3;
+    padding: 2%;
+    width: 30%;
 }
