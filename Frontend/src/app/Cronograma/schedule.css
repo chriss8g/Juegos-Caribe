@@ -3,7 +3,7 @@
     background-color: white;
     padding: 5%;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px 10px rgb(236, 236, 236);
+    box-shadow: 0 0 10px 10px rgb(236, 236, 236);
 }
 h2
 {
@@ -38,11 +38,7 @@ h2
 {
     width: 90%;
 }
-.arr
-{
-    width: 25%;
-    padding-bottom: 5%;
-}
+
 .arrowImg
 {
     width: 100%;
@@ -53,15 +49,10 @@ h2
     align-items: center;
     display: flex;
     justify-content: space-between;
-    width: 15%;
+    width: 25%;
     padding: 2% 4%;
 }
-.session
-{
-    margin-top: 15%;
-    margin-bottom: 5%;
-    color: #5a1024;
-}
+
 .sessionForm
 {
     margin-top: 80%;
@@ -74,15 +65,7 @@ h2
 {
     text-align: center;
 }
-.filterTitle
-{
-    padding: 5% 0;
-    margin-bottom: 0;
-    padding-bottom: 2%;
-    border-bottom: solid;
-    border-color: gray;
-    border-width: 1px;
-}
+
 .option
 {
     margin-top: 4%;
@@ -95,46 +78,49 @@ h2
 {
     margin-right: 5%;
 }
-.swiper
-{
-    padding: 0 10%;
-}
+
 .swiper-button-prev::after{
     font-size: 20px !important;
 }
 .swiper-button-next::after{
     font-size: 20px !important;
 }
-.iconFilter
-{
+.iconFilter {
+    display: flex;
     margin-top: 35%;
     text-align: center;
     width: 100%;
     cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.swiper-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .SportIcon
 {
-    width: 6vmax;
-    height: 6vmax;
+    width: 17vw;
+    height: 17vw;
+    border: solid 2px #b6b6b6;
 }
 .icon
 {
     width: 60%;
     padding: 7%;
 }
-.iconImage
-{
-    margin-left: 0%;
+.iconImage {
+    margin-left: 0;
     margin-bottom: 10%;
-    padding: 5%;
-    border-radius: 5px;
-    border-width: 1px;
-    box-shadow: 0px 0px 20px 10px rgb(235, 235, 235);
+    border-radius: 7px;
 }
 .selectedIcon
 {
     border-radius: 5px;
-    border: solid;
-    border-width: 1px;
-    border-color: #c2c2c2;
+    border: 1px solid #c2c2c2;
+}
+.faculties-box-shadow {
+    box-shadow: 2px 2px 5px 2px #d9d3d3;
 }

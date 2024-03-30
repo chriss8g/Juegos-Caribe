@@ -27,8 +27,9 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/Components/LittleSportCard/LittleSportCard.tsx"  ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "resolveJsonModule": true
 }

@@ -1,14 +1,26 @@
 [
     {
         "name": "Atletismo",
-        "icon": "/athletism.svg"
+        "icon": "/athletism-red.png"
     },
     {
         "name": "Tenis",
-        "icon": "/taekwondo.svg"
+        "icon": "/tennis-red.png"
     },
     {
         "name": "Taekwondo",
-        "icon": "/taekwondo.svg"
+        "icon": "/taekwondo-red.png"
+    },
+    {
+        "name": "Atletismo2",
+        "icon": "/athletism-red.png"
+    },
+    {
+        "name": "Tenis2",
+        "icon": "/tennis-red.png"
+    },
+    {
+        "name": "Taekwondo2",
+        "icon": "/taekwondo-red.png"
     }
 ]

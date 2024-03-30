@@ -1,0 +1,98 @@
+[
+    {
+        "id": 0,
+        "name": "season",
+        "endpoint": "/season"
+    },
+    {
+        "id": 1,
+        "name": "commissioners",
+        "endpoint": "/commissioner"
+    },
+    {
+        "id": 2,
+        "name": "tournaments",
+        "endpoint": "/tournament"
+    },
+    {
+        "id": 3,
+        "name": "athletes",
+        "endpoint": "/athlete"
+    },
+    {
+        "id": 4,
+        "name": "comments",
+        "endpoint": "/comment"
+    },
+    {
+        "id": 5,
+        "name": "documents",
+        "endpoint": "/document"
+    },
+    {
+        "id": 6,
+        "name": "faculties",
+        "endpoint": "/faculty"
+    },
+    {
+        "id": 7,
+        "name": "facultyOnSeason",
+        "endpoint": "/facultyOnSeason"
+    },
+    {
+        "id": 8,
+        "name": "facultyOnTournamentOnSeason",
+        "endpoint": "/facultyOnTournamentOnSeason"
+    },
+    {
+        "id": 9,
+        "name": "games",
+        "endpoint": "/game"
+    },
+    {
+        "id": 10,
+        "name": "news",
+        "endpoint": "/news"
+    },
+    {
+        "id": 11,
+        "name": "sports",
+        "endpoint": "/sport"
+    },
+    {
+        "id": 12,
+        "name": "teams",
+        "endpoint": "/team"
+    },
+    {
+        "id": 13,
+        "name": "teamOnGame",
+        "endpoint": "/teamOnGame"
+    },
+    {
+        "id": 14,
+        "name": "tournamentOnSeason",
+        "endpoint": "/tournamentOnSeason"
+    },
+    {
+        "id": 15,
+        "name": "users",
+        "endpoint": "/user"
+    },
+    {
+        "id": 16,
+        "name": "commissionerCategory",
+        "endpoint": "/commissionerCategory"
+    },
+    {
+        "id": 17,
+        "name": "medal",
+        "endpoint": "/medal"
+    },
+    {
+        "id": 18,
+        "name": "sex",
+        "endpoint": "/sex"
+    }
+
+]
