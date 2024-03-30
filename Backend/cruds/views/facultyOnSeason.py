@@ -3,7 +3,7 @@ from rest_framework import generics
 from ..models.facultyOnSeason import FacultyOnSeason
 
 class FacultyOnSeasonList(generics.ListCreateAPIView):
-    queryset = FacultyOnSeason.objects.all()
+    queryset = FacultyOnSeason.objects.all().order_by('-points')
     serializer_class = FacultyOnSeasonSerializer
 
 class FacultyOnSeasonDetail(generics.RetrieveUpdateDestroyAPIView):
