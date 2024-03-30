@@ -72,7 +72,7 @@ export default function Layout({children})
                             <a href="/Noticias">Noticias</a>
                             <a href="/Cronograma">Cronograma</a>
                             <a href="/Facultades">Facultades</a>
-                            <a href="/Contactenos">Contáctanos</a>
+                            <a href="/Contactenos">Contáctenos</a>
                             <a href="/Politica-Privacidad">Política de Privacidad</a>
                             <a href="/Terminos-Condiciones">Términos de uso</a>
                         </div>
