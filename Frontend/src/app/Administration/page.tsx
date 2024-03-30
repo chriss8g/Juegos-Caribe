@@ -19,7 +19,6 @@ export default function Administration()
         selectedDataId, 
         setSelectedDataId, 
         getEntityPropertiesNames, 
-        getDataById,
         deleteData,
         getData,
         entities,
@@ -125,7 +124,7 @@ export default function Administration()
                         <select name="Entities" id="Entities" onChange={(e)=>{setCurrentEntity(entities[+e.target.value]); setLoading(true)}}>
                             {entities.map((ent, key)=>(
                                 <option id={`${key}`} value={ent.id} key={key}>
-                                    {toSpanish(ent.name)}
+                                    {toSpanish(ent.name).charAt(0).toUpperCase()+toSpanish(ent.name).slice(1)}
                                 </option>
                             ))}
                         </select>

@@ -205,7 +205,6 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                     // If the property is a foreign key, then, it will be a select input
                                     if(getPropertyEndpoint(formRow, id))
                                     {
-                                        console.log(getPropertyEndpoint(formRow, id))
                                         selectIndex++
                                         return(
                                                 <div className="my-5" key={id}>

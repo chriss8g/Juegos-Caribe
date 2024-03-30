@@ -3,10 +3,25 @@
     margin-top: 15%;
     padding-bottom: 13%;
 }
-
-
+.FacultiesPage
+{
+    display: flex;
+    justify-content: space-between;
+}
+.FacultyPreview
+{
+    flex: auto;
+    margin: auto;
+    margin-top: 15%;
+    margin-bottom: 35%;
+    padding: 8% 5%;
+    border-radius: 15px;
+    width: 70%;
+    box-shadow: 0px 0px 15px 1px rgb(197, 197, 197);
+}
 .FacultyPreview h2
 {
+    color: black;
     text-align: center;
     font-weight: 400;
 }
@@ -37,7 +52,7 @@
 }
 .selected
 {
-    background-color: #5a1024;
+    /* background-color: #5a1024; */
     color: white;
 }
 
