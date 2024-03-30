@@ -19,7 +19,6 @@ export default function MedalTable()
 
     useEffect(()=>{
         setFacultywithMedals(Data);
-        console.log(Data)
     },[Data]);
 
     const [more, setMore] = useState(false)
