@@ -23,7 +23,7 @@ const Pagination: React.FC<PaginationProps> = ({ itemComponent: ItemComponent, d
         cursor: 'pointer',
     };
     return(
-        <div className="Pagination MobileView relative z-1">
+        <div className="Pagination MobileView relative ">
 
             <Carousel showArrows showStatus={false} centerMode centerSlidePercentage={percentage}
                       renderArrowPrev={(onClickHandler, hasPrev, label) =>
@@ -38,7 +38,7 @@ const Pagination: React.FC<PaginationProps> = ({ itemComponent: ItemComponent, d
                       }
             >
                 {data.map((element, index)=>(
-                    <div key={index}>
+                    <div key={index} className="z-20">
                         <ItemComponent name={element.name} image={element.image} body={element.body}/>
                     </div>
                 ))}

@@ -34,14 +34,14 @@ export default function Faculties()
     return(
         <Layout>
             <div className= "MobileView container bg-[#f5ff5f5]">
-                <div className="faculties-main-container">
-                    <p className="text-2xl text-gray-800 font-bold text-center">Facultades</p>
+                <div className=" faculties-main-container pb-5">
+                    <h2 className="text-2xl text-gray-800 font-bold text-center pt-5">Facultades</h2>
+                    
+                    <div className="relative z-10 bg-red-500">
+                        <Pagination itemComponent={FacultyCardList} data={facultiesData} percentage={100}/>
+                    </div>
 
-                    <Pagination itemComponent={FacultyCardList} data={facultiesData} percentage={100}/>
                 </div>
-                    {/*<div className="back-circle absolute right-0 bottom-3 h-[30vh] z-10">*/}
-                    {/*    <Image src="/circle-right.png" alt="circle-right" fill className="image"/>*/}
-                    {/*</div>*/}
             </div>
         </Layout>
     )

@@ -63,7 +63,7 @@ export default function FacultyCardList()
     ];
 
     return (
-            <div className="faculties-card-list pb-4">
+            <div className="faculties-card-list pb-4 relative">
                 {Facultades.map((faculty) =>
                     (
                         <FacultyCard
