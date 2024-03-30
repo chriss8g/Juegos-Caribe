@@ -1,4 +1,17 @@
-.main-news-img {
-    border-bottom-right-radius: 15px;
-    border-bottom-left-radius: 15px;
+.swiper-button-next, .swiper-button-prev {
+    background-color: #80808066;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    color: white;
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+    font-size: 10px;
+}
+
+.swiper-pagination-bullet {
+    background: #5A1024;
+    position: relative;
+    top: 0; /* Adjust this value as needed */
 }

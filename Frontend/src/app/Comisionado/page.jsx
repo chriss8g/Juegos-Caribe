@@ -1,6 +1,5 @@
 'use client'
 import Layout from "../../Components/Layout/Layout";
-import SubtitleText from "../../Components/SubtitleText/SubtitleText";
 import "../../Components/FacultyPreview/FacultyPreview.css"
 import { useEffect, useState } from "react"
 import Pagination from '../../Components/Pagination/Pagination'
