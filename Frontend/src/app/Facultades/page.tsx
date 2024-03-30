@@ -29,11 +29,15 @@ export default function Faculties()
                         faculties.length > 0 &&
                         <>
                         {
+                            
                             faculties.map((element, index)=>(
-                                <div key={index} className="z-20">
-                                    <FacultyCard name={element.name} image={element.logo}/>
-                                </div>
+                                <a href={`/Facultades/${element.id}`}>
+                                    <div key={element.id} className="z-20">
+                                        <FacultyCard name={element.name} image={element.logo}/>
+                                    </div>
+                                </a>
                             ))
+                            
                         }
                         </>
                     }
