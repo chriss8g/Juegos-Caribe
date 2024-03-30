@@ -14,7 +14,7 @@ export default function Regulation()
         <div className="Regulation mx-3">
                 
                 <div>
-                <h2 className="mb-5 flex justify-center font-bold text-gray-400 my-8">Reglamento 2023-2026</h2>
+                <h2 className="mb-5 flex justify-center font-bold text-gray-500 my-8">Reglamento 2023-2026</h2>
              
 
                 <p><span>Título I.</span> Principios Generales:</p>
@@ -25,11 +25,22 @@ export default function Regulation()
 
                 <p><span>Artículo 3:</span> La práctica deportiva en la Universidad deberá ser un movimiento estudiantil promovido, organizado y gestionado por la FEU y por la institución</p>
 
-                <p><span>Artículo 4:</span> La práctica deportiva en la Universidad deberá ser un movimiento estudiantil promovido, organizado y gestionado por la FEU y por la institución</p>
+                <p><span>Artículo 4:</span> La dirección de la FEU de conjunto con la
+                                            dirección de las Facultades, definirán a los
+                                            deportistas que los representarán en las
+                                            diferentes competencias.</p>
 
-                <p><span>Artículo 5:</span> La práctica     deportiva en la Universidad deberá ser un movimiento estudiantil promovido, organizado y gestionado por la FEU y por la institución</p>
+                <p><span>Artículo 5:</span> Los principios que sustentan el presente
+                                            reglamento, así como las normas y regulaciones
+                                            establecidas deberán ser de ESTRICTO
+                                            CUMPLIMIENTO por parte de los deportistas, las
+                                            organizaciones, los estudiantes en calidad de
+                                            público y la institución en todos los niveles de
+                                            competición.</p>
 
-                <p><span>Artículo 6:</span> La práctica deportiva en la Universidad deberá ser un movimiento estudiantil promovido, organizado y gestionado por la FEU y por la institución</p> 
+                <p><span>Artículo 6:</span> El incumplimiento de los principios, normas
+                                            y regulaciones establecidas conllevará a la
+                                            imposición de sanciones.</p> 
                 </div>
                 
                 <button className="mx-auto w-3/4 border-2 border-slate-600 mt-7 py-1 bg-slate-600 text-white rounded-md flex justify-center">
