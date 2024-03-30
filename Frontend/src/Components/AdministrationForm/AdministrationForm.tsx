@@ -232,8 +232,8 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                             <div className="" key={id}>
                                                 <label>{propertiesNames[id]}: </label>
                                                 <input type="file" 
-                                                    accept={propertiesNames[id] === "Picture" || propertiesNames[id] === "Logo" ? 
-                                                                `image/svg+xml, image/jpeg, image/jpg, image/png, image/gif` : 
+                                                    accept={propertiesNames[id] === "Foto" || propertiesNames[id] === "Logo" ? 
+                                                                `image/jpeg, image/jpg, image/png, image/gif` : 
                                                                 `application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document`}  
                                                     key={id} id={`${id}`} 
                                                     name={`${propertiesNames[id]}`} 

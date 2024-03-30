@@ -52,7 +52,6 @@ export default function useAdministration()
 
     function addData(newData:any, endpoint:string)
     {
-        console.log(newData)
         const formData = new FormData();
 
         Object.keys(newData).forEach(key => {
@@ -62,6 +61,7 @@ export default function useAdministration()
             if(fileInput && value instanceof File)
             {
                 const file = fileInput.files[0];
+                console.log(file)
                 formData.append(key, file);
             } 
             else if (Array.isArray(value)) {

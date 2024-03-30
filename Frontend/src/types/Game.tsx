@@ -1,14 +1,16 @@
 import { Sport } from "./Sport";
 import { Team } from "./Team";
+import { TournamentOnSeason } from "./TournamentOnSeason";
 
 export interface Game
 {
     id: number,
     str: string,
     phase: string,
-    sex: "Masculino" | "Fememino" | "Mixto",
-    place: string,
     detailResult: string,
+    date: Date
+    sex: Sex,
+    place: string,
     sports: Sport,
     tournamentOnSeason: TournamentOnSeason,
     teams: [Team]
@@ -17,10 +19,10 @@ export interface Game
 export interface PostGame
 {
     phase: string,
-    sex: "Masculino" | "Fememino" | "Mixto",
-    place: string,
     detailResult: string,
+    date: Date,
+    sex: Sex,
+    place: string,
     sports: Sport,
     tournamentOnSeason: TournamentOnSeason,
-    teams: [Team]
 }

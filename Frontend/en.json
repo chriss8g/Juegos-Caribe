@@ -27,5 +27,6 @@
     "Cuerpo": "body",
     "Logo": "logo",
     "Tipo": "type",
-    "Data": "data"
+    "Data": "data",
+    "Fecha": "date"
 }

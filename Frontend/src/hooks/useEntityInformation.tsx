@@ -99,7 +99,7 @@ export default function useEntityInformation()
         id: -1,
         str: "",
         name: "",
-        logo: new File([], "")
+        logo: ""
     };
     var postFaculty: PostFaculty = {
         name: "",
@@ -133,21 +133,22 @@ export default function useEntityInformation()
         id: -1,
         str: "",
         phase: "",
-        sex: "Mixto",
-        place: "",
         detailResult: "",
+        date: null,
+        sex: sex,
+        place: "",
         sports: sport,
         tournamentOnSeason: tournamentOnSeason,
-        teams: [team]
+        teams: [team],
     };
     var postGame: PostGame = {
         phase: "",
-        sex: "Mixto",
-        place: "",
         detailResult: "",
+        date: null,
+        sex: sex,
+        place: "",
         sports: sport,
         tournamentOnSeason: tournamentOnSeason,
-        teams: [team]
     };
     var New: New = {
         id: -1,
@@ -167,10 +168,12 @@ export default function useEntityInformation()
     var sport: Sport = {
         id: -1,
         str:"",
-        name: ""
+        name: "",
+        logo: ""
     };
     var postSport: PostSport = {
-        name: ""
+        name: "",
+        logo: new File([], "")
     }
     var team: Team = {
         id: -1,
