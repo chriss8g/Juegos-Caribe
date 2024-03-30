@@ -4,7 +4,7 @@ import "../../app/globals.css"
 import Image from 'next/image'
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs"
 import Footer from "../Footer/Footer"
-import { IconMenu2, IconSearch, IconUser } from "@tabler/icons-react";
+import { IconMenu2, IconSearch, IconUser, IconX } from "@tabler/icons-react";
 import useAuthentication from "../../hooks/useAuthentication"
 import Link from "next/link"
 import {useState, useEffect} from "react"
@@ -72,7 +72,7 @@ export default function Layout({children})
                             <a href="/Noticias">Noticias</a>
                             <a href="/Cronograma">Cronograma</a>
                             <a href="/Facultades">Facultades</a>
-                            <a href="/Contactenos">Contáctanos</a>
+                            <a href="/Contactenos">Contáctenos</a>
                             <a href="/Politica-Privacidad">Política de Privacidad</a>
                             <a href="/Terminos-Condiciones">Términos de uso</a>
                         </div>

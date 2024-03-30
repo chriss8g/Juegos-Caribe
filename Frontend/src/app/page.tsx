@@ -5,7 +5,6 @@ import Presentation from '../Components/Presentation/Presentation'
 import MedalTable from '../Components/MedalTable/MedalTable'
 import DailySports from '../Components/DailySports/DailySports'
 import RelevantNews from '../Components/RelevantNews/RelevantNews'
-// import FacultiesPlaying from '../Components/FacultiesPlaying/FacultiesPlaying'
 import Pagination from '../Components/Pagination/Pagination'
 import FacultyPreview from '../Components/FacultyPreview/FacultyPreview'
 import {useState, useEffect} from "react"
