@@ -23,24 +23,25 @@ export default function Home() {
 
     useEffect(()=>{
         setFaculties(Data);
-        console.log(Data)
     },[Data]);
 
   return (
     <main className='main'>
         <Layout>
-          <Presentation />
-          <MedalTable />
-          <DailySports />
-          <RelevantNews />
+        <Presentation />
+
+        <MedalTable/>
+        <DailySports />
+        <RelevantNews />
+
         {
-            Faculties.length > 0 && 
-            (
-            <div>
-                <h2 className="sectionTitle">Facultades Participantes</h2>
-                <Pagination itemComponent={FacultyPreview} data={Faculties}/>
-            </div>
-            )
+          Faculties.length > 0 && 
+          (
+          <div>
+              <h2 className="sectionTitle">Facultades Participantes</h2>
+              <Pagination itemComponent={FacultyPreview} data={Faculties}/>
+          </div>
+          )
         }
           
         </Layout>
