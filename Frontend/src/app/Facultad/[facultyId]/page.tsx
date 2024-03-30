@@ -57,7 +57,7 @@ export default function FacultadDetallada()
 
                             <p className="text-red-950 font-medium text-lg mt-7">Deportes que participan:</p>
                             <div className="part-sports-main-container flex justify-between text-red-950 w-5/6 mt-7 border-b-[2px] border-b-red-950">
-                                    <p className={`w-1/2 text-lg mx-auto text-center pb-1 ${category === " Colectivos" ? " text-gray-500" : " sport-category  text-red-950"}`} onClick={() => setCategory(" Individuales")}>Individuales</p>
+                                    {/* <p className={`w-1/2 text-lg mx-auto text-center pb-1 ${category === " Colectivos" ? " text-gray-500" : " sport-category  text-red-950"}`} onClick={() => setCategory(" Individuales")}>Individuales</p> */}
                                     <p className={`w-1/2 text-lg mx-auto text-center pb-1 ${category === " Colectivos" ? " text-red-950 sport-category " : " text-gray-500"}`} onClick={() => setCategory(" Colectivos")}>Colectivos</p>
                             </div>
                             <LessMoreBar title={"Ajedrez"} text="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur minus excepturi dicta veniam inventore rem voluptas neque magni nulla. Quasi sed reprehenderit quo architecto quaerat illo possimus tenetur culpa nesciunt!"/>

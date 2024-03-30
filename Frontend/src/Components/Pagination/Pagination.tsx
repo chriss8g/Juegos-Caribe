@@ -44,7 +44,7 @@ const Pagination: React.FC<PaginationProps> = ({ itemComponent: ItemComponent, d
             >
                 {data.map((element, index)=>(
                     <div key={index}>
-                        <ItemComponent name={element.name} image={element.image} body={element.body}/>
+                        <ItemComponent name={element.name} image={element.image ? element.image :( element.logo)? element.logo : ""} body={element.body ?  element.body : ""}/>
                     </div>
                 ))}  
             </Carousel>
