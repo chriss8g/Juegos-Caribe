@@ -165,7 +165,6 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
         let i = 0
         for(const element of formElements)
         {
-            console.log(newData)
             temp[toEnglish(element.name)] = newData[i]
             i++
         }

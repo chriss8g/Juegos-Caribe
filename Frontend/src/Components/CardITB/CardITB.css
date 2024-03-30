@@ -1,0 +1,38 @@
+.CardITB-inner-container
+{
+    flex: auto;
+    margin: 5% auto 30%;
+    padding: 8% 5%;
+    border-radius: 15px;
+    width: 100%;
+    box-shadow: 0 2px 5px 1px rgb(197, 197, 197);
+}
+
+
+.pagination
+{
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    margin-top: 10%;
+    margin-left: 30%;
+}
+
+.arrow
+{
+    cursor: pointer;
+    margin-top: 5%;
+    width: 10%;
+}
+.pageNumb
+{
+    color: black;
+    background-color: rgb(255, 255, 255);
+    padding: 6% 10%;
+    border-radius: 19rem;
+}
+.selected
+{
+    /* background-color: #5a1024; */
+    color: white;
+}

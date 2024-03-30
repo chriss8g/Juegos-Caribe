@@ -55,7 +55,7 @@ export default function BreadCrumbs()
                             &&
                             <h3 style={{color:Color}}> &#8250;</h3>
                         }
-                        <p style={{color:Color}}>{crumb}</p>
+                        <p style={{color:Color}} className="text-nowrap">{crumb}</p>
                     </div>
                 )
             })

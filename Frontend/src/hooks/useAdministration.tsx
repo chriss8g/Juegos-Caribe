@@ -29,7 +29,6 @@ export default function useAdministration()
         setData(res.data)
         return (await res.data)
     }
-        
 
     const [DataByIdFromEndpoint, setDataByIdFromEndpoint] = useState<typeof currentEntityType>()
     

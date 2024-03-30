@@ -1,18 +1,48 @@
 'use client'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import "./medalTable.css"
+import useAdministration from "../../hooks/useAdministration";
 
 import Image from "next/image"
 import MedalTableHeader from "../MedalTableHeader/MedalTableHeader";
 import MedalTableDesktop from "../MedalTableDesktop/MedalTableDesktop";
 
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+
 export default function MedalTable()
 {
+
+    const exportToPDF = () => {
+        const input = document.getElementById('table-to-pdf');
+        
+        html2canvas(input).then((canvas) => {
+          const imgData = canvas.toDataURL('image/png');
+          const pdf = new jsPDF();
+          
+          pdf.addImage(imgData, 'PNG', 10, 10, 180, 0); // Ajusta los valores de ancho y alto según tus necesidades
+          pdf.save('table.pdf');
+        });
+      };
+
+    const{getData, Data} = useAdministration()
+
+    useEffect(()=>{
+        getData(`${process.env.API_URL}/faculty/medals`)
+    },[])
+
+    const [facultywithMedals, setFacultywithMedals] = useState([])
+
+    useEffect(()=>{
+        setFacultywithMedals(Data);
+    },[Data]);
+
     const [more, setMore] = useState(false)
 
     return(
+        facultywithMedals.length > 0 &&
         <div className="MedalTable">
-            <div className="MobileView container">
+            <div className="MobileView container" id="table-to-pdf">
                 <MedalTableHeader/>
                 <table className="medalsTable">
                     <thead>
@@ -41,162 +71,48 @@ export default function MedalTable()
                     </tr>
                     </thead>
                     <tbody>
-                    {!more ?
-                        <>
-                            <tr className="trow">
-                                <td>
-                                    <div className="row">
-                                        <p>1</p>
-                                        <div className="logoName">
-                                            <Image alt="" src="/lenguas_extranjeras.svg" fill className="image"/>
+                    {
+                        
+                        facultywithMedals.map((element, key)=>(
+                            
+                            (key < 2) ?
+                                <tr className="trow" key={key}>
+                                    <td>
+                                        <div className="row">
+                                            <p>{key+1}</p>
+                                            <div className="logoName">
+                                                <Image alt="" src={element.logo} fill className="image"/>
+                                            </div>
+                                            <p>{element.faculty}</p>
                                         </div>
-                                        <p>FLEX</p>
-                                    </div>
-                                </td>
-                                <td className="medalInfo">1</td>
-                                <td className="medalInfo">-</td>
-                                <td className="medalInfo">4</td>
-                                <td className="medalInfo">5</td>
-                            </tr>
-                            <tr className="trow">
-                                <td>
-                                    <div className="row">
-                                        <p>2</p>
-                                        <div className="logoName">
-                                            <Image alt="" src="/farmacia_alimentos.svg" fill className="image"/>
+                                    </td>
+                                    <td className="medalInfo">{element.medals['Oro']?element.medals['Oro']: '-'}</td>
+                                    <td className="medalInfo">{element.medals['Plata']?element.medals['Plata']: '-'}</td>
+                                    <td className="medalInfo">{element.medals['Bronce']?element.medals['Bronce']: '-'}</td>
+                                    <td className="medalInfo">{element.total}</td>
+                                </tr>
+                            :(more)?
+                                <tr className="trow" key={key}>
+                                    <td>
+                                        <div className="row">
+                                            <p>{key+1}</p>
+                                            <div className="logoName">
+                                                <Image alt="" src={element.logo} fill className="image"/>
+                                            </div>
+                                            <p>{element.faculty}</p>
                                         </div>
-                                        <p>FARAL</p>
-                                    </div>
-                                </td>
-                                <td className="medalInfo">1</td>
-                                <td className="medalInfo">-</td>
-                                <td className="medalInfo">4</td>
-                                <td className="medalInfo">5</td>
-                            </tr>
-                        </>
-                        :
-                        <>
-                            <tr className="trow">
-                                <td>
-                                    <div className="row">
-                                        <p>1</p>
-                                        <div className="logoName">
-                                            <Image alt="" src="/lenguas_extranjeras.svg" fill className="image"/>
-                                        </div>
-                                        <p>FLEX</p>
-                                    </div>
-                                </td>
-                                <td className="medalInfo">1</td>
-                                <td className="medalInfo">-</td>
-                                <td className="medalInfo">4</td>
-                                <td className="medalInfo">5</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="row">
-                                        <p>2</p>
-                                        <div className="logoName">
-                                            <Image alt="" src="/farmacia_alimentos.svg" fill className="image"/>
-                                        </div>
-                                        <p>FARAL</p>
-                                    </div>
-                                </td>
-                                <td className="medalInfo">1</td>
-                                <td className="medalInfo">-</td>
-                                <td className="medalInfo">4</td>
-                                <td className="medalInfo">5</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="row">
-                                        <p>1</p>
-                                        <div className="logoName">
-                                            <Image alt="" src="/lenguas_extranjeras.svg" fill className="image"/>
-                                        </div>
-                                        <p>FLEX</p>
-                                    </div>
-                                </td>
-                                <td className="medalInfo">1</td>
-                                <td className="medalInfo">-</td>
-                                <td className="medalInfo">4</td>
-                                <td className="medalInfo">5</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="row">
-                                        <p>2</p>
-                                        <div className="logoName">
-                                            <Image alt="" src="/farmacia_alimentos.svg" fill className="image"/>
-                                        </div>
-                                        <p>FARAL</p>
-                                    </div>
-                                </td>
-                                <td className="medalInfo">1</td>
-                                <td className="medalInfo">-</td>
-                                <td className="medalInfo">4</td>
-                                <td className="medalInfo">5</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="row">
-                                        <p>1</p>
-                                        <div className="logoName">
-                                            <Image alt="" src="/lenguas_extranjeras.svg" fill className="image"/>
-                                        </div>
-                                        <p>FLEX</p>
-                                    </div>
-                                </td>
-                                <td className="medalInfo">1</td>
-                                <td className="medalInfo">-</td>
-                                <td className="medalInfo">4</td>
-                                <td className="medalInfo">5</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="row">
-                                        <p>2</p>
-                                        <div className="logoName">
-                                            <Image alt="" src="/farmacia_alimentos.svg" fill className="image"/>
-                                        </div>
-                                        <p>FARAL</p>
-                                    </div>
-                                </td>
-                                <td className="medalInfo">1</td>
-                                <td className="medalInfo">-</td>
-                                <td className="medalInfo">4</td>
-                                <td className="medalInfo">5</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="row">
-                                        <p>1</p>
-                                        <div className="logoName">
-                                            <Image alt="" src="/lenguas_extranjeras.svg" fill className="image"/>
-                                        </div>
-                                        <p>FLEX</p>
-                                    </div>
-                                </td>
-                                <td className="medalInfo">1</td>
-                                <td className="medalInfo">-</td>
-                                <td className="medalInfo">4</td>
-                                <td className="medalInfo">5</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="row">
-                                        <p>2</p>
-                                        <div className="logoName">
-                                            <Image alt="" src="/farmacia_alimentos.svg" fill className="image"/>
-                                        </div>
-                                        <p>FARAL</p>
-                                    </div>
-                                </td>
-                                <td className="medalInfo">1</td>
-                                <td className="medalInfo">-</td>
-                                <td className="medalInfo">4</td>
-                                <td className="medalInfo">5</td>
-                            </tr>
-                        </>
+                                    </td>
+                                    <td className="medalInfo">{element.medals['Oro']?element.medals['Oro']: '-'}</td>
+                                    <td className="medalInfo">{element.medals['Plata']?element.medals['Plata']: '-'}</td>
+                                    <td className="medalInfo">{element.medals['Bronce']?element.medals['Bronce']: '-'}</td>
+                                    <td className="medalInfo">{element.total}</td>
+                                </tr>
+                            :
+                            <></>
+                        ))
+                        
+                            
+                        
                     }
                     </tbody>
 
@@ -433,6 +349,9 @@ export default function MedalTable()
                 </div>
                 <MedalTableDesktop/>
             </div>
+            <button onClick={exportToPDF} className='bg-[#5a1024] flex justify-center w-50 mx-auto text-white'>Export to PDF</button>
         </div>
+        
+        
     )
 }
