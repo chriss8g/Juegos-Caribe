@@ -4,6 +4,8 @@ from django.http import JsonResponse
 
 from ..models.faculty import Faculty
 from ..models.team import Team
+from ..models.teamOnGame import TeamOnGame
+from ..models.season import Season
 from ..models.facultyOnSeason import FacultyOnSeason
 
 class FacultyList(generics.ListCreateAPIView):
@@ -48,7 +50,6 @@ def facultiesWithMedals(request):
         
     return JsonResponse(data, safe=False)
 
-
 def detailFacultyWithMedals(request, faculty_id):
     
     faculty_on_season = list(FacultyOnSeason.objects.filter(faculty_id=faculty_id).order_by('-points'))[0]
@@ -78,3 +79,29 @@ def detailFacultyWithMedals(request, faculty_id):
     medals_faculty['total'] = total
         
     return JsonResponse(medals_faculty, safe=False)
+
+def detailSportPerFaculty(request, faculty_id):
+
+    # Obtener la facultad a partir del ID
+    faculty = Faculty.objects.get(id=faculty_id)
+
+    # Obtener la última temporada
+    last_season = Season.objects.latest('id')
+
+    # Obtener todos los juegos de torneos en la última temporada
+    games_in_last_season = TeamOnGame.objects.filter(game__tournamentOnSeason__season=last_season)
+
+    # Obtener todos los equipos de la facultad que participaron en los juegos de la última temporada
+    teams_participated = set([team_on_game.team for team_on_game in games_in_last_season if team_on_game.team.faculty == faculty])
+
+    # Obtener los deportes únicos en los que participaron los equipos de la facultad en la última temporada
+    sports_participated = set([team.sport for team in teams_participated])
+
+    data = []
+    for i in list(sports_participated):
+        sport = {}
+        sport['name'] = i.name
+        sport['image'] = request.build_absolute_uri(i.logo.url)
+        data.append(sport)
+
+    return JsonResponse(data, safe=False)

@@ -28,4 +28,4 @@ class Team(models.Model):
         Faculty, on_delete=models.CASCADE, related_name='faculty')
 
     def __str__(self):
-        return f'{self.sport} - {self.faculty}'
+        return f'{self.sport} - {self.faculty} - {self.sex}'

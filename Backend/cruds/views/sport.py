@@ -24,7 +24,6 @@ def dailySport(request):
     sports = list(sport_objects.values())
     key = 0
     for i in sport_objects:
-        print(i.logo.url)
         sports[key]["logo"] = request.build_absolute_uri(i.logo.url)
         key = key +1
 
