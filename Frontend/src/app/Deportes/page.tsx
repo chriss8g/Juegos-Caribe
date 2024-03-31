@@ -19,18 +19,22 @@ export default function Sports()
     },[Data]);
 
     return(
-        sports.length > 0 &&
         <Layout>
             <h2 className="text-center text-rose-950 my-10 mb-5 font-bold">Deportes</h2>
-            <div className="display flex flex-wrap wrap px-7">
             {
-                sports.map((sport, key)=>(
-                    <div key={key}>
-                        <LittleSportCard sportName={sport.name} sportPicture={sport.logo}/>
+                sports.length > 0 &&
+                <div className="">
+                    <div className="display flex flex-wrap wrap px-7">
+                    {
+                        sports.map((sport, key)=>(
+                            <div key={key}>
+                                <LittleSportCard sportName={sport.name} sportPicture={sport.logo}/>
+                            </div>
+                        ))
+                    }
                     </div>
-                ))
+                </div>
             }
-            </div>
         </Layout>
     )
 }
