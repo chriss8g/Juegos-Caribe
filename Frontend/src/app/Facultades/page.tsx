@@ -23,8 +23,8 @@ export default function Faculties()
     return(
         <Layout>
             <div className= "MobileView container bg-[#f5ff5f5]">
-                <div className=" faculties-main-container pb-5">
-                    <h2 className="text-2xl text-gray-800 font-bold text-center pt-5">Facultades</h2>
+                <div className=" pb-5">
+                    <h2 className="text-center text-rose-950 py-10 mb-5 font-bold">Facultades</h2>
                     {
                         faculties.length > 0 &&
                         <>

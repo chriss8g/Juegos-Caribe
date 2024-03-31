@@ -20,21 +20,23 @@ export default function Sports()
 
     return(
         <Layout>
-            <h2 className="text-center text-rose-950 my-10 mb-5 font-bold">Deportes</h2>
-            {
-                sports.length > 0 &&
-                <div className="">
-                    <div className="display flex flex-wrap wrap px-7">
-                    {
-                        sports.map((sport, key)=>(
-                            <div key={key}>
-                                <LittleSportCard sportName={sport.name} sportPicture={sport.logo}/>
-                            </div>
-                        ))
-                    }
+            <div className="MobileView bg-[#f5ff5f5]">
+                <h2 className="text-center text-rose-950 py-10 mb-5 font-bold">Deportes</h2>
+                {
+                    sports.length > 0 &&
+                    <div className="">
+                        <div className="display flex flex-wrap wrap px-7">
+                        {
+                            sports.map((sport, key)=>(
+                                <div key={key}>
+                                    <LittleSportCard sportName={sport.name} sportPicture={sport.logo}/>
+                                </div>
+                            ))
+                        }
+                        </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </Layout>
     )
 }

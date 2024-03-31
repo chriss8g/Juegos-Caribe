@@ -176,7 +176,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
             addData(temp, entity?.endpoint)
         }
 
-        // closeModal()
+        closeModal()
     }
 
 
