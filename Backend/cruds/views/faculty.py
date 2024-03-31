@@ -16,6 +16,25 @@ class FacultyDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Faculty.objects.all()
     serializer_class = FacultySerializer
 
+def last(request):
+    last_season = Season.objects.latest('id')
+
+    facultySeason = FacultyOnSeason.objects.filter(season = last_season)
+    
+    faculties = list(set([i.faculty for i in facultySeason]))
+
+    data = []
+    for i in list(faculties):
+        faculty = {}
+        faculty['name'] = i.name
+        faculty['image'] = request.build_absolute_uri(i.logo.url)
+        data.append(faculty)
+    
+    return data
+
+def lastFacultyList(request):
+    return JsonResponse(last(request), safe=False)
+    
 
 def facultiesWithMedals(request):
     data = []
