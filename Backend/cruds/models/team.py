@@ -14,7 +14,7 @@ from .medal import Medal
 class Team(models.Model):
 
     medal = models.ForeignKey(
-        Medal, on_delete=models.CASCADE, related_name='medal')
+        Medal, on_delete=models.CASCADE, related_name='medal', null=True)
     
     sex = models.ForeignKey(
         Sex, on_delete=models.CASCADE, related_name='sex')
