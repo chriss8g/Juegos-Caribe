@@ -4,17 +4,18 @@ import Layout from "../../Components/Layout/Layout";
 import MoreNewsList from "../../Components/MoreNewsList/MoreNewsList";
 import NewsCarousel from "../../Components/NewsCarousel/NewsCarousel";
 
-export default function Noticias() {
+export default function NoticiaDetallada() {
     const News =[{
         'id': "1",
         'title': "Competencia entre los Mapaches y Lobos en Tenis de Campo",
         'images': "/main-news.png",
         'date': "13 DICIEMBRE, 2023",
-        'author': "Juan Perez"
+        'author': "Juan Perez",
+        'body': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam, ut inchoavit aut spem adfectas aut satisfactionem.'
     },
         {
             'id': "1",
-            'title': "Competencia entre los Mapaches y Lobos en Tenis de Campo",
+            'title': "Título 2",
             'images': "/sec-news-1.png",
             'date': "13 DICIEMBRE, 2023",
             'author': "Juan Perez"
@@ -44,19 +45,15 @@ export default function Noticias() {
     return (
         <div className="MobileView">
             <Layout>
-                <div className="news-main-container">
-                    <div className="main-new-container">
-                        <NewsCarousel News={News} main={true}/>
+                <div className="det-news-main-container">
+                    <div className="main-det-new-container">
+                        <NewsCarousel News={News} main={false}/>
                     </div>
-                    <div className="secondary-sports-container container">
 
-                        <p className="text-center text-red-950 text-lg mt-9">Más Recientes</p>
 
-                        <div className="sport-more-news-container mt-2">
-                            <MoreNewsList/>
-                        </div>
 
-                    </div>
+
+
 
                 </div>
             </Layout>
