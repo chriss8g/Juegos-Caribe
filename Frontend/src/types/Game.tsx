@@ -11,7 +11,7 @@ export interface Game
     date: Date
     sex: Sex,
     place: string,
-    sports: Sport,
+    sport: Sport,
     tournamentOnSeason: TournamentOnSeason,
     teams: [Team]
 }
@@ -23,6 +23,6 @@ export interface PostGame
     date: Date,
     sex: Sex,
     place: string,
-    sports: Sport,
+    sport: Sport,
     tournamentOnSeason: TournamentOnSeason,
 }

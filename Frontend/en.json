@@ -28,5 +28,12 @@
     "Logo": "logo",
     "Tipo": "type",
     "Data": "data",
-    "Fecha": "date"
+    "Fecha": "date",
+    "Resultado Detallado": "detailResult",
+    "Fase": "phase",
+    "Sede": "place",
+    "Resultado": "result",
+    "Equipo": "team",
+    "Juego": "game",
+    "Partido": "game"
 }

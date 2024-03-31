@@ -134,20 +134,20 @@ export default function useEntityInformation()
         str: "",
         phase: "",
         detailResult: "",
-        date: null,
+        date: new Date(),
         sex: sex,
         place: "",
-        sports: sport,
+        sport: sport,
         tournamentOnSeason: tournamentOnSeason,
         teams: [team],
     };
     var postGame: PostGame = {
         phase: "",
         detailResult: "",
-        date: null,
+        date: new Date(),
         sex: sex,
         place: "",
-        sports: sport,
+        sport: sport,
         tournamentOnSeason: tournamentOnSeason,
     };
     var New: New = {
@@ -197,13 +197,13 @@ export default function useEntityInformation()
         id: -1,
         str: "",
         result: -1,
-        teams: team,
-        games: game,
+        team: team,
+        game: game,
     };
     var PostTeamOnGame: PostTeamOnGame = {
         result: 0,
-        teams: team,
-        games: game
+        team: team,
+        game: game
     }
     var tournament: Tournament = {
         id: -1, 
@@ -271,6 +271,14 @@ export default function useEntityInformation()
         edition: "",
         commissioners: []
     }
+    var place: Place = {
+        id: -1,
+        str: "",
+        name: ""
+    }
+    var PostPlace: PostPlace = {
+        name: ""
+    }
 
 
     const getEntityPostType = (id: number) =>
@@ -314,6 +322,8 @@ export default function useEntityInformation()
                 return postMedal;
             case 18:
                 return postSex;
+            case 19:
+                return PostPlace;
         }
     }
 
@@ -439,6 +449,8 @@ export default function useEntityInformation()
                 return medal;
             case 18:
                 return sex;
+            case 19:
+            return place;
         }
     }
 
