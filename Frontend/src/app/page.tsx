@@ -15,13 +15,14 @@ export default function Home() {
     const{getData, Data} = useAdministration()
     
     useEffect(()=>{
-        getData(`${process.env.API_URL}/faculty`)
+        getData(`${process.env.API_URL}/faculty/lastSeason`)
     },[])
 
     const[Faculties, setFaculties] = useState([]);
 
     useEffect(()=>{
         setFaculties(Data);
+        console.log(Data)
     },[Data]);
 
   return (
@@ -38,7 +39,8 @@ export default function Home() {
           (
           <div>
               <h2 className="sectionTitle">Facultades Participantes</h2>
-              <Pagination itemComponent={FacultyPreview} data={Faculties} percentage = {20}/>
+              <Pagination percentage={100} itemComponent={FacultyPreview} data={Faculties}/>
+
           </div>
           )
         }
