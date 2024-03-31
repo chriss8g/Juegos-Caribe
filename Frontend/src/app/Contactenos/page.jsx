@@ -10,16 +10,11 @@ export default function Contactenos()
                 <div className="container ContactUs">
                     <h2>Contáctenos</h2>
                     
-                    <h3>¿Cómo reportar un nombre ofensivo de algún equipo?</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem beatae veniam animi voluptatum! Velit, deserunt eum voluptatum nesciunt exercitationem aperiam corrupti dicta ea dignissimos assumenda aspernatur laudantium quisquam numquam facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi necessitatibus odio vitae officiis? Expedita, reprehenderit optio suscipit adipisci sed unde. Rem, deleniti. Temporibus consequuntur error eligendi perspiciatis, doloremque assumenda ratione!</p>
+                    <h3>Somos la FEU de la Universidad de La Habana</h3>
+                    <p>+53 52113131</p>
+                    <p className="mb-15">correo@dominio.extension</p>
                     
-                    <h3>¿Cómo encontrar ayuda en la página?</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem beatae veniam animi voluptatum! Velit, deserunt eum voluptatum nesciunt exercitationem aperiam corrupti dicta ea dignissimos assumenda aspernatur laudantium quisquam numquam facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi necessitatibus odio vitae officiis? Expedita, reprehenderit optio suscipit adipisci sed unde. Rem, deleniti. Temporibus consequuntur error eligendi perspiciatis, doloremque assumenda ratione!</p>
-                    
-                    <h3>Requerimientos generales</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem beatae veniam animi voluptatum! Velit, deserunt eum voluptatum nesciunt exercitationem aperiam corrupti dicta ea dignissimos assumenda aspernatur laudantium quisquam numquam facere. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi necessitatibus odio vitae officiis? Expedita, reprehenderit optio suscipit adipisci sed unde. Rem, deleniti. Temporibus consequuntur error eligendi perspiciatis, doloremque assumenda ratione!</p>
-
-                    <div className="Form">
+                    <div className="Form mt-10">
                         <form action="">
                             <h3>Formulario de ayuda</h3>
                             <p>Nombre y Apellidos</p>
