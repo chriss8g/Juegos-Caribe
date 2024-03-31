@@ -4,6 +4,7 @@ import "./medalsFac.css";
 import useAdministration from "../../hooks/useAdministration";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import ExportToPDFButton from "../ExportButton/ExportButton";
 
 
 export default function MedalsFac({facultyId})
@@ -23,13 +24,13 @@ export default function MedalsFac({facultyId})
 
     return(
         info &&
-        <div className="MobileView">
-            <p className="text-black font-medium text-lg mt-7">Medallero</p>
+        <div className="MobileView flex flex-col">
+            <p className="text-red-950 font-medium text-lg mt-20 w-1/4 pb-5 mx-auto">Medallero:</p>
             <div className="fac-medals-main-container flex justify-center">
-                <table className="medalsTable border-separate border-spacing-y-3">
+                <table id="facultyMedals" className="medalsTable border-separate border-spacing-y-3">
                     <thead className="fac-table-header">
                     <tr>
-                        <th className="mr-5">Posición</th>
+                        <th className="mr-5">Puntos</th>
                         <th>
                             <div className="medalIcon">
                                 <Image alt="" src="/goldenMedal.svg" fill className="image"/>
@@ -73,6 +74,7 @@ export default function MedalsFac({facultyId})
                 </table>
 
             </div>
+            <ExportToPDFButton input={document.getElementById('facultyMedals') || null}/>
         </div>
     )
 }

@@ -7,7 +7,7 @@ export default function FacultyCard({name, image})
     const breakLine = name.length > 15;
 
     return (
-        <div onClick={()=>router.push(`/Facultades/${faculty.id}`)} className="faculty-card-main-container -translate-x-[8%] relative flex my-5 ml-3 w-full mb-10 z-20 ">
+        <div className="faculty-card-main-container -translate-x-[8%] relative flex my-5 ml-3 w-full mb-10">
             <div className="faculty-image-container my-3 flex justify-center items-center w-2/3 relative translate-x-1/2 bg-white p-1 rounded-[50%] overflow-hidden  shadow-gray-200 shadow-[2px_1px_8px_5px_#aeaeae73]">
                 <div className="w-full">
                     <img src={image} alt="faculty-logo"/>

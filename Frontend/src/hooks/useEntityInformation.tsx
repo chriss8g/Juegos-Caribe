@@ -139,7 +139,8 @@ export default function useEntityInformation()
         place: "",
         sport: sport,
         tournamentOnSeason: tournamentOnSeason,
-        teams: [team],
+        session: session,
+        teams: [team]
     };
     var postGame: PostGame = {
         phase: "",
@@ -149,6 +150,7 @@ export default function useEntityInformation()
         place: "",
         sport: sport,
         tournamentOnSeason: tournamentOnSeason,
+        session: session
     };
     var New: New = {
         id: -1,
@@ -279,6 +281,14 @@ export default function useEntityInformation()
     var PostPlace: PostPlace = {
         name: ""
     }
+    var session: Session = {
+        id: -1,
+        str: "",
+        info: ""
+    }
+    var PostSession: PostSession = {
+        info: ""
+    }
 
 
     const getEntityPostType = (id: number) =>
@@ -324,6 +334,8 @@ export default function useEntityInformation()
                 return postSex;
             case 19:
                 return PostPlace;
+            case 20:
+                return PostSession; 
         }
     }
 
@@ -450,7 +462,9 @@ export default function useEntityInformation()
             case 18:
                 return sex;
             case 19:
-            return place;
+                return place;
+            case 20:
+                return session;
         }
     }
 

@@ -72,5 +72,7 @@
     "type": "tipo",
     "data": "data",
     "equipo": "team",
-    "juego": "game"
+    "juego": "game",
+    "session": "sesión",
+    "info": "info"
 }

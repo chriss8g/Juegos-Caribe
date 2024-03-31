@@ -20,29 +20,30 @@ export default function SportsPerFaculty({facultyId})
         setSports(DataByIdFromEndpoint as unknown as Array<Sport>);
     },[DataByIdFromEndpoint]);
 
-    useEffect(()=>{
-        // console.log(sports)
-    },[sports]);
 
-    const [category, setCategory] = useState("");
+    const [category, setCategory] = useState("Colectivos");
 
     return (
         <div className=" MobileView">
             
                 {
                     sports && sports.length > 0 &&
-                        <div>
+                        <div className="">
                             
-                            <p className="text-red-950 font-medium text-lg mt-7">Deportes que participan:</p>
-                            <div className="part-sports-main-container flex justify-between text-red-950 w-5/6 mt-7 border-b-[2px] border-b-red-950">
+                            <p className="text-red-950 font-medium text-lg mt-20">Deportes en los que participan:</p>
+                            <div className="ml-10">
+                                <div className="part-sports-main-container flex justify-between text-red-950 w-5/6 mt-7 border-b-[2px] border-b-red-950">
                                     {/* <p className={`w-1/2 text-lg mx-auto text-center pb-1 ${category === " Colectivos" ? " text-gray-500" : " sport-category  text-red-950"}`} onClick={() => setCategory(" Individuales")}>Individuales</p> */}
-                                    <p className={`w-1/2 text-lg mx-auto text-center pb-1 ${category === " Colectivos" ? " text-red-950 sport-category " : " text-gray-500"}`} onClick={() => setCategory(" Colectivos")}>Colectivos</p>
+                                    <p className="w-1/2 text-lg mx-auto text-center pb-1  text-red-950 " onClick={() => setCategory(" Colectivos")}>Colectivos</p>
+                                </div>
+                                <div className="w-1/2">
+                                    {
+                                        sports.map((sport, id) => (
+                                            <h3 key={id} className="py-3">- {sport.name}</h3>
+                                        ))
+                                    }
+                                </div>
                             </div>
-                            {
-                                    sports.map((sport, id) => (
-                                        <h3>{sport.name}</h3>
-                                    ))
-                            }
                             
                         </div>
                 }
