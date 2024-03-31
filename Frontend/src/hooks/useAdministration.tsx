@@ -61,6 +61,7 @@ export default function useAdministration()
             if(fileInput && value instanceof File)
             {
                 const file = fileInput.files[0];
+                console.log(file)
                 formData.append(key, file);
             } 
             else if (Array.isArray(value)) {

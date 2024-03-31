@@ -49,7 +49,7 @@ export default function BreadCrumbs()
                     Color = "#5a1024"
                 }
                 return(
-                    <div className="crumbs" key={index} onClick={()=>changeRoute(crumb)}>
+                    <div className="crumbs lg:py-0" key={index} onClick={()=>changeRoute(crumb)}>
                         {
                             index > 0
                             &&

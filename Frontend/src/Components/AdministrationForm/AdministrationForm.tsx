@@ -183,13 +183,13 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
     return(
 
         <div className="">
-            <div className="bg-gray-300 bg-opacity-75 w-screen h-screen fixed top-0 z-10">
+            <div className=" mb-20 bg-gray-300 bg-opacity-75 w-screen h-screen fixed top-0 z-10">
             </div>
-            <div className="fixed start-[12.5%] top-1/4 w-9/12 p-5 bg-white z-20 rounded-md">
-                <form action="" id="AdminModal" className="m-auto my-4">
+            <div className=" absolute start-[12.5%] top-32 w-9/12 p-5 bg-white z-20 rounded-md">
+                <form action="" id="AdminModal" className="m-auto my-4 grid grid-rows-4 grid-flow-col gap-4">
                     {
                         editMode &&
-                        <div className="">
+                        <div className="flex justify-between max-w-sm">
                             <label htmlFor="Id">Id:</label>
                             <input type="text" name="Id" readOnly value={dataValues.filter((val,id)=>propertiesNames[id]=="Id")}/>
                         </div>
@@ -206,7 +206,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                     {
                                         selectIndex++
                                         return(
-                                                <div className="my-5" key={id}>
+                                                <div className="my-5 flex justify-between max-w-sm" key={id}>
                                                     <label>{propertiesNames[id]}: </label>
                                                     <select multiple={Array.isArray(Object.values(formRow)[id])} id={`${id}`} defaultValue={Object.values(formRow)[id] as any} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}>
                                                         {
@@ -229,9 +229,25 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                     // If the property is a file, then it will be a file input
                                     else if(dataValues[id] instanceof File){
                                         return(
-                                            <div className="" key={id}>
+                                            <div className="flex justify-between max-w-sm" key={id}>
                                                 <label>{propertiesNames[id]}: </label>
-                                                <input type="file"  key={id} id={`${id}`} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}/>
+                                                <input type="file" 
+                                                    accept={propertiesNames[id] === "Foto" || propertiesNames[id] === "Logo" ? 
+                                                                `image/jpeg, image/jpg, image/png, image/gif` : 
+                                                                `application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document`}  
+                                                    key={id} id={`${id}`} 
+                                                    name={`${propertiesNames[id]}`} 
+                                                    onChange={(e)=>handleChange(e)}
+                                                />
+                                            </div>
+                                        )
+                                    }
+                                    // If the property is a date, then it will be a date input
+                                    else if(dataValues[id] instanceof Date){
+                                        return (
+                                            <div className="my-5 flex justify-between max-w-sm" key={id}>
+                                                <label>{propertiesNames[id]}: </label>
+                                                <input id={`${id}`} name={`${propertiesNames[id]}`} type="date" className="p-2 text-center border-solid border-2 border-black td" onChange={(e)=>handleChange(e)} defaultValue={val as string}/>
                                             </div>
                                         )
                                     }
@@ -239,7 +255,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                     {
                                         //Property is ordinary text(number)
                                         return(
-                                            <div className="my-5" key={id}>
+                                            <div className="my-5 flex justify-between max-w-sm" key={id}>
                                                 <label>{propertiesNames[id]}: </label>
                                                 <input id={`${id}`} name={`${propertiesNames[id]}`} type={`${typeof val}`} className="p-2 text-center border-solid border-2 border-black td" onChange={(e)=>handleChange(e)} defaultValue={typeof val == "boolean" ? (val === true ? "Sí" : "No") : val}/>
                                             </div>
@@ -251,7 +267,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                         })
                     }
                 </form>
-                <div className="flex mt-10 justify-between lg:w-1/3 md:justify-end lg:justify-end">
+                <div className="flex mt-10 justify-between ml-auto lg:w-1/3 md:justify-end lg:justify-end">
                     <button className="border-solid border-2 p-3 lg:w-1/2 border-gray-800 rounded-lg mx-2" onClick={()=>handleCancel()}>Cancelar</button>
                     <button className="border-solid border-2 p-3 lg:w-1/2 border-gray-800 rounded-lg mx-2 bg-green-500 text-white disabled:bg-gray-500" disabled={!needsUpdate && editMode} onClick={(e)=>handleOnSubmit(e)}>{editMode===true ? "Guardar" : "Crear"}</button>
                 </div>

@@ -27,5 +27,13 @@
     "Cuerpo": "body",
     "Logo": "logo",
     "Tipo": "type",
-    "Data": "data"
+    "Data": "data",
+    "Fecha": "date",
+    "Resultado Detallado": "detailResult",
+    "Fase": "phase",
+    "Sede": "place",
+    "Resultado": "result",
+    "Equipo": "team",
+    "Juego": "game",
+    "Partido": "game"
 }

@@ -93,6 +93,10 @@
         "id": 18,
         "name": "sex",
         "endpoint": "/sex"
+    },
+    {
+        "id": 19,
+        "name": "place",
+        "endpoint": "/place"
     }
-
 ]
