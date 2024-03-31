@@ -24,8 +24,8 @@ export default function Layout({children})
     return(
             <div className="Header">
                 <div className="">
-                    <div className="MobileHeader">
-                        <div className="w-1/2">
+                    <div className="MobileHeader lg:!py-0 lg:!mb-0">
+                        <div className="w-1/2 lg:w-2/12 lg:my-3">
                             <a className="mobileLogo" href="/">
                                 <Image alt="" src="/logo.svg" fill className="image"/>
                             </a>

@@ -99,7 +99,7 @@ export default function useEntityInformation()
         id: -1,
         str: "",
         name: "",
-        logo: new File([], "")
+        logo: ""
     };
     var postFaculty: PostFaculty = {
         name: "",
@@ -133,21 +133,22 @@ export default function useEntityInformation()
         id: -1,
         str: "",
         phase: "",
-        sex: "Mixto",
-        place: "",
         detailResult: "",
-        sports: sport,
+        date: new Date(),
+        sex: sex,
+        place: "",
+        sport: sport,
         tournamentOnSeason: tournamentOnSeason,
-        teams: [team]
+        teams: [team],
     };
     var postGame: PostGame = {
         phase: "",
-        sex: "Mixto",
-        place: "",
         detailResult: "",
-        sports: sport,
+        date: new Date(),
+        sex: sex,
+        place: "",
+        sport: sport,
         tournamentOnSeason: tournamentOnSeason,
-        teams: [team]
     };
     var New: New = {
         id: -1,
@@ -167,10 +168,12 @@ export default function useEntityInformation()
     var sport: Sport = {
         id: -1,
         str:"",
-        name: ""
+        name: "",
+        logo: ""
     };
     var postSport: PostSport = {
-        name: ""
+        name: "",
+        logo: new File([], "")
     }
     var team: Team = {
         id: -1,
@@ -194,13 +197,13 @@ export default function useEntityInformation()
         id: -1,
         str: "",
         result: -1,
-        teams: team,
-        games: game,
+        team: team,
+        game: game,
     };
     var PostTeamOnGame: PostTeamOnGame = {
         result: 0,
-        teams: team,
-        games: game
+        team: team,
+        game: game
     }
     var tournament: Tournament = {
         id: -1, 
@@ -268,6 +271,14 @@ export default function useEntityInformation()
         edition: "",
         commissioners: []
     }
+    var place: Place = {
+        id: -1,
+        str: "",
+        name: ""
+    }
+    var PostPlace: PostPlace = {
+        name: ""
+    }
 
 
     const getEntityPostType = (id: number) =>
@@ -311,6 +322,8 @@ export default function useEntityInformation()
                 return postMedal;
             case 18:
                 return postSex;
+            case 19:
+                return PostPlace;
         }
     }
 
@@ -436,6 +449,8 @@ export default function useEntityInformation()
                 return medal;
             case 18:
                 return sex;
+            case 19:
+            return place;
         }
     }
 
