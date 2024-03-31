@@ -40,6 +40,7 @@ export default function Home() {
           <div>
               <h2 className="sectionTitle">Facultades Participantes</h2>
               <Pagination percentage={100} itemComponent={FacultyPreview} data={Faculties}/>
+
           </div>
           )
         }
