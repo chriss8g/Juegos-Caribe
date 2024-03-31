@@ -1,5 +1,5 @@
-import Layout from "../../Components/Layout/Layout";
-import RedTextHeader from "../../Components/RedTextHeaders/RedTextHeader";
+import Layout from "../../../Components/Layout/Layout";
+import RedTextHeader from "../../../Components/RedTextHeaders/RedTextHeader";
 
 export default function DeporteDetallado()
 {
