@@ -5,9 +5,11 @@ import Layout from "../../Components/Layout/Layout";
 import FacultyCard from "../../Components/FacultyCard/FacultyCard";
 import useAdministration from "../../hooks/useAdministration";
 import { useEffect, useState } from "react"
+import {useRouter} from "next/navigation";
 
 export default function Faculties()
 {
+    const router = useRouter()
     const{getData, Data} = useAdministration()
     
     useEffect(()=>{
@@ -31,11 +33,9 @@ export default function Faculties()
                         {
                             
                             faculties.map((element, index)=>(
-                                <a href={`/Facultades/${element.id}`}>
-                                    <div key={element.id} className="z-20">
-                                        <FacultyCard name={element.name} image={element.logo}/>
-                                    </div>
-                                </a>
+                                <div onClick={()=>router.push(`/Facultades/${element.id}`)} key={element.id} className="" >
+                                    <FacultyCard name={element.name} image={element.logo}/>
+                                </div>
                             ))
                             
                         }

@@ -57,9 +57,9 @@ export default function DetailedAthlete()
                     
                     <div className="columns-2 pb-12">
                         {
-                            deportes.map((sport)=>
+                            deportes.map((sport, key)=>
                             (
-                                <AthleteSport sport={sport.name}/>
+                                <AthleteSport key={key} sport={sport.name}/>
                             ))
                         }
                     </div>

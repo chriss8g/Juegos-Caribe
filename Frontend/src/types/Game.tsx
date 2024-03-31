@@ -13,6 +13,7 @@ export interface Game
     place: string,
     sport: Sport,
     tournamentOnSeason: TournamentOnSeason,
+    session: Session,
     teams: [Team]
 }
 
@@ -25,4 +26,5 @@ export interface PostGame
     place: string,
     sport: Sport,
     tournamentOnSeason: TournamentOnSeason,
+    session: Session
 }

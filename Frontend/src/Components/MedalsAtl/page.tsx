@@ -1,12 +1,13 @@
 'use client'
 import Image from "next/image"
 import "./medalsAtl.css";
+import ExportToPDFButton from "../ExportButton/ExportButton";
 export default function MedalsAtl()
 {
     return(
         <div className="">
             <div className="athlete-table-main-container flex justify-center shadow-lg rounded-xl border-t-white mt-3">
-                <table className="athlete-medal-table border-separate border-spacing-y-3">
+                <table id="athleteMedals" className="athlete-medal-table border-separate border-spacing-y-3">
                     <thead className="">
                     <tr>
                         <th>
@@ -48,6 +49,7 @@ export default function MedalsAtl()
                 </table>
 
             </div>
+                <ExportToPDFButton input={document.getElementById("athleteMedals")} />
         </div>
     )
 }
