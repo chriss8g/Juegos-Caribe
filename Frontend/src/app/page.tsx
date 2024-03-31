@@ -5,214 +5,44 @@ import Presentation from '../Components/Presentation/Presentation'
 import MedalTable from '../Components/MedalTable/MedalTable'
 import DailySports from '../Components/DailySports/DailySports'
 import RelevantNews from '../Components/RelevantNews/RelevantNews'
-// import FacultiesPlaying from '../Components/FacultiesPlaying/FacultiesPlaying'
 import Pagination from '../Components/Pagination/Pagination'
 import FacultyPreview from '../Components/FacultyPreview/FacultyPreview'
+import {useState, useEffect} from "react"
+import useAdministration from "../hooks/useAdministration";
 
 export default function Home() {
 
-  const Faculties = [
-    {
-        "name": "FLEX1",
-        "image": "/lenguas_extranjeras.svg",
-        "best-players": [],
-        "sports":{
-            "individual": [],
-            "collective": []
-        },
-        "position": 10,
-        "golden-medals": 1,
-        "silver-medals": 0,
-        "bronze-medals": 4,
-        "best-historical-result": "",
-        "prev-editions": [
-            {
-                "edition": "L(50)",
-                "place": "5to",
-                "medals": 15
-            }
-        ] 
-    },
-    {
-        "name": "FARAL2",
-        "image": "/farmacia_alimentos.svg",
-        "best-players": [],
-        "sports":{
-            "individual": [],
-            "collective": []
-        },
-        "position": 10,
-        "golden-medals": 1,
-        "silver-medals": 0,
-        "bronze-medals": 4,
-        "best-historical-result": "",
-        "prev-editions": [
-            {
-                "edition": "L(50)",
-                "place": "5to",
-                "medals": 15
-            }
-        ] 
-    },
-    {
-        "name": "FARAL3",
-        "image": "/farmacia_alimentos.svg",
-        "best-players": [],
-        "sports":{
-            "individual": [],
-            "collective": []
-        },
-        "position": 10,
-        "golden-medals": 1,
-        "silver-medals": 0,
-        "bronze-medals": 4,
-        "best-historical-result": "",
-        "prev-editions": [
-            {
-                "edition": "L(50)",
-                "place": "5to",
-                "medals": 15
-            }
-        ] 
-    },
-    {
-        "name": "FLEX4",
-        "image": "/lenguas_extranjeras.svg",
-        "best-players": [],
-        "sports":{
-            "individual": [],
-            "collective": []
-        },
-        "position": 10,
-        "golden-medals": 1,
-        "silver-medals": 0,
-        "bronze-medals": 4,
-        "best-historical-result": "",
-        "prev-editions": [
-            {
-                "edition": "L(50)",
-                "place": "5to",
-                "medals": 15
-            }
-        ] 
-    },
-    {
-        "name": "FARAL5",
-        "image": "/farmacia_alimentos.svg",
-        "best-players": [],
-        "sports":{
-            "individual": [],
-            "collective": []
-        },
-        "position": 10,
-        "golden-medals": 1,
-        "silver-medals": 0,
-        "bronze-medals": 4,
-        "best-historical-result": "",
-        "prev-editions": [
-            {
-                "edition": "L(50)",
-                "place": "5to",
-                "medals": 15
-            }
-        ] 
-    },
-    {
-        "name": "FARAL6",
-        "image": "/farmacia_alimentos.svg",
-        "best-players": [],
-        "sports":{
-            "individual": [],
-            "collective": []
-        },
-        "position": 10,
-        "golden-medals": 1,
-        "silver-medals": 0,
-        "bronze-medals": 4,
-        "best-historical-result": "",
-        "prev-editions": [
-            {
-                "edition": "L(50)",
-                "place": "5to",
-                "medals": 15
-            }
-        ] 
-    },
-    {
-        "name": "FARAL7",
-        "image": "/farmacia_alimentos.svg",
-        "best-players": [],
-        "sports":{
-            "individual": [],
-            "collective": []
-        },
-        "position": 10,
-        "golden-medals": 1,
-        "silver-medals": 0,
-        "bronze-medals": 4,
-        "best-historical-result": "",
-        "prev-editions": [
-            {
-                "edition": "L(50)",
-                "place": "5to",
-                "medals": 15
-            }
-        ] 
-    },
-    {
-        "name": "FARAL8",
-        "image": "/farmacia_alimentos.svg",
-        "best-players": [],
-        "sports":{
-            "individual": [],
-            "collective": []
-        },
-        "position": 10,
-        "golden-medals": 1,
-        "silver-medals": 0,
-        "bronze-medals": 4,
-        "best-historical-result": "",
-        "prev-editions": [
-            {
-                "edition": "L(50)",
-                "place": "5to",
-                "medals": 15
-            }
-        ] 
-    },
-    {
-        "name": "FARAL9",
-        "image": "/farmacia_alimentos.svg",
-        "best-players": [],
-        "sports":{
-            "individual": [],
-            "collective": []
-        },
-        "position": 10,
-        "golden-medals": 1,
-        "silver-medals": 0,
-        "bronze-medals": 4,
-        "best-historical-result": "",
-        "prev-editions": [
-            {
-                "edition": "L(50)",
-                "place": "5to",
-                "medals": 15
-            }
-        ] 
-    }
-]
+    const{getData, Data} = useAdministration()
+    
+    useEffect(()=>{
+        getData(`${process.env.API_URL}/faculty`)
+    },[])
+
+    const[Faculties, setFaculties] = useState([]);
+
+    useEffect(()=>{
+        setFaculties(Data);
+    },[Data]);
 
   return (
     <main className='main'>
         <Layout>
-          <Presentation />
-          <MedalTable />
-          <DailySports />
-          <RelevantNews />
+        <Presentation />
 
-          <h2 className="sectionTitle">Facultades Participantes</h2>
-          <Pagination itemComponent={FacultyPreview} data={Faculties}/>
+        <MedalTable/>
+        <DailySports />
+        <RelevantNews />
+
+        {
+          Faculties.length > 0 && 
+          (
+          <div>
+              <h2 className="sectionTitle">Facultades Participantes</h2>
+              <Pagination itemComponent={FacultyPreview} data={Faculties}/>
+          </div>
+          )
+        }
+          
         </Layout>
     </main>
   )

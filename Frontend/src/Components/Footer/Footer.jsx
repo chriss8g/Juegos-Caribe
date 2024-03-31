@@ -61,7 +61,7 @@ export default function Footer()
             </div>
             <div className="Links">
                 <div className="leftLinks">
-                    <a href="/Contactenos">Contáctanos</a><br /><br />
+                    <a href="/Contactenos">Contáctenos</a><br /><br />
                     <a href="/SobreNosotros">Sobre Nosotros</a>
                 </div>
                 <div className="rightLinks">

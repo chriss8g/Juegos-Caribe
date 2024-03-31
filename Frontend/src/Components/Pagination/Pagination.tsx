@@ -8,11 +8,12 @@ import "./pagination.css"
 interface PaginationProps {
     itemComponent: React.ElementType; // Esto permite pasar cualquier componente React como prop
     data: any[]; // Asegúrate de tipar tus datos adecuadamente
+    percentage: number; // Add the percentage prop
 }
 
-const Pagination: React.FC<PaginationProps> = ({ itemComponent: ItemComponent, data }) =>
+const Pagination: React.FC<PaginationProps> = ({ itemComponent: ItemComponent, data, percentage }) =>
 {
-    
+
     const arrowStyles : CSSProperties= {
         position: 'absolute',
         zIndex: 2,
@@ -21,32 +22,26 @@ const Pagination: React.FC<PaginationProps> = ({ itemComponent: ItemComponent, d
         height: 20,
         cursor: 'pointer',
     };
-
     return(
-        <div className="Pagination MobileView container">
-        
-            <Carousel showArrows showStatus={false} centerMode centerSlidePercentage={50}
-                renderArrowPrev={(onClickHandler, hasPrev, label) =>
-                    hasPrev && (
-                        <button type="button" onClick={onClickHandler} title={label} style={{ ...arrowStyles, left: 20 }}>
-                            <Image aria-disabled="true" src="/left.svg" alt="" fill className="image"/>
-                        </button>
-                    )
-                }
-                renderArrowNext={(onClickHandler, hasNext, label) =>
-                    hasNext && (
-                        <button type="button" onClick={onClickHandler} title={label} style={{ ...arrowStyles, right: 20 }}>
-                            <Image aria-disabled="true" src="/right.svg" alt="" fill className="image"/>
-                        </button>
-                    )
-                }
-                
+        <div className="Pagination MobileView relative ">
+
+            <Carousel showArrows showStatus={false} centerMode centerSlidePercentage={percentage}
+                      renderArrowPrev={(onClickHandler, hasPrev, label) =>
+                          <button type="button" onClick={hasPrev ? onClickHandler : null} title={label} style={{ ...arrowStyles, left: 20}}>
+                              <Image aria-disabled={!hasPrev} src={hasPrev? "/left.svg" : "/left-disabled.svg"} alt="" fill className="image"/>
+                          </button>
+                      }
+                      renderArrowNext={(onClickHandler, hasNext, label) =>
+                          <button type="button" onClick={hasNext ? onClickHandler : null} title={label} style={{ ...arrowStyles, right: 20}}>
+                              <Image aria-disabled={!hasNext} src={hasNext? "/right.svg" : "/right-disabled.svg"} alt="" fill className="image"/>
+                          </button>
+                      }
             >
                 {data.map((element, index)=>(
                     <div key={index}>
-                        <ItemComponent name={element.name} image={element.image} body={element.body}/>
+                        <ItemComponent name={element.name} image={element.image ? element.image :( element.logo)? element.logo : ""} body={element.body ?  element.body : ""}/>
                     </div>
-                ))}  
+                ))}
             </Carousel>
         </div>
     )
