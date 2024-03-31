@@ -161,8 +161,9 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
     function handleOnSubmit(e)
     {
         var temp = {}
+        temp["id"] = formRow.id
         var formElements = document.forms['AdminModal'].elements
-        let i = 0
+        let i = 1
         for(const element of formElements)
         {
             temp[toEnglish(element.name)] = newData[i]
@@ -175,7 +176,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
             addData(temp, entity?.endpoint)
         }
 
-        closeModal()
+        // closeModal()
     }
 
 
@@ -186,14 +187,11 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
             <div className=" mb-20 bg-gray-300 bg-opacity-75 w-screen h-screen fixed top-0 z-10">
             </div>
             <div className=" absolute start-[12.5%] top-32 w-9/12 p-5 bg-white z-20 rounded-md">
-                <form action="" id="AdminModal" className="m-auto my-4 grid grid-rows-4 grid-flow-col gap-4">
-                    {
-                        editMode &&
-                        <div className="flex justify-between max-w-sm">
-                            <label htmlFor="Id">Id:</label>
-                            <input type="text" name="Id" readOnly value={dataValues.filter((val,id)=>propertiesNames[id]=="Id")}/>
-                        </div>
-                    }
+                {
+                    editMode &&
+                        <label className="text-lg font-bold text-gray-600 pb-3" htmlFor="Id">Id: {dataValues.filter((val,id)=>propertiesNames[id]=="Id")}</label>
+                }
+                <form action="" id="AdminModal" className="m-auto my-4 grid grid-rows-3 grid-cols-2 gap-4 px-10">
 
                     {!loadingModal &&
                         dataValues.map((val, id) =>{
@@ -206,9 +204,9 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                     {
                                         selectIndex++
                                         return(
-                                                <div className="my-5 flex justify-between max-w-sm" key={id}>
-                                                    <label>{propertiesNames[id]}: </label>
-                                                    <select multiple={Array.isArray(Object.values(formRow)[id])} id={`${id}`} defaultValue={Object.values(formRow)[id] as any} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)}>
+                                                <div className="my-5 flex flex-col max-w-sm" key={id}>
+                                                    <label className="text-lg font-bold text-gray-600 pb-3">{propertiesNames[id]}: </label>
+                                                    <select multiple={Array.isArray(Object.values(formRow)[id])} id={`${id}`} defaultValue={Object.values(formRow)[id] as any} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                                         {
                                                             !editMode &&
                                                             <option value=""></option>
@@ -229,9 +227,10 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                     // If the property is a file, then it will be a file input
                                     else if(dataValues[id] instanceof File){
                                         return(
-                                            <div className="flex justify-between max-w-sm" key={id}>
-                                                <label>{propertiesNames[id]}: </label>
+                                            <div className="flex flex-col max-w-sm" key={id}>
+                                                <label className="text-lg font-bold text-gray-600 pb-3">{propertiesNames[id]}: </label>
                                                 <input type="file" 
+                                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                                                     accept={propertiesNames[id] === "Foto" || propertiesNames[id] === "Logo" ? 
                                                                 `image/jpeg, image/jpg, image/png, image/gif` : 
                                                                 `application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document`}  
@@ -245,9 +244,9 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                     // If the property is a date, then it will be a date input
                                     else if(dataValues[id] instanceof Date){
                                         return (
-                                            <div className="my-5 flex justify-between max-w-sm" key={id}>
-                                                <label>{propertiesNames[id]}: </label>
-                                                <input id={`${id}`} name={`${propertiesNames[id]}`} type="date" className="p-2 text-center border-solid border-2 border-black td" onChange={(e)=>handleChange(e)} defaultValue={val as string}/>
+                                            <div className="my-5 flex flex-col max-w-sm" key={id}>
+                                                <label className="text-lg font-bold text-gray-600 pb-3">{propertiesNames[id]}: </label>
+                                                <input id={`${id}`} name={`${propertiesNames[id]}`} type="date" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center border-solid td" onChange={(e)=>handleChange(e)} defaultValue={val as string}/>
                                             </div>
                                         )
                                     }
@@ -255,9 +254,9 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                     {
                                         //Property is ordinary text(number)
                                         return(
-                                            <div className="my-5 flex justify-between max-w-sm" key={id}>
-                                                <label>{propertiesNames[id]}: </label>
-                                                <input id={`${id}`} name={`${propertiesNames[id]}`} type={`${typeof val}`} className="p-2 text-center border-solid border-2 border-black td" onChange={(e)=>handleChange(e)} defaultValue={typeof val == "boolean" ? (val === true ? "Sí" : "No") : val}/>
+                                            <div className="my-5 flex flex-col max-w-sm" key={id}>
+                                                <label className="text-lg font-bold text-gray-600 pb-3">{propertiesNames[id]}: </label>
+                                                <input id={`${id}`} name={`${propertiesNames[id]}`} type={`${typeof val}`} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center border-solid td" onChange={(e)=>handleChange(e)} defaultValue={typeof val == "boolean" ? (val === true ? "Sí" : "No") : val}/>
                                             </div>
                                         )
                                     }
