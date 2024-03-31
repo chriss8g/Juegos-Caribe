@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image'
+import "../app/globals.css";
 import Layout from '../Components/Layout/Layout'
 import Presentation from '../Components/Presentation/Presentation'
 import MedalTable from '../Components/MedalTable/MedalTable'
@@ -38,7 +39,7 @@ export default function Home() {
           Faculties.length > 0 && 
           (
           <div>
-              <h2 className="sectionTitle">Facultades Participantes</h2>
+              <h2 className="sectionTitle text-2xl font-bold">Facultades Participantes</h2>
               <Pagination percentage={100} itemComponent={FacultyPreview} data={Faculties}/>
 
           </div>
