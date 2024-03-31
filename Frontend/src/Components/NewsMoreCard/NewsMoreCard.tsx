@@ -5,9 +5,9 @@ export default function NewsMoreCard({secNews})
 {
 
     return(
-        <div className="cursor-pointer mb-5 rounded-xl shadow-lg">
+        <div className="cursor-pointer mb-10 rounded-xl shadow-lg">
             <div className="news-img-container">
-                <img src={secNews.images} alt="" className="sec-news-img relative"/>
+                <img src={secNews.images} alt="" className="sec-news-img relative rounded-xl"/>
 
             </div>
 

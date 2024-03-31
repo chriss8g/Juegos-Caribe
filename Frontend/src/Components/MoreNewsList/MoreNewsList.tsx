@@ -91,7 +91,7 @@ export default function MoreNewsList() {
     ]
 
     const showMore = () => {
-        setVisibleNews(prevVisibleNews => prevVisibleNews + 5);
+        setVisibleNews(prevVisibleNews =>  Math.min(prevVisibleNews + 5, News.length));
     };
 
     const showLess = () => {
@@ -107,8 +107,8 @@ export default function MoreNewsList() {
                 />
             ))}
             <div className="buttons-container flex justify-between mx-5">
-                <button onClick={showMore} className="bg-red-950 text-white px-4 py-2 rounded-lg">Show More</button>
-                <button onClick={showLess}  className="bg-red-950 text-white px-4 py-2 rounded-lg">Show Less</button>
+                <button onClick={showMore} className="bg-red-950 text-white px-2 py-2 rounded-lg">Mostrar más</button>
+                <button onClick={showLess}  className="bg-red-950 text-white px-2 py-2 rounded-lg">Mostrar menos</button>
             </div>
         </div>
     );
