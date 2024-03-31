@@ -1,10 +1,5 @@
 'use client'
 
-import "./LittleSportCard.css"
-import sports_icons from "../../../public/sportsIcons.json"
-import Image from "next/image"
-import { useEffect } from "react";
-
 interface SportCardProps {
     sportName: string; 
     sportPicture: string; 
@@ -13,21 +8,19 @@ interface SportCardProps {
 const LittleSportCard: React.FC<SportCardProps> = ({sportName, sportPicture}) =>
 {
 
-    return(
-        <div className="mx-[2.5%] my-[2.5%] w-[20%]">
-            <div className="SportCard   p-[5%] lg:p-[2%] lg:my-0 lg:w-1/5 h-16">
-                
-            <div className="circle-container">
-                <div className="flex justify-center align-center">
-                    <div className="sportImage">
-                        <Image src={sportPicture} alt="" fill className="image"/>
-                    </div>
-                </div>
-            </div>  
+    return (
+        <div className="sport-images-container w-[100%] mt-2 relative">
+            <div className="sport-img-main-container">
+                <img src={sportPicture} alt="Sport" className="rounded-b-xl"/>
             </div>
-            <p className="circle-container mt-2 mb-5 text-m txt text-gray-600">{sportName}</p>
+            <div
+                className="sport-logo h-[100%] w-[28%] ml-0 absolute left-0 bottom-0 rounded-r-[50%] backdrop-blur-[1px] bg-[#00000078] flex flex-col items-center justify-center pr-10">
+                <img src={sportPicture} alt="logo del deporte" className=" w-1/2"/>
+                <p className="text-white font-bold text-2xl mt-1 ml-5">{sportName}</p>
+                <p className="text-white font-medium text-xs mt-0.5 ml-1">texto prueba</p>
+            </div>
         </div>
-        
+
     )
 }
 export default LittleSportCard; 
