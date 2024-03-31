@@ -2,6 +2,18 @@
 {
     border-bottom: solid 2px #5a1024;
     margin-bottom: 10%;
+}
+.ContactUs h3
+{
+    width: 98%;
+    margin-top: 10%;
+    padding-left: 1%;
+    color: #5a1024c7;
+    text-align: center;
+}
+.ContactUs p
+{
+    margin: 5% 0;
     padding-bottom: 4%;
 }
 .Form
