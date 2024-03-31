@@ -16,6 +16,7 @@ from .models.facultyOnTournamentOnSeason import FacultyOnTournamentOnSeason
 from .models.news import News
 from .models.comment import Comment
 from .models.sex import Sex
+from .models.session import Session
 from .models.medal import Medal
 from .models.commissionerCategory import CommissionerCategory
 from .models.place import Place
@@ -36,6 +37,7 @@ admin.site.register(FacultyOnTournamentOnSeason)
 admin.site.register(News)
 admin.site.register(Comment)
 admin.site.register(Sex)
+admin.site.register(Session)
 admin.site.register(Medal)
 admin.site.register(CommissionerCategory)
 admin.site.register(Place)

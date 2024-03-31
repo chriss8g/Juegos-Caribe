@@ -6,7 +6,7 @@ from .game import Game
 class TeamOnGame(models.Model):
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
-    result = models.IntegerField() 
+    result = models.IntegerField(null=True) 
 
     def __str__(self):
         return f"{self.team} - {self.game}"
