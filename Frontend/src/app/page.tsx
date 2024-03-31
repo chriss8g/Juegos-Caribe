@@ -38,7 +38,7 @@ export default function Home() {
           (
           <div>
               <h2 className="sectionTitle">Facultades Participantes</h2>
-              <Pagination itemComponent={FacultyPreview} data={Faculties}/>
+              <Pagination itemComponent={FacultyPreview} data={Faculties} percentage = {20}/>
           </div>
           )
         }
