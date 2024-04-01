@@ -7,12 +7,15 @@ from ..models.team import Team
 from ..models.teamOnGame import TeamOnGame
 from ..models.season import Season
 from ..models.facultyOnSeason import FacultyOnSeason
-
+from ..permissions import ReadOnly
+from rest_framework.permissions import IsAdminUser
 class FacultyList(generics.ListCreateAPIView):
+    permission_classes = [ReadOnly|IsAdminUser]
     queryset = Faculty.objects.all()
     serializer_class = FacultySerializer
 
 class FacultyDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [ReadOnly|IsAdminUser]
     queryset = Faculty.objects.all()
     serializer_class = FacultySerializer
 
