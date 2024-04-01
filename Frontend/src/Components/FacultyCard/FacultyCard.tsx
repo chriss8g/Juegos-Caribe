@@ -1,7 +1,7 @@
 'use client'
 import { useRouter } from "next/navigation";
 
-export default function FacultyCard({name, image})
+export default function FacultyCard({name, image, facultyId})
 {
     const router = useRouter()
     const breakLine = name.length > 15;
