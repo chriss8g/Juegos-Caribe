@@ -58,7 +58,7 @@ urlpatterns = [
     path('athlete/', AthleteList.as_view()),
     path('faculty/<int:id_faculty>/athletes/', athletesPerFaculty),
     path('athlete/<int:athlete_id>/sports/', athlete_sports),
-    path('athlete/large/', athleteArg),
+    path('athlete/large/<int:athlete_id>/', athleteArg),
 
     path('document/<int:pk>/', DocumentDetail.as_view()),
     path('document/', DocumentList.as_view()),
