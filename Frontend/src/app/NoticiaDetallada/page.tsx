@@ -16,7 +16,7 @@ export default function NoticiaDetallada() {
         {
             'id': "1",
             'title': "Título 2",
-            'images': "/sec-news-1.png",
+            'images': "/futbolMain.png",
             'date': "13 DICIEMBRE, 2023",
             'author': "Juan Perez"
         },
