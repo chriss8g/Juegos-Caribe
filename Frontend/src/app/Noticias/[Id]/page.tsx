@@ -1,8 +1,8 @@
 'use client'
 import { useRef, useEffect } from "react";
-import Layout from "../../Components/Layout/Layout";
-import MoreNewsList from "../../Components/MoreNewsList/MoreNewsList";
-import NewsCarousel from "../../Components/NewsCarousel/NewsCarousel";
+import Layout from "../../../Components/Layout/Layout";
+import MoreNewsList from "../../../Components/MoreNewsList/MoreNewsList";
+import NewsCarousel from "../../../Components/NewsCarousel/NewsCarousel";
 
 export default function NoticiaDetallada() {
     const News =[{
@@ -49,12 +49,6 @@ export default function NoticiaDetallada() {
                     <div className="main-det-new-container">
                         <NewsCarousel News={News} main={false}/>
                     </div>
-
-
-
-
-
-
                 </div>
             </Layout>
         </div>
