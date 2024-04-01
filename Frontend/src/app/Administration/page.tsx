@@ -238,9 +238,9 @@ export default function Administration()
                                                                             }
                                                                         }
                                                                     })}
-                                                                    <td className="flex items-center justify-center pt-[50%]">
+                                                                    <td className="flex items-center justify-center pt-7">
                                                                         <div
-                                                                            className="flex items-center justify-center h-full my-auto">
+                                                                            className="flex items-center justify-center h-full">
                                                                             {
                                                                                 currentEntity?.id !== 4 &&
                                                                                 <button
@@ -252,7 +252,8 @@ export default function Administration()
                                                                             <button
                                                                                 className="font-medium dark:text-red-600 hover:underline ms-3"
                                                                                 onClick={() => handleOnDelete(row)}>
-                                                                                <IconTrash className="m-auto"/></button>
+                                                                                <IconTrash className="m-auto"/>
+                                                                            </button>
                                                                         </div>
                                                                     </td>
                                                                 </tr>

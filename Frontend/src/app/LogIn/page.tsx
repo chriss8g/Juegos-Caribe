@@ -3,13 +3,15 @@ import useAuthentication from "../../hooks/useAuthentication";
 import Layout from "../../Components/Layout/Layout";
 import React, { useState } from "react";
 import { IconEye, IconEyeClosed } from "@tabler/icons-react";
-import { RegisterUserInfo } from "../../types/User";
+import { RegisterUserInfo, LoginInfo } from "../../types/User";
 import { toast } from 'react-toastify';
+import { useRouter } from "next/navigation"
 
 export default function LogIn()
 {
+    const router = useRouter()
     const[LogIn, setLogIn] = useState(true)
-    const {  RegisterUser, userKey } = useAuthentication()
+    const {  RegisterUser, userKey, LogUser} = useAuthentication()
 
 
     function handleOnSubmit(e: React.MouseEvent) {
@@ -26,29 +28,31 @@ export default function LogIn()
                     password2: (document.getElementById('passwordConfirm') as HTMLInputElement)?.value
                 }
                 response = RegisterUser(registerUserInfo)
-                if(response !== "") alert(response)
+                if(response !== "") toast.error("Ha ocurrido un error")
                 else
                 {
-                    toast("Usuario Registrado")
+                    toast.success("Usuario Registrado")
                 }
                 setLogIn(true)
             }
             else
             {
-                // const userCredentials: User = {
-                //     email: (document.getElementById('email') as HTMLInputElement)?.value,
-                //     name: (document.getElementById('name') as HTMLInputElement)?.value,
-                //     lastname: (document.getElementById('lastname') as HTMLInputElement)?.value,
-                //     password: (document.getElementById('password') as HTMLInputElement)?.value,
-                //     faculty: (document.getElementById('faculty') as HTMLInputElement)?.value,
-                //     isLoggedIn: false
-                // }
-                // response = createUser(userCredentials)
+                const loginInfo: LoginInfo = {
+                    username: (document.getElementById('email') as HTMLInputElement)?.value,
+                    email: (document.getElementById('email') as HTMLInputElement)?.value,
+                    password: (document.getElementById('password') as HTMLInputElement)?.value,
+                }
+                response = LogUser(loginInfo)
+                if(response !== "") toast.error("Ha ocurrido un error")
+                else{
+                    toast.success("Sesión iniciada")
+                    router.push("/")
+                }
             }
         }
         else
         {
-            toast("Contraseña no válida")
+            toast.error("Contraseña no válida")
         }
         
         
