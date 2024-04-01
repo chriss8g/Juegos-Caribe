@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from "react"
+import { useState } from "react"
 import entities from "../../Entities.json"
 import useTranslation from "./useTranslation"
 import useEntityInformation from "./useEntityInformation"
@@ -7,15 +7,17 @@ import axios from 'axios'
 
 export default function useAdministration()
 {
+    const { toSpanish } = useTranslation()
+
     const { getEntityType } = useEntityInformation()
     
     const[Data, setData]= useState<typeof currentEntityType[]>([])
 
     const [selectedDataId, setSelectedDataId] = useState(0)
 
-    const [currentEntity, setCurrentEntity] = useState<Entity>(entities[0])
+    const [currentEntity, setCurrentEntity] = useState<Entity>()
     
-    const currentEntityType= getEntityType(currentEntity.id)
+    const currentEntityType= getEntityType(currentEntity?.id)
 
     const [editMode, setEditMode] = useState(false)
 
@@ -50,7 +52,7 @@ export default function useAdministration()
         )  
     }
 
-    function addData(newData:any, endpoint:string)
+    function addData(newData, endpoint:string)
     {
         const formData = new FormData();
 
@@ -61,7 +63,6 @@ export default function useAdministration()
             if(fileInput && value instanceof File)
             {
                 const file = fileInput.files[0];
-                console.log(file)
                 formData.append(key, file);
             } 
             else if (Array.isArray(value)) {
@@ -82,7 +83,7 @@ export default function useAdministration()
         });
     }
 
-    function updateData(newData: typeof currentEntityType, endpoint:string)
+    function updateData(newData, endpoint:string)
     {
         const formData = new FormData();
 
@@ -125,7 +126,6 @@ export default function useAdministration()
     }
 
 
-    const { toSpanish } = useTranslation()
 
     function getEntityPropertiesNames(object: Object) {
         let props = []

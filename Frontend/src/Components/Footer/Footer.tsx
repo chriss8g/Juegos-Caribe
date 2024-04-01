@@ -43,7 +43,7 @@ export default function Footer()
                     </div>
                     
                     <div className="group">
-                        <a href="/">Juegos Caribe</a><br /><br />
+                        <a href="/">Información</a><br /><br />
                         <div className="groupInfo">
                             <p onClick={()=>{router.push("/Reglamento")}}>Reglamento</p>
                             <p className="mt-2" onClick={()=>{router.push("/Comisionado")}} >Comisión</p>

@@ -33,7 +33,7 @@ export default function Faculties()
                         {
                             
                             faculties.map((element, index)=>(
-                                <div onClick={()=>router.push(`/Facultades/${element.id}`)} key={element.id} className="" >
+                                <div onClick={()=>router.push(`/Facultades/${element.id}`)} key={element.id} className="cursor-pointer" >
                                     <FacultyCard name={element.name} image={element.logo}/>
                                 </div>
                             ))
