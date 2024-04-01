@@ -10,8 +10,8 @@ export default function MainNews({news}) {
                  borderBottomLeftRadius: '14px',
                  borderBottomRightRadius: '14px'
              }}>
-            <p className="text-white text-lg font-bold ml-5 mr-10 mt-5">{news.title}</p>
-            <p className="text-white text-sm font-medium ml-5 mr-10">por {news.author}</p>
+            <p className="text-white text-sm font-bold ml-8 mr-8 mt-5">{news.title}</p>
+            <p className="text-white text-sm font-medium ml-8 mr-10">por {news.author}</p>
         </div>
     );
 }

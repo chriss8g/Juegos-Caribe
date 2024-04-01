@@ -21,7 +21,7 @@ export default function DailySports()
     return(
         sports.length > 0 &&
         <div className="DailySports container">
-            <h2 className="sectionTitle text-3xl font-bold">Deportes del día</h2>
+            <h2 className="sectionTitle text-2xl font-bold">Deportes del día</h2>
             <div className="SportsList">
             {
                 sports.map((sport, id)=>(

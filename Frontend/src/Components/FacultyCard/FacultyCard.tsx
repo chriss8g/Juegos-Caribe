@@ -14,7 +14,7 @@ export default function FacultyCard({name, image})
                 </div>
             </div>
             <div className="faculty-name-container pl-10 py-8 bg-gradient-to-r from-white to-transparent rounded-xl flex items-center w-[200%] shadow-gray-200 shadow-[3px_6px_13px_2px_#aeaeae73] border-white border-2">
-                    <p className="text-nowrap ml-3 text-sm">Facultad de {breakLine ? <br/>: ""} {name}</p>
+                    <p className="text-nowrap ml-3 text-sm">{breakLine ? <br/>: ""} {name}</p>
             </div>
             <div className="arrow-right-container justify-center items-center flex w-[28%] ml-5">
                 <img src="/chevron-right.svg" alt="arrow" className=""/>
