@@ -2,7 +2,7 @@
 import Layout from "../../Components/Layout/Layout";
 import "../../Components/FacultyPreview/FacultyPreview.css"
 import {useState, useEffect} from "react"
-import useAdministration from "../hooks/useAdministration";
+import useAdministration from "../../hooks/useAdministration";
 import Pagination from '../../Components/Pagination/Pagination'
 import "../globals.css"
 import CardITB from "../../Components/CardITB/CardITB";
@@ -13,7 +13,7 @@ export default function Commissioner()
     const{getData, Data} = useAdministration()
     
     useEffect(()=>{
-        getData(`${process.env.API_URL}/faculty/lastSeason`)
+        getData(`${process.env.API_URL}/commissioner/large`)
     },[])
 
     const[commissioner, setCommissioner] = useState([]);
@@ -28,19 +28,19 @@ export default function Commissioner()
     const [disciplinariaS, setDisciplinariaS] = useState([]);
 
     useEffect(() => {
-        const organizativaList = commissioner.filter(item => item.comision === 'Comisión Organizativa').map(item => ({
+        const organizativaList = commissioner.filter(item => item.commissionerCategory === 'Comisión Organizativa').map(item => ({
             name: item.name,
             body: item.posicion,
             image: item.image
         }));
 
-        const disciplinariaPList = commissioner.filter(item => item.comision === 'Comisión Disciplinaria Permanente').map(item => ({
+        const disciplinariaPList = commissioner.filter(item => item.commissionerCategory === 'Comisión Disciplinaria Permanente').map(item => ({
             name: item.name,
             body: item.posicion,
             image: item.image
         }));
 
-        const disciplinariaSList = commissioner.filter(item => item.comision === 'Comisión Disciplinaria Suplente').map(item => ({
+        const disciplinariaSList = commissioner.filter(item => item.commissionerCategory === 'Comisión Disciplinaria Suplente').map(item => ({
             name: item.name,
             body: item.posicion,
             image: item.image
@@ -48,7 +48,7 @@ export default function Commissioner()
         setOrganizativa(organizativaList);
         setDisciplinariaP(disciplinariaPList);
         setDisciplinariaS(disciplinariaSList);
-    }, []);
+    }, [commissioner]);
 
     return(
 
