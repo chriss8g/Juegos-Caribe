@@ -46,7 +46,7 @@ export default function NewsCarousel({News, main}) {
                         :
                         News.map((newsPic) => (
                             <SwiperSlide key={newsPic.id}>
-                                <img className="w-full" src={newsPic.images} alt="noticia detallada"/>
+                                <img className="w-full max-h-[195px]" src={newsPic.images} alt="noticia detallada"/>
                                 <div className="bullets-container pt-2% pb-2%">
                                     <br/>
                                 </div>
