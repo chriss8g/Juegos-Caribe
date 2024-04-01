@@ -39,7 +39,7 @@ const Pagination: React.FC<PaginationProps> = ({ itemComponent: ItemComponent, d
                       }
             >
                 {data.map((element, index)=>(
-                    <div key={index} className={mainSec?"mb-9":""}>
+                    <div key={index} className={mainSec?"mb-11":""}>
                         <ItemComponent name={element.name} image={element.image ? element.image :( element.logo)? element.logo : ""} body={element.body ?  element.body : ""}/>
                     </div>
                 ))}
