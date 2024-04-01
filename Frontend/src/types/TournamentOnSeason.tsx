@@ -14,5 +14,4 @@ export interface PostTournamentOnSeason
 {
     season: Season,
     tournament: Tournament,
-    faculties: Faculty[]
 }

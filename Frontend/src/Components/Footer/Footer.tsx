@@ -13,70 +13,60 @@ export default function Footer()
                     <Image src="/logo.svg" alt="" fill className="image"/>
                 </div>
                 <div className="socialMedias">
-
+                
                 </div>
             </div>
             <div className="columns">
                 <div className="footerRow">
                     <div className="group">
-                        <a href="/">Inicio</a><br/><br/>
+                        <a href="/">Inicio</a><br /><br />
                         <div className="groupInfo">
-                            <p className="groupHead">Medallero</p>
+                            <p  className="groupHead" >Medallero</p>
                             <p className="mt-2">Deportes del Día</p>
                             <p className="mt-2">Resumen de Noticias</p>
                         </div>
                     </div>
                     <div className="group">
-                        <a href="/Deportes">Deportes</a><br/><br/>
+                        <a href="/Deportes">Deportes</a><br /><br />
                         <div className="groupInfo">
-                            <p onClick={() => {
-                                router.push("/Deportes")
-                            }} className="groupHead">Individuales</p>
-                            <p onClick={() => {
-                                router.push("/Deportes")
-                            }} className="mt-2">Colectivos</p>
+                            <p onClick={()=>{router.push("/Deportes")}} className="groupHead" >Individuales</p>
+                            <p onClick={()=>{router.push("/Deportes")}} className="mt-2">Colectivos</p>
                         </div>
                     </div>
                 </div>
                 <div className="footerRow">
                     <div className="group">
-                        <a href="/Noticias">Noticias</a><br/><br/>
+                        <a href="/Noticias">Noticias</a><br /><br />
                         <div className="groupInfo">
-                            <p onClick={() => {
-                                router.push("/Noticias")
-                            }} className="groupHead mt-2">Noticias relevantes</p>
+                            <p onClick={()=>{router.push("/Noticias")}} className="groupHead mt-2">Noticias relevantes</p>
                         </div>
                     </div>
-
+                    
                     <div className="group">
-                        <a href="/">Juegos Caribe</a><br/><br/>
+                        <a href="/">Información</a><br /><br />
                         <div className="groupInfo">
-                            <p onClick={() => {
-                                router.push("/Reglamento")
-                            }}>Reglamento</p>
-                            <p className="mt-2" onClick={() => {
-                                router.push("/Comisionado")
-                            }}>Comisión</p>
+                            <p onClick={()=>{router.push("/Reglamento")}}>Reglamento</p>
+                            <p className="mt-2" onClick={()=>{router.push("/Comisionado")}} >Comisión</p>
                         </div>
                     </div>
                 </div>
                 <div className="footerRow">
                     <div className="group">
-                        <a href="/Cronograma">Cronograma</a><br/><br/>
+                        <a href="/Cronograma">Cronograma</a><br /><br />
                     </div>
                     <div className="group">
-                        <a href="/Facultades">Facultades</a><br/><br/>
+                        <a href="/Facultades">Facultades</a><br /><br />
                     </div>
                 </div>
             </div>
-            <div className="Links table w-full">
-                <div className="table-cell">
-                    <a href="/Contactenos" className="underline text-sm">Contáctanos</a><br/>
-                    <a href="/SobreNosotros" className="underline text-sm">Sobre nosotros</a>
+            <div className="Links">
+                <div className="leftLinks">
+                    <a href="/Contactenos">Contáctenos</a><br /><br />
+                    <a href="/SobreNosotros">Sobre Nosotros</a>
                 </div>
-                <div  className="table-cell">
-                    <a href="/Politica-Privacidad" className="underline text-sm">Política de Privacidad</a><br/>
-                    <a href="/Terminos-Condiciones" className="underline text-sm">Términos de uso</a>
+                <div className="rightLinks">
+                    <a href="/Politica-Privacidad">Política de Privacidad</a><br /><br />
+                    <a href="/Terminos-Condiciones">Términos de uso</a>
                 </div>
             </div>
             <div className="rights">

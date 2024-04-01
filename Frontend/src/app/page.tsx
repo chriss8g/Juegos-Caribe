@@ -23,7 +23,6 @@ export default function Home() {
 
     useEffect(()=>{
         setFaculties(Data);
-        console.log(Data)
     },[Data]);
 
   return (
