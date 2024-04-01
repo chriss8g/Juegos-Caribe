@@ -34,7 +34,7 @@ export default function PlayCard({play})
                         </div>
                     </div>
                     <div className="center column">
-                        <p className="font-bold text-gray-700 w-[100%] pt-[10%] pb-1/5 text-[1rem]">{play.sport} {play.gender === "Masculino" ? "(M)" : play.gender === "Femenino" ? "(F)": "(Mix)"}</p>
+                        <p className="font-bold text-gray-700 w-[100%] pt-[10%] pb-1/5 text-[1rem]">{play.sport} {play.sex === "Masculino" ? "(M)" : play.sex === "Femenino" ? "(F)": "(Mix)"}</p>
                         <p className="font-bold text-xl text-gray-700 pt-[10%]">{play.points[0]}-{play.points[1]}</p>
                     </div>
                     <div className="right column">
