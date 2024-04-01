@@ -214,7 +214,7 @@ export default function FacultiesPlaying()
     useEffect(()=>{
         if(firstTime === true)
         {
-            document.getElementById(left).classList.add("selected")
+            document.getElementById(`${left}`).classList.add("selected")
             setSelected(left)
             setFirstTime(false)
         }
@@ -224,21 +224,21 @@ export default function FacultiesPlaying()
         var selected = document.getElementsByClassName("selected")
         if (+selected[0].innerHTML === right+1)
         {
-            document.getElementById(left).classList.add("selected")
+            document.getElementById(`${left}`).classList.add("selected")
             setSelected(right+3)
-            document.getElementById(right).classList.remove("selected")
-            Faculties[right+3] ? setLeftCard({"name": Faculties[right+3].name,"image": Faculties[right+3].image}): setLeftCard({})
-            Faculties[right+4] ? setRightCard({"name": Faculties[right+4].name,"image": Faculties[right+4].image}): setRightCard({})
+            document.getElementById(`${right}`).classList.remove("selected")
+            Faculties[right+3] ? setLeftCard({"name": Faculties[right+3].name,"image": Faculties[right+3].image}): setLeftCard(null)
+            Faculties[right+4] ? setRightCard({"name": Faculties[right+4].name,"image": Faculties[right+4].image}): setRightCard(null)
             setLeft(right+2)
             setRight(right+3)
         }
         else
         {
-            document.getElementById(left).classList.remove("selected")
+            document.getElementById(`${left}`).classList.remove("selected")
             setSelected(right+2)
-            document.getElementById(right).classList.add("selected")
-            Faculties[right+1] ? setLeftCard({"name": Faculties[right+1].name,"image": Faculties[right+1].image}): setLeftCard({})
-            Faculties[right+2] ? setRightCard({"name": Faculties[right+2].name,"image": Faculties[right+2].image}): setRightCard({})
+            document.getElementById(`${right}`).classList.add("selected")
+            Faculties[right+1] ? setLeftCard({"name": Faculties[right+1].name,"image": Faculties[right+1].image}): setLeftCard(null)
+            Faculties[right+2] ? setRightCard({"name": Faculties[right+2].name,"image": Faculties[right+2].image}): setRightCard(null)
         }
     }
     const handleLeft=()=>{
@@ -247,17 +247,17 @@ export default function FacultiesPlaying()
         {
             setLeft(right-3)
             setRight(right-2)
-            document.getElementById(left).classList.remove("selected")
-            document.getElementById(right).classList.add("selected")
+            document.getElementById(`${left}`).classList.remove("selected")
+            document.getElementById(`${right}`).classList.add("selected")
             setSelected(right+1)
             Faculties[left] && setLeftCard({"name": Faculties[left].name,"image": Faculties[left].image})
             Faculties[right] && setRightCard({"name": Faculties[right].name,"image": Faculties[right].image})
         }
         else
         {
-            document.getElementById(left).classList.add("selected")
+            document.getElementById(`${left}`).classList.add("selected")
             setSelected(left)
-            document.getElementById(right).classList.remove("selected")
+            document.getElementById(`${right}`).classList.remove("selected")
             Faculties[left] && setLeftCard({"name": Faculties[left].name,"image": Faculties[left].image})
             Faculties[left+1] && setRightCard({"name": Faculties[left+1].name,"image": Faculties[left+1].image})
         }
@@ -291,10 +291,10 @@ export default function FacultiesPlaying()
                         :
                         <div className=""></div>
                 }
-                <p className="pageNumb" id={left}>
+                <p className="pageNumb" id={`${left}`}>
                     {left+1}
                 </p>
-                <p className="pageNumb" id={right}>
+                <p className="pageNumb" id={`${right}`}>
                     {Selected<=Faculties.length && right+1}
                 </p>
                 {

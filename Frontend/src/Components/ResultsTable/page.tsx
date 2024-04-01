@@ -17,7 +17,7 @@ const ResultsTable = () => {
             {data.map((row, index) => (
                 <tr key={index}>
                     {row.map((cell, i) => (
-                        <td className="text-center">{cell}</td>
+                        <td key={i} className="text-center">{cell}</td>
                     ))}
                 </tr>
             ))}
