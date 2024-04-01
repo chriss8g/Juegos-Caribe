@@ -10,17 +10,16 @@ class AthleteList(generics.ListCreateAPIView):
     queryset = Athlete.objects.all()
     serializer_class = AthleteSerializer
 
-def athleteArg(request):
-    athletes = list(Athlete.objects.all())
-    data = []
-    for i in athletes:
-        t={}
-        t["name"] = i.name
-        t["picture"] = request.build_absolute_uri(i.picture.url)
-        t["ocupation"] = i.ocupation
-        t["faculty"] = Faculty.objects.filter(id=i.faculty.id)[0].name
-        data.append(t)
-    return JsonResponse(data, safe=False)
+def athleteArg(request, athlete_id):
+    athlete = Athlete.objects.get(id=athlete_id)
+
+    t={}
+    t["name"] = athlete.name
+    t["picture"] = request.build_absolute_uri(athlete.picture.url)
+    t["ocupation"] = athlete.ocupation
+    t["faculty"] = Faculty.objects.get(id=athlete.faculty.id).name
+
+    return JsonResponse(t, safe=False)
 
 class AthleteDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Athlete.objects.all()
