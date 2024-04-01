@@ -320,7 +320,7 @@ export default function Schedule()
                             })
                         }
                     </div>
-                    }
+
                 </div>
             </Layout>
         </div>
