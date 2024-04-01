@@ -8,7 +8,7 @@ from .views.faculty import FacultyList, FacultyDetail, facultiesWithMedals, deta
 from .views.team import TeamList, TeamDetail
 from .views.place import PlaceList, PlaceDetail
 from .views.teamOnGame import TeamOnGameList, TeamOnGameDetail
-from .views.game import GameList, GameDetail
+from .views.game import GameList, GameDetail, schedule_view
 from .views.sport import SportList, SportDetail, dailySport
 from .views.athlete import AthleteList, AthleteDetail, athletesPerFaculty, athlete_sports,athleteArg
 from .views.facultyOnSeason import FacultyOnSeasonList, FacultyOnSeasonDetail
@@ -49,6 +49,7 @@ urlpatterns = [
 
     path('game/<int:pk>/', GameDetail.as_view()),
     path('game/', GameList.as_view()),
+    path('game/schedule/', schedule_view),
 
     path('sport/<int:pk>/', SportDetail.as_view()),
     path('sport/', SportList.as_view()),
