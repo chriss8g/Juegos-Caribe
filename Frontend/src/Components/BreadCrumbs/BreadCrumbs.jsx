@@ -1,7 +1,9 @@
 'use client'
 import { useEffect, useState } from "react"
+import Image from 'next/image'
 import "./BreadCrumbs.css"
 import { useRouter, usePathname } from "next/navigation"
+
 export default function BreadCrumbs()
 {
     const [route, setRoute] = useState(["Inicio"])
@@ -13,7 +15,7 @@ export default function BreadCrumbs()
             const crumb = splittedRoute[i] === "Contactenos" ? "Contáctenos" : splittedRoute[i]
             if(i >= 3 && !route.includes(crumb))
             {
-                setRoute([...route, crumb])            
+                setRoute([...route, crumb])
             }
         }
     },[])
@@ -42,24 +44,23 @@ export default function BreadCrumbs()
 
     return(
         <div className="BreadCrumbs lg:mt-1 lg:p-2" style={pathname === "/" ? {display: 'none'} : {}}>
-        {
-            !noCrumbsPages.includes(pathname) &&
-            route.map((crumb, index)=>{
-                if (index===route.length-1) {
-                    Color = "#5a1024"
-                }
-                return(
-                    <div className="crumbs lg:py-0" key={index} onClick={()=>changeRoute(crumb)}>
-                        {
-                            index > 0
-                            &&
-                            <h3 style={{color:Color}}> &#8250;</h3>
-                        }
-                        <p style={{color:Color}} className="text-nowrap">{crumb}</p>
-                    </div>
-                )
-            })
-        }
+            {
+                !noCrumbsPages.includes(pathname) &&
+                route.map((crumb, index)=>{
+                    if (index===route.length-1) {
+                        Color = "#5a1024"
+                    }
+                    return(
+                        <div className="crumbs lg:py-0" key={index} onClick={()=>changeRoute(crumb)}>
+                            {
+                                index > 0 &&
+                                <img src="/chevron-right.svg" alt="right arrow" className="h-[1.6rem]"/>
+                            }
+                            <p style={{color:Color}} className="text-nowrap">{crumb}</p>
+                        </div>
+                    )
+                })
+            }
         </div>
     )
 }

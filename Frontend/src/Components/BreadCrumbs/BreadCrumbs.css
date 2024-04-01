@@ -6,7 +6,6 @@
 {
     cursor: pointer;
     display: flex;
-    padding-right: 2%;
     align-items: center;
 }
 .crumbs h3

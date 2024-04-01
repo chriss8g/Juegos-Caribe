@@ -6,6 +6,7 @@ import FacultyCard from "../../Components/FacultyCard/FacultyCard";
 import useAdministration from "../../hooks/useAdministration";
 import { useEffect, useState } from "react"
 import {useRouter} from "next/navigation";
+import RedTextHeader from "../../Components/RedTextHeaders/RedTextHeader";
 
 export default function Faculties()
 {
@@ -26,7 +27,7 @@ export default function Faculties()
         <Layout>
             <div className= "MobileView container bg-[#f5ff5f5]">
                 <div className=" pb-5">
-                    <h2 className="text-center text-rose-950 py-10 mb-5 font-bold">Facultades</h2>
+                    <RedTextHeader title="Facultades"/>
                     {
                         faculties.length > 0 &&
                         <>
