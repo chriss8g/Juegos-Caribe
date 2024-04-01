@@ -9,8 +9,6 @@ export default function PlayCard({play})
     const {Faculties}= useSiteContext()
     const [logo1, setLogo1] = useState("")
     const [logo2, setLogo2] = useState("")
-    const [showDetails, setShowDetails] = useState(false);
-
 
     useEffect(()=>
     {
@@ -27,7 +25,7 @@ export default function PlayCard({play})
         })
     }, [])
     return(
-        <div className="MobileView play-card-container bg-white">
+        <div className="MobileView play-card-container">
             <div className="MobileView PlayCard">
                 <div className="row">
                     <div className="left column">
@@ -56,21 +54,10 @@ export default function PlayCard({play})
                 </div>
             </div>
 
-                {showDetails && (
-                    <div className={`${showDetails ? 'team-won bg-white border-t-2 border-t-gray-100' : 'hidden'}`}>
-                        <p className="ml-5 py-3">Resultado final del partido: Victoria MATCOM 2-1</p>
-                    </div>
-                )}
-            <div className={`details shadow-lg ${showDetails ? 'move-down' : ''}`} onClick={() => setShowDetails(!showDetails)}>
-                <p className="text-[1rem] font-medium text-gray-800">Detalles del Partido</p>
-            </div>
+                <div className="details shadow-lg">
+                    <p className="text-[1rem] font-medium text-gray-800">Detalles del Partido</p>
+                </div>
+                <p className="text-gray-700 text-sm">{play.detailResult}</p>
         </div>
     )
 }
-
-
-// ...
-
-
-// ...
-
