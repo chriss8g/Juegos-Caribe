@@ -238,17 +238,6 @@ export default function Administration()
                                                                             }
                                                                         }
                                                                     })}
-                                                                    {/*<td className="flex items-center">*/}
-                                                                    {/*    <div className="edit-delete-buttons-container flex items-center justify-center h-full px-6 py-4">*/}
-                                                                    {/*    {*/}
-                                                                    {/*            currentEntity?.id !== 4 &&*/}
-                                                                    {/*            <button className="font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={()=>handleEdit(row)}><IconPencil className="m-auto"/></button>*/}
-                                                                    {/*        }*/}
-                                                                    {/*            <button className="font-medium text-red-600 dark:text-red-500 hover:underline ms-3" onClick={()=>handleOnDelete(row)}><IconTrash className="m-auto"/></button>*/}
-
-                                                                    {/*    </div>*/}
-                                                                    {/*</td>*/}
-
                                                                     <td className="flex items-center justify-center pt-[50%]">
                                                                         <div
                                                                             className="flex items-center justify-center h-full my-auto">
