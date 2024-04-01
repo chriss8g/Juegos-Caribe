@@ -14,7 +14,7 @@ class Game(models.Model):
     sex = models.ForeignKey(
         Sex, on_delete=models.CASCADE, related_name='sexGame')
     place = models.ForeignKey(Place, on_delete=models.CASCADE, related_name='gamesPlace')
-    detailResult = models.TextField()
+    detailResult = models.TextField(blank=True)
     sport = models.ForeignKey(Sport, on_delete=models.CASCADE, related_name='gamesSport')
     teams = models.ManyToManyField(Team, through='TeamOnGame')
     tournamentOnSeason = models.ForeignKey(TournamentOnSeason, on_delete=models.CASCADE, related_name='tournamentOnSeason')
