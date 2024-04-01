@@ -5,7 +5,7 @@ from .faculty import Faculty
 class Athlete(models.Model):
     name = models.CharField(max_length=200)
     ocupation = models.CharField(max_length=200)
-    biography = models.TextField()
+    biography = models.TextField(blank=True)
     picture = models.ImageField(upload_to='')
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE, related_name='facultad')
 

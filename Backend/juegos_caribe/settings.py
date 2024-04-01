@@ -111,7 +111,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Juegos_Caribe',
         'USER': 'root',
-        'PASSWORD': 'password', #Chris password://america25
+        'PASSWORD': '//america25', #Chris password://america25
         'HOST': 'localhost',  # O la dirección de tu servidor MySQL
         'PORT': '3306',  # El puerto de tu servidor MySQL
     }

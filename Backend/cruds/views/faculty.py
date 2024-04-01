@@ -37,9 +37,12 @@ def lastFacultyList(request):
     
 
 def facultiesWithMedals(request):
+
+    last_season = Season.objects.latest('id')
+
     data = []
     
-    faculty_on_season_list = list(FacultyOnSeason.objects.all().order_by('-points'))
+    faculty_on_season_list = list(FacultyOnSeason.objects.filter(season = last_season).order_by('-points'))
     
     for faculty_on_season in faculty_on_season_list:
         faculty = faculty_on_season.faculty
@@ -70,8 +73,10 @@ def facultiesWithMedals(request):
     return JsonResponse(data, safe=False)
 
 def detailFacultyWithMedals(request, faculty_id):
+
+    last_season = Season.objects.latest('id')
     
-    faculty_on_season = list(FacultyOnSeason.objects.filter(faculty_id=faculty_id).order_by('-points'))[0]
+    faculty_on_season = list(FacultyOnSeason.objects.filter(faculty_id=faculty_id, season = last_season).order_by('-points'))[0]
     
     faculty = faculty_on_season.faculty
 

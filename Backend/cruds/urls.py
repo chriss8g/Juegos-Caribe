@@ -1,7 +1,7 @@
 from django.urls import path
 
 from .views.document import DocumentDetail, DocumentList
-from .views.commissioner import CommissionerList, CommissionerDetail
+from .views.commissioner import CommissionerList, CommissionerDetail, commissionerArg
 from .views.season import SeasonList, SeasonDetail
 from .views.tournament import TournamentList, TournamentDetail
 from .views.faculty import FacultyList, FacultyDetail, facultiesWithMedals, detailFacultyWithMedals, detailSportPerFaculty, lastFacultyList
@@ -26,6 +26,7 @@ from .views.user import UserList, UserDetail
 urlpatterns = [
     path('commissioner/<int:pk>/', CommissionerDetail.as_view()),
     path('commissioner/', CommissionerList.as_view()),
+    path('commissioner/large/', commissionerArg),
 
     path('season/<int:pk>/', SeasonDetail.as_view()),
     path('season/', SeasonList.as_view()),
