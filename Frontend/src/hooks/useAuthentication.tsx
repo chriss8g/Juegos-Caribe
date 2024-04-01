@@ -26,14 +26,8 @@ export default function useAuthentication()
                 (response)=>
                 {
                     if(!response.ok) toast("Error")
-                    response.json()
                 }
             )
-            .then(
-            (data)=>{
-                    setUserKey(data["key"])
-                }
-            ) 
         }
         catch(e)
         {
@@ -109,5 +103,5 @@ export default function useAuthentication()
     // }
     
 
-    return { RegisterUser }
+    return { RegisterUser, userKey }
 }

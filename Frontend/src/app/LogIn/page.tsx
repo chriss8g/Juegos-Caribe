@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 export default function LogIn()
 {
     const[LogIn, setLogIn] = useState(true)
-    const {  RegisterUser } = useAuthentication()
+    const {  RegisterUser, userKey } = useAuthentication()
 
 
     function handleOnSubmit(e: React.MouseEvent) {
@@ -31,6 +31,7 @@ export default function LogIn()
                 {
                     toast("Usuario Registrado")
                 }
+                setLogIn(true)
             }
             else
             {
@@ -66,7 +67,7 @@ export default function LogIn()
     return(
         <div className="LogIn">
             <Layout>
-                {/* {!loggedInUser ? */}
+                {true ?
                     <>
                         <form
                         className="p-5 gap-4 flex flex-col w-4/5 m-auto"
@@ -136,7 +137,7 @@ export default function LogIn()
                         >
                             Cerrar Sesión 
                     </button>
-                {/* } */}
+                }
             </Layout>
         </div>
     )
