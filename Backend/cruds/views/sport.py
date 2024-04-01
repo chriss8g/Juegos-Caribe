@@ -4,14 +4,17 @@ from ..models.sport import Sport
 from ..models.game import Game
 from datetime import date
 from django.core import serializers
-
+from ..permissions import ReadOnly
+from rest_framework.permissions import IsAdminUser
 from django.http import JsonResponse
 
 class SportList(generics.ListCreateAPIView):
+    permission_classes = [ReadOnly|IsAdminUser]
     queryset = Sport.objects.all()
     serializer_class = SportSerializer
 
 class SportDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [ReadOnly|IsAdminUser]
     queryset = Sport.objects.all()
     serializer_class = SportSerializer
 

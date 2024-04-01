@@ -8,19 +8,24 @@ from .models.comment import Comment
 from .models.news import News
 from .models.commissionerCategory import CommissionerCategory
 from .models.commissioner import Commissioner
+from rest_framework.test import APIClient
 from django.contrib.auth import get_user_model
+from django.contrib.auth import authenticate
+
+import requests
 
 #date field
 #user
 #authentication
 #ManytoMany
-
+Users = get_user_model()
+ENDPOINT = "http://127.0.0.1:8000/"
 class SeasonModelTest(TestCase):
-
+    
     @classmethod
     def setUpTestData(cls):
         #Users model class, funciona similar al resto de clases de modelos
-        Users = get_user_model()
+        
         
         CommissionerCategory.objects.create(
             data='consejo'
@@ -139,8 +144,8 @@ class SeasonModelTest(TestCase):
         
     def test_Comissioner_content(self):
         comissioner = Commissioner.objects.all().first()
-        comissionerName = f'{comissioner.name}'
         
+        comissionerName = comissioner.name
         categoryName = comissioner.commissionerCategory.data
         #Note that "season_set" is a new attribute attached to comissioner bc of the ManyToManyField to Comissioner on Season. Agregations like FacultiesOnSeason works differently
         seasonsTitle = comissioner.season_set.first().title
@@ -148,3 +153,30 @@ class SeasonModelTest(TestCase):
         self.assertAlmostEqual(seasonsTitle, 'first Season')
         self.assertEqual(comissionerName, 'Juan')
         self.assertEqual(categoryName, 'consejo')
+    
+    def test_create_medal(self):
+        medal = {
+            "type":"shinyNewMedal"
+        }
+        response = requests.post(ENDPOINT + "api/medal/", json=medal)
+        self.assertEqual(response.status_code,201)
+    
+    def test_auth(self):
+        user = {
+                "username": "juan",
+                "email": "juan",
+                "is_staff": "true",
+                "password1": "intelcorei5",
+                "password2": "intelcorei5",
+            }
+        
+        response = requests.post(path=ENDPOINT + "api/user/", data=user)
+        self.assertEqual(response.status_code, 201)
+        
+        response = requests.get(path=ENDPOINT + "api/user/")
+        self.assertEqual(response.status_code, 200)
+        print(response.json())
+        
+    def test_login(self):
+       pass
+            

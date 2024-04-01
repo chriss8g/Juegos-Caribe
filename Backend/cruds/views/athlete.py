@@ -2,11 +2,14 @@ from ..serializers.athlete import AthleteSerializer
 from ..models.athlete import Athlete
 from ..models.faculty import Faculty
 from rest_framework import generics
+from ..permissions import ReadOnly
+from rest_framework.permissions import IsAdminUser
 
 from django.http import JsonResponse
 
 
 class AthleteList(generics.ListCreateAPIView):
+    permission_classes = [ReadOnly|IsAdminUser]
     queryset = Athlete.objects.all()
     serializer_class = AthleteSerializer
 
@@ -22,6 +25,7 @@ def athleteArg(request, athlete_id):
     return JsonResponse(t, safe=False)
 
 class AthleteDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [ReadOnly|IsAdminUser]
     queryset = Athlete.objects.all()
     serializer_class = AthleteSerializer
 
