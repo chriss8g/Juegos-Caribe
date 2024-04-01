@@ -11,6 +11,7 @@ import { PostTeam, Team } from "../types/Team";
 import { PostTeamOnGame, TeamOnGame } from "../types/TeamOnGame";
 import { PostTournament, Tournament } from "../types/Tournament";
 import { PostTournamentOnSeason, TournamentOnSeason } from "../types/TournamentOnSeason";
+import { PostUserInfo, UserInfo } from "../types/User";
 
 export default function useEntityInformation()
 {
@@ -226,12 +227,11 @@ export default function useEntityInformation()
         season: season,
         tournament: tournament,
     };
-    var user: User = {
+    var user: UserInfo = {
         id: -1,
         str: "",
         password: "",
         last_login: "", 
-        is_superuser: false,
         username: "",
         first_name: "",
         last_name: "",
@@ -242,20 +242,15 @@ export default function useEntityInformation()
         groups: "",
         user_permissions: ""
     };
-    var postUser: PostUser = {
+    var postUserInfo: PostUserInfo = {
         password: "",
-        last_login: "", 
-        is_superuser: false,
         username: "",
         first_name: "",
         last_name: "",
         email: "",
         is_staff: false,
         is_active: false,
-        date_joined: "",
-        groups: "",
-        user_permissions: ""
-    };
+    }
     var season: Season = {
         id: -1,
         str: "",
@@ -324,7 +319,7 @@ export default function useEntityInformation()
             case 14:
                 return postTournamentOnSeason;
             case 15:
-                return postUser;
+                return postUserInfo;
             case 16:
                 return postcommissionerCategory;
             case 17:
@@ -469,7 +464,6 @@ export default function useEntityInformation()
 
     function castTo(entity, object):Object{
         let castedObject = {}
-        
         const objectValues = Object.values(object)
         const objectKeys = Object.keys(object)
         const entityKeys = Object.keys(entity)
@@ -500,6 +494,7 @@ export default function useEntityInformation()
         ShowProp,
         getEntityIdOnList,
         getEntityPostType,
-        castTo
+        castTo,
+        nonShowProp
     }
-} 
+}

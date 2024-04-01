@@ -9,7 +9,7 @@ export default function useAdministration()
 {
     const { toSpanish } = useTranslation()
 
-    const { getEntityType } = useEntityInformation()
+    const { getEntityType, ShowProp } = useEntityInformation()
     
     const[Data, setData]= useState<typeof currentEntityType[]>([])
 
@@ -131,13 +131,13 @@ export default function useAdministration()
         let props = []
         for(const prop in object)
         {
-            try {
-                props.push(
-                    toSpanish(prop).charAt(0).toUpperCase()+toSpanish(prop).slice(1)
-                )
-            } catch (error) {
-                console.log(prop)
-            }
+                try {
+                    props.push(
+                        toSpanish(prop).charAt(0).toUpperCase()+toSpanish(prop).slice(1)
+                    )
+                } catch (error) {
+                    console.log(prop)
+                }
         }
         return props
     }
