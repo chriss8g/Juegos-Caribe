@@ -123,12 +123,10 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                 else if(e.target.type == "file")
                     return new File([], "")
                 else if(typeof Object.values(newData)[i] === "boolean")
-                    if(e.target.value == "on")
-                        return true
-                    else
-                        return false
+                    return e.target.checked
                 else
                     return e.target.value
+
             }
             else
                 return Object.values(newData)[+i]
