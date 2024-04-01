@@ -10,7 +10,7 @@ from .views.place import PlaceList, PlaceDetail
 from .views.teamOnGame import TeamOnGameList, TeamOnGameDetail
 from .views.game import GameList, GameDetail
 from .views.sport import SportList, SportDetail, dailySport
-from .views.athlete import AthleteList, AthleteDetail, athletesPerFaculty
+from .views.athlete import AthleteList, AthleteDetail, athletesPerFaculty, athlete_sports,athleteArg
 from .views.facultyOnSeason import FacultyOnSeasonList, FacultyOnSeasonDetail
 from .views.tournamentOnSeason import TournamentOnSeasonList, TournamentOnSeasonDetail
 from .views.facultyOnTournamentOnSeason import FacultyOnTournamentOnSeasonList, FacultyOnTournamentOnSeasonDetail
@@ -57,6 +57,8 @@ urlpatterns = [
     path('athlete/<int:pk>/', AthleteDetail.as_view()),
     path('athlete/', AthleteList.as_view()),
     path('faculty/<int:id_faculty>/athletes/', athletesPerFaculty),
+    path('athlete/<int:athlete_id>/sports/', athlete_sports),
+    path('athlete/large/', athleteArg),
 
     path('document/<int:pk>/', DocumentDetail.as_view()),
     path('document/', DocumentList.as_view()),
