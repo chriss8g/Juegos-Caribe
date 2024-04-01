@@ -37,5 +37,11 @@
     "Juego": "game",
     "Partido": "game",
     "Sesión": "session",
-    "Info": "info"
+    "Info": "info",
+    "Activo": "is_active",
+    "Staff": "is_staff",
+    "Nombre de usuario": "username",
+    "Apellido": "last_name",
+    "Primer nombre": "first_name",
+    "Correo": "email"
 }
