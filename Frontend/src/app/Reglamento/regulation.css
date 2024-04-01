@@ -1,26 +1,32 @@
 
 .Regulation p {
     padding: 8px;
-    color: rgb(141,141,141);
+    color: rgb(81,81,81);
+    font-size: 1.1rem;
 }
 
 .Regulation span{
     font-weight: bold;
+    color: #515151;
+    font-size: 1.1rem;
 }
 
 
 .Regulation button{
     background-color: #5a1024;
     border: none;
-    width: 60%;
+    width: fit-content;
 }
 .Regulation button p{
     font-weight: bold;
     color: white;
-    margin-left: 0px;
+    margin-left: 0;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 1rem;
 }
 .Regulation button .download{
-    margin: 12px 2px 0px 10px;
+    margin: 12px 2px 0 10px;
     width:3%;
 }
 

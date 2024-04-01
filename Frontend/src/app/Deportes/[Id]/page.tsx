@@ -1,5 +1,6 @@
 import Layout from "../../../Components/Layout/Layout";
 import RedTextHeader from "../../../Components/RedTextHeaders/RedTextHeader";
+import FacultyCardList from "../../../Components/FacultyCardList/FacultyCardList";
 
 export default function DeporteDetallado()
 {
@@ -7,8 +8,8 @@ export default function DeporteDetallado()
         {
             "id" : "1",
             "name" : "Fútbol",
-            "imagen" : "./futbolMain.png",
-            "logo" : "./football.svg",
+            "imagen" : "/futbolMain.png",
+            "logo" : "/football.svg",
             "phase" : "Fase Final"
         }
     ]
@@ -46,6 +47,8 @@ export default function DeporteDetallado()
                 <RedTextHeader title="Estado de la competición"/>
 
                 <RedTextHeader title="Equipos"/>
+
+                <FacultyCardList/>
 
             </div>
         </Layout>

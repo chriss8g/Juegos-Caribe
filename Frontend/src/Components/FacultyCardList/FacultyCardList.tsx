@@ -68,7 +68,9 @@ export default function FacultyCardList()
                     (
                         <FacultyCard
                             key={faculty.id}
-                            faculty={faculty}
+                            name={faculty.name}
+                            image={faculty.image}
+                            facultyId={faculty.id}
                         />
                     ))}
             </div>

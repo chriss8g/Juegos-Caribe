@@ -21,7 +21,7 @@ const LittleSportCard: React.FC<SportCardProps> = ({sportName, sportPicture}) =>
             </div>  
             <p className="circle-container mt-2 mb-2 text-m txt text-gray-600">{sportName}</p>
         </div>
-        
+
     )
 }
 export default LittleSportCard; 

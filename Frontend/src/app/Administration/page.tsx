@@ -192,55 +192,70 @@ export default function Administration()
                                                     {
                                                         Data.map((row, id)=>{
                                                             return(
-                                                            <tr className="" key={id}>
-                                                                <td className="w-4 p-4">
-                                                                    <div className="flex items-center">
-                                                                        <input type="checkbox" name="" id={`${id}`} onChange={(e)=>handleSelect(e, false)} className=" checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                                                        <label  className="sr-only">checkbox</label>
-                                                                    </div>
-                                                                </td>
-                                                                {Object.values(row).map((prop, id)=>{
-                                                                    if(Array.isArray(prop))
-                                                                    {
-                                                                        return(
-                                                                            <td className="px-6 py-4 text-center  td" key={id}>
-                                                                                {
-                                                                                    
-                                                                                    prop.map((value, key)=>{
-                                                                                        return <SpecialTableData entityType={currentEntityType} propIndex={value} dataId={id} key={key}/>
-                                                                                    })
-                                                                                }
-                                                                            </td>
-                                                                        )
-                                                                    }
-                                                                    else if(ShowProp(getEntityPropertiesNames(Data[0])[id]))
-                                                                    {
-                                                                        if(getPropertyEndpoint(currentEntityType, id))
-                                                                        {
-                                                                            return(
-                                                                                <td className=" px-6 py-4 text-center  td" key={id}>
-                                                                                    <SpecialTableData entityType={currentEntityType} propIndex={prop} dataId={id}/>
+                                                                <tr className="" key={id}>
+                                                                    <td className="w-4 p-4">
+                                                                        <div className="flex items-center">
+                                                                            <input type="checkbox" name="" id={`${id}`}
+                                                                                   onChange={(e) => handleSelect(e, false)}
+                                                                                   className=" checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                                                            <label className="sr-only">checkbox</label>
+                                                                        </div>
+                                                                    </td>
+                                                                    {Object.values(row).map((prop, id) => {
+                                                                        if (Array.isArray(prop)) {
+                                                                            return (
+                                                                                <td className="px-6 py-4 text-center  td"
+                                                                                    key={id}>
+                                                                                    {
+
+                                                                                        prop.map((value, key) => {
+                                                                                            return <SpecialTableData
+                                                                                                entityType={currentEntityType}
+                                                                                                propIndex={value}
+                                                                                                dataId={id} key={key}/>
+                                                                                        })
+                                                                                    }
                                                                                 </td>
                                                                             )
+                                                                        } else if (ShowProp(getEntityPropertiesNames(Data[0])[id])) {
+                                                                            if (getPropertyEndpoint(currentEntityType, id)) {
+                                                                                return (
+                                                                                    <td className=" px-6 py-4 text-center  td"
+                                                                                        key={id}>
+                                                                                        <SpecialTableData
+                                                                                            entityType={currentEntityType}
+                                                                                            propIndex={prop}
+                                                                                            dataId={id}/>
+                                                                                    </td>
+                                                                                )
+                                                                            } else {
+                                                                                return (
+                                                                                    <td className=" px-6 py-4 text-center  td"
+                                                                                        key={id}>
+                                                                                        {typeof prop == "boolean" ? (prop === true ? "Sí" : "No") : (prop.length > 60 ? prop.slice(0, 60) + "..." : prop)}
+                                                                                    </td>
+                                                                                )
+                                                                            }
                                                                         }
-                                                                        else
-                                                                        {
-                                                                            return(
-                                                                                <td className=" px-6 py-4 text-center  td" key={id}>
-                                                                                    {typeof prop == "boolean" ? (prop === true ? "Sí" : "No") : (prop?.length > 60 ? prop.slice(0,60)+"..." : prop)}
-                                                                                </td>
-                                                                            )
-                                                                        }
-                                                                    }
-                                                                })}
-                                                                <td className="flex items-center px-6 py-4 justify-evenly">
-                                                                    {
-                                                                        currentEntity?.id !== 4 &&
-                                                                            <button className="font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={()=>handleEdit(row)}><IconPencil className="m-auto"/></button>
-                                                                    }
-                                                                    <button className="font-medium text-red-600 dark:text-red-500 hover:underline ms-3" onClick={()=>handleOnDelete(row)}><IconTrash className="m-auto"/></button>
-                                                                </td>
-                                                            </tr>
+                                                                    })}
+                                                                    <td className="flex items-center justify-center pt-[50%]">
+                                                                        <div
+                                                                            className="flex items-center justify-center h-full my-auto">
+                                                                            {
+                                                                                currentEntity?.id !== 4 &&
+                                                                                <button
+                                                                                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                                                                                    onClick={() => handleEdit(row)}>
+                                                                                    <IconPencil className="m-auto"/>
+                                                                                </button>
+                                                                            }
+                                                                            <button
+                                                                                className="font-medium dark:text-red-600 hover:underline ms-3"
+                                                                                onClick={() => handleOnDelete(row)}>
+                                                                                <IconTrash className="m-auto"/></button>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
                                                             )
                                                         })
                                                     }
@@ -251,7 +266,7 @@ export default function Administration()
 
                                         :
                                         <h2>
-                                            No hay datos aun...
+                                        No hay datos aun...
                                         </h2>
                                 }
                                 <div className="w-96 m-auto mt-14">
