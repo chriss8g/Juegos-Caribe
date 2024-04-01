@@ -35,5 +35,7 @@
     "Resultado": "result",
     "Equipo": "team",
     "Juego": "game",
-    "Partido": "game"
+    "Partido": "game",
+    "Sesión": "session",
+    "Info": "info"
 }

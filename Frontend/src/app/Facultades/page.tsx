@@ -5,9 +5,12 @@ import Layout from "../../Components/Layout/Layout";
 import FacultyCard from "../../Components/FacultyCard/FacultyCard";
 import useAdministration from "../../hooks/useAdministration";
 import { useEffect, useState } from "react"
+import {useRouter} from "next/navigation";
+import RedTextHeader from "../../Components/RedTextHeaders/RedTextHeader";
 
 export default function Faculties()
 {
+    const router = useRouter()
     const{getData, Data} = useAdministration()
     
     useEffect(()=>{
@@ -24,18 +27,16 @@ export default function Faculties()
         <Layout>
             <div className= "MobileView container bg-[#f5ff5f5]">
                 <div className=" pb-5">
-                    <h2 className="text-center text-rose-950 py-10 mb-5 font-bold">Facultades</h2>
+                    <RedTextHeader title="Facultades"/>
                     {
                         faculties.length > 0 &&
                         <>
                         {
                             
                             faculties.map((element, index)=>(
-                                <a href={`/Facultades/${element.id}`}>
-                                    <div key={element.id} className="z-20">
-                                        <FacultyCard name={element.name} image={element.logo}/>
-                                    </div>
-                                </a>
+                                <div onClick={()=>router.push(`/Facultades/${element.id}`)} key={element.id} className="cursor-pointer" >
+                                    <FacultyCard name={element.name} image={element.logo}/>
+                                </div>
                             ))
                             
                         }

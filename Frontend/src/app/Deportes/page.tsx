@@ -20,12 +20,12 @@ export default function Sports()
 
     return(
         <Layout>
-            <div className="MobileView bg-[#f5ff5f5]">
-                <h2 className="text-center text-rose-950 py-10 mb-5 font-bold">Deportes</h2>
+            <div className="MobileView bg-[#f5ff5f5] pb-20">
+                <h2 className="text-center text-rose-950 pt-10 pb-5 font-bold">Deportes</h2>
                 {
                     sports.length > 0 &&
-                    <div className="">
-                        <div className="display flex flex-wrap wrap px-7">
+                    <div className="px-5">
+                        <div className="display !grid-cols-3 grid gap-4">
                         {
                             sports.map((sport, key)=>(
                                 <div key={key}>

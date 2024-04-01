@@ -5,6 +5,7 @@ import NewsMainCard from "../NewsMainCard/NewsMainCard";
 
 import useAdministration from "../../hooks/useAdministration";
 import { useEffect, useState } from "react"
+import RedTextHeader from "../RedTextHeaders/RedTextHeader";
 
 export default function RelevantNews()
 {
@@ -23,7 +24,7 @@ export default function RelevantNews()
     return(
         news.length > 0 &&
         <div className="RelevantNews container">
-            <h2 className="sectionTitle  text-3xl font-bold">Noticias relevantes</h2>
+            <p className="sectionTitle text-2xl font-bold"> Noticias Relevantes</p>
 
             {/* Versión Móvil */}
             {

@@ -30,3 +30,4 @@ interface PostUser
     groups: string,
     user_permissions: string
 }
+

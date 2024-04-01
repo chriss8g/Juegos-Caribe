@@ -14,7 +14,7 @@ export default function Regulation()
         <div className="Regulation mx-3">
                 
                 <div>
-                <h2 className="mb-5 flex justify-center font-bold text-gray-500 my-8">Reglamento 2023-2026</h2>
+                <p className="mb-5 flex justify-center font-bold text-neutral-600 my-8 text-3xl">Reglamento 2023-2026</p>
              
 
                 <p><span>Título I.</span> Principios Generales:</p>
@@ -43,7 +43,7 @@ export default function Regulation()
                                             imposición de sanciones.</p> 
                 </div>
                 
-                <button className="mx-auto w-3/4 border-2 border-slate-600 mt-7 py-1 bg-slate-600 text-white rounded-md flex justify-center">
+                <button className="mx-auto border-2 border-slate-600 mt-7 py-1 bg-slate-600 text-white rounded-md flex justify-center">
                     <div className="download">
                         <Image alt="" src="/download.svg" fill className="image"/>
                     </div>

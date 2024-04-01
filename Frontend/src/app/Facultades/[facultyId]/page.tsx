@@ -9,12 +9,13 @@ import MedalsFac from "../../../Components/MedalsFac/page";
 import useAdministration from "../../../hooks/useAdministration";
 import { useParams } from "next/navigation";
 import SportsPerFaculty from "../../../Components/SportsPerFaculty/SportsPerFaculty";
+import { useRouter } from "next/navigation";
 
-
-export default function FacultadDetallada()
+export default function DetailedFaculty()
 {
     const{getData, getDataByIdFromEndpoint, DataByIdFromEndpoint, Data} = useAdministration()
     const{facultyId}= useParams();
+    const router = useRouter()
 
 
     useEffect(()=>{
@@ -34,8 +35,6 @@ export default function FacultadDetallada()
         setAthletes(Data);
     },[Data]);
 
-    const [category, setCategory] = useState("");
-
     return (
         <div className="fac-det-main-container MobileView">
             <Layout>
@@ -48,15 +47,15 @@ export default function FacultadDetallada()
                             {
                                 athletes.length > 0 &&
                                 <>
-                                    <p className="text-red-950 font-medium text-lg mt-7">Atletas destacados</p>
-
+                                    <p className="text-red-950 font-medium text-lg mt-7 mb-3">Atletas destacados</p>
                                     {
-                                    athletes.map((athlete, id) => (
-                                        <AthleteCard
-                                            key={id}
-                                            athlete={athlete}
-                                        />
-                                    ))
+                                        athletes.map((athlete, id) => (
+                                            <AthleteCard
+                                                onClick={() => router.push(`/Atletas/${athlete.id}`)}
+                                                key={id}
+                                                athlete={athlete}
+                                            />
+                                        ))
                                     }
                                 </>
                                 
@@ -66,7 +65,7 @@ export default function FacultadDetallada()
                         
                             <MedalsFac facultyId={facultyId}/>
 
-                            <p className="text-black font-medium text-lg mt-7">Resultados</p>
+                            <p className="text-black font-medium text-lg mt-20">Resultados</p>
                             <Results data="" />
                         </div>
                 }

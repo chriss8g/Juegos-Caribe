@@ -14,7 +14,7 @@ export default function Results({data})
 
     return(
         <div
-            className="results-main-container flex flex-col w-[90%] m-2 bg-white py-4 px-2 rounded-xl shadow-lg items-center mb-12">
+            className="results-main-container flex flex-col w-[90%] m-2  bg-white py-4 px-2 rounded-xl shadow-lg items-center mb-12">
             <p className="text-center text-lg text-gray-950">
                 Mejor resultado en la historia:
             </p>

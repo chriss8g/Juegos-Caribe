@@ -10,12 +10,27 @@ import "../../app/globals.css"
 import Layout from "../../Components/Layout/Layout";
 import Image from "next/image"
 import PlayCard from "../../Components/PlayCard/PlayCard";
-import { useEffect, useState } from "react";
+import useAdministration from "../../hooks/useAdministration";
+import { useEffect, useState } from "react"
+import react from "react";
 
 export default function Schedule()
 {
-    const {dailySchedule, Faculties, Sports} = useSiteContext()
+    const{getData, Data} = useAdministration()
+    
+    useEffect(()=>{
+        getData(`${process.env.API_URL}/sport`)
+    },[])
 
+    const[Sports, set_sports] = useState([]);
+
+    useEffect(()=>{
+        set_sports(Data);
+    },[Data]);
+                                                                                                                                                                                                                         
+
+    const {Faculties, schedule} = useSiteContext()
+                                                 
     const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
     const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
 
@@ -25,7 +40,7 @@ export default function Schedule()
     const [sports, setSports] = useState([])
 
     // Filter
-    const [filtered, setFiltered] = useState(dailySchedule)
+    const [filtered, setFiltered] = useState(schedule)
     const [filtering, setFiltering] = useState(false)
     const [filteredSession, setFilteredSession] = useState([])
     const [filteredFaculties, setFilteredFaculties] = useState([])
@@ -36,12 +51,12 @@ export default function Schedule()
     const handleRadioSelect=(e)=>{
         if(e.target.name === "session")
         {
-            document.sessionForm.session.value = e.target.value
+            document.forms['sessionForm'].session.value = e.target.value
             setFilteredSession(e.target.value)
         }
         if(e.target.name === "gender")
         {
-            document.genderForm.gender.value = e.target.value
+            document.forms['genderForm'].gender.value = e.target.value
             setFilteredGender(e.target.value)
         }
     }
@@ -89,7 +104,7 @@ export default function Schedule()
         //Setting playing faculties
         var facults = []
         var sports = []
-        dailySchedule.map((play)=>
+        schedule.map((play)=>
         {
             //Setting Spots Available
             if(!sports.includes(play.sport))
@@ -107,7 +122,8 @@ export default function Schedule()
         })
         setFaculties(facults)
         setSports(sports)
-    },[dailySchedule])
+        setFiltered(schedule)
+    },[schedule])
     
     useEffect(()=>{
         if(filtering === true)
@@ -120,7 +136,7 @@ export default function Schedule()
         }
         var Filtered = []
         var erase = []
-        dailySchedule.map((play)=>{
+        schedule.map((play)=>{
             //If a game doesn't have a filtered option is eliminated
             if (filteredSession.length !== 0 && !filteredSession.includes(play.session))
             {
@@ -139,7 +155,7 @@ export default function Schedule()
                 erase.push(play)
             }
         })
-        dailySchedule.map((play)=>
+        schedule.map((play)=>
         {
             if(!erase.includes(play))
             {
@@ -185,17 +201,17 @@ export default function Schedule()
 
                                 <div className="filter">
                                     <p className="filterTitle mb-0 pt-[5%] px-0 pb-[2%] text-lg text-gray-700 border-b-gray-400 border-b-2">Horario</p>
-                                    <form name="sessionForm" className="row" value={filteredSession}>
+                                    <form name="sessionForm" className="row" defaultValue={filteredSession}>
                                         <div className="option">
-                                            <input type="radio" name="session"  className="filterSession" value="morning" onClick={handleRadioSelect}/>
+                                            <input type="radio" name="session"  className="filterSession" value="Mañana" onClick={handleRadioSelect}/>
                                             <p className="text-[1rem]">Mañana</p>
                                         </div>
                                         <div className="option">
-                                            <input type="radio" name="session" className="filterSession" value="afternoon" onClick={handleRadioSelect} />
+                                            <input type="radio" name="session" className="filterSession" value="Tarde" onClick={handleRadioSelect} />
                                             <p className="text-[1rem]">Tarde</p>
                                         </div>
                                         <div className="option">
-                                            <input type="radio" name="session" className="filterSession" value={["morning", "afternoon"]} onClick={handleRadioSelect} />
+                                            <input type="radio" name="session"  className="filterSession" value="Jornada" onClick={handleRadioSelect} />
                                             <p className="text-[1rem]">Todo el día</p>
                                         </div>
                                     </form>
@@ -254,20 +270,20 @@ export default function Schedule()
 
                                 <div className="filter">
                                     <p className="mb-0 pt-[5%] px-0 pb-[2%] text-lg text-gray-700 border-b-gray-400 border-b-2">Sexo</p>
-                                    <form name="genderForm" className="row" value={filteredGender}>
+                                    <form name="genderForm" className="row" defaultValue={filteredGender}>
                                         <div className="option">
-                                            <input type="radio" name="gender" className="filterGender" value="female"
+                                            <input type="radio" name="gender" className="filterGender" value="Femenino"
                                                    onClick={handleRadioSelect}/>
                                             <p>Femenino</p>
                                         </div>
                                         <div className="option">
-                                            <input type="radio" name="gender" className="filterGender" value="male"
+                                            <input type="radio" name="gender" className="filterGender" value="Masculino"
                                                    onClick={handleRadioSelect}/>
                                             <p>Masculino</p>
                                         </div>
                                         <div className="option">
                                             <input type="radio" name="gender" className="filterGender"
-                                                   value={["female", "male"]} onClick={handleRadioSelect}/>
+                                                   value={["Femenino", "Masculino"]} onClick={handleRadioSelect}/>
                                             <p>Ambos sexos</p>
                                         </div>
                                     </form>
@@ -292,7 +308,7 @@ export default function Schedule()
                         }
                     </div>
                     <div className="afternoon">
-                        <p className="session">Sesión de la tarde</p>
+                        <p className="my-[5%] text-red-950 text-lg">Sesión de la tarde</p>
                         {
                             filtered.map((play, index)=>{
                                 if(play.session === "afternoon")
@@ -304,6 +320,7 @@ export default function Schedule()
                             })
                         }
                     </div>
+                    }
                 </div>
             </Layout>
         </div>
