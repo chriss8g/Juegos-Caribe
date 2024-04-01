@@ -1,9 +1,6 @@
 'use client'
-
 import "./LittleSportCard.css"
 import Image from "next/image"
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 
 interface SportCardProps {
     sportName: string; 
@@ -13,20 +10,16 @@ interface SportCardProps {
 const LittleSportCard: React.FC<SportCardProps> = ({sportName, sportPicture}) =>
 {
 
-    const router = useRouter();
     return(
-        <div className="mx-auto min-w-1/4 p-3" onClick={()=>router.push("/Deportes/"+sportName)}>
-            <div className="SportCard p-3">
-                
+        <div className="w-full SportCard flex flex-col py-2">
             <div className="circle-container">
                 <div className="flex justify-center align-center">
                     <div className="sportImage">
-                        <Image src={sportPicture} alt="" fill className="image"/>
+                        <Image src={sportPicture} alt="" fill className="image "/>
                     </div>
                 </div>
             </div>  
-            </div>
-            <p className="circle-container mt-2 mb-5 text-m txt text-gray-600">{sportName}</p>
+            <p className="circle-container mt-2 mb-2 text-m txt text-gray-600">{sportName}</p>
         </div>
         
     )

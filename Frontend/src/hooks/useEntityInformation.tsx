@@ -225,7 +225,6 @@ export default function useEntityInformation()
     var postTournamentOnSeason: PostTournamentOnSeason = {
         season: season,
         tournament: tournament,
-        faculties: [faculty]
     };
     var user: User = {
         id: -1,
@@ -417,7 +416,7 @@ export default function useEntityInformation()
             if(entities[i].name === entityName)
                 return i;
 
-        throw new Error("Entity not found")
+        return undefined
     }
 
     function getEntityType(id:number)

@@ -170,6 +170,12 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
         for(const element of formElements)
         {
             temp[toEnglish(element.name)] = newData[i]
+            if(typeof newData[i] === "object" && 
+                !Array.isArray(newData[i]) && 
+                !(newData[i] instanceof File))
+            {
+                temp[toEnglish(element.name)] = []
+            }
             i++
         }
         if(editMode)
@@ -230,7 +236,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                     // If the property is a file, then it will be a file input
                                     else if(dataValues[id] instanceof File){
                                         return(
-                                            <div className="flex flex-col max-w-sm" key={id}>
+                                            <div className="my-5 flex flex-col max-w-sm" key={id}>
                                                 <label className="text-lg font-bold text-gray-600 pb-3">{propertiesNames[id]}: </label>
                                                 <input type="file" 
                                                     className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"

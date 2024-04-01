@@ -10,11 +10,13 @@ export default function SpecialTableData({entityType, propIndex, dataId})
 
     const {
         getDataByIdFromEndpoint,
-        DataByIdFromEndpoint
+        DataByIdFromEndpoint,
+        currentEntity
     } = useAdministration()
     
     useEffect(()=>{
-        getDataByIdFromEndpoint(propIndex, getPropertyEndpoint(entityType, dataId))
+        if(propIndex !== null)
+            getDataByIdFromEndpoint(propIndex, getPropertyEndpoint(entityType, dataId))
     },[])
 
     return(
