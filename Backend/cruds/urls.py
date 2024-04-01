@@ -19,7 +19,7 @@ from .views.session import SessionDetail, SessionList
 from .views.medal import MedalDetail, MedalList
 from .views.commissionerCategory import CommissionerCategoryDetail, CommissionerCategoryList
 
-from .views.news import NewsList, NewsDetail, RecentNewsList
+from .views.news import NewsList, NewsDetail, RecentNewsList, newsArg, newsArgSingle
 from .views.comment import CommentList, CommentDetail
 from .views.user import UserList, UserDetail
 
@@ -78,6 +78,8 @@ urlpatterns = [
     path('news/<int:pk>/', NewsDetail.as_view()),
     path('news/', NewsList.as_view()),
     path('recentNews/', RecentNewsList.as_view()),
+    path('newsArg/', newsArg),
+    path('newsArgSingle/<int:id>/', newsArgSingle),
 
     path('comment/<int:pk>/', CommentDetail.as_view()),
     path('comment/', CommentList.as_view()),
