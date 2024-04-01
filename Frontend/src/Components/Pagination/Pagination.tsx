@@ -9,9 +9,10 @@ interface PaginationProps {
     itemComponent: React.ElementType; // Esto permite pasar cualquier componente React como prop
     data: any[]; // Asegúrate de tipar tus datos adecuadamente
     percentage: number; // Add the percentage prop
+    mainSec: boolean; //Para distinguir propiedades entre el carrusel ´de Inicio y el resto
 }
 
-const Pagination: React.FC<PaginationProps> = ({ itemComponent: ItemComponent, data, percentage }) =>
+const Pagination: React.FC<PaginationProps> = ({ itemComponent: ItemComponent, data, percentage, mainSec }) =>
 {
 
     const arrowStyles : CSSProperties= {
@@ -23,7 +24,7 @@ const Pagination: React.FC<PaginationProps> = ({ itemComponent: ItemComponent, d
         cursor: 'pointer',
     };
     return(
-        <div className="Pagination MobileView relative ">
+        <div className="Pagination MobileView relative">
 
             <Carousel showArrows showStatus={false} centerMode centerSlidePercentage={percentage}
                       renderArrowPrev={(onClickHandler, hasPrev, label) =>
@@ -38,7 +39,7 @@ const Pagination: React.FC<PaginationProps> = ({ itemComponent: ItemComponent, d
                       }
             >
                 {data.map((element, index)=>(
-                    <div key={index}>
+                    <div key={index} className={mainSec?"mb-9":""}>
                         <ItemComponent name={element.name} image={element.image ? element.image :( element.logo)? element.logo : ""} body={element.body ?  element.body : ""}/>
                     </div>
                 ))}

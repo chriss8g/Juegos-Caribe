@@ -38,9 +38,9 @@ export default function Home() {
         {
           Faculties.length > 0 && 
           (
-          <div>
+          <div className="MobileView container">
               <h2 className="sectionTitle text-2xl font-bold">Facultades Participantes</h2>
-              <Pagination percentage={100} itemComponent={FacultyPreview} data={Faculties}/>
+              <Pagination percentage={50} itemComponent={FacultyPreview} data={Faculties} mainSec={true}/>
 
           </div>
           )
