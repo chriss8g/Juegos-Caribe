@@ -11,6 +11,7 @@ import Layout from "../../Components/Layout/Layout";
 import Image from "next/image"
 import PlayCard from "../../Components/PlayCard/PlayCard";
 import { useEffect, useState } from "react";
+import react from "react";
 
 export default function Schedule()
 {
@@ -36,12 +37,12 @@ export default function Schedule()
     const handleRadioSelect=(e)=>{
         if(e.target.name === "session")
         {
-            document.sessionForm.session.value = e.target.value
+            document.forms['sessionForm'].session.value = e.target.value
             setFilteredSession(e.target.value)
         }
         if(e.target.name === "gender")
         {
-            document.genderForm.gender.value = e.target.value
+            document.forms['genderForm'].gender.value = e.target.value
             setFilteredGender(e.target.value)
         }
     }
@@ -185,7 +186,7 @@ export default function Schedule()
 
                                 <div className="filter">
                                     <p className="filterTitle mb-0 pt-[5%] px-0 pb-[2%] text-lg text-gray-700 border-b-gray-400 border-b-2">Horario</p>
-                                    <form name="sessionForm" className="row" value={filteredSession}>
+                                    <form name="sessionForm" className="row" defaultValue={filteredSession}>
                                         <div className="option">
                                             <input type="radio" name="session"  className="filterSession" value="morning" onClick={handleRadioSelect}/>
                                             <p className="text-[1rem]">Mañana</p>
@@ -195,7 +196,7 @@ export default function Schedule()
                                             <p className="text-[1rem]">Tarde</p>
                                         </div>
                                         <div className="option">
-                                            <input type="radio" name="session" className="filterSession" value={["morning", "afternoon"]} onClick={handleRadioSelect} />
+                                            <input type="radio" name="session"  className="filterSession" value={["morning", "afternoon"]} onClick={handleRadioSelect} />
                                             <p className="text-[1rem]">Todo el día</p>
                                         </div>
                                     </form>
@@ -254,7 +255,7 @@ export default function Schedule()
 
                                 <div className="filter">
                                     <p className="mb-0 pt-[5%] px-0 pb-[2%] text-lg text-gray-700 border-b-gray-400 border-b-2">Sexo</p>
-                                    <form name="genderForm" className="row" value={filteredGender}>
+                                    <form name="genderForm" className="row" defaultValue={filteredGender}>
                                         <div className="option">
                                             <input type="radio" name="gender" className="filterGender" value="female"
                                                    onClick={handleRadioSelect}/>
