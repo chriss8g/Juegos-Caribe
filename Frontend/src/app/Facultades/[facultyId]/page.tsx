@@ -35,8 +35,6 @@ export default function DetailedFaculty()
         setAthletes(Data);
     },[Data]);
 
-    const [category, setCategory] = useState("");
-
     return (
         <div className="fac-det-main-container MobileView">
             <Layout>
