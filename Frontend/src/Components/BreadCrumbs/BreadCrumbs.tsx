@@ -49,13 +49,13 @@ export default function BreadCrumbs()
                     Color = "#5a1024"
                 }
                 return(
-                    <div className="crumbs" key={index} onClick={()=>changeRoute(crumb)}>
+                    <div className="crumbs lg:py-0" key={index} onClick={()=>changeRoute(crumb)}>
                         {
                             index > 0
                             &&
                             <h3 style={{color:Color}}> &#8250;</h3>
                         }
-                        <p style={{color:Color}}>{crumb}</p>
+                        <p style={{color:Color}} className="text-nowrap">{crumb}</p>
                     </div>
                 )
             })

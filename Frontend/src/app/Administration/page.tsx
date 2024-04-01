@@ -117,137 +117,144 @@ export default function Administration()
         <div className="Administration mb-40 items-center">
             <Layout>
                 <div className="">
-                    <div className="SectionMenu">
+                    <div className="SectionMenu my-10 w-1/5 mx-auto flex align-middle items-center justify-evenly">
 
-                        <br />
-                        Entidades:
-                        <select name="Entities" id="Entities" onChange={(e)=>{setCurrentEntity(entities[+e.target.value]); setLoading(true)}}>
+                        <p>
+                            Entidades:
+                        </p>
+                        <select className="w-3/4" name="Entities" id="Entities" onChange={(e)=>{setCurrentEntity(entities[+e.target.value]); setLoading(true)}}>
                             {entities.map((ent, key)=>(
                                 <option id={`${key}`} value={ent.id} key={key}>
                                     {toSpanish(ent.name).charAt(0).toUpperCase()+toSpanish(ent.name).slice(1)}
                                 </option>
                             ))}
                         </select>
-                        <br />
-                        <br />
 
                     </div>
-                {
+                    {
 
-                    !Loading ?
+                        !Loading ?
 
-                        <div className="">
-                            <div id="adminForm" className="hidden">
-                                <AdministrationForm editMode={editMode} setEditMode={setEditMode} formRow={formRow} entity={currentEntity}/>
-                            </div>
-                            <div id="DeleteModal" className="hidden">
-                                <DeleteModal data={deleteRow} entityId={currentEntity.id} endpoint={currentEntity.endpoint}/>
-                            </div>
+                            <div className="">
+                                <div id="adminForm" className="hidden">
+                                    <AdministrationForm editMode={editMode} setEditMode={setEditMode} formRow={formRow} entity={currentEntity}/>
+                                </div>
+                                <div id="DeleteModal" className="hidden">
+                                    <DeleteModal data={deleteRow} entityId={currentEntity.id} endpoint={currentEntity.endpoint}/>
+                                </div>
 
 
-                            <div className="CRUDSection w-3/4 mx-auto">
-                                {
-                                    Data.length > 0 ?
-                                        <table className=" border-solid border-2 border-black">
-                                            <thead className="border-solid border-2 border-black">
-                                                <tr>
-                                                    <th><input type="checkbox" className="w-5 h-5 m-2" name="select_all" id={`${Data.map((row, i)=>i)}`} onChange={(e)=>handleSelect(e, true)}/></th>
-                                                    {
-                                                        getEntityPropertiesNames(Data[0]).map((prop, id)=>{
-                                                            if(ShowProp(prop))
+                                <div className="CRUDSection w-3/4 mx-auto items-center flex flex-col">
+                                    {
+                                        Data.length > 0 ?
+                                            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+                                                <table className="w-full text-md text-left rtl:text-right text-black">
+                                                    <thead className=" text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                                        <tr>
+                                                            <th scope="col" className="p-4">
+                                                                <input type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" name="select_all" id={`${Data.map((row, i)=>i)}`} onChange={(e)=>handleSelect(e, true)}/>
+                                                            </th>
                                                             {
-                                                                return <th className="border-solid border-2 border-black p-2" key={id}>{prop}</th>
+                                                                getEntityPropertiesNames(Data[0]).map((prop, id)=>{
+                                                                    if(ShowProp(prop))
+                                                                    {
+                                                                        return <th scope="col" className=" p-2" key={id}>{prop}</th>
+                                                                    }
+                                                                    
+                                                                })
                                                             }
-                                                            
-                                                        })
-                                                    }
-                                                    <th>Acciones</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-
-                                                {
-                                                    Data.map((row, id)=>{
-                                                        return(
-                                                        <tr className="border-solid border-2 border-black" key={id}>
-                                                            <td>
-                                                                <input type="checkbox" name="" id={`${id}`} className="p-2 checkbox m-2 w-5 h-5" onChange={(e)=>handleSelect(e, false)}/>
-                                                            </td>
-                                                            {Object.values(row).map((prop, id)=>{
-                                                                if(Array.isArray(prop))
-                                                                {
-                                                                    return(
-                                                                        <td className="p-2 text-center border-solid border-2 border-black td" key={id}>
-                                                                            {
-                                                                                prop.map((value, key)=>{
-                                                                                    return <SpecialTableData entityType={currentEntityType} propIndex={value} dataId={id} key={key}/>
-                                                                                })
-                                                                            }
-                                                                        </td>
-                                                                    )
-                                                                }
-                                                                else if(ShowProp(getEntityPropertiesNames(Data[0])[id]))
-                                                                {
-                                                                    if(getPropertyEndpoint(currentEntityType, id))
-                                                                    {
-                                                                        return(
-                                                                            <td className="p-2 text-center border-solid border-2 border-black td" key={id}>
-                                                                                <SpecialTableData entityType={currentEntityType} propIndex={prop} dataId={id}/>
-                                                                            </td>
-                                                                        )
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        return(
-                                                                            <td className="p-2 text-center border-solid border-2 border-black td" key={id}>
-                                                                                {typeof prop == "boolean" ? (prop === true ? "Sí" : "No") : prop}
-                                                                            </td>
-                                                                        )
-                                                                    }
-                                                                }
-                                                            })}
-                                                            <td>
-                                                                {
-                                                                    currentEntity.id !== 4 &&
-                                                                        <button className="p-2 border-solid border-2 border-gray-400 w-full bg-orange-300" onClick={()=>handleEdit(row)}><IconPencil className="m-auto"/></button>
-                                                                }
-                                                                <button className="p-2 border-solid border-2 border-gray-400 w-full bg-red-400" onClick={()=>handleOnDelete(row)}><IconTrash className="m-auto"/></button>
-                                                            </td>
+                                                            <th scope="col" className="p-4">Acciones</th>
                                                         </tr>
-                                                        )
-                                                    })
-                                                }
-                                            </tbody>
+                                                    </thead>
+                                                    <tbody>
 
-                                        </table>
-                                        :
-                                        <h2>
-                                            No hay datos aun...
-                                        </h2>
-                                }
-                                <div className="w-96 m-auto">
-                                    {
-                                        currentEntity.id !== 4 &&
-                                        <button className="w-80 border-2 border-slate-600 ml-7 mt-7 py-1 bg-slate-600 text-white rounded-md"
-                                            onClick={(e)=>handleCreate(e)}
-                                        >
-                                            Agregar
-                                        </button>
+                                                        {
+                                                            Data.map((row, id)=>{
+                                                                return(
+                                                                <tr className="" key={id}>
+                                                                    <td className="w-4 p-4">
+                                                                        <div className="flex items-center">
+                                                                            <input type="checkbox" name="" id={`${id}`} onChange={(e)=>handleSelect(e, false)} className=" checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                                            <label  className="sr-only">checkbox</label>
+                                                                        </div>
+                                                                    </td>
+                                                                    {Object.values(row).map((prop, id)=>{
+                                                                        if(Array.isArray(prop))
+                                                                        {
+                                                                            return(
+                                                                                <td className="px-6 py-4 text-center  td" key={id}>
+                                                                                    {
+                                                                                        prop.map((value, key)=>{
+                                                                                            return <SpecialTableData entityType={currentEntityType} propIndex={value} dataId={id} key={key}/>
+                                                                                        })
+                                                                                    }
+                                                                                </td>
+                                                                            )
+                                                                        }
+                                                                        else if(ShowProp(getEntityPropertiesNames(Data[0])[id]))
+                                                                        {
+                                                                            if(getPropertyEndpoint(currentEntityType, id))
+                                                                            {
+                                                                                return(
+                                                                                    <td className=" px-6 py-4 text-center  td" key={id}>
+                                                                                        <SpecialTableData entityType={currentEntityType} propIndex={prop} dataId={id}/>
+                                                                                    </td>
+                                                                                )
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                return(
+                                                                                    <td className=" px-6 py-4 text-center  td" key={id}>
+                                                                                        {typeof prop == "boolean" ? (prop === true ? "Sí" : "No") : prop}
+                                                                                    </td>
+                                                                                )
+                                                                            }
+                                                                        }
+                                                                    })}
+                                                                    <td className="flex items-center px-6 py-4 justify-evenly">
+                                                                        {
+                                                                            currentEntity.id !== 4 &&
+                                                                                <button className="font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={()=>handleEdit(row)}><IconPencil className="m-auto"/></button>
+                                                                        }
+                                                                        <button className="font-medium text-red-600 dark:text-red-500 hover:underline ms-3" onClick={()=>handleOnDelete(row)}><IconTrash className="m-auto"/></button>
+                                                                    </td>
+                                                                </tr>
+                                                                )
+                                                            })
+                                                        }
+                                                    </tbody>
+
+                                                </table>
+                                            </div>
+
+                                            :
+                                            <h2>
+                                                No hay datos aun...
+                                            </h2>
                                     }
-                                    {
-                                        selectedToDelete.length > 0 &&
-                                        <button className="w-80 border-2 border-slate-600 ml-7 mt-7 py-1 bg-red-500 text-white rounded-md"
-                                            onClick={()=>DeleteSelection()}
-                                        >
-                                            Borrar seleccion
-                                        </button>
-                                    }
+                                    <div className="w-96 m-auto mt-14">
+                                        {
+                                            currentEntity.id !== 4 &&
+                                            <button className="w-80 border-2 border-slate-600 ml-7 mt-7 py-1 bg-slate-600 text-white rounded-md"
+                                                onClick={(e)=>handleCreate(e)}
+                                            >
+                                                Agregar
+                                            </button>
+                                        }
+                                        {
+                                            selectedToDelete.length > 0 &&
+                                            <button className="w-80 border-2 border-slate-600 ml-7 mt-7 py-1 bg-red-500 text-white rounded-md"
+                                                onClick={()=>DeleteSelection()}
+                                            >
+                                                Borrar seleccion
+                                            </button>
+                                        }
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    :
-                    <h3>Loading...</h3>
-                }              
+                        :
+                        <h3>Loading...</h3>
+                    }              
                 </div>
             </Layout>
         </div>

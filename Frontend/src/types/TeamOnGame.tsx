@@ -1,3 +1,4 @@
+import { Game } from "./Game";
 import { Team } from "./Team";
 
 export interface TeamOnGame
@@ -5,13 +6,13 @@ export interface TeamOnGame
     id: number,
     str: string,
     result: number,
-    teams: Team,
-    games: Game,
+    team: Team,
+    game: Game,
 }
 
 export interface PostTeamOnGame
 {
     result: number,
-    teams: Team,
-    games: Game,
+    team: Team,
+    game: Game,
 }

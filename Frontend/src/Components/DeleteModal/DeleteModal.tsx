@@ -50,9 +50,9 @@ function DeleteModal({data, entityId, endpoint})
             <div className="bg-gray-300 bg-opacity-75 w-screen h-screen fixed top-0 z-10">
             </div>
             <div className="modal fixed start-[12.5%] top-1/4 w-3/4 p-5 bg-white z-20 rounded-md">
-                <h2 className="text-xl">Va a eliminar:</h2>
-                <table className="m-auto my-4">
-                    <thead className="border-solid border-2 border-black">
+                <h2 className="text-xl mb-3">Va a eliminar:</h2>
+                <table className="w-full text-md text-left rtl:text-right text-black">
+                    <thead className="text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             {
                                 getEntityPropertiesNames(data).map((prop, id)=>(
@@ -105,7 +105,7 @@ function DeleteModal({data, entityId, endpoint})
                 </table>
                 <div className="flex mt-10 justify-between lg:w-1/3 md:justify-end lg:justify-end">
                     <button className="border-solid border-2 p-3 sm:w-1/5 lg:w-1/2 border-gray-800 rounded-lg mx-2" onClick={()=>{document.getElementById('DeleteModal').style.display="none"}}>Cancelar</button>
-                    <button className="border-solid border-2 p-3 sm:w-1/5 lg:w-1/2 border-gray-800 rounded-lg mx-2 bg-red-500 text-white" onClick={()=>{handleDelete(data.id); location.reload()}}>Aceptar</button>
+                    <button className="border-solid border-2 p-3 sm:w-1/5 lg:w-1/2 border-gray-800 rounded-lg mx-2 bg-red-500 text-white" onClick={()=>{handleDelete(data.id); location.reload()}}>Borrar</button>
                 </div>
             </div>
 
@@ -113,7 +113,3 @@ function DeleteModal({data, entityId, endpoint})
     )
 }
 export default DeleteModal
-
-function useState<T>(): [any, any] {
-    throw new Error("Function not implemented.")
-}

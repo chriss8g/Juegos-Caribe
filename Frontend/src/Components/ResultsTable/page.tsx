@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../app/Facultad/fac-detallada.css";
+import "../../app/Facultades/fac-detallada.css";
 
 const ResultsTable = () => {
     const data = Array(5).fill(["L(50)", "5to", "15"]);
@@ -17,7 +17,7 @@ const ResultsTable = () => {
             {data.map((row, index) => (
                 <tr key={index}>
                     {row.map((cell, i) => (
-                        <td className="text-center">{cell}</td>
+                        <td key={i} className="text-center">{cell}</td>
                     ))}
                 </tr>
             ))}

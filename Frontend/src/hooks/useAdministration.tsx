@@ -29,7 +29,6 @@ export default function useAdministration()
         setData(res.data)
         return (await res.data)
     }
-        
 
     const [DataByIdFromEndpoint, setDataByIdFromEndpoint] = useState<typeof currentEntityType>()
     
@@ -62,6 +61,7 @@ export default function useAdministration()
             if(fileInput && value instanceof File)
             {
                 const file = fileInput.files[0];
+                console.log(file)
                 formData.append(key, file);
             } 
             else if (Array.isArray(value)) {

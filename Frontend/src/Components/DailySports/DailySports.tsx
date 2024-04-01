@@ -1,18 +1,33 @@
+'use client'
 import SportCard from "../SportCard/SportCard"
 import "./DailySports.css"
+import useAdministration from "../../hooks/useAdministration";
+import { useEffect, useState } from "react"
 
 export default function DailySports()
 {
+    const{getData, Data} = useAdministration()
+    
+    useEffect(()=>{
+        getData(`${process.env.API_URL}/dailySport`)
+    },[])
+
+    const[sports, setSports] = useState([]);
+
+    useEffect(()=>{
+        setSports(Data);
+    },[Data]);
+
     return(
+        sports.length > 0 &&
         <div className="DailySports container">
             <h2 className="sectionTitle text-3xl font-bold">Deportes del día</h2>
             <div className="SportsList">
-                <SportCard sportName={"Atletismo"}/>
-                <SportCard sportName={"Taekwondo"}/>
-                <SportCard sportName={"Tenis"}/>
-                <SportCard sportName={"Atletismo2"}/>
-                <SportCard sportName={"Taekwondo2"}/>
-                <SportCard sportName={"Tenis2"}/>
+            {
+                sports.map((sport, id)=>(
+                    <SportCard sportName={sport.name} sportPicture={sport.logo}/>
+                ))
+            }
             </div>
         </div>
 

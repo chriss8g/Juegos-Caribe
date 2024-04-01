@@ -9,10 +9,11 @@ export default function TermsAndConditions()
 
     return(
         <Layout>
-            <div className="mb-20">
-                <TitleText title={"Términos y Condiciones"} text={txt} />
-                <SubtitleText title={"Términos de participación"} text={txt}/>
-                <SubtitleText title={"Por la presente usted está de acuerdo con lo siguiente:"} text={txt}/>
+            <div>
+                <TitleText title={"Términos y Condiciones"} text={"Por favor, lee estos términos y condiciones de uso cuidadosamente antes de utilizar nuestro sitio web."} />
+                <SubtitleText title={"Términos de participación"} text={"Al participar en cualquier aspecto interactivo de nuestro sitio web, como comentarios en noticias, interacción con las estadísticas de juegos y jugadores, o cualquier otra actividad similar, aceptas cumplir con nuestros términos de participación. Nos reservamos el derecho de eliminar cualquier contenido que consideremos inapropiado, ofensivo o que viole estos términos."}/>
+                <SubtitleText title={"Por la presente usted está de acuerdo con lo siguiente:"} text={"No publicar contenido difamatorio, obsceno, amenazante o que viole los derechos de propiedad intelectual de terceros. Respetar las opiniones y derechos de otros usuarios al participar en debates y comentarios. Al utilizar nuestro sitio web, aceptas nuestras prácticas de privacidad descritas en dicha política."
+}/>
             </div>
         </Layout>
     )

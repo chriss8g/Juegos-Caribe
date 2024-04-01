@@ -70,5 +70,9 @@
     "new": "noticia",
     "commissionerCategory": "categoría de comisionado",
     "type": "tipo",
-    "data": "data"
+    "data": "data",
+    "equipo": "team",
+    "juego": "game",
+    "session": "sesión",
+    "info": "info"
 }
