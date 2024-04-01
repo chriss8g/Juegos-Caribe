@@ -293,7 +293,7 @@ export default function Schedule()
                         }
                     </div>
                     <div className="afternoon">
-                        <p className="session">Sesión de la tarde</p>
+                        <p className="my-[5%] text-red-950 text-lg">Sesión de la tarde</p>
                         {
                             filtered.map((play, index)=>{
                                 if(play.session === "afternoon")
