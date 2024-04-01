@@ -1,26 +1,25 @@
-from django.test import TestCase
+from django.test import TestCase, RequestFactory
 from .models.season import Season
 from.models.faculty import Faculty
 from .models.athlete import Athlete
-from .models.document import Document
-from .models.medal import Medal
 from .models.comment import Comment
 from .models.news import News
 from .models.commissionerCategory import CommissionerCategory
 from .models.commissioner import Commissioner
+from .models.medal import Medal
 from django.contrib.auth import get_user_model
+from django.urls import resolve, reverse
+import requests
 
-#date field
-#user
-#authentication
-#ManytoMany
+#Is setted to localhost to debug
+ENDPOINT = "http://127.0.0.1:8000"
+Users = get_user_model()
 
 class SeasonModelTest(TestCase):
-
+    #setUpTestData se llama una vez al comienzo de la ejecución de la prueba
     @classmethod
     def setUpTestData(cls):
         #Users model class, funciona similar al resto de clases de modelos
-        Users = get_user_model()
         
         CommissionerCategory.objects.create(
             data='consejo'
@@ -59,7 +58,7 @@ class SeasonModelTest(TestCase):
             name= 'Estudiante Genérica', 
             biography="Fuí monitora en la primaria",
             faculty=Faculty.objects.get(id=1)
-            )
+        )
         
         
         Users.objects.create_user(
@@ -70,6 +69,7 @@ class SeasonModelTest(TestCase):
             username='Lola',
             password='password2',
         )
+        Users
         #Para asignar una fecha basta con poner auto_now_add=False en campo DateField del modelo.
         # el formato de fecha es: 'YYYY-MM-DD'
         # si auto_now_add=True se ignora el valor que le pases al campo
@@ -87,7 +87,7 @@ class SeasonModelTest(TestCase):
             user=user2
         )
     
-    
+    #Opcionalmente se puede definir el metodo setUp() que se ejecuta al inicio de cada test
     def test_Season_content(self):
         season = Season.objects.get(id=1)
         
@@ -148,3 +148,40 @@ class SeasonModelTest(TestCase):
         self.assertAlmostEqual(seasonsTitle, 'first Season')
         self.assertEqual(comissionerName, 'Juan')
         self.assertEqual(categoryName, 'consejo')
+        
+    #Las clases de prueba también tienen un metodo tearDown() que no hemos utilizado. Este método no es particularmente útil para las pruebas de bases de datos, ya que TestCase la clase base se encarga del desmontaje de la base de datos por usted.
+    #Como la clase de prueba hereda de TestCase no es necesario pues esta clase por defecto crea una base de datos para el test y luego la destruye
+    
+    def test_on_going(self):
+        response = requests.get(ENDPOINT + "/api/user")
+        self.assertEqual( response.status_code , 200)
+        
+    def test_create_document(self):
+        url = reverse(('cruds:d'))
+    def test_loging(self):
+        login = self.client.login(
+            username='carlosbreso', 
+            password='12345'
+        )
+        self.assertFalse(login)
+        
+        login = self.client.login(
+            username='Pepe',
+            password='password1'
+        )
+        self.assertTrue(login)
+    #make runserver first
+    def test_signin(self):
+        pass
+        
+        
+    def test_create_medal(self):
+        """ medal = {
+            'type' :  'Gold',
+        }
+        response = requests.put(ENDPOINT + "/api/medal/add/", json=medal)
+        print(response.status_code) """
+        pass
+        
+    def test_login(self):
+        pass

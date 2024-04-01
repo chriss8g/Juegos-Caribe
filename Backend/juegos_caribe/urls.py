@@ -22,8 +22,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('cruds.urls')),
-    path('api-auth/', include('rest_framework.urls')),
+    path('api-auth/', include('rest_framework.urls')), #login
     path('api/v1/rest-auth/', include('rest_auth.urls')),
-    path('api/v1/rest-auth/registration/', # new
-        include('rest_auth.registration.urls')),
+    path('api/v1/rest-auth/registration/', include('rest_auth.registration.urls')), #singin/register
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
