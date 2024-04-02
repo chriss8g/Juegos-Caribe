@@ -1,55 +1,44 @@
 'use client'
-import { useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Layout from "../../../Components/Layout/Layout";
 import MoreNewsList from "../../../Components/MoreNewsList/MoreNewsList";
 import NewsCarousel from "../../../Components/NewsCarousel/NewsCarousel";
 import Formulario from "../../../Components/Formulario/formulario";
 import RecCommentCard from "../../../Components/RecCommentsCard/RecCommentCard";
 
+import useAdministration from "../../../hooks/useAdministration";
+import { useParams } from "next/navigation";
 export default function NoticiaDetallada() {
-    const News =[{
-        'id': "1",
-        'title': "Competencia entre los Mapaches y Lobos en Tenis de Campo",
-        'images': "/main-news.png",
-        'date': "13 DICIEMBRE, 2023",
-        'author': "Juan Perez",
-        'body': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam, ut inchoavit aut spem adfectas aut satisfactionem.'
-    },
-        {
-            'id': "1",
-            'title': "Título 2",
-            'images': "/sec-news-1.png",
-            'date': "13 DICIEMBRE, 2023",
-            'author': "Juan Perez"
-        },
-        {
-            'id': "1",
-            'title': "Competencia entre los Mapaches y Lobos en Tenis de Campo",
-            'images': "/main-news.png",
-            'date': "13 DICIEMBRE, 2023",
-            'author': "Juan Perez"
-        },
-        {
-            'id': "1",
-            'title': "Competencia entre los Mapaches y Lobos en Tenis de Campo",
-            'images': "/main-news.png",
-            'date': "13 DICIEMBRE, 2023",
-            'author': "Juan Perez"
-        },
-        {
-            'id': "1",
-            'title': "Competencia entre los Mapaches y Lobos en Tenis de Campo",
-            'images': "/main-news.png",
-            'date': "13 DICIEMBRE, 2023",
-            'author': "Juan Perez"
-        }]
+
+    const{getDataByIdFromEndpoint, DataByIdFromEndpoint} = useAdministration()
+    const{Id}= useParams();
+
+
+    useEffect(()=>{
+        getDataByIdFromEndpoint(+Id, "/newsArgSingle")
+    },[])
+
+
+    const[news, setNews] = useState({} as New);
+
+    useEffect(()=>{
+        setNews(DataByIdFromEndpoint as New);
+    },[DataByIdFromEndpoint]);
+
 
     return (
+        news &&
         <div className="MobileView">
             <Layout>
                 <div className="det-news-main-container">
-                    <div className="main-det-new-container">
-                        <NewsCarousel News={News} main={false}/>
+                    <img className="w-full max-h-[195px]" src={news.picture} alt="noticia detallada"/>
+                    <div className="bullets-container pt-2% pb-2%">
+                        <br/>
+                    </div>
+                    <div className="container">
+                        <p className="text-start ml-1 text-lg font-bold text-red-950">{news.title}</p>
+                        <p className="text-start ml-1 text-lg text-red-950 mt-2">por {news.user}</p>
+                        <p className="text-start ml-1 text-sm text-black mt-4">{news.body}</p>
                     </div>
                     <div className="det-news-inner-container container mt-[20%]">
                         <Formulario comment={true}/>
