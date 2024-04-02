@@ -4,7 +4,7 @@ from .views.document import DocumentDetail, DocumentList
 from .views.commissioner import CommissionerList, CommissionerDetail, commissionerArg
 from .views.season import SeasonList, SeasonDetail
 from .views.tournament import TournamentList, TournamentDetail
-from .views.faculty import FacultyList, FacultyDetail, facultiesWithMedals, detailFacultyWithMedals, detailSportPerFaculty, lastFacultyList
+from .views.faculty import FacultyList, FacultyDetail, facultiesWithMedals, detailFacultyWithMedals, detailSportPerFaculty, lastFacultyList, get_faculty_statistics
 from .views.team import TeamList, TeamDetail
 from .views.place import PlaceList, PlaceDetail
 from .views.teamOnGame import TeamOnGameList, TeamOnGameDetail
@@ -40,6 +40,7 @@ urlpatterns = [
     path('faculty/medals/', facultiesWithMedals),
     path('faculty/medals/<int:faculty_id>/', detailFacultyWithMedals),
     path('faculty/sport/<int:faculty_id>/', detailSportPerFaculty),
+    path('faculty/statistics/<int:faculty_id>/', get_faculty_statistics),
 
     path('team/<int:pk>/', TeamDetail.as_view()),
     path('team/', TeamList.as_view()),
