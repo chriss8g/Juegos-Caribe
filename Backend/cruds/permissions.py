@@ -3,7 +3,8 @@ MODIFY_METHODS = ('PUT', 'PATCH')
 
 class ReadOnly(BasePermission):
     def has_permission(self, request, view):
-        return request.method in SAFE_METHODS
+        return True
+        #return request.method in SAFE_METHODS
     
 class  IsOwnerOrReadOnly(BasePermission):
     """
