@@ -9,8 +9,7 @@ import { toast } from 'react-toastify';
 export default function LogIn()
 {
     const[LogIn, setLogIn] = useState(true)
-    const {  RegisterUser, userKey, LogUser, loggedIn, LogOut} = useAuthentication()
-
+    const {  RegisterUser, LogUser, loggedIn, LogOut} = useAuthentication()
 
     function handleOnSubmit(e: React.MouseEvent) {
         e.preventDefault()
