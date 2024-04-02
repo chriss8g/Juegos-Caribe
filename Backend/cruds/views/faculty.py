@@ -61,6 +61,10 @@ def facultiesWithMedals(request):
         
         teams_faculty = Team.objects.filter(faculty=faculty)
         for team in teams_faculty:
+
+            if(not team.medal):
+                continue
+
             medal_type = team.medal.type
 
             if(medal_type):
@@ -94,6 +98,10 @@ def detailFacultyWithMedals(request, faculty_id):
     
     teams_faculty = Team.objects.filter(faculty=faculty)
     for team in teams_faculty:
+
+        if(not team.medal):
+           continue
+
         medal_type = team.medal.type
 
         if(medal_type):
