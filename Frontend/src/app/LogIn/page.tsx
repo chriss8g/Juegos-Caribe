@@ -1,11 +1,10 @@
 'use client'
 import useAuthentication from "../../hooks/useAuthentication";
 import Layout from "../../Components/Layout/Layout";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { IconEye, IconEyeClosed } from "@tabler/icons-react";
 import { RegisterUserInfo, LoginInfo } from "../../types/User";
 import { toast } from 'react-toastify';
-import { getCookie } from "cookies-next";
 
 export default function LogIn()
 {
