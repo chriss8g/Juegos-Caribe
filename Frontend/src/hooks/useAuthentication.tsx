@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 
 export default function useAuthentication()
 {
-    // const router = useRouter()
     const [userKey, setUserKey] = useState("")
 
     function RegisterUser (newUser: RegisterUserInfo): string {
@@ -24,7 +23,8 @@ export default function useAuthentication()
             }).then(
                 (response)=>
                 {
-                    if(!response.ok) toast("Error")
+                    if(!response.ok) toast.error("Ha ocurrido un error")
+                    else toast.success("Usuario registrado")
                 }
             )
         }
@@ -47,10 +47,20 @@ export default function useAuthentication()
             Object.keys(userinfo).forEach(key => {
                 formData.append(key, userinfo[key]);
             });
-            const response = fetch(`${process.env.API_URL}/v1/rest-auth/login/`,{
+            fetch(`${process.env.API_URL}/v1/rest-auth/login/`,{
                 method: "POST",
                 body: formData
             })
+            .then(
+                async (response)=>
+                {
+                    if(!response.ok) toast.error("Ha ocurrido un error")
+                    else{
+                        toast.success("Sesión iniciada")
+                        console.log(response)
+                    }
+                }
+            )
         }
         catch(e)
         {

@@ -5,11 +5,9 @@ import React, { useState } from "react";
 import { IconEye, IconEyeClosed } from "@tabler/icons-react";
 import { RegisterUserInfo, LoginInfo } from "../../types/User";
 import { toast } from 'react-toastify';
-import { useRouter } from "next/navigation"
 
 export default function LogIn()
 {
-    const router = useRouter()
     const[LogIn, setLogIn] = useState(true)
     const {  RegisterUser, userKey, LogUser} = useAuthentication()
 
@@ -27,12 +25,7 @@ export default function LogIn()
                     password1: (document.getElementById('password') as HTMLInputElement)?.value,
                     password2: (document.getElementById('passwordConfirm') as HTMLInputElement)?.value
                 }
-                response = RegisterUser(registerUserInfo)
-                if(response !== "") toast.error("Ha ocurrido un error")
-                else
-                {
-                    toast.success("Usuario Registrado")
-                }
+                RegisterUser(registerUserInfo)
                 setLogIn(true)
             }
             else
@@ -42,12 +35,7 @@ export default function LogIn()
                     email: (document.getElementById('email') as HTMLInputElement)?.value,
                     password: (document.getElementById('password') as HTMLInputElement)?.value,
                 }
-                response = LogUser(loginInfo)
-                if(response !== "") toast.error("Ha ocurrido un error")
-                else{
-                    toast.success("Sesión iniciada")
-                    router.push("/")
-                }
+                LogUser(loginInfo)
             }
         }
         else
@@ -106,19 +94,21 @@ export default function LogIn()
                                             </>
                                     }
                             </div>
-                            <div className="flex">
-                                <input className="p-3 w-64 rounded-md bg-gray-200 my-1" type={seeConfPassw ? 'text' : 'password'} placeholder="confirma la contraseña" id="passwordConfirm" required />
-                                <div className="mt-4 -ml-10 w-0" onClick={()=>setSeeConfPassw(!seeConfPassw)}>
-                                    {
-                                        !seeConfPassw 
-                                        ? 
-                                        <IconEye/>
-                                        :
-                                        <IconEyeClosed />
-                                    
-                                    }
+                            {!LogIn && 
+                                <div className="flex">
+                                    <input className="p-3 w-64 rounded-md bg-gray-200 my-1" type={seeConfPassw ? 'text' : 'password'} placeholder="confirma la contraseña" id="passwordConfirm" required />
+                                    <div className="mt-4 -ml-10 w-0" onClick={()=>setSeeConfPassw(!seeConfPassw)}>
+                                        {
+                                            !seeConfPassw 
+                                            ? 
+                                            <IconEye/>
+                                            :
+                                            <IconEyeClosed />
+                                        
+                                        }
+                                    </div>
                                 </div>
-                            </div>
+                            }
                             <button 
                                 onClick={(e)=>handleOnSubmit(e)}
                                 className="bg-[#5a1024] text-white w-4/5 m-auto py-1 rounded-md"
