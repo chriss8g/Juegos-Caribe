@@ -1,15 +1,16 @@
 import { LoginInfo, RegisterUserInfo } from "../types/User";
 import { useState } from "react"
 import { toast } from 'react-toastify';
+import {setCookie, getCookie} from "cookies-next"
 
 
 export default function useAuthentication()
 {
     const [userKey, setUserKey] = useState("")
+    const [loggedIn, setLoggedIn] = useState(false) 
 
+    // POST NEW USER
     function RegisterUser (newUser: RegisterUserInfo): string {
-        
-        // POST NEW USER
         try
         {
             const formData = new FormData();
@@ -37,9 +38,8 @@ export default function useAuthentication()
         return ""
     }
 
+    // LOGIN USER
     function LogUser (userinfo: LoginInfo): string {
-        
-        // LOGIN USER
         try
         {
             const formData = new FormData();
@@ -57,7 +57,8 @@ export default function useAuthentication()
                     if(!response.ok) toast.error("Ha ocurrido un error")
                     else{
                         toast.success("Sesión iniciada")
-                        console.log(response)
+                        setLoggedIn(true)
+                        setCookie("loggedInUser", userinfo["username"])
                     }
                 }
             )
@@ -66,34 +67,20 @@ export default function useAuthentication()
         {
            console.log(e)
         }
-        
 
         return ""
     }
 
-    // function LogOut()
-    // {
-    //     setLoggedInUser(
-    //         {
-    //             email: loggedInUser.email,
-    //             name: loggedInUser.name,
-    //             lastname: loggedInUser.lastname,
-    //             faculty: loggedInUser.faculty,
-    //             password: loggedInUser.password,
-    //             isLoggedIn: false
-    //         }
-    //     )
-    //     updateUser({
-    //         email: loggedInUser.email,
-    //         name: loggedInUser.name,
-    //         lastname: loggedInUser.lastname,
-    //         faculty: loggedInUser.faculty,
-    //         password: loggedInUser.password,
-    //         isLoggedIn: false
-    //     })
-    //     // router.push("/")
-    // }
+    function LogOut()
+    {
+        fetch(`${process.env.API_URL}/v1/rest-auth/logout/`,{
+            method: "POST",
+        })
+        setCookie("loggedInUser", undefined)
+        setLoggedIn(false)
+        toast.success("Sesión cerrada correctamente")
+    }
     
 
-    return { RegisterUser, userKey, LogUser }
+    return { RegisterUser, userKey, LogUser, loggedIn, LogOut }
 }

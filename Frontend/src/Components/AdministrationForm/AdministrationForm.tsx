@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react"
-import { useRouter } from "next/navigation"
 import useAdministration from "../../hooks/useAdministration"
 import useTranslation from "../../hooks/useTranslation"
 import useEntityInformation from "../../hooks/useEntityInformation"
+import InputField from "../InputField"
+import SelectField from "../SelectField"
 
 export default function AdministrationForm({editMode, formRow, setEditMode, entity})
 {
@@ -20,6 +21,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
         nonShowProp,
         getEntityPostType
     } = useEntityInformation()
+
 
     const [selectedData, setSelectedData] = useState(formRow)
     const propertiesNames = (getEntityPropertiesNames(formRow))
@@ -169,7 +171,6 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
         {
             temp["id"] = formRow.id
         }
-        var formElements = document.forms['AdminModal'].elements
         let i = editMode ? nonShowProp.length : nonShowProp.length-1
         const keys = Object.keys(formRow)
         for (let i = 0; i < keys.length; i++)
@@ -207,98 +208,128 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                     editMode &&
                         <label className="text-lg font-bold text-gray-600 pb-3" htmlFor="Id">Id: {dataValues.filter((val,id)=>propertiesNames[id]=="Id")}</label>
                 }
-                <form action="" id="AdminModal" className="m-auto my-4 grid grid-rows-3 grid-cols-2 gap-4 px-10">
-
-                    {!loadingModal &&
-                        dataValues.map((val, id) =>{
-                            if(propertiesNames[id] !== "Id" && ShowProp(propertiesNames[id]))
-                            {
-                                if(ShowProp(getEntityPropertiesNames(selectedData)[id]))
+                <form action="" id="AdminModal" className="m-auto my-4  px-10">
+                    <div className="grid grid-rows-3 grid-cols-2 gap-4">
+                        {!loadingModal &&
+                            dataValues.map((val, id) =>{
+                                if(propertiesNames[id] !== "Id" && ShowProp(propertiesNames[id]))
                                 {
-                                    // If the property is a foreign key, then, it will be a select input
-                                    if(getPropertyEndpoint(formRow, id))
+                                    if(ShowProp(getEntityPropertiesNames(selectedData)[id]))
                                     {
-                                        selectIndex++
-                                        return(
+                                        // If the property is a foreign key, then, it will be a select input
+                                        if(getPropertyEndpoint(formRow, id))
+                                        {
+                                            selectIndex++
+                                            return(
+                                                    <div className="my-5 flex flex-col max-w-sm" key={id}>
+                                                        <label className="text-lg font-bold text-gray-600 pb-3">{propertiesNames[id]}: </label>
+                                                        <SelectField multiple={Array.isArray(Object.values(formRow)[id])} id={`${id}`} defaultValue={Object.values(formRow)[id] as any} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)} className="" entity={entity} formRow={formRow}>
+                                                            {
+                                                                !editMode &&
+                                                                <option value=""></option>
+                                                            }
+                                                            {
+                                                                selectsInfo[selectIndex]?.map((val, i)=>{
+                                                                    return(
+                                                                        <option selected={Object.values(formRow)[id] === val.id} value={`${val.id}`} key={i}>
+                                                                            {val.str}
+                                                                        </option>
+                                                                    )
+                                                                },)
+                                                            }
+                                                        </SelectField>
+                                                    </div>
+                                            )
+                                        }
+                                        // If the property is a file, then it will be a file input
+                                        else if(dataValues[id] instanceof File){
+                                            return(
                                                 <div className="my-5 flex flex-col max-w-sm" key={id}>
                                                     <label className="text-lg font-bold text-gray-600 pb-3">{propertiesNames[id]}: </label>
-                                                    <select multiple={Array.isArray(Object.values(formRow)[id])} id={`${id}`} defaultValue={Object.values(formRow)[id] as any} name={`${propertiesNames[id]}`} onChange={(e)=>handleChange(e)} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                                        {
-                                                            !editMode &&
-                                                            <option value=""></option>
-                                                        }
-                                                        {
-                                                            selectsInfo[selectIndex]?.map((val, i)=>{
-                                                                return(
-                                                                    <option selected={Object.values(formRow)[id] === val.id} value={`${val.id}`} key={i}>
-                                                                        {val.str}
-                                                                    </option>
-                                                                )
-                                                            },)
-                                                        }
-                                                    </select>
-                                                </div>
-                                        )
-                                    }
-                                    // If the property is a file, then it will be a file input
-                                    else if(dataValues[id] instanceof File){
-                                        return(
-                                            <div className="my-5 flex flex-col max-w-sm" key={id}>
-                                                <label className="text-lg font-bold text-gray-600 pb-3">{propertiesNames[id]}: </label>
-                                                <input type="file" 
-                                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
-                                                    accept={propertiesNames[id] === "Foto" || propertiesNames[id] === "Logo" ? 
+                                                   
+                                                    <InputField key={id} id={`${id}`} 
+                                                        name={`${propertiesNames[id]}`} 
+                                                        type={"file"} 
+                                                        value={null} 
+                                                        onChange={handleChange} 
+                                                        entity={entity} 
+                                                        formRow={formRow} 
+                                                        defaultChecked={null} 
+                                                        accept={propertiesNames[id] === "Foto" || propertiesNames[id] === "Logo" ? 
                                                                 `image/jpeg, image/jpg, image/png, image/gif` : 
-                                                                `application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document`}  
-                                                    key={id} id={`${id}`} 
-                                                    name={`${propertiesNames[id]}`} 
-                                                    onChange={(e)=>handleChange(e)}
-                                                />
-                                            </div>
-                                        )
-                                    }
-                                    // If the property is a date, then it will be a date input
-                                    else if(dataValues[id] instanceof Date){
-                                        return (
-                                            <div className="my-5 flex flex-col max-w-sm" key={id}>
-                                                <label className="text-lg font-bold text-gray-600 pb-3">{propertiesNames[id]}: </label>
-                                                <input id={`${id}`} name={`${propertiesNames[id]}`} type="date" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center border-solid td" onChange={(e)=>handleChange(e)} defaultValue={val as string}/>
-                                            </div>
-                                        )
-                                    }
-                                    //Property is boolean
-                                    else if(typeof val == "boolean")
-                                    {
-                                        return(
-                                            <div className="my-5 flex flex-row max-w-sm align-middle" key={id}>
-                                                <label className="text-lg font-bold text-gray-600 pb-3">{propertiesNames[id]}: </label>
-                                                <label className="inline-flex items-center cursor-pointer">
-                                                    <input id={`${id}`} name={`${propertiesNames[id]}`} type="checkbox" defaultChecked={val} className="sr-only peer" onChange={(e)=>handleChange(e)}/>
-                                                    <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                                                </label>
-                                            </div>
-                                        )
-                                    }
-                                    else 
-                                    {
-                                        //Property is ordinary text(number)
-                                        return(
-                                            <div className="my-5 flex flex-col max-w-sm" key={id}>
-                                                <label className="text-lg font-bold text-gray-600 pb-3">{propertiesNames[id]}: </label>
-                                                <input id={`${id}`} name={`${propertiesNames[id]}`} type={`${typeof val}`} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center border-solid td" onChange={(e)=>handleChange(e)} defaultValue={val}/>
-                                            </div>
-                                        )
+                                                                `application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document`} 
+                                                        className={""}
+                                                    />
+
+                                                </div>
+                                            )
+                                        }
+                                        // If the property is a date, then it will be a date input
+                                        else if(dataValues[id] instanceof Date){
+                                            return (
+                                                <div className="my-5 flex flex-col max-w-sm" key={id}>
+                                                    <label className="text-lg font-bold text-gray-600 pb-3">{propertiesNames[id]}: </label>
+                                                    <InputField 
+                                                        id={`${id}`} 
+                                                        name={`${propertiesNames[id]}`} 
+                                                        type={"date"} 
+                                                        value={val as string} 
+                                                        onChange={handleChange} 
+                                                        entity={entity} 
+                                                        formRow={formRow} 
+                                                        defaultChecked={null} 
+                                                        accept={null} 
+                                                        className={""}
+                                                    />
+                                                </div>
+                                            )
+                                        }
+                                        //Property is boolean
+                                        else if(typeof val == "boolean")
+                                        {
+                                            return(
+                                                <div className="my-5 flex flex-row max-w-sm align-middle" key={id}>
+                                                    <label className="text-lg font-bold text-gray-600 pb-3">{propertiesNames[id]}: </label>
+                                                    <label className="inline-flex items-center cursor-pointer">
+                                                        <input id={`${id}`} name={`${propertiesNames[id]}`} type="checkbox" defaultChecked={val} className="sr-only peer" onChange={(e)=>handleChange(e)}/>
+                                                        <InputField 
+                                                            id={`${id}`} 
+                                                            name={`${propertiesNames[id]}`} 
+                                                            type={"date"} 
+                                                            value={null} 
+                                                            onChange={handleChange} 
+                                                            entity={entity} 
+                                                            formRow={formRow} 
+                                                            defaultChecked={val} 
+                                                            accept={null} 
+                                                            className={"sr-only peer"}
+                                                        />
+                                                        <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                                    </label>
+                                                </div>
+                                            )
+                                        }
+                                        else 
+                                        {
+                                            //Property is ordinary text(number)
+                                            return(
+                                                <div className="my-5 flex flex-col max-w-sm" key={id}>
+                                                    <label className="text-lg font-bold text-gray-600 pb-3">{propertiesNames[id]}: </label>
+                                                    <InputField id={`${id}`} name={`${propertiesNames[id]}`} type={`${typeof val}`} value={val} onChange={handleChange} entity={entity} formRow={formRow}  defaultChecked={null} accept={null} className={""}/>
+                                                </div>
+                                            )
+                                        }
                                     }
                                 }
-                            }
-                            
-                        })
-                    }
+                                
+                            })
+                        }
+                    </div>
+                    <div className="flex mt-10 justify-between ml-auto w-1/3">
+                        <button className="border-solid border-2 p-3 lg:w-1/2 border-gray-800 rounded-lg mx-2" onClick={()=>handleCancel()}>Cancelar</button>
+                        <button className="border-solid border-2 p-3 lg:w-1/2 border-gray-800 rounded-lg mx-2 bg-green-500 text-white disabled:bg-gray-500" disabled={!needsUpdate && editMode} onClick={(e)=>handleOnSubmit(e)}>{editMode===true ? "Guardar" : "Crear"}</button>
+                    </div>
                 </form>
-                <div className="flex mt-10 justify-between ml-auto lg:w-1/3 md:justify-end lg:justify-end">
-                    <button className="border-solid border-2 p-3 lg:w-1/2 border-gray-800 rounded-lg mx-2" onClick={()=>handleCancel()}>Cancelar</button>
-                    <button className="border-solid border-2 p-3 lg:w-1/2 border-gray-800 rounded-lg mx-2 bg-green-500 text-white disabled:bg-gray-500" disabled={!needsUpdate && editMode} onClick={(e)=>handleOnSubmit(e)}>{editMode===true ? "Guardar" : "Crear"}</button>
-                </div>
             </div>
         </div>
     )
