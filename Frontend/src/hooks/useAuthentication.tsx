@@ -76,9 +76,17 @@ export default function useAuthentication()
         fetch(`${process.env.API_URL}/v1/rest-auth/logout/`,{
             method: "POST",
         })
-        setCookie("loggedInUser", undefined)
-        setLoggedIn(false)
-        toast.success("Sesión cerrada correctamente")
+        .then(
+            async (response)=>
+            {
+                if(!response.ok) toast.error("Ha ocurrido un error")
+                else{
+                    setCookie("loggedInUser", undefined)
+                    setLoggedIn(false)
+                    toast.success("Sesión cerrada correctamente")
+                }
+            }
+        )
     }
     
 
