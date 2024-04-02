@@ -21,9 +21,6 @@ export default function InputField({id, type, name, entity, formRow, onChange, v
 
     },[])
 
-    useEffect(()=>{
-        console.log(isRequired)
-    },[isRequired])
 
     return(
         <div className="">

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "../../app/Contactenos/contact.css"
-import { getCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 import axios from "axios";
 
 export default function Formulario({comment})
@@ -22,7 +22,10 @@ export default function Formulario({comment})
                     // Time passed from last login
                     let difference = Now - lastLog;
 
-                    setLoggedIn((difference / (1000 * 60 * 60)) < 8)
+                    if((difference / (1000 * 60 * 60)) < 8)
+                        setLoggedIn(true)
+                    else    
+                        setCookie("loggedInUser", undefined)
                 }
             }))
         })

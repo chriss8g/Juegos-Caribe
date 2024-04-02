@@ -4,6 +4,7 @@ import useTranslation from "../../hooks/useTranslation"
 import useEntityInformation from "../../hooks/useEntityInformation"
 import InputField from "../InputField"
 import SelectField from "../SelectField"
+import { toast } from "react-toastify"
 
 export default function AdministrationForm({editMode, formRow, setEditMode, entity})
 {
@@ -86,7 +87,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
     {
         for (let i = 0; i < arr1.length; i++) {
             let found = false
-            for (let j = 0; j < arr2.length; j++) {
+            for (let j = 0; j < arr2?.length; j++) {
                 if(arr1[i] == arr2[i])
                 {
                     found = true
@@ -96,7 +97,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
             if(!found)
                 return false
         }
-        for (let i = 0; i < arr2.length; i++) {
+        for (let i = 0; i < arr2?.length; i++) {
             let found = false
             for (let j = 0; j < arr1.length; j++) {
                 if(arr2[i] == arr1[i])
@@ -166,6 +167,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
 
     function handleOnSubmit(e)
     {
+        e.preventDefault()
         var temp = {}
         if(editMode)
         {
@@ -186,14 +188,29 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
         
         if(editMode)
         {
-            updateData(temp as typeof formRow, entity.endpoint)
+            updateData(temp as typeof formRow, entity.endpoint).then(
+                (success)=>{
+                    if(!success)toast.error("Hemos tenido un problema para responder a tu solicitud")
+                    else{
+                        toast.success("Actualizado!")
+                        closeModal()
+                    } 
+                }
+            )
         }
         else
         {
-            addData(temp, entity?.endpoint)
+            addData(temp, entity?.endpoint).then(
+                (success)=>{
+                    if(!success)toast.error("Hemos tenido un problema para responder a tu solicitud")
+                    else 
+                    {
+                        toast.success("Creado!")
+                        closeModal()
+                    }
+                }
+            )
         }
-
-        // closeModal()
     }
 
     function handleKeyDown(e) {
