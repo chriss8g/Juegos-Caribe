@@ -24,7 +24,7 @@ export default function RelevantNews()
     
     return(
         news.length > 0 &&
-        <div className="RelevantNews container">
+        <div className="RelevantNews container mt-16 mb-16">
             <p className="sectionTitle text-2xl font-bold"> Noticias Relevantes</p>
 
             {/* Versión Móvil */}
