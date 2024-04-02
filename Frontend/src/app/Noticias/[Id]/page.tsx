@@ -1,6 +1,11 @@
 'use client'
 import { useState, useEffect } from "react";
 import Layout from "../../../Components/Layout/Layout";
+import MoreNewsList from "../../../Components/MoreNewsList/MoreNewsList";
+import NewsCarousel from "../../../Components/NewsCarousel/NewsCarousel";
+import Formulario from "../../../Components/Formulario/formulario";
+import RecCommentCard from "../../../Components/RecCommentsCard/RecCommentCard";
+
 import useAdministration from "../../../hooks/useAdministration";
 import { useParams } from "next/navigation";
 export default function NoticiaDetallada() {
@@ -34,6 +39,11 @@ export default function NoticiaDetallada() {
                         <p className="text-start ml-1 text-lg font-bold text-red-950">{news.title}</p>
                         <p className="text-start ml-1 text-lg text-red-950 mt-2">por {news.user}</p>
                         <p className="text-start ml-1 text-sm text-black mt-4">{news.body}</p>
+                    </div>
+                    <div className="det-news-inner-container container mt-[20%]">
+                        <Formulario comment={true}/>
+                        <RecCommentCard/>
+
                     </div>
                 </div>
             </Layout>
