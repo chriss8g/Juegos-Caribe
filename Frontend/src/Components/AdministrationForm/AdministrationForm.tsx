@@ -17,6 +17,7 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
     const { 
         ShowProp,
         getPropertyEndpoint,
+        nonShowProp,
         getEntityPostType
     } = useEntityInformation()
 
@@ -118,11 +119,14 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                     return Array.from(e.target.selectedOptions, (option:HTMLInputElement) => +option.value)
                 }
                 else if(typeof Object.values(newData)[i] === 'number')
-                return +e.target.value
-            else if(e.target.type == "file")
+                    return +e.target.value
+                else if(e.target.type == "file")
                     return new File([], "")
+                else if(typeof Object.values(newData)[i] === "boolean")
+                    return e.target.checked
                 else
                     return e.target.value
+
             }
             else
                 return Object.values(newData)[+i]
@@ -166,26 +170,29 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
             temp["id"] = formRow.id
         }
         var formElements = document.forms['AdminModal'].elements
-        let i = editMode ? 1 : 0
-        for(const element of formElements)
-        {
-            temp[toEnglish(element.name)] = newData[i]
+        let i = editMode ? nonShowProp.length : nonShowProp.length-1
+        const keys = Object.keys(formRow)
+        for (let i = 0; i < keys.length; i++)
+        {   
+            temp[keys[i]] = newData[i]
             if(typeof newData[i] === "object" && 
                 !Array.isArray(newData[i]) && 
                 !(newData[i] instanceof File))
             {
-                temp[toEnglish(element.name)] = []
+                temp[keys[i]] = []
             }
-            i++
         }
+        
         if(editMode)
+        {
             updateData(temp as typeof formRow, entity.endpoint)
+        }
         else
         {
             addData(temp, entity?.endpoint)
         }
 
-        closeModal()
+        // closeModal()
     }
 
     function handleKeyDown(e) {
@@ -275,10 +282,30 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                                        onChange={(e) => handleChange(e)} defaultValue={val as string}/>
                                             </div>
                                         )
+<<<<<<< HEAD
                                     } else {
+=======
+                                    }
+                                    //Property is boolean
+                                    else if(typeof val == "boolean")
+                                    {
+                                        return(
+                                            <div className="my-5 flex flex-row max-w-sm align-middle" key={id}>
+                                                <label className="text-lg font-bold text-gray-600 pb-3">{propertiesNames[id]}: </label>
+                                                <label className="inline-flex items-center cursor-pointer">
+                                                    <input id={`${id}`} name={`${propertiesNames[id]}`} type="checkbox" defaultChecked={val} className="sr-only peer" onChange={(e)=>handleChange(e)}/>
+                                                    <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                                </label>
+                                            </div>
+                                        )
+                                    }
+                                    else 
+                                    {
+>>>>>>> 6dcd041c466b35a19ad25f703fdf5dc9bfb65b77
                                         //Property is ordinary text(number)
                                         return (
                                             <div className="my-5 flex flex-col max-w-sm" key={id}>
+<<<<<<< HEAD
                                                 <label
                                                     className="text-lg font-bold text-gray-600 pb-3">{propertiesNames[id]}: </label>
                                                 <input id={`${id}`} name={`${propertiesNames[id]}`}
@@ -286,6 +313,10 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                                        className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center border-solid td"
                                                        onChange={(e) => handleChange(e)}
                                                        defaultValue={typeof val == "boolean" ? (val === true ? "Sí" : "No") : val}/>
+=======
+                                                <label className="text-lg font-bold text-gray-600 pb-3">{propertiesNames[id]}: </label>
+                                                <input id={`${id}`} name={`${propertiesNames[id]}`} type={`${typeof val}`} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center border-solid td" onChange={(e)=>handleChange(e)} defaultValue={val}/>
+>>>>>>> 6dcd041c466b35a19ad25f703fdf5dc9bfb65b77
                                             </div>
                                         )
                                     }

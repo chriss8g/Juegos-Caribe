@@ -294,31 +294,36 @@ export default function Schedule()
                                 </div>
                             </div>
                     }
-                    <div className="morning">
-                    <p className="my-[5%] text-red-950 text-lg">Sesión de la mañana</p>
-                        {
-                            filtered.map((play, index)=>{
-                                if(play.session === "morning")
-                                {
-                                    return(
-                                        <PlayCard key={index} play={play}/>
-                                    )
-                                }
-                            })
-                        }
-                    </div>
-                    <div className="afternoon">
-                        <p className="my-[5%] text-red-950 text-lg">Sesión de la tarde</p>
-                        {
-                            filtered.map((play, index)=>{
-                                if(play.session === "afternoon")
-                                {
-                                    return(
-                                        <PlayCard key={index} play={play}/>
-                                    )
-                                }
-                            })
-                        }
+                    {
+                    filtered.length>0 &&
+                    <div>
+                        <div className="morning">
+                        <p className="my-[5%] text-red-950 text-lg">Sesión de la mañana</p>
+                            {
+                                filtered.map((play, index)=>{
+                                    console.log(play)
+                                    if(play.session === "Mañana")
+                                    {
+                                        return(
+                                            <PlayCard key={index} play={play}/>
+                                        )
+                                    }
+                                })
+                            }
+                        </div>
+                        <div className="afternoon">
+                            <p className="session">Sesión de la tarde</p>
+                            {
+                                filtered.map((play, index)=>{
+                                    if(play.session === "Tarde")
+                                    {
+                                        return(
+                                            <PlayCard key={index} play={play}/>
+                                        )
+                                    }
+                                })
+                            }
+                        </div>
                     </div>
 
                 </div>

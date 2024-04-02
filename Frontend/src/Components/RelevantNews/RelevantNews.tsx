@@ -5,10 +5,11 @@ import NewsMainCard from "../NewsMainCard/NewsMainCard";
 
 import useAdministration from "../../hooks/useAdministration";
 import { useEffect, useState } from "react"
-import RedTextHeader from "../RedTextHeaders/RedTextHeader";
+import {useRouter} from "next/navigation";
 
 export default function RelevantNews()
 {
+    const router = useRouter()
     const{getData, Data} = useAdministration()
     
     useEffect(()=>{
@@ -30,12 +31,14 @@ export default function RelevantNews()
             {
                 news.map((el)=>
                 (
+                    <div onClick={()=>router.push(`/Noticias/${el.id}`)}>
                     <NewsMainCard key={el.id} news={el} show={true}/>
+                    </div>
                 ))
             }
              {/* Versión Desktop */}
 
-            <div className="DesktopView lg:flex lg:justify-between">
+            {/* <div className="DesktopView lg:flex lg:justify-between">
                 <NewsMainCard news={news[0]} show={false}/>
 
                 <div className="flex items-end flex-col justify-between">
@@ -52,7 +55,7 @@ export default function RelevantNews()
                     }
                 </div>
 
-            </div>
+            </div> */}
 
 
         </div>

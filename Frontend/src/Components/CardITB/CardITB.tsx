@@ -9,7 +9,7 @@ export default function CardITB({name, image, body}) {
                     <div className="flex justify-center">
                         <Image src={image} width={100} height={100} alt="" className="image"/>
                     </div>
-                    <p className="text-red-950 font-semibold">{name}</p>
+                    <p className="text-red-950 font-semibold">{name.length > 12 ? `${name.substring(0, 12)}...` : name}</p>
                     <div className="text-black">
                         <p>{body}</p>
                     </div>

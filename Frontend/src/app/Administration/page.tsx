@@ -232,7 +232,7 @@ export default function Administration()
                                                                                 return (
                                                                                     <td className=" px-6 py-4 text-center  td"
                                                                                         key={id}>
-                                                                                        {typeof prop == "boolean" ? (prop === true ? "Sí" : "No") : (prop.length > 60 ? prop.slice(0, 60) + "..." : prop)}
+                                                                                        {typeof prop == "boolean" ? (prop === true ? "Sí" : "No") : (prop?.length > 60 ? prop?.slice(0, 60) + "..." : prop)}
                                                                                     </td>
                                                                                 )
                                                                             }

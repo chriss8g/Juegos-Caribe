@@ -11,7 +11,7 @@ import {useState, useEffect} from "react"
 
 export default function Layout({children})
 {
-    const { loggedInUser } = useAuthentication()
+    const loggedInUser = undefined
 
     // const [lenguage, setLenguage] = useState("es")
     const [showingMenu, setShowingMenu] = useState(false)
@@ -39,10 +39,10 @@ export default function Layout({children})
                                 href="/LogIn"
                             >
                                 {
-                                    !loggedInUser.isLoggedIn ?
+                                    !loggedInUser?.isLoggedIn ?
                                         <IconUser />
                                         :
-                                        `${loggedInUser.name[0]?.toUpperCase()+loggedInUser.lastname[0]?.toUpperCase()}`
+                                        `${loggedInUser?.name[0]?.toUpperCase()+loggedInUser?.lastname[0]?.toUpperCase()}`
                                     }
                             </Link>
                             {/* <h2 
