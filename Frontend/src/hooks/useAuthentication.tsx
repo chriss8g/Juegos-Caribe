@@ -7,7 +7,7 @@ import {setCookie, getCookie} from "cookies-next"
 export default function useAuthentication()
 {
     const [userKey, setUserKey] = useState("")
-    const [loggedIn, setLoggedIn] = useState(false) 
+    const [loggedIn, setLoggedIn] = useState(getCookie("loggedInUser")!==undefined) 
 
     // POST NEW USER
     function RegisterUser (newUser: RegisterUserInfo): string {
@@ -76,9 +76,17 @@ export default function useAuthentication()
         fetch(`${process.env.API_URL}/v1/rest-auth/logout/`,{
             method: "POST",
         })
-        setCookie("loggedInUser", undefined)
-        setLoggedIn(false)
-        toast.success("Sesión cerrada correctamente")
+        .then(
+            async (response)=>
+            {
+                if(!response.ok) toast.error("Ha ocurrido un error")
+                else{
+                    setCookie("loggedInUser", undefined)
+                    setLoggedIn(false)
+                    toast.success("Sesión cerrada correctamente")
+                }
+            }
+        )
     }
     
 

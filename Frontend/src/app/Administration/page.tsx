@@ -9,9 +9,29 @@ import useEntityInformation from "../../hooks/useEntityInformation"
 import { IconPencil, IconTrash } from "@tabler/icons-react"
 import SpecialTableData from "../../Components/SpecialTableData"
 import {setCookie, getCookie} from "cookies-next"
+import axios from "axios"
+import { useRouter } from "next/navigation"
 
 export default function Administration()
 {
+    const router = useRouter()
+
+    const API = axios.create({
+        baseURL: process.env.API_URL
+    })
+
+    useEffect(()=>{
+        getCookie("loggedInUser")
+        API.get(`${process.env.API_URL}/user/`)
+        .then((response)=>{
+            (response.data.map(user=>{
+                if(user.str == getCookie("loggedInUser"))
+                    if(!user.is_staff)
+                        router.push('/')
+            }))
+        })
+    },[])
+
     const { 
         currentEntity,
         currentEntityType,
