@@ -13,11 +13,11 @@ export interface RegisterUserInfo
     password2: string
 }
 
-export interface loggedUser
+export interface LoginInfo
 {
     username: string,
-    first_name: string,
-    last_name: string
+    email: string,
+    password: string,
 }
 
 export interface UserInfo

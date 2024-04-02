@@ -54,7 +54,7 @@
     "users": "usuarios",
     "password": "contraseña",
     "last_login": "ultimo inicio de sesión",
-    "is_superuser": "usario acreditado",
+    "is_superuser": "super usuario",
     "username": "nombre de usuario",
     "first_name": "primer nombre",
     "last_name": "apellido",

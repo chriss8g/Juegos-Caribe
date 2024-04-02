@@ -1,12 +1,10 @@
-import { error } from "console";
-import { RegisterUserInfo } from "../types/User";
+import { LoginInfo, RegisterUserInfo } from "../types/User";
 import { useState } from "react"
 import { toast } from 'react-toastify';
 
 
 export default function useAuthentication()
 {
-    // const router = useRouter()
     const [userKey, setUserKey] = useState("")
 
     function RegisterUser (newUser: RegisterUserInfo): string {
@@ -25,7 +23,8 @@ export default function useAuthentication()
             }).then(
                 (response)=>
                 {
-                    if(!response.ok) toast("Error")
+                    if(!response.ok) toast.error("Ha ocurrido un error")
+                    else toast.success("Usuario registrado")
                 }
             )
         }
@@ -38,41 +37,39 @@ export default function useAuthentication()
         return ""
     }
 
-    // function LogInUser(User:LogInCredentials): string
-    // {
-    //     for(const user of users)
-    //     {
-    //         if(user.email === User.email)
-    //         {
-    //             // HASH User PASSWORD
-    //             if(user.password === User.password)
-    //             {
-    //                 setLoggedInUser(
-    //                     {
-    //                         email: user.email,
-    //                         name: user.name,
-    //                         lastname: user.lastname,
-    //                         faculty: user.faculty,
-    //                         password: user.password,
-    //                         isLoggedIn: true
-    //                     }
-    //                 )
-    //                 updateUser({
-    //                     email: user.email,
-    //                     name: user.name,
-    //                     lastname: user.lastname,
-    //                     faculty: user.faculty,
-    //                     password: user.password,
-    //                     isLoggedIn: true
-    //                 })
-    //                 return ""
-    //             }
-    //             else return "Contraseña incorrecta"
-    //         }
-    //         else return "No existe una cuenta con el correo introducido"
-    //     }
-    //     return ""
-    // }
+    function LogUser (userinfo: LoginInfo): string {
+        
+        // LOGIN USER
+        try
+        {
+            const formData = new FormData();
+            
+            Object.keys(userinfo).forEach(key => {
+                formData.append(key, userinfo[key]);
+            });
+            fetch(`${process.env.API_URL}/v1/rest-auth/login/`,{
+                method: "POST",
+                body: formData
+            })
+            .then(
+                async (response)=>
+                {
+                    if(!response.ok) toast.error("Ha ocurrido un error")
+                    else{
+                        toast.success("Sesión iniciada")
+                        console.log(response)
+                    }
+                }
+            )
+        }
+        catch(e)
+        {
+           console.log(e)
+        }
+        
+
+        return ""
+    }
 
     // function LogOut()
     // {
@@ -96,12 +93,7 @@ export default function useAuthentication()
     //     })
     //     // router.push("/")
     // }
-
-    // function updateUser(newUser: User)
-    // {
-    //     //PUT here
-    // }
     
 
-    return { RegisterUser, userKey }
+    return { RegisterUser, userKey, LogUser }
 }

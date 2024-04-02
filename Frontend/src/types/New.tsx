@@ -1,4 +1,6 @@
-interface New
+import { UserInfo } from "./User"
+
+export interface News
 {
     id: number,
     str: string,
@@ -6,13 +8,13 @@ interface New
     body: string,
     date: string
     picture: string,
-    user: User
+    user: UserInfo
 }
 
-interface PostNew
+export interface PostNews
 {
     title: string,
     body: string,
     picture: File,
-    user: User
+    user: UserInfo
 }

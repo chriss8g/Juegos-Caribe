@@ -8,6 +8,8 @@ import { IconMenu2, IconSearch, IconUser, IconX } from "@tabler/icons-react";
 import useAuthentication from "../../hooks/useAuthentication"
 import Link from "next/link"
 import {useState, useEffect} from "react"
+import { ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Layout({children})
 {
@@ -82,7 +84,7 @@ export default function Layout({children})
                 </div>
                 
                 {children}
-                
+                <ToastContainer />
                 <Footer />
             </div>
     )

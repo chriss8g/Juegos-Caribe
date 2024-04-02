@@ -12,6 +12,7 @@ import { PostTeamOnGame, TeamOnGame } from "../types/TeamOnGame";
 import { PostTournament, Tournament } from "../types/Tournament";
 import { PostTournamentOnSeason, TournamentOnSeason } from "../types/TournamentOnSeason";
 import { PostUserInfo, UserInfo } from "../types/User";
+import { News, PostNews } from "../types/New";
 
 export default function useEntityInformation()
 {
@@ -153,7 +154,7 @@ export default function useEntityInformation()
         tournamentOnSeason: tournamentOnSeason,
         session: session
     };
-    var New: New = {
+    var New: News = {
         id: -1,
         str: "",
         title: "",
@@ -162,7 +163,7 @@ export default function useEntityInformation()
         picture: "",
         user: user
     };
-    var postNew: PostNew = {
+    var postNew: PostNews = {
         title: "",
         body: "",
         picture: new File([], ""),
@@ -335,7 +336,7 @@ export default function useEntityInformation()
 
     
 
-    const nonShowProp = ["Str", "Contraseña"]
+    const nonShowProp = ["Str", "Contraseña", "Super usuario"]
     const ShowProp = (prop)=>{
         for(const index in nonShowProp)
         {
