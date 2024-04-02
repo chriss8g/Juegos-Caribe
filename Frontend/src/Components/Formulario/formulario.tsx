@@ -10,7 +10,7 @@ export default function Formulario({comment})
             <p className="text-lg">Correo electrónico</p>
             <input type="mail" name="email" id="usermail" placeholder="Ejemplo: tomas.rdgz@gmail.com"/>
             <p className="text-lg">Comentarios</p>
-            <textarea name="comment" id="comment" placeholder="Escribe lo que piensas de nuestra web"/>
+            <textarea name="comment" id="comment" placeholder="Escribe tu comentario sobre la noticia"/>
         </form>
         <div className="flex justify-end items-end buttonsRow">
             <button className="mr-1 bg-white text-red-950">Cancelar</button>
