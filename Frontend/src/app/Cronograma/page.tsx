@@ -301,7 +301,6 @@ export default function Schedule()
                         <p className="my-[5%] text-red-950 text-lg">Sesión de la mañana</p>
                             {
                                 filtered.map((play, index)=>{
-                                    console.log(play)
                                     if(play.session === "Mañana")
                                     {
                                         return(
