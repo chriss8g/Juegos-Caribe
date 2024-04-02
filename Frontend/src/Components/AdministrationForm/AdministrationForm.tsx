@@ -282,9 +282,6 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                                        onChange={(e) => handleChange(e)} defaultValue={val as string}/>
                                             </div>
                                         )
-<<<<<<< HEAD
-                                    } else {
-=======
                                     }
                                     //Property is boolean
                                     else if(typeof val == "boolean")
@@ -301,22 +298,11 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
                                     }
                                     else 
                                     {
->>>>>>> 6dcd041c466b35a19ad25f703fdf5dc9bfb65b77
                                         //Property is ordinary text(number)
                                         return (
                                             <div className="my-5 flex flex-col max-w-sm" key={id}>
-<<<<<<< HEAD
-                                                <label
-                                                    className="text-lg font-bold text-gray-600 pb-3">{propertiesNames[id]}: </label>
-                                                <input id={`${id}`} name={`${propertiesNames[id]}`}
-                                                       type={`${typeof val}`}
-                                                       className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center border-solid td"
-                                                       onChange={(e) => handleChange(e)}
-                                                       defaultValue={typeof val == "boolean" ? (val === true ? "Sí" : "No") : val}/>
-=======
                                                 <label className="text-lg font-bold text-gray-600 pb-3">{propertiesNames[id]}: </label>
                                                 <input id={`${id}`} name={`${propertiesNames[id]}`} type={`${typeof val}`} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center border-solid td" onChange={(e)=>handleChange(e)} defaultValue={val}/>
->>>>>>> 6dcd041c466b35a19ad25f703fdf5dc9bfb65b77
                                             </div>
                                         )
                                     }
