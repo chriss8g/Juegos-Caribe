@@ -8,6 +8,7 @@ import RecCommentCard from "../../../Components/RecCommentsCard/RecCommentCard";
 
 import useAdministration from "../../../hooks/useAdministration";
 import { useParams } from "next/navigation";
+import { News } from "../../../types/New";
 export default function NoticiaDetallada() {
 
     const{getDataByIdFromEndpoint, DataByIdFromEndpoint} = useAdministration()
@@ -19,10 +20,10 @@ export default function NoticiaDetallada() {
     },[])
 
 
-    const[news, setNews] = useState({} as New);
+    const[news, setNews] = useState({} as News);
 
     useEffect(()=>{
-        setNews(DataByIdFromEndpoint as New);
+        setNews(DataByIdFromEndpoint as News);
     },[DataByIdFromEndpoint]);
 
 
@@ -37,12 +38,12 @@ export default function NoticiaDetallada() {
                     </div>
                     <div className="container">
                         <p className="text-start ml-1 text-lg font-bold text-red-950">{news.title}</p>
-                        <p className="text-start ml-1 text-lg text-red-950 mt-2">por {news.user}</p>
+                        <p className="text-start ml-1 text-lg text-red-950 mt-2">por {news.user as unknown as string}</p>
                         <p className="text-start ml-1 text-sm text-black mt-4">{news.body}</p>
                     </div>
                     <div className="det-news-inner-container container mt-[20%]">
                         <Formulario comment={true}/>
-                        <RecCommentCard/>
+                        <RecCommentCard Id={Id}/>
 
                     </div>
                 </div>

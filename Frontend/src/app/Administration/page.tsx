@@ -9,9 +9,29 @@ import useEntityInformation from "../../hooks/useEntityInformation"
 import { IconPencil, IconTrash } from "@tabler/icons-react"
 import SpecialTableData from "../../Components/SpecialTableData"
 import {setCookie, getCookie} from "cookies-next"
+import axios from "axios"
+import { useRouter } from "next/navigation"
 
 export default function Administration()
 {
+    const router = useRouter()
+
+    const API = axios.create({
+        baseURL: process.env.API_URL
+    })
+
+    useEffect(()=>{
+        getCookie("loggedInUser")
+        API.get(`${process.env.API_URL}/user/`)
+        .then((response)=>{
+            (response.data.map(user=>{
+                if(user.str == getCookie("loggedInUser"))
+                    if(!user.is_staff)
+                        router.push('/')
+            }))
+        })
+    },[])
+
     const { 
         currentEntity,
         currentEntityType,
@@ -144,7 +164,7 @@ export default function Administration()
                         <p>
                             Entidades:
                         </p>
-                        <select className="w-3/4" name="Entities" id="Entities" onChange={(e)=>handleEntityChange(e)}>
+                        <select className="w-fit" name="Entities" id="Entities" onChange={(e)=>handleEntityChange(e)}>
                             {entities.sort((a,b)=>toSpanish(a.name).localeCompare(toSpanish(b.name))).map((ent, key)=>(
                                 <option id={`${key}`} value={ent.name} key={key} selected={currentEntity?.id == ent.id}>
                                     {toSpanish(ent.name).charAt(0).toUpperCase()+toSpanish(ent.name).slice(1)}
@@ -238,9 +258,9 @@ export default function Administration()
                                                                             }
                                                                         }
                                                                     })}
-                                                                    <td className="flex items-center justify-center pt-[50%]">
+                                                                    <td className="flex items-center justify-center pt-7">
                                                                         <div
-                                                                            className="flex items-center justify-center h-full my-auto">
+                                                                            className="flex items-center justify-center h-full">
                                                                             {
                                                                                 currentEntity?.id !== 4 &&
                                                                                 <button
@@ -252,7 +272,8 @@ export default function Administration()
                                                                             <button
                                                                                 className="font-medium dark:text-red-600 hover:underline ms-3"
                                                                                 onClick={() => handleOnDelete(row)}>
-                                                                                <IconTrash className="m-auto"/></button>
+                                                                                <IconTrash className="m-auto"/>
+                                                                            </button>
                                                                         </div>
                                                                     </td>
                                                                 </tr>

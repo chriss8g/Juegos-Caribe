@@ -8,10 +8,13 @@ import { IconMenu2, IconSearch, IconUser, IconX } from "@tabler/icons-react";
 import useAuthentication from "../../hooks/useAuthentication"
 import Link from "next/link"
 import {useState, useEffect} from "react"
+import { ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
+import { getCookie } from "cookies-next"
 
 export default function Layout({children})
 {
-    const loggedInUser = undefined
+    const loggedInUser = getCookie("loggedInUser")
 
     // const [lenguage, setLenguage] = useState("es")
     const [showingMenu, setShowingMenu] = useState(false)
@@ -39,10 +42,12 @@ export default function Layout({children})
                                 href="/LogIn"
                             >
                                 {
-                                    !loggedInUser?.isLoggedIn ?
+                                    !loggedInUser ?
                                         <IconUser />
                                         :
-                                        `${loggedInUser?.name[0]?.toUpperCase()+loggedInUser?.lastname[0]?.toUpperCase()}`
+                                        <div className="bg-[#5a1024] text-white px-3 py-1 rounded-full">
+                                            {loggedInUser[0]?.toUpperCase()}
+                                        </div>
                                     }
                             </Link>
                             {/* <h2 
@@ -82,7 +87,7 @@ export default function Layout({children})
                 </div>
                 
                 {children}
-                
+                <ToastContainer />
                 <Footer />
             </div>
     )
