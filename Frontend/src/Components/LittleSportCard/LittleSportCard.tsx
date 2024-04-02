@@ -1,5 +1,5 @@
 'use client'
-import "./LittleSportCard.css"
+// import "./LittleSportCard.css"
 import Image from "next/image"
 
 interface SportCardProps {
@@ -19,7 +19,7 @@ const LittleSportCard: React.FC<SportCardProps> = ({sportName, sportPicture}) =>
                     </div>
                 </div>
             </div>  
-            <p className="circle-container mt-2 mb-2 text-m txt text-gray-600">{sportName}</p>
+            <p className="circle-container mt-2 mb-2 mx-auto text-m txt text-gray-600">{sportName}</p>
         </div>
 
     )

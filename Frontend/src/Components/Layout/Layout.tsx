@@ -33,10 +33,10 @@ export default function Layout({children})
                                 <Image alt="" src="/logo.svg" fill className="image"/>
                             </a>
                         </div>
-                        <div className="rightHeader gap-2 mr-2 lg:hidden block">
-                            <div className="IconSearch cursor-pointer">
+                        <div className="flex gap-2 mr-2 lg:hidden pt-2">
+                            {/* <div className="IconSearch cursor-pointer">
                                 <IconSearch />
-                            </div>
+                            </div> */}
                             <Link 
                                 className="LoginIcon cursor-pointer"
                                 href="/LogIn"
@@ -63,9 +63,9 @@ export default function Layout({children})
                         </div>
                     </div>
                 </div>
-                <div className="">
+                {/* <div className="">
                     <BreadCrumbs />
-                </div>
+                </div> */}
                 
                 <div className={`${showingMenu ? 'block' : 'hidden'}`}>
                     <div className="sideMenu w-full h-full fixed top-0 left-0 z-10 bg-[#d7d7d7a5]" onClick={()=>handleChangeMenuState()}/>

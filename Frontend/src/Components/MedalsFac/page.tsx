@@ -23,7 +23,6 @@ export default function MedalsFac({facultyId})
     },[DataByIdFromEndpoint]);
 
     return(
-        info &&
         <div className="MobileView flex flex-col">
             <p className="text-red-950 font-medium text-lg mt-20 w-1/4 pb-5 mx-auto">Medallero:</p>
             <div className="fac-medals-main-container flex justify-center">
@@ -54,7 +53,7 @@ export default function MedalsFac({facultyId})
                     </tr>
                     </thead>
                     <tbody>
-
+                        {info &&
                         <>
                             <tr className="trow">
                                 <td>
@@ -68,13 +67,14 @@ export default function MedalsFac({facultyId})
                                 <td className="medalInfo">{info["total"]}</td>
                             </tr>
                         </>
+                        }
 
                     </tbody>
 
                 </table>
 
             </div>
-            <ExportToPDFButton input={document.getElementById('facultyMedals') || null}/>
+            <ExportToPDFButton input={document.getElementById('facultyMedals')}/>
         </div>
     )
 }

@@ -230,7 +230,7 @@ export default function Schedule()
                                             <SwiperSlide key={index} >
                                                 <div className="iconFilter faculty" id={facult} onClick={handleIconSelect}>
                                                     <div className="iconImage p-[5%] faculties-box-shadow">
-                                                        <Image alt="" src={Faculties.filter((fac)=>fac.name === facult)[0].image} fill className="image faculty"/>
+                                                        <Image alt="" src={Faculties.filter((fac)=>fac.name === facult)[0].logo} fill className="image faculty"/>
                                                     </div>
                                                     <p className="font-sm text-gray-700">{facult}</p>
                                                 </div>
@@ -256,7 +256,7 @@ export default function Schedule()
                                                         {
                                                             Sports.filter(x=>x.name === sport)[0] !== undefined &&
                                                             <div className="w-auto">
-                                                                <Image alt="" src={Sports.filter(x=>x.name === sport)[0].image.replace('.svg', '-red.svg')} fill className="image sport"/>
+                                                                <Image alt="" src={Sports.filter(x=>x.name === sport)[0].image?.replace('.svg', '-red.svg')} fill className="image sport"/>
                                                             </div>
                                                         }
                                                     </div>
