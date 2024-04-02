@@ -15,7 +15,7 @@ export default function Main()
                     <div className="Introduction">
                         <p className="font-medium text-xl">SIGUE LOS</p>
                         <p className="font-bold text-3xl">JUEGOS CARIBE</p>
-                        <p className="text-sm font-medium pt-[3%]">Del 3 de Octubre al 7 de Noviembre de 2023 estaremos disfrutando de este gran evento.</p>
+                        {/* <p className="text-sm font-medium pt-[3%]">Del 3 de Octubre al 7 de Noviembre de 2023 estaremos disfrutando de este gran evento.</p> */}
                     </div>
                 </div>
                 <div className="playerImage">

@@ -24,10 +24,10 @@ export default function MedalsFac({facultyId})
 
     return(
         info &&
-        <div className="MobileView flex flex-col">
+        <div  className="MobileView flex flex-col">
             <p className="text-red-950 font-medium text-lg mt-20 w-1/4 pb-5 mx-auto">Medallero:</p>
             <div className="fac-medals-main-container flex justify-center">
-                <table id="facultyMedals" className="medalsTable border-separate border-spacing-y-3">
+                <table className="export medalsTable border-separate border-spacing-y-3">
                     <thead className="fac-table-header">
                     <tr>
                         <th className="mr-5">Puntos</th>
@@ -74,7 +74,7 @@ export default function MedalsFac({facultyId})
                 </table>
 
             </div>
-            <ExportToPDFButton input={document.getElementById('facultyMedals') || null}/>
+            <ExportToPDFButton input={document.getElementsByClassName('export') || null}/>
         </div>
     )
 }

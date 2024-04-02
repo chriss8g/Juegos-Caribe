@@ -63,9 +63,9 @@ export default function Layout({children})
                         </div>
                     </div>
                 </div>
-                <div className="">
+                {/* <div className="">
                     <BreadCrumbs />
-                </div>
+                </div> */}
                 
                 <div className={`${showingMenu ? 'block' : 'hidden'}`}>
                     <div className="sideMenu w-full h-full fixed top-0 left-0 z-10 bg-[#d7d7d7a5]" onClick={()=>handleChangeMenuState()}/>

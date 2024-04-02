@@ -64,9 +64,7 @@ export default function DetailedFaculty()
                             <SportsPerFaculty facultyId={facultyId}/>
                         
                             <MedalsFac facultyId={facultyId}/>
-
-                            <p className="text-black font-medium text-lg mt-20">Resultados</p>
-                            <Results data="" />
+                            <Results facultyId={facultyId} />
                         </div>
                 }
             </Layout>
