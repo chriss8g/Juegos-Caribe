@@ -43,7 +43,7 @@ export default function NoticiaDetallada() {
                     </div>
                     <div className="det-news-inner-container container mt-[20%]">
                         <Formulario comment={true}/>
-                        <RecCommentCard/>
+                        <RecCommentCard Id={Id}/>
 
                     </div>
                 </div>
