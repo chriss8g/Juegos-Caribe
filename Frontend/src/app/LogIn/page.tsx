@@ -22,6 +22,8 @@ export default function LogIn()
                 const registerUserInfo : RegisterUserInfo = {
                     username: (document.getElementById('email') as HTMLInputElement)?.value,
                     email: (document.getElementById('email') as HTMLInputElement)?.value,
+                    first_name: (document.getElementById('first_name') as HTMLInputElement)?.value,
+                    last_name: (document.getElementById('last_name') as HTMLInputElement)?.value,
                     password1: (document.getElementById('password') as HTMLInputElement)?.value,
                     password2: (document.getElementById('passwordConfirm') as HTMLInputElement)?.value
                 }
@@ -67,8 +69,8 @@ export default function LogIn()
                             <input className="p-3 w-64 rounded-md bg-gray-200 my-1" type="email" placeholder="correo" id="email" required/>
                             {!LogIn && 
                                 <>
-                                    <input className="p-3 w-64 rounded-md bg-gray-200 my-1" type="text" placeholder="nombre" id="name" required/>
-                                    <input className="p-3 w-64 rounded-md bg-gray-200 my-1" type="text" placeholder="apellidos" id="lastname"/>
+                                    <input className="p-3 w-64 rounded-md bg-gray-200 my-1" type="text" placeholder="nombre" id="first_name" required/>
+                                    <input className="p-3 w-64 rounded-md bg-gray-200 my-1" type="text" placeholder="apellidos" id="last_name"/>
                                     <input className="p-3 w-64 rounded-md bg-gray-200 my-1" type="text" placeholder="facultad" id="faculty" required/>
                                 </>
                             }
@@ -125,12 +127,12 @@ export default function LogIn()
                         </h4>
                     </>
                     :
-                    <button 
-                        onClick={()=>LogOut()}
-                        className="bg-[#5a1024] text-white w-3/5 m-auto rounded-md ml-20 mt-16 py-3"
-                        >
-                            Cerrar Sesión 
-                    </button>
+                        <button 
+                            onClick={()=>LogOut()}
+                            className="bg-[#5a1024] text-white w-3/5 m-auto rounded-md ml-20 mt-16 py-3"
+                            >
+                                Cerrar Sesión 
+                        </button>
                 }
             </Layout>
         </div>
