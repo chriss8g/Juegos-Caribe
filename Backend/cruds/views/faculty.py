@@ -1,11 +1,14 @@
 from ..serializers.faculty import FacultySerializer
 from rest_framework import generics
 from django.http import JsonResponse
+from django.db.models import Sum, F
 
 from ..models.faculty import Faculty
 from ..models.team import Team
+from ..models.game import Game
 from ..models.teamOnGame import TeamOnGame
 from ..models.season import Season
+from ..models.tournamentOnSeason import TournamentOnSeason
 from ..models.facultyOnSeason import FacultyOnSeason
 from ..permissions import ReadOnly
 from rest_framework.permissions import IsAdminUser
@@ -114,6 +117,76 @@ def detailFacultyWithMedals(request, faculty_id):
     medals_faculty['total'] = total
         
     return JsonResponse(medals_faculty, safe=False)
+
+
+def get_faculty_statistics(request, faculty_id):
+    faculty = Faculty.objects.get(id=faculty_id)
+    
+    seasons = Season.objects.all().order_by('-id')[:5]
+    
+    faculty_statistics = {}
+    faculty_statistics['faculty'] = faculty.name
+    faculty_statistics['seasons'] = []
+    
+    for season in seasons:
+
+        points = FacultyOnSeason.objects.filter(season=season, faculty=faculty)[0].points
+        if points is not None:
+            position = FacultyOnSeason.objects.filter(season=season).annotate(total_points=Sum('points')).filter(total_points__gt=points).count() + 1
+
+        faculty_on_season = FacultyOnSeason.objects.filter(faculty=faculty, season=season).first()
+        if faculty_on_season:
+            season_data = {
+                'edition': season.edition,
+                'points': faculty_on_season.points,
+                'ranking': position,
+                'medals': countMedals(season, faculty)
+            }
+            faculty_statistics['seasons'].append(season_data)
+    
+    best_season = FacultyOnSeason.objects.filter(faculty=faculty).order_by('-points').first().season
+    if best_season:
+        points = FacultyOnSeason.objects.filter(season=best_season, faculty=faculty)[0].points
+        if points is not None:
+            position = FacultyOnSeason.objects.filter(season=best_season).annotate(total_points=Sum('points')).filter(total_points__gt=points).count() + 1
+
+        faculty_statistics['best_season'] = {
+            'season_id': best_season.id,
+            'edition': best_season.edition,
+            'ranking': position,
+            'medals': countMedals(best_season, faculty)
+        }
+    
+    return JsonResponse(faculty_statistics)
+
+def countMedals(season, faculty):
+
+    medals_faculty = {}
+    medals_faculty['medals'] = {}
+    total = 0
+
+
+    tournamentOnSeason = TournamentOnSeason.objects.filter(season=season)
+    games = Game.objects.filter(tournamentOnSeason__in=tournamentOnSeason)
+    teams = TeamOnGame.objects.filter(game__in=games).values_list('team', flat=True)
+
+    teams_faculty = Team.objects.filter(id__in=teams, faculty=faculty)
+
+    for team in teams_faculty:
+
+        if(not team.medal):
+           continue
+
+        medal_type = team.medal.type
+
+        if(medal_type):
+            total = total + 1
+            if medal_type in medals_faculty['medals']:
+                medals_faculty['medals'][medal_type] += 1
+            else:
+                medals_faculty['medals'][medal_type] = 1
+
+    return total
 
 def detailSportPerFaculty(request, faculty_id):
 
