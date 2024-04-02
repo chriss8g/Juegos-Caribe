@@ -1,0 +1,57 @@
+.contactenos-text
+{
+    border-bottom: solid 2px #5a1024;
+    margin-bottom: 10%;
+}
+.ContactUs h3
+{
+    width: 98%;
+    margin-top: 10%;
+    padding-left: 1%;
+    color: #5a1024c7;
+    text-align: center;
+}
+.ContactUs p
+{
+    margin: 5% 0;
+    padding-bottom: 4%;
+}
+.Form
+{
+    color: rgb(15, 17, 22);
+    text-align: left;
+    border-radius: 10px;
+    background-color: rgb(230, 230, 230);
+    padding: 2% 5% 5%;
+    margin-bottom: 20%;
+}
+.Form h3
+{
+    text-align: left;
+}
+.Form input, .Form textarea
+{
+    width: 90%;
+    border-radius: 7px;
+    padding: 5%;
+    margin-top: 2%;
+    border: 1px solid rgb(170 157 157)  ;
+}
+.Form textarea
+{
+    height: 15vh;
+    margin-bottom: 2%;
+}
+.Form p
+{
+    margin-top: 7%;
+    margin-bottom: 0 !important;
+}
+
+.buttonsRow button
+{
+    border-radius: 8px;
+    border: solid 1px #b3b3b3;
+    padding: 2%;
+    width: 30%;
+}
