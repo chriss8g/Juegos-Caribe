@@ -7,7 +7,7 @@ import {setCookie, getCookie} from "cookies-next"
 export default function useAuthentication()
 {
     const [userKey, setUserKey] = useState("")
-    const [loggedIn, setLoggedIn] = useState(getCookie("loggedInUser")!==undefined) 
+    const [loggedIn, setLoggedIn] = useState(getCookie("loggedInUser")!=="" && getCookie("loggedInUser")!==undefined) 
 
     // POST NEW USER
     function RegisterUser (newUser: RegisterUserInfo): string {
