@@ -213,6 +213,13 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
         }
     }
 
+    function handleKeyDown(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault(); // prevent form submission
+            handleOnSubmit(e);
+        }
+    }
+
 
     let selectIndex = -1
     return(
@@ -223,7 +230,8 @@ export default function AdministrationForm({editMode, formRow, setEditMode, enti
             <div className=" absolute start-[12.5%] top-32 w-9/12 p-5 bg-white z-20 rounded-md">
                 {
                     editMode &&
-                        <label className="text-lg font-bold text-gray-600 pb-3" htmlFor="Id">Id: {dataValues.filter((val,id)=>propertiesNames[id]=="Id")}</label>
+                    <label className="text-lg font-bold text-gray-600 pb-3"
+                           htmlFor="Id">Id: {dataValues.filter((val, id) => propertiesNames[id] == "Id")}</label>
                 }
                 <form action="" id="AdminModal" className="m-auto my-4  px-10">
                     <div className="grid grid-rows-3 grid-cols-2 gap-4">

@@ -81,7 +81,7 @@ export default function Layout({children})
                             <a href="/Politica-Privacidad">Política de Privacidad</a>
                             <a href="/Terminos-Condiciones">Términos de uso</a>
                             <a href="/Reglamento">Reglamento</a>
-                            <a href="/Comisión">Comisión</a>
+                            <a href="/Comisionado">Comisión</a>
                         </div>
                     </div>
                 </div>
