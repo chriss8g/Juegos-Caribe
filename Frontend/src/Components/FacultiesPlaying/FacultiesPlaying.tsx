@@ -267,7 +267,8 @@ export default function FacultiesPlaying()
         <div className="FacultiesPlaying container ">
             <h2 className="sectionTitle text-2xl lg:text-3xl font-bold">Facultades Participantes</h2>
             <div className="flex justify-between mt-[5%] MobileView">
-                <FacultyPreview name={leftCard.name} image={leftCard.image}/>
+                <FacultyPreview name={leftCard.name} image={leftCard.image} id={1}/>
+                {/* <FacultyPreview name={rightCard.name} image={rightCard.image}/>
                 <FacultyPreview name={rightCard.name} image={rightCard.image}/>
                 <FacultyPreview name={rightCard.name} image={rightCard.image}/>
                 <FacultyPreview name={rightCard.name} image={rightCard.image}/>
@@ -276,8 +277,7 @@ export default function FacultiesPlaying()
                 <FacultyPreview name={rightCard.name} image={rightCard.image}/>
                 <FacultyPreview name={rightCard.name} image={rightCard.image}/>
                 <FacultyPreview name={rightCard.name} image={rightCard.image}/>
-                <FacultyPreview name={rightCard.name} image={rightCard.image}/>
-                <FacultyPreview name={rightCard.name} image={rightCard.image}/>
+                <FacultyPreview name={rightCard.name} image={rightCard.image}/> */}
 
             </div>
             <div className="pagination flex MobileView">

@@ -26,11 +26,10 @@ export default function MedalTable()
     const [more, setMore] = useState(false)
 
     return(
-        facultywithMedals.length > 0 &&
         <div className="MedalTable">
             <div className="MobileView container">
                 <MedalTableHeader/>
-                <table className="medalsTable mb-5" id="medalTableHome">
+                <table className="medalsTable" id="medalTableHome">
                     <thead className="border-solid border-b-2">
                         <th className="">
                             <h3 className="py-2">Facultades</h3>
@@ -58,7 +57,7 @@ export default function MedalTable()
                     </thead>
                     <tbody>
                     {
-                        
+                        facultywithMedals.length > 0 &&
                         facultywithMedals.slice(0, more ? facultywithMedals.length : 3).map((element, key)=>(
                             <tr className="trow" key={key}>
                                 <td>

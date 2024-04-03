@@ -3,11 +3,14 @@ import entities from "../../Entities.json"
 import useTranslation from "./useTranslation"
 import useEntityInformation from "./useEntityInformation"
 import axios from 'axios'
+import useValidation from "./useValidation"
 
 
 export default function useAdministration()
 {
     const { toSpanish } = useTranslation()
+
+    const { validateData } = useValidation()
 
     const { getEntityType, ShowProp } = useEntityInformation()
     
@@ -52,14 +55,15 @@ export default function useAdministration()
         )  
     }
 
-    function addData(newData, endpoint:string)
+    async function addData(newData, endpoint:string)
     {
+        if((await validateData(newData, endpoint)) == false) return false
         const formData = new FormData();
 
         Object.keys(newData).forEach(key => {
             const value = newData[key];
             const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
-           
+            
             if(fileInput && value instanceof File)
             {
                 const file = fileInput.files[0];
@@ -81,10 +85,12 @@ export default function useAdministration()
             method: 'POST',
             body: formData
         });
+        return true
     }
 
-    function updateData(newData, endpoint:string)
+    async function updateData(newData, endpoint:string)
     {
+        if((await validateData(newData, endpoint)) == false) return false
         const formData = new FormData();
 
         Object.keys(newData).forEach(key => {
@@ -110,7 +116,7 @@ export default function useAdministration()
             method: 'PUT',
             body: formData
         });
-      
+        return true
     }
 
     function deleteData(endpoint:string, id: number)
