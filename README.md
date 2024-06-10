@@ -3,8 +3,8 @@
 BACKEND:
 * cd Backend
 * sudo apt install pipenv
-* pip install -r requirements.txt
 * pipenv shell
+* pip install -r requirements.txt
 * python manage.py runserver
 
 FRONTEND:
