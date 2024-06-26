@@ -75,7 +75,7 @@ export default function Footer()
                 <tr>
                     <td className="py-5">
                         <a className="text-sm underline" href="/Contactenos">Contáctanos</a><br/>
-                        <a className="text-sm underline" href="">Sobre Nosotros</a>
+                        <a className="text-sm underline" href="/">Sobre Nosotros</a>
                     </td>
                     <td className="pl-6 py-5">
                         <a className="text-sm underline" href="/Politica-Privacidad">Política de Privacidad</a><br/>

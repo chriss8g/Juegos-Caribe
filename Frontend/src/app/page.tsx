@@ -22,6 +22,10 @@ export default function Home() {
     const[Faculties, setFaculties] = useState([]);
 
     useEffect(()=>{
+      console.log(Faculties)
+    },[Faculties])
+
+    useEffect(()=>{
         setFaculties(Data);
     },[Data]);
 

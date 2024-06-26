@@ -64,6 +64,7 @@ export default function DetailedFaculty()
                             <SportsPerFaculty facultyId={facultyId}/>
                         
                             <MedalsFac facultyId={facultyId}/>
+
                             <Results facultyId={facultyId} />
                         </div>
                 }

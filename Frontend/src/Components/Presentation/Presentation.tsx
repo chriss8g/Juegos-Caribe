@@ -39,10 +39,10 @@ export default function Main()
                         <Image alt="" src="/smallBall.svg" fill className="image"/>
                     </div>
                     <div className="main-pres-text w-1/2 mt-6">
-                        <p className="lg:text-3xl lg:font-semibold mb-3">SIGUE LOS</p>
-                        <h1 className="lg:text-6xl lg:font-black mb-3">JUEGOS CARIBE</h1>
-                        <p className="lg:font-medium lg:w-4/5">Del 3 de octubre al 7 de noviembre del 2023 estaremos
-                            disfrutando de este gran evento.</p>
+                        {/* <p className="lg:text-3xl lg:font-semibold mb-3">SIGUE LOS</p>
+                        <h1 className="lg:text-6xl lg:font-black mb-3">JUEGOS CARIBE</h1> */}
+                        {/* <p className="lg:font-medium lg:w-4/5">Del 3 de octubre al 7 de noviembre del 2023 estaremos
+                            disfrutando de este gran evento.</p> */}
                         <div className="main-pres-but">
                             <button
                                 className="lg:px-8 lg:py-2 lg:bg-red-950 lg:text-white lg:font-semibold lg:rounded-xl lg:mt-10">Ver

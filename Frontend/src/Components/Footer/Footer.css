@@ -1,0 +1,56 @@
+.Footer
+{
+    padding-top: 7%;
+    background-color: white;
+}
+.leftColumn:first-of-type
+{
+    margin-left: -13%;
+}
+.group
+{
+    margin: 5% 0;
+    width: 50%;
+}
+.footerRow
+{
+    display: flex;
+    justify-content: space-evenly;
+}
+.groupInfo
+{
+    margin-top: -7%;
+}
+.group p
+{
+    color: rgb(29, 29, 29);
+}
+.group a
+{
+    font-weight: bold;
+    color: #5a1024;
+    text-decoration: underline;
+}
+
+.Links
+{
+    margin-top: 5%;
+    margin-left: 3%;
+    margin-right: 3%;
+    border-top: solid gray 2px;
+    border-bottom: solid gray 2px;
+    padding: 8% 0;
+}
+.Links a{
+    color: rgb(51, 51, 51);
+}
+.rightLinks
+{
+    width: 50%;
+}
+.rights
+{
+    padding: 10%;
+    align-items: center;
+    text-align: center;
+}

@@ -5,27 +5,32 @@ import Image from "next/image"
 import useSiteContext from "../../hooks/useSiteContext"
 export default function PlayCard({play})
 {
-    
-    const {Faculties}= useSiteContext()
+    const[isLoading, setIsLoading] = useState(true)
+    const { Faculties }= useSiteContext()
     const [logo1, setLogo1] = useState("")
     const [logo2, setLogo2] = useState("")
 
     useEffect(()=>
     {
+        console.log(play.teams)
         Faculties.map((fac)=>
         {
-            if(play.teams[0] === fac.name)
-            {
-                setLogo1(fac.image)
-            }
-            if(play.teams[1] === fac.name)
-            {
-                setLogo2(fac.image)
-            }
+            // if(play.teams[0] === fac.name)
+            // {
+            //     setLogo1(fac.logo)
+            // }
+            // if(play.teams[1] === fac.name)
+            // {
+            //   setLogo2(fac.logo)
+            // }
         })
-    }, [])
+    }, [play])
+
+    
+
+
     return(
-        <div className="MobileView play-card-container">
+        <div className="MobileView play-card-container mb-10">
             <div className="MobileView PlayCard">
                 <div className="row">
                     <div className="left column">
@@ -38,7 +43,7 @@ export default function PlayCard({play})
                         <p className="font-bold text-xl text-gray-700 pt-[10%]">{play.points[0]}-{play.points[1]}</p>
                     </div>
                     <div className="right column">
-                    <div className="facLogo">
+                        <div className="facLogo">
                             <Image src={logo2} fill className="image" alt=""/>
                         </div>
                     </div>
@@ -54,10 +59,10 @@ export default function PlayCard({play})
                 </div>
             </div>
 
-                <div className="details shadow-lg">
+                {/* <div className="details shadow-lg">
                     <p className="text-[1rem] font-medium text-gray-800">Detalles del Partido</p>
-                </div>
+                </div> */}
                 <p className="text-gray-700 text-sm">{play.detailResult}</p>
-        </div>
+        </div> 
     )
 }
