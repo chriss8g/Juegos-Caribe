@@ -11,6 +11,7 @@
   "dependencies": {
     "@tabler/icons-react": "^2.47.0",
     "axios": "^1.6.8",
+    "caniuse-lite": "^1.0.30001636",
     "cookies-next": "^4.1.1",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
