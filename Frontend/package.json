@@ -13,6 +13,7 @@
     "axios": "^1.6.8",
     "caniuse-lite": "^1.0.30001636",
     "cookies-next": "^4.1.1",
+    "debug": "^4.3.5",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
     "next": "13.4.19",
@@ -20,6 +21,7 @@
     "react-dom": "18.2.0",
     "react-responsive-carousel": "^3.2.23",
     "react-toastify": "^10.0.5",
+    "support-color": "^7.1.0",
     "swiper": "^10.2.0"
   },
   "devDependencies": {

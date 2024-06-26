@@ -27,6 +27,7 @@ export default function Faculties()
         <Layout>
             <div className= "MobileView container bg-[#f5ff5f5]">
                 <div className=" pb-5">
+                    <p>hola</p>
                     <RedTextHeader title="Facultades"/>
                     {
                         faculties.length > 0 &&
@@ -35,7 +36,7 @@ export default function Faculties()
                             
                             faculties.map((element, index)=>(
                                 <div onClick={()=>router.push(`/Facultades/${element.id}`)} key={element.id} className="cursor-pointer" >
-                                    <FacultyCard name={element.name} image={element.logo}/>
+                                    <FacultyCard name={element.name} image={element.logo} facultyId={element.id}/>
                                 </div>
                             ))
                             
